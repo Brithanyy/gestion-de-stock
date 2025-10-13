@@ -1,0 +1,95 @@
+
+{
+  "Usuarios": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "profile": "admin", 
+      "isLoggedIn": false,
+      "avatarUrl": "Img/avatar-profile.png"
+    },
+    {
+      "id": "2",
+      "username": "empleado1",
+      "password": "empleado123",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "Img/avatar-profile.png"
+    }
+  ],
+
+  "Bebidas": [
+    {
+      "id": "1",
+      "name": "Cerveza Patagonia Amber Lager",
+      "type": "alcoholica",
+      "category": "cerveza",
+      "brand": "Patagonia",
+      "milliliters": 473,
+      "alcoholContent": 4.5,
+      "price": 950,
+      "stock": 24,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png",
+      "createdAt": "2025-10-10T18:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Agua Mineral sin gas",
+      "type": "no_alcoholica",
+      "category": "agua",
+      "brand": "Villavicencio",
+      "milliliters": 500,
+      "price": 350,
+      "stock": 45,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/2909/2909765.png",
+      "createdAt": "2025-10-11T14:30:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Vodka Smirnoff",
+      "type": "alcoholica",
+      "category": "vodka",
+      "brand": "Smirnoff",
+      "milliliters": 700,
+      "alcoholContent": 38,
+      "price": 6500,
+      "stock": 10,
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/2738/2738808.png",
+      "createdAt": "2025-10-09T12:00:00Z"
+    }
+  ],
+
+  "Movimientos": [
+    {
+      "id": "1",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "ingreso",
+      "amount": 24,
+      "movementDate": "2025-10-10T18:15:00Z",
+      "idUser": "1",
+      "nameUser": "admin"
+    },
+    {
+      "id": "2",
+      "idDrink": "3",
+      "nameDrink": "Vodka Smirnoff",
+      "typeMotion": "egreso",
+      "amount": 2,
+      "movementDate": "2025-10-11T20:30:00Z",
+      "idUser": "2",
+      "nameUser": "empleado1"
+    },
+    {
+      "id": "3",
+      "idDrink": "2",
+      "nameDrink": "Agua Mineral sin gas",
+      "typeMotion": "ingreso",
+      "amount": 30,
+      "movementDate": "2025-10-12T10:00:00Z",
+      "idUser": "1",
+      "nameUser": "admin"
+    }
+  ]
+}

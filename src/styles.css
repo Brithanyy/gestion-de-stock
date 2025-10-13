@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+/*Colores que utilizaremos en el sitio */
+:root {
+  --color-primario: #ff914d;     /* Naranja */
+  --color-secundario: #ffffff;   /* Blanco */
+  --color-fondo: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  --color-texto: #f4f4f4;
+  --color-hover: #ffa86b;
+  --color-borde: #333;
+  --color-error: #ff4d4d;
+  --color-exito: #4caf50;
+}
+/*Estilos globales*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+/*Estilos para el scroll global*/
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primario);
+  border-radius: 4px;
+}
