@@ -1,0 +1,165 @@
+/* Fondo general */
+.login-container {
+  background: url('/assets/img/imagen-barra.png') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* espacio en móviles */
+}
+
+/* Caja central */
+.login-box {
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 400px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo {
+  width: 180px;          /* tamaño base */
+  height: 180px;
+  margin-bottom: 20px;
+  border-radius: 50%;    /* redondo */
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+/* Título */
+.titulo {
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 25px;
+
+  white-space: nowrap;       /* evita saltos de línea */
+  overflow: hidden;          /* corta cualquier exceso que no quepa */
+  text-overflow: ellipsis;   /* muestra "..." si no cabe en pantallas muy pequeñas */
+  
+  /* tamaño de fuente adaptable */
+  font-size: clamp(1.2rem, 3vw, 1.5rem); 
+}
+
+/* Inputs */
+.form-control {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control:focus {
+  border-color: #ff914d;
+  box-shadow: 0 0 8px #ff914d;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Botón */
+.btn-login {
+  width: 100%;
+  background-color: #ff914d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #ffa869;
+  transform: scale(1.03);
+}
+
+/* Texto de error */
+.error-text {
+  color: #ffb3b3;
+  font-size: 0.85rem;
+  text-align: left;
+  margin-top: 4px;
+}
+
+/* -----------------------------
+   MEDIA QUERIES PARA RESPONSIVE
+-------------------------------*/
+
+/* Tablets y móviles grandes */
+@media (max-width: 768px) {
+  .login-box {
+    max-width: 350px;
+    padding: 30px;
+  }
+
+  .logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+  }
+
+  .titulo {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .btn-login {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .login-box {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+  }
+
+  .titulo {
+    font-size: 1.1rem;
+    white-space: normal; /* permite que el título haga salto de línea */
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .btn-login {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+}
