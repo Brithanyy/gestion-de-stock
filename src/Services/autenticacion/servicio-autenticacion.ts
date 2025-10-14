@@ -17,16 +17,25 @@ export class ServicioAutenticacion {
   isLoggedIn = computed(() => this.usuarioActual() !== null);
 
   constructor(private http : HttpClient, private router : Router) {
-    //Restauramos la sesión del localStorage
-    const usuarioGuardado = localStorage.getItem('usuario');
+  // Restauramos la sesión del localStorage
+  const usuarioGuardado = localStorage.getItem('usuario');
 
-    if(usuarioGuardado && usuarioGuardado !== 'undefined') {
-      this.usuarioActual.set(JSON.parse(usuarioGuardado));
-    }
-    //Si no entra al if eliminamos del almacenamiento local del navegador el dato, en este caso, usuario.
-    localStorage.removeItem('usuario');
+  if(usuarioGuardado && usuarioGuardado !== 'undefined') {
+    const usuario = JSON.parse(usuarioGuardado);
+    // Verificamos con el backend si el usuario existe
+    this.http.get<Usuario>(`${this.API_URL}/${usuario.id}`).subscribe({
+      next: (usuarioBackend) => {
+        // Si el usuario existe, lo seteamos
+        this.usuarioActual.set(usuarioBackend);
+      },
+      error: () => {
+        // Si no existe o hay error (por ejemplo, backend caído), deslogueamos
+        this.usuarioActual.set(null);
+        localStorage.removeItem('usuario');
+      }
+    });
   }
-
+}
   get usuario() { 
     return this.usuarioActual.asReadonly(); 
   }
@@ -38,6 +47,7 @@ export class ServicioAutenticacion {
           const usuario = usuarios[0];
           this.usuarioActual.set(usuario);
           localStorage.setItem('usuario', JSON.stringify(usuario));
+          alert("INICIO DE SESION EXITOSO")
           this.router.navigate(['/home']);
         } else {
           alert('Usuario no encontrado');

@@ -3,6 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../../Models/Usuario';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
+import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 
 @Component({
   selector: 'app-page-login',
@@ -22,6 +23,8 @@ export class PageLogin implements OnInit{
 
   readonly servicioUsuarios = inject(ServicioUsuarios);
 
+  readonly servicioAutenticacion = inject(ServicioAutenticacion);
+
   loginForm = this.formBuilder.nonNullable.group({
     'username': ['',[Validators.required]],
     'password': ['',[Validators.required]]
@@ -30,10 +33,7 @@ export class PageLogin implements OnInit{
   readonly usuarios : Usuario[] = [];
 
   //Metodos del componente
-  onSubmit(): void {
-    
-  }
-
+  
   get usernameControl() {
     return this.loginForm.get('username');
   }
@@ -50,7 +50,6 @@ export class PageLogin implements OnInit{
     this.servicioUsuarios.getAllUsers().subscribe({
       next : (usuariosTraidos) => {
         this.usuarios.push(...usuariosTraidos);
-        console.log("USUARIOS TRAIDOS", usuariosTraidos);
       },
       error : (err) => {
         console.error('Error al traer los usuarios:', err) // desp hay que modificar estos errores y hacer un componente para ellos
@@ -58,5 +57,17 @@ export class PageLogin implements OnInit{
     })
   }
 
+  login() {
+    if(this.loginForm.valid) {
+      const userName = this.loginForm.value.username;
+      const nombreString = String(userName);
+      const pass = this.loginForm.value.password;
+      const passString = String(pass);
+      this.servicioAutenticacion.login(nombreString, passString);
+    }else {
+      console.log("Formulario invalido.");
+      this.loginForm.markAllAsTouched();
+    }
+  }
 
 }
