@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Usuario } from '../../Models/Usuario';
+import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 
 @Component({
   selector: 'app-page-login',
@@ -11,26 +13,22 @@ import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/for
 export class PageLogin implements OnInit{
 
   ngOnInit(): void {
-    // Aqui va la logica de inicializacion de los usuarios. Es la parte del servicio.
+    this.listaUsuarios();
   }
-  readonly username = '';
-  readonly password = '';
 
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
 
   readonly logoUrl = 'assets/img/logo.png';
 
+  readonly servicioUsuarios = inject(ServicioUsuarios);
+
   loginForm = this.formBuilder.nonNullable.group({
     'username': ['',[Validators.required]],
-    'password': ['',[Validators.required,Validators.minLength(8), Validators.pattern('^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,}$')]]
+    'password': ['',[Validators.required]]
   });
 
-/*Explicacion de los ppatern:
-^(?=.*[A-Z])        al menos una letra mayúscula
-(?=.*\d)            al menos un número
-(?=.*[!@#$%^&*])    al menos un carácter especial permitido
-[A-Za-z\d!@#$%^&*]{8,}  solo estos caracteres, mínimo 8
-*/
+  readonly usuarios : Usuario[] = [];
+
   //Metodos del componente
   onSubmit(): void {
     
@@ -43,5 +41,22 @@ export class PageLogin implements OnInit{
   get passwordControl() {
     return this.loginForm.get('password');
   }
+
+   get f() {
+    return this.loginForm.controls;
+  }
+
+  listaUsuarios() {
+    this.servicioUsuarios.getAllUsers().subscribe({
+      next : (usuariosTraidos) => {
+        this.usuarios.push(...usuariosTraidos);
+        console.log("USUARIOS TRAIDOS", usuariosTraidos);
+      },
+      error : (err) => {
+        console.error('Error al traer los usuarios:', err) // desp hay que modificar estos errores y hacer un componente para ellos
+      }
+    })
+  }
+
 
 }

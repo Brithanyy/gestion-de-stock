@@ -1,38 +1,40 @@
 <div class="login-container">
-  <div class="login-box text-center">
+  <div class="login-box">
     <img [src]="logoUrl" alt="Logo Mirador" class="logo" />
 
     <h2 class="titulo">Sistema de gestión de stock</h2>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
       <!-- Username -->
-      <div class="form-group mb-3">
+      <div class="input-group">
         <input
           type="text"
           formControlName="username"
-          class="form-control"
           placeholder="Username"
+          class="form-control"
         />
+        <p class="error-text" *ngIf="f.username.touched && f.username.invalid">
+          El nombre de usuario es requerido
+        </p>
       </div>
 
       <!-- Password -->
-      <div class="form-group mb-4">
+      <div class="input-group">
         <input
           type="password"
           formControlName="password"
-          class="form-control"
           placeholder="Password"
+          class="form-control"
         />
+        <p class="error-text" *ngIf="f.password.touched && f.password.invalid">
+          La contraseña es requerida
+        </p>
       </div>
 
-      <button
-        type="submit"
-        class="btn btn-login"
-        [disabled]="loginForm.invalid"
-      >
+      <button type="submit" class="btn-login" [disabled]="loginForm.invalid">
         Ingresar
       </button>
     </form>
   </div>
 </div>
-

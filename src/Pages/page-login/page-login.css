@@ -94,13 +94,35 @@
   transform: scale(1.03);
 }
 
-/* Texto de error */
+/* Mensajes de error debajo de los inputs */
 .error-text {
-  color: #ffb3b3;
-  font-size: 0.85rem;
+  color: #ff6b6b;              
+  font-size: 0.9rem;           
+  margin-top: -10px;          
+  margin-bottom: 10px;
   text-align: left;
-  margin-top: 4px;
+  display: block;
+  animation: fadeIn 0.3s ease; /* animación de aparición */
 }
+
+/* Animación sutil de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Si querés resaltar el borde del input con error */
+.form-control.ng-invalid.ng-touched {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 6px rgba(255, 107, 107, 0.5);
+}
+
 
 /* -----------------------------
    MEDIA QUERIES PARA RESPONSIVE
