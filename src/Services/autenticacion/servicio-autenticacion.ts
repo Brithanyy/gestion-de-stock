@@ -47,10 +47,10 @@ export class ServicioAutenticacion {
           const usuario = usuarios[0];
           this.usuarioActual.set(usuario);
           localStorage.setItem('usuario', JSON.stringify(usuario));
-          alert("INICIO DE SESION EXITOSO")
+          alert("INICIO DE SESION EXITOSO") //HAY QUE INCLUIR UNA LINDA ALERTA
           this.router.navigate(['/home']);
         } else {
-          alert('Usuario no encontrado');
+          alert('Usuario no encontrado'); // HAY QUE INCLUIR UNA LINDA ALERTA
         }
       });
   }
