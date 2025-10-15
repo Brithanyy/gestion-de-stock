@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Usuario } from '../../Models/Usuario';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';

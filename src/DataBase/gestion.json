@@ -3,7 +3,7 @@
   "Usuarios": [
     {
       "id": "1",
-      "username": "admin",
+      "username": "Dueño",
       "password": "admin123",
       "profile": "admin", 
       "isLoggedIn": false,

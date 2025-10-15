@@ -6,16 +6,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PageLogin, CommonModule],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('gestion-de-stock');
-
-  readonly servicioAutenticacion = inject(ServicioAutenticacion);
-  readonly logueado = this.servicioAutenticacion.isLoggedIn; 
-  readonly usuario = this.servicioAutenticacion.usuario; 
-
 
 }

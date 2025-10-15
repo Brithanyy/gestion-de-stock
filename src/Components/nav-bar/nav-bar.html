@@ -8,8 +8,8 @@
   </div>
 
   <div class="navbar__right">
-    <span class="navbar__user">Rocío</span>
-    <button class="navbar__logout" title="Cerrar sesión">
+    <span class="navbar__user">{{nombreUsuario()}}</span>
+    <button class="navbar__logout" title="Cerrar sesión" (click)="logOut()">
       <svg xmlns="http://www.w3.org/2000/svg" 
      width="24" height="24" viewBox="0 0 24 24" 
      fill="none" stroke="#ffff" stroke-width="2" 
@@ -32,8 +32,8 @@
 
   <!-- Menú desplegable en versión móvil -->
   <div class="navbar__mobile-menu" id="mobile-menu">
-    <span class="navbar__user">Rocío</span>
-    <button class="navbar__logout" title="Cerrar sesión">
+    <span class="navbar__user">{{nombreUsuario()}} - {{tipoUsuario()}} </span>
+    <button class="navbar__logout" title="Cerrar sesión" (click)="logOut()">
       
     <svg xmlns="http://www.w3.org/2000/svg" 
      width="24" height="24" viewBox="0 0 24 24" 
