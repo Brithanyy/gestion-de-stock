@@ -1,23 +1,19 @@
 /**Colores que utilizaremos en el sitio */
 :root {
 
-  --color-primario: #f47227; 
-  --color-secundario: #ffffff;  
+  --color-naranja: #f47227; 
+  --color-naranja-hover: #f38240;
+  --color-negro: #1e1e1e;
+  --color-blanco: #ffffff;
+ 
   --color-fondo: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
-  --color-texto: #f4f4f4;
-  --color-hover: #f38240;
-  --color-borde: #333;
+
   --color-error: #ff4d4d;
   --color-exito: #4caf50;
 
-  --header-height: 70px;
-  --footer-height: 64px;
-  --sidebar-width: 240px;
-  --sidebar-width-collapsed: 0; /* si necesitás colapsar */
-
-  --accent: #f47227;
-
-  font-family: "Cooper-Star", system-ui, sans-serif;
+  --header-height: 15vh;    
+  --footer-height: 20vh;   
+  --sidebar-width: 25vh; 
 }
 
 /**Cooper* Font Family (OFL)*/

@@ -1,3 +1,64 @@
+/**Agregar que sea responsive en móviles**/
+
+:host { 
+
+  display:block; 
+  height:100%; 
+  background:#1e1e1e; 
+  color: #ffffff; 
+  font-family: "Cooper-Star", system-ui, sans-serif; 
+  box-sizing:border-box; 
+}
+
+.sidebar {
+
+  padding:1rem;
+  box-sizing:border-box;
+  height: 100%;
+  position: sticky;             /* se mantiene visible */
+  top: 15vh;   /* queda justo debajo del header */
+  overflow-y:auto;
+}
+
+/**Me gustaría centrar verticalmente los enlaces**/
+.sidebar ul {
+
+  list-style:none;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items: left;
+  gap: 4rem;
+}
+
+.sidebar a {
+
+  display:inline-block;
+  text-decoration:none;
+  color:#ffffff;
+  background:#f47227;
+  padding: 0.6rem 0.9rem;
+  border-radius:999px;
+  font-weight:600;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: background .18s ease;
+  width:100%;
+  box-sizing:border-box;
+}
+
+/**Agregar algún efecto a los enlaces**/
+.sidebar a:hover,
+.sidebar a:focus {
+
+  background: #f38240;
+}
+
+
+/*
+ESTILOS HECHOS POR BRI
+
 .sidebar {
 
   width: 100%;
@@ -54,7 +115,7 @@
   color: #ffffff;
 }
 
-/* Botón para abrir sidebar (solo en móvil) */
+
 .sidebar__toggle {
 
   position: fixed;
@@ -72,7 +133,7 @@
   box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
-/* --- Responsividad --- */
+
 @media (max-width: 900px) {
 
   .sidebar {
@@ -89,3 +150,4 @@
     display: block;
   }
 }
+*/
