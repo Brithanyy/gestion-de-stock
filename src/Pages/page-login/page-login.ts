@@ -4,6 +4,7 @@ import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/for
 import { Usuario } from '../../Models/Usuario';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
+import { Alerta } from '../../Services/alerta/alerta';
 
 @Component({
   selector: 'app-page-login',
@@ -11,11 +12,7 @@ import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-aut
   templateUrl: './page-login.html',
   styleUrl: './page-login.css'
 })
-export class PageLogin implements OnInit{
-
-  ngOnInit(): void {
-    this.listaUsuarios();
-  }
+export class PageLogin {
 
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
 
@@ -25,12 +22,15 @@ export class PageLogin implements OnInit{
 
   readonly servicioAutenticacion = inject(ServicioAutenticacion);
 
+  readonly alerta : Alerta = inject(Alerta);
+
+  usuarios = computed(() => this.servicioUsuarios.usuariosSignal());
+
   loginForm = this.formBuilder.nonNullable.group({
     'username': ['',[Validators.required]],
     'password': ['',[Validators.required]]
   });
 
-  readonly usuarios : Usuario[] = [];
 
   //Metodos del componente
   
@@ -46,17 +46,6 @@ export class PageLogin implements OnInit{
     return this.loginForm.controls;
   }
 
-  listaUsuarios() {
-    this.servicioUsuarios.getAllUsers().subscribe({
-      next : (usuariosTraidos) => {
-        this.usuarios.push(...usuariosTraidos);
-      },
-      error : (err) => {
-        console.error('Error al traer los usuarios:', err) // desp hay que modificar estos errores y hacer un componente para ellos
-      }
-    })
-  }
-
   login() {
     if(this.loginForm.valid) {
       const userName = this.loginForm.value.username;
@@ -65,7 +54,6 @@ export class PageLogin implements OnInit{
       const passString = String(pass);
       this.servicioAutenticacion.login(nombreString, passString);
     }else {
-      console.log("Formulario invalido.");
       this.loginForm.markAllAsTouched();
     }
   }
