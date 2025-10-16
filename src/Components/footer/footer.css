@@ -80,6 +80,7 @@
   }
 
   .footer-inner > * { min-width: 0; }
+  
   .footer-center{ gap:0.15rem; font-size:0.95rem;}
 
   .brand {
@@ -90,10 +91,12 @@
 
   
   .support, .social {
+
     font-size: 0.9rem;
   }
 
   .copyright {
+
     font-size: 0.8rem;
   }
 }
