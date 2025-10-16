@@ -1,17 +1,38 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Router, RouterOutlet, NavigationEnd  } from '@angular/router';
 import { PageLogin } from "../Pages/page-login/page-login";
 import { ServicioAutenticacion } from '../Services/autenticacion/servicio-autenticacion';
 import { CommonModule } from '@angular/common';
 import { Alertas } from "../Components/alertas/alertas";
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Alertas],
+  imports: [Alertas, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
+
+  //*Constantes y variables globales
   protected readonly title = signal('gestion-de-stock');
+  readonly router : Router = inject(Router);
+
+  isLoginPage : boolean = false;
+
+  //*Métodos
+  ngOnInit(): void {
+    
+    //Hacemos esto para que cuando estes en la loginPage no te muestre el header, sidebar y footer, ya que están puestos en el html raíz
+    this.router.events
+
+      .pipe(filter(event => event instanceof NavigationEnd))
+
+      .subscribe((event: any) => {
+        this.isLoginPage = event.urlAfterRedirects === '/login';
+      });
+    
+  };
+
 
 }

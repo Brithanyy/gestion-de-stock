@@ -1,25 +1,30 @@
-<<<<<<< HEAD
-<div class="bodyContainer">
+@if(!isLoginPage) {
 
-    <div class="headerContainer">
-        <!--Aquí debe llamarse al componente header-->
+    <div class="bodyContainer">
+
+        <div class="headerContainer">
+            <!--Aquí debe llamarse al componente header-->
+        </div>
+
+        <div class="sidebarContainer">
+            <!--Aquí debe llamarse al componente sidebar-->
+        </div>
+
+        <div class="mainContainer">
+            <router-outlet></router-outlet>
+            <app-alertas></app-alertas>
+        </div>
+
+        <div class="footerContainer">
+            <!--Aquí debe llamarse al componente footer-->
+        </div>
+
     </div>
+}
 
-    <div class="sidebarContainer">
-        <!--Aquí debe llamarse al componente sidebar-->
-    </div>
+@else {
+    <router-outlet></router-outlet>
+    <app-alertas></app-alertas>
+}
 
-    <div class="mainContainer">
-        <router-outlet />
-    </div>
 
-    <div class="footerContainer">
-        <!--Aquí debe llamarse al componente footer-->
-    </div>
-
-</div>
-
-=======
-<router-outlet />
-<app-alertas></app-alertas>
->>>>>>> 803b95ff503479374be74198482dbbe80448bce5
