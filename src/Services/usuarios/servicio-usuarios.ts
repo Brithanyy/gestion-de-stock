@@ -8,21 +8,13 @@ import { Usuario } from '../../Models/Usuario';
 })
 export class ServicioUsuarios {
 
-  constructor(private http: HttpClient) {
-    this.getAllUsers();
-   }
+  constructor() {}
 
   readonly peticionesHttp = inject(HttpClient);
   readonly urlBase = 'http://localhost:3000/Usuarios';
 
-  usuariosSignal = signal<Usuario[]>([]);
-
-
   getAllUsers() {
-    return this.http.get<Usuario[]>(this.urlBase)
-    .subscribe(usuarios => {
-      this.usuariosSignal.set(usuarios);
-    });
+    return this.peticionesHttp.get<Usuario[]>(this.urlBase);
   }
 
   getUser(id: string | null | undefined) {

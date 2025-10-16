@@ -9,6 +9,8 @@ import { AddDrinkPage } from '../Pages/add-drink-page/add-drink-page';
 import { AlertsPage } from '../Pages/alerts-page/alerts-page';
 import { MovementsPage } from '../Pages/movements-page/movements-page';
 import { ReportsPage } from '../Pages/reports-page/reports-page';
+import { EditUserPage } from '../Pages/edit-user-page/edit-user-page';
+import { NewUserPage } from '../Pages/new-user-page/new-user-page';
 
 export const routes: Routes = [
 
@@ -24,6 +26,8 @@ export const routes: Routes = [
             { path: 'alertsPage', component: AlertsPage },
             { path: 'movementsPage', component: MovementsPage },
             { path: 'reportsPage', component: ReportsPage },
+            { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
+            { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] }
             // otras rutas que usan header/sidebar/footer
         ]
     },

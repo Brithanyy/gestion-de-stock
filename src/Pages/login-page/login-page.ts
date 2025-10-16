@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 import { Alerta } from '../../Services/alerta/alerta';
+import { Usuario } from '../../Models/Usuario';
 
 @Component({
   selector: 'app-login-page',
@@ -27,7 +28,7 @@ export class LoginPage implements OnInit {
 
   readonly alerta : Alerta = inject(Alerta);
 
-  usuarios = computed(() => this.servicioUsuarios.usuariosSignal());
+  usuarios : Usuario[] = [];
 
   loginForm = this.formBuilder.nonNullable.group({
 
@@ -37,7 +38,7 @@ export class LoginPage implements OnInit {
 
   //*MÉTODOS
   ngOnInit(): void {
-    
+    this.listarUsuarios();
   }
 
   get usernameControl() { return this.loginForm.get('username'); };
@@ -60,4 +61,15 @@ export class LoginPage implements OnInit {
   
     else { this.loginForm.markAllAsTouched(); };
   };
+
+  listarUsuarios() {
+     this.servicioUsuarios.getAllUsers().subscribe({
+      next : (usuariosTraidos) => {
+        this.usuarios.push(...usuariosTraidos);
+      },
+      error : (err) => {
+        this.alerta.mostrar("Error al cargar los usuarios.", "danger");
+      }
+    })
+  }
 }

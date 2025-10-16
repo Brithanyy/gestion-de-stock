@@ -18,7 +18,7 @@
     </div>
 
     <!-- Filas generadas dinámicamente -->
-    <div class="tabla-fila" *ngFor="let usuario of usuarios(); let i = index">
+    <div class="tabla-fila" *ngFor="let usuario of usuarios; let i = index">
 
       <div>
         <img [src]="usuario.avatarUrl || 'assets/img/usuario.png'" alt="Avatar" class="avatar" />

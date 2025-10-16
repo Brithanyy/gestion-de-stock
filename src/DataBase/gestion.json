@@ -1,11 +1,10 @@
-
 {
   "Usuarios": [
     {
       "id": "1",
       "username": "Dueño",
       "password": "admin123",
-      "profile": "admin", 
+      "profile": "admin",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
     },
@@ -16,9 +15,16 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "3",
+      "username": "empleado2",
+      "password": "empleado123",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
     }
   ],
-
   "Bebidas": [
     {
       "id": "1",
@@ -59,7 +65,6 @@
       "createdAt": "2025-10-09T12:00:00Z"
     }
   ],
-
   "Movimientos": [
     {
       "id": "1",
