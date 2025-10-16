@@ -12,24 +12,24 @@
 
 .sidebar {
 
+  width: auto;
   padding:1rem;
   box-sizing:border-box;
-  height: 100%;
-  position: sticky;             /* se mantiene visible */
-  top: 15vh;   /* queda justo debajo del header */
+  top: 15vh;  /* sigue quedando debajo del header */
+  height: calc(100vh - auto - auto); /* asegura el alto utilizable */
   overflow-y:auto;
+  display:block;
 }
 
 /**Me gustaría centrar verticalmente los enlaces**/
 .sidebar ul {
 
   list-style:none;
-  padding:0;
-  margin:0;
+  padding: 0.5rem;
+  margin: auto 0;   /* esto centra verticalmente el ul dentro del sidebar */
   display:flex;
   flex-direction:column;
-  align-items: left;
-  gap: 4rem;
+  gap:2rem;
 }
 
 .sidebar a {
@@ -38,11 +38,11 @@
   text-decoration:none;
   color:#ffffff;
   background:#f47227;
-  padding: 0.6rem 0.9rem;
+  padding:0.6rem 0.9rem;
   border-radius:999px;
+  text-align:center;
   font-weight:600;
   font-size: 1.2rem;
-  text-align: center;
   transition: background .18s ease;
   width:100%;
   box-sizing:border-box;
@@ -53,6 +53,21 @@
 .sidebar a:focus {
 
   background: #f38240;
+}
+/* En móviles el sidebar se mantiene visible pero ocupando más ancho relativo */
+@media (max-width: 768px) {
+
+  :root {
+
+    --sidebar-width: 22vw;
+  }
+  .sidebar {
+
+    padding:0.9rem;
+  }
+  .sidebar a { 
+    padding:0.5rem 0.7rem; 
+    font-size:0.95rem; }
 }
 
 

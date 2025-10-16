@@ -1,10 +1,12 @@
 <nav class="sidebar">
   <ul>
-    <li><a routerLink="/movementsPage">Movimientos</a></li>
-    <li><a routerLink="/reportsPage">Reportes</a></li>
-    <li><a routerLink="/alert">Ver alertas</a></li>
-    <li><a routerLink="/usuersPage">Usuarios</a></li>
-    <li><a routerLink="/addDrinkPage">Agregar Bebida</a></li>
+    <li><a routerLink="/movimientos">Movimientos</a></li>
+    <li><a routerLink="/reportes">Reportes</a></li>
+    <li><a routerLink="/alertas">Ver alertas</a></li>
+
+
+    <li *ngIf="esAdmin()"><a routerLink="/usersPage">Usuarios</a></li>
+    <li *ngIf="esAdmin()"><a routerLink="/addDrinkPage">Agregar bebida</a></li>
   </ul>
 </nav>
 <!--
