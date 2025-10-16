@@ -1,5 +1,6 @@
 /* Fondo general */
 .login-container {
+
   background: url('/assets/img/imagen-barra.png') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
@@ -7,10 +8,12 @@
   justify-content: center;
   align-items: center;
   padding: 20px; /* espacio en móviles */
+  font-family: "Cooper-Star", system-ui, sans-serif;
 }
 
 /* Caja central */
 .login-box {
+
   background: rgba(0, 0, 0, 0.28);
   backdrop-filter: blur(8px);
   padding: 40px;
@@ -28,6 +31,7 @@
 
 /* Logo */
 .logo {
+
   width: 180px;          /* tamaño base */
   height: 180px;
   margin-bottom: 20px;
@@ -38,6 +42,7 @@
 
 /* Título */
 .titulo {
+
   font-weight: 400;
   color: #ffffff;
   text-align: center;
@@ -53,6 +58,7 @@
 
 /* Inputs */
 .form-control {
+
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
@@ -62,22 +68,26 @@
   transition: 0.3s ease;
   margin-bottom: 15px;
   width: 100%;
+  font-family: "Cooper-Star", system-ui, sans-serif;
 }
 
 .form-control::placeholder {
+
   color: rgba(255, 255, 255, 0.7);
 }
 
 .form-control:focus {
-  border-color: #ff914d;
-  box-shadow: 0 0 8px #ff914d;
+
+  border-color: #f47227;
+  box-shadow: 0 0 8px #f47227;
   background: rgba(255, 255, 255, 0.15);
 }
 
 /* Botón */
 .btn-login {
+
   width: 100%;
-  background-color: #ff914d;
+  background-color: #f47227;
   color: white;
   border: none;
   border-radius: 8px;
@@ -86,15 +96,19 @@
   font-weight: 600;
   transition: 0.3s ease;
   cursor: pointer;
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  font-weight: 600;
 }
 
 .btn-login:hover {
-  background-color: #ffa869;
+
+  background-color: #f38240;
   transform: scale(1.03);
 }
 
 /* Mensajes de error debajo de los inputs */
 .error-text {
+
   color: #ff6b6b;              
   font-size: 0.9rem;           
   margin-top: -10px;          
@@ -106,10 +120,12 @@
 
 /* Animación sutil de aparición */
 @keyframes fadeIn {
+
   from {
     opacity: 0;
     transform: translateY(-3px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -118,6 +134,7 @@
 
 /* Si querés resaltar el borde del input con error */
 .form-control.ng-invalid.ng-touched {
+
   border-color: #ff6b6b;
   box-shadow: 0 0 6px rgba(255, 107, 107, 0.5);
 }

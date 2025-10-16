@@ -1,0 +1,28 @@
+.headerContainer {
+    
+  grid-area: Header;
+  width: 100%;
+  /* el header no debe empujar el grid: position sticky para que quede arriba */
+  position: sticky;
+  top: 0;
+  z-index: 1100; /* por encima del sidebar (900) y del footer (950) */
+}
+
+.sidebarContainer {
+
+  max-width: 100%;
+  /* No sacarlo del flujo en desktop: sticky dentro del grid */
+  position: sticky;
+  top: 70px; /* pegar debajo del header sticky de 70px */
+  height: calc(100vh - 70px);
+  min-height: 0; /* evita problemas de overflow en grid */
+  background-color: #1e1e1e;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  z-index: 900;
+  box-sizing: border-box;
+}

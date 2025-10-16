@@ -1,10 +1,10 @@
 /**Colores que utilizaremos en el sitio */
 :root {
-  --color-primario: #ff914d;     /* Naranja */
+  --color-primario: #f47227;     /* Naranja */
   --color-secundario: #ffffff;   /* Blanco */
   --color-fondo: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
   --color-texto: #f4f4f4;
-  --color-hover: #ffa86b;
+  --color-hover: #f38240;
   --color-borde: #333;
   --color-error: #ff4d4d;
   --color-exito: #4caf50;
@@ -13,6 +13,7 @@
 /**Cooper* Font Family (OFL)*/
 /* Regular */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Regular.woff2") format("woff2");
   font-weight: 400;
@@ -22,6 +23,7 @@
 
 /* Italic */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Italic.woff2") format("woff2");
   font-weight: 400;
@@ -31,6 +33,7 @@
 
 /* Medium */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Medium.woff2") format("woff2");
   font-weight: 500;
@@ -40,6 +43,7 @@
 
 /* Medium Italic */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-MediumItalic.woff2") format("woff2");
   font-weight: 500;
@@ -49,6 +53,7 @@
 
 /* SemiBold */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-SemiBold.woff2") format("woff2");
   font-weight: 600;
@@ -58,6 +63,7 @@
 
 /* SemiBold Italic */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-SemiBoldItalic.woff2") format("woff2");
   font-weight: 600;
@@ -67,6 +73,7 @@
 
 /* Bold */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Bold.woff2") format("woff2");
   font-weight: 700;
@@ -76,6 +83,7 @@
 
 /* Bold Italic */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-BoldItalic.woff2") format("woff2");
   font-weight: 700;
@@ -85,6 +93,7 @@
 
 /* ExtraBold */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-ExtraBold.woff2") format("woff2");
   font-weight: 800;
@@ -94,6 +103,7 @@
 
 /* ExtraBold Italic */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-ExtraBoldItalic.woff2") format("woff2");
   font-weight: 800;
@@ -103,6 +113,7 @@
 
 /* Black */
 @font-face {
+
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Black.woff2") format("woff2");
   font-weight: 900;
@@ -112,6 +123,7 @@
 
 /* Black Italic */
 @font-face {
+  
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-BlackItalic.woff2") format("woff2");
   font-weight: 900;
@@ -120,30 +132,42 @@
 }
 
 /**Estilos globales*/
+*,
+*::before,
+*::after {
+
+  box-sizing: border-box;
+}
 
 html, body, app-root {
 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
     height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     font-family: "Cooper-Star", system-ui, sans-serif;
 }
 
 .bodyContainer {
 
   display: grid;
-  grid-template-areas: 'Header Header'
-                       'Sidebar Main'
-                       'Footer Footer';
+  grid-template-areas:
+    'Header Header'
+    'Sidebar Main'
+    'Footer Footer';
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 15% 85%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .headerContainer {
 
-  grid-area: Header;
+    grid-area: Main;
+    overflow-y: auto;    /* deja scroll vertical solo dentro de Main si hace falta */
 }
 
 .sidebarContainer {
@@ -154,7 +178,13 @@ html, body, app-root {
 .mainContainer {
 
   grid-area: Main;
-  overflow-y: auto;
+  margin-left: 0; 
+  grid-area: Main;
+  min-height: 0;       /* CRÍTICO para que overflow funcione con grid 1fr */
+  overflow-y: auto;    /* el scroll vertical se queda dentro del main */
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 1.25rem;
 }
 
 .footerContainer {

@@ -5,10 +5,13 @@ import { ServicioAutenticacion } from '../Services/autenticacion/servicio-autent
 import { CommonModule } from '@angular/common';
 import { Alertas } from "../Components/alertas/alertas";
 import { filter } from 'rxjs';
+import { BarraLateral } from "../Components/barra-lateral/barra-lateral";
+import { NavBar } from "../Components/nav-bar/nav-bar";
+import { Footer } from "../Components/footer/footer";
 
 @Component({
   selector: 'app-root',
-  imports: [Alertas, RouterOutlet],
+  imports: [Alertas, RouterOutlet, BarraLateral, NavBar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

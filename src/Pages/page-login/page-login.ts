@@ -12,12 +12,10 @@ import { Alerta } from '../../Services/alerta/alerta';
   templateUrl: './page-login.html',
   styleUrl: './page-login.css'
 })
-export class PageLogin implements OnInit{
+export class PageLogin implements OnInit {
 
-  ngOnInit(): void {
-    this.listaUsuarios();
-  }
-
+  //*Constantes y variables globales
+  
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
 
   readonly logoUrl = 'assets/img/logoModerno.png';
@@ -38,29 +36,43 @@ export class PageLogin implements OnInit{
 
 
   //*Metodos del componente
+
+    ngOnInit(): void {
+
+  }
   
   get usernameControl() {
+
     return this.loginForm.get('username');
-  }
+  };
 
   get passwordControl() {
+
     return this.loginForm.get('password');
-  }
+  };
 
    get f() {
+
     return this.loginForm.controls;
-  }
+  };
 
   login() {
+
     if(this.loginForm.valid) {
+
       const userName = this.loginForm.value.username;
       const nombreString = String(userName);
       const pass = this.loginForm.value.password;
       const passString = String(pass);
       this.servicioAutenticacion.login(nombreString, passString);
-    }else {
-      this.loginForm.markAllAsTouched();
+
     }
-  }
+    
+    else {
+
+      this.loginForm.markAllAsTouched();
+    };
+
+  };
 
 }
