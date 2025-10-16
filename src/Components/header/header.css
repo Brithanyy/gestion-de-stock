@@ -29,11 +29,26 @@
 
 .logo {
 
-  height: calc(15vh - 2.2rem); /* escala según header */
-  max-height: auto;
+  height: calc(15vh - 2.2rem);
   width: auto;
-  object-fit:contain;
+  object-fit: contain;
   border-radius: 70px;
+  cursor: pointer;
+  transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease; /* transiciones suaves */
+}
+
+/* Efecto al pasar el mouse */
+.logo:hover {
+  transform: scale(1.08); /* agranda un poco */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* brillo suave */
+}
+
+/* Cuando se hace click (efecto de "presión") */
+.logo:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .titles .brand {
@@ -69,15 +84,32 @@
 /**Me gustaría agregarle algún efecto al logOut**/
 .btn-logout {
 
-  background:transparent;
-  border:2px solid #ffffff;
-  padding:0.35rem 0.5rem;
-  border-radius:8px;
+  background: transparent;
+  border: 2px solid #ffffff;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
   color: #ffffff;
-  cursor:pointer;
-  display:inline-flex;
-  align-items:center;
-  gap:0.4rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: 
+    transform 0.2s ease, 
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;  /* suaviza el brillo */
+}
+
+/* Efecto al pasar el mouse */
+.btn-logout:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* leve fondo translúcido */
+  transform: scale(1.1);                      /* agranda un poco */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* brillo sutil */
+}
+
+/* Cuando se hace click (efecto de "presión") */
+.btn-logout:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
 .btn-logout svg { 
@@ -112,6 +144,42 @@
     width: auto;
     object-fit:contain;
     border-radius: 70px;
+    transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease; /* transiciones suaves */
+  }
+
+  
+  /* Efecto al pasar el mouse */
+  .logo:hover {
+    transform: scale(1.08); /* agranda un poco */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* brillo suave */
+  }
+
+  /* Cuando se hace click (efecto de "presión") */
+  .logo:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-logout {
+    transition: 
+    transform 0.2s ease, 
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;  /* suaviza el brillo */
+  }
+
+    /* Efecto al pasar el mouse */
+  .btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* leve fondo translúcido */
+    transform: scale(1.1);                      /* agranda un poco */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* brillo sutil */
+  }
+
+  /* Cuando se hace click (efecto de "presión") */
+  .btn-logout:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
   }
 
   .titles .brand {
@@ -137,135 +205,3 @@
   }
 }
 
-/*
-
-ESTILOS HECHOS POR BRI
-
-.navbar {
-  
-  width: 100%;
-  height: var(--header-height);
-  background-color: var(--color-primario);
-  color: var(--color-texto);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  z-index: 50; 
-  box-sizing: border-box;
-}
-
-
-.navbar__left {
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.navbar__logo {
-
-  width: 70px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid var(--color-primario);
-}
-
-.navbar__titles { display: flex; flex-direction: column; }
-
-.navbar__title {
-
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-texto);
-  margin: 0;
-}
-
-.navbar__subtitle {
-
-  font-size: 0.9rem;
-  color: var(--color-secundario);
-  opacity: 0.9;
-  margin: 0;
-}
-
-.navbar__right {
-
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.navbar__user { font-weight: 500; font-size: 0.95rem; color: var(--color-secundario); }
-
-.navbar__logout {
-
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px;
-  transition: transform 0.18s ease, opacity 0.18s ease;
-}
-
-.navbar__logout img { transform: scale(1.05); opacity: 0.9; }
-
-.navbar__logout:hover { transform: scale(1.1); }
-
-.logout-icon { cursor: pointer; transition: transform .22s ease, stroke .22s ease; }
-.logout-icon:hover { transform: scale(1.05); stroke: #ffffff; }
-
-
-.navbar__menu-btn {
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-.navbar__menu-btn span {
-
-  width: 22px;
-  height: 3px;
-  background-color: var(--color-texto);
-  border-radius: 3px;
-  display: block;
-  margin: 3px 0;
-}
-
-
-.navbar__mobile-menu {
-
-  display: none;
-  position: absolute;
-  top: var(--header-height);
-  right: 0;
-  left: 0;
-  background-color: rgba(30,30,30,0.96);
-  padding: 1rem 0;
-  flex-direction: column;
-  gap: 0.75rem;
-  z-index: 45;
-  box-sizing: border-box;
-}
-.navbar__mobile-menu.active { display: flex; }
-
-
-@media (max-width: 768px) {
-  .navbar { padding: 0 1rem; }
-  .navbar__title { font-size: 1rem; }
-  .navbar__subtitle { display: none; }
-  .navbar__right { display: none; }
-  .navbar__menu-btn { display: inline-flex; }
-}
-
-
-*/

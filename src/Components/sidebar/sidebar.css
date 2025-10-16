@@ -1,4 +1,3 @@
-/**Agregar que sea responsive en móviles**/
 
 :host { 
 
@@ -33,26 +32,29 @@
 
 .sidebar a {
 
-  display:inline-block;
-  text-decoration:none;
-  color:#ffffff;
-  background:#f47227;
-  padding:0.6rem 0.9rem;
-  border-radius:999px;
-  text-align:center;
-  font-weight:600;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  background: transparent;      /* <- antes era #f47227 */
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 600;
   font-size: 1.2rem;
-  transition: background .18s ease;
-  width:100%;
-  box-sizing:border-box;
+  transition: background .18s ease, color .18s ease;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;             /* <- agrega el cursor */
+  outline: none;
 }
 
-/**Agregar algún efecto a los enlaces**/
 .sidebar a:hover,
-.sidebar a:focus {
-
-  background: #f38240;
+.sidebar a:focus,
+.sidebar a:focus-visible {
+  background: #f47227;         /* fondo naranja al pasar el mouse o cuando recibe foco */
+  color: #ffffff;
 }
+
 /* En móviles el sidebar se mantiene visible pero ocupando más ancho relativo */
 @media (max-width: 768px) {
   .sidebar {
@@ -109,99 +111,3 @@
     height: 36px; /* tamaño uniforme */
   }
 }
-
-/*
-ESTILOS HECHOS POR BRI
-
-.sidebar {
-
-  width: 100%;
-  height: 100%;
-  background-color: #1d1d1d; 
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.28s ease;
-  box-sizing: border-box;
-}
-
-.sidebar__close-btn {
-
-  background: transparent;
-  border: none;
-  color: #ccc;
-  font-size: 20px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.sidebar__close-btn:hover {
-  
-  color: #ffa86b;
-}
-
-.sidebar__links {
-
-  list-style: none;
-  padding: 0;
-  margin: 1rem 3;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-
-.sidebar__links a {
-
-  color: #ddd;
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding: 0.3rem 0.8rem;
-  border-radius: 6px;
-  transition: background 0.3s, color 0.3s;
-}
-
-.sidebar__links a:hover,
-.sidebar__links a.active {
-
-  background-color: #f47227;
-  color: #ffffff;
-}
-
-
-.sidebar__toggle {
-
-  position: fixed;
-  top: 80px;
-  left: 10px;
-  background-color: #1e1e1e;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 20px;
-  z-index: 1000;
-  display: none;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
-}
-
-
-@media (max-width: 900px) {
-
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.sidebar--open {
-
-    transform: translateX(0);
-  } 
-
-  .sidebar__toggle {
-
-    display: block;
-  }
-}
-*/
