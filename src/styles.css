@@ -14,6 +14,10 @@
   --header-height: 15vh;    
   --footer-height: 20vh;   
   --sidebar-width: 25vh; 
+
+  --sidebar-width: 18vw;   /* desktop */
+  --sidebar-width-tablet: 14vw;
+  --sidebar-width-mobile: 90px; /* ancho fijo en móviles (más pequeño) */
 }
 
 /**Cooper* Font Family (OFL)*/
@@ -169,9 +173,26 @@ app-root {
 
 /**Estilos para el scroll global*/
 ::-webkit-scrollbar {
+
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
+
   background-color: var(--color-primario);
   border-radius: 4px;
+}
+
+
+/* Tablet: menos ancho, texto ligeramente más pequeño */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: var(--sidebar-width-tablet);
+  }
+}
+
+/* Mobile: sidebar más compacto y fijo en px para evitar tamaños raros */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: var(--sidebar-width-mobile);
+  }
 }
