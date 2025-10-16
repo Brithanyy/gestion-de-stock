@@ -5,7 +5,6 @@ import { Footer } from "../../Components/footer/footer";
 import { Usuario } from '../../Models/Usuario';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Alerta } from '../../Services/alerta/alerta';
-import { Comment } from '@angular/compiler';
 import { CommonModule } from '@angular/common';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 
