@@ -1,7 +1,4 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { NavBar } from "../../Components/nav-bar/nav-bar";
-import { BarraLateral } from "../../Components/barra-lateral/barra-lateral";
-import { Footer } from "../../Components/footer/footer";
+import { Component, computed, inject } from '@angular/core';
 import { Usuario } from '../../Models/Usuario';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Alerta } from '../../Services/alerta/alerta';
@@ -9,14 +6,14 @@ import { CommonModule } from '@angular/common';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 
 @Component({
-  selector: 'app-page-usuarios',
-  imports: [NavBar, BarraLateral, Footer, CommonModule],
-  templateUrl: './page-usuarios.html',
-  styleUrl: './page-usuarios.css'
+  selector: 'app-users-page',
+  imports: [CommonModule],
+  templateUrl: './users-page.html',
+  styleUrl: './users-page.css'
 })
-export class PageUsuarios {
+export class UsersPage {
 
-
+  //*CONSTANTES Y VARIABLES GLOBALES
   readonly servicioUsuarios : ServicioUsuarios = inject(ServicioUsuarios);
 
   usuarios = computed(() => this.servicioUsuarios.usuariosSignal());
@@ -29,7 +26,7 @@ export class PageUsuarios {
 
   readonly alerta : Alerta = inject(Alerta);
 
-
+  //*MÉTODOS
   editarUsuario(usuario : Usuario) {
 
   }
@@ -37,6 +34,5 @@ export class PageUsuarios {
   eliminarUsuario(usuario : Usuario) {
 
   }
-
 
 }

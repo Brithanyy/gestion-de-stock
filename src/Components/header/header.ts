@@ -3,13 +3,14 @@ import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-aut
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'app-header',
   imports: [CommonModule],
-  templateUrl: './nav-bar.html',
-  styleUrl: './nav-bar.css'
+  templateUrl: './header.html',
+  styleUrl: './header.css'
 })
-export class NavBar implements OnInit{
+export class Header implements OnInit {
 
+    //*CONSTANTES Y VARIABLES GLOBALES
   readonly servicioAutenticacion : ServicioAutenticacion = inject(ServicioAutenticacion);
 
   usuario = this.servicioAutenticacion.usuario;
@@ -17,24 +18,20 @@ export class NavBar implements OnInit{
   tipoUsuario = computed(() => this.usuario()?.profile);
   logueado = computed(() => this.servicioAutenticacion.isLoggedIn());
 
-  ngOnInit(): void { //Para que sea responsive y configurar el boton de hamburguesa.
+  //*MÉTODOS
+  ngOnInit(): void { 
+  
+    //Para que sea responsive y configurar el boton de hamburguesa.
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
-    });
+    if (menuBtn && mobileMenu) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('active'));
   }
-}
 
   logOut() {
-    if(this.logueado()) {
-      this.servicioAutenticacion.logOut();
-    }
+
+    if(this.logueado()) this.servicioAutenticacion.logOut();
+  
   }
-
-
-
 
 }

@@ -9,6 +9,8 @@ import { ServicioUsuarios } from '../usuarios/servicio-usuarios';
   providedIn: 'root'
 })
 export class ServicioAutenticacion {
+
+  //*CONSTANTES Y VARIABLES GLOBALES
   //Api de nuestro json-server
   private API_URL = 'http://localhost:3000/Usuarios';
 
@@ -23,13 +25,18 @@ export class ServicioAutenticacion {
 
   readonly usuariosServicio : ServicioUsuarios = inject(ServicioUsuarios);
 
+  //*MÉTODOS
   constructor(private http : HttpClient, private router : Router) {
+
   // Restauramos la sesión del localStorage
   const usuarioGuardado = localStorage.getItem('usuario');  
 
   if(usuarioGuardado && usuarioGuardado !== 'undefined') {
+
     const usuario = JSON.parse(usuarioGuardado);
+
     // Verificamos con el backend si el usuario existe
+
     this.http.get<Usuario>(`${this.API_URL}/${usuario.id}`).subscribe({
       next: (usuarioBackend) => {
         // Si el usuario existe, lo seteamos
@@ -52,6 +59,7 @@ export class ServicioAutenticacion {
   const usuariosObservable = this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`);
 
   usuariosObservable.subscribe({
+
     next: (usuarios) => {
       if (usuarios.length > 0) {  
         const usuario = usuarios[0];
@@ -63,7 +71,7 @@ export class ServicioAutenticacion {
         localStorage.setItem('usuario', JSON.stringify(usuario));
         this.alerta.mostrar('Inicio de sesión exitoso', 'success');
         // Redirigimos al home
-        this.router.navigate(['/home']);
+        this.router.navigate(['homePage']);
       } else {
         // Si no se encontró ningún usuario, mostrar alerta
         this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
@@ -76,9 +84,10 @@ export class ServicioAutenticacion {
 }
 
   logOut() {
+
     this.usuarioActual.set(null);
     localStorage.removeItem('usuario');
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/loginPage']);
   }
 
 

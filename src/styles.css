@@ -1,13 +1,23 @@
 /**Colores que utilizaremos en el sitio */
 :root {
-  --color-primario: #f47227;     /* Naranja */
-  --color-secundario: #ffffff;   /* Blanco */
+
+  --color-primario: #f47227; 
+  --color-secundario: #ffffff;  
   --color-fondo: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
   --color-texto: #f4f4f4;
   --color-hover: #f38240;
   --color-borde: #333;
   --color-error: #ff4d4d;
   --color-exito: #4caf50;
+
+  --header-height: 70px;
+  --footer-height: 64px;
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 0; /* si necesitás colapsar */
+
+  --accent: #f47227;
+
+  font-family: "Cooper-Star", system-ui, sans-serif;
 }
 
 /**Cooper* Font Family (OFL)*/
@@ -141,55 +151,24 @@
 
 html, body, app-root {
 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-    font-family: "Cooper-Star", system-ui, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.bodyContainer {
+body {
 
-  display: grid;
-  grid-template-areas:
-    'Header Header'
-    'Sidebar Main'
-    'Footer Footer';
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 15% 85%;
-  min-height: 100vh;
-  overflow-x: hidden;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
 }
 
-.headerContainer {
+app-root {
 
-    grid-area: Main;
-    overflow-y: auto;    /* deja scroll vertical solo dentro de Main si hace falta */
-}
-
-.sidebarContainer {
-
-  grid-area: Sidebar;
-}
-
-.mainContainer {
-
-  grid-area: Main;
-  margin-left: 0; 
-  grid-area: Main;
-  min-height: 0;       /* CRÍTICO para que overflow funcione con grid 1fr */
-  overflow-y: auto;    /* el scroll vertical se queda dentro del main */
-  overflow-x: hidden;
-  box-sizing: border-box;
-  padding: 1.25rem;
-}
-
-.footerContainer {
-
-  grid-area: Footer;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 /**Estilos para el scroll global*/

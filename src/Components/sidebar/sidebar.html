@@ -7,9 +7,10 @@
     <li><a routerLink="/alertas">Ver alertas</a></li>
 
     <!-- Solo ADMIN -->
-    <li *ngIf="esAdmin()"><a routerLink="/usuarios">Usuarios</a></li>
+    <li *ngIf="esAdmin()"><a routerLink="/usersPage">Usuarios</a></li>
     <li *ngIf="esAdmin()"><a routerLink="/agregar-bebida">Agregar bebida</a></li>
   </ul>
+  
 </nav>
 
 <!-- Botón flotante para abrir el menú (solo móvil) -->

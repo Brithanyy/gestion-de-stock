@@ -1,21 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit } from '@angular/core';
-import { Form, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Usuario } from '../../Models/Usuario';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 import { Alerta } from '../../Services/alerta/alerta';
 
 @Component({
-  selector: 'app-page-login',
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './page-login.html',
-  styleUrl: './page-login.css'
+  selector: 'app-login-page',
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule
+  ],
+  templateUrl: './login-page.html',
+  styleUrl: './login-page.css'
 })
-export class PageLogin implements OnInit {
+export class LoginPage implements OnInit {
 
-  //*Constantes y variables globales
-  
+   //*CONSTANTES Y VARIABLES GLOBALES
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
 
   readonly logoUrl = 'assets/img/logoModerno.png';
@@ -34,27 +35,16 @@ export class PageLogin implements OnInit {
     'password': ['',[Validators.required]]
   });
 
-
-  //*Metodos del componente
-
-    ngOnInit(): void {
-
+  //*MÉTODOS
+  ngOnInit(): void {
+    
   }
-  
-  get usernameControl() {
 
-    return this.loginForm.get('username');
-  };
+  get usernameControl() { return this.loginForm.get('username'); };
 
-  get passwordControl() {
+  get passwordControl() { return this.loginForm.get('password'); };
 
-    return this.loginForm.get('password');
-  };
-
-   get f() {
-
-    return this.loginForm.controls;
-  };
+  get f() { return this.loginForm.controls; };
 
   login() {
 
@@ -64,15 +54,10 @@ export class PageLogin implements OnInit {
       const nombreString = String(userName);
       const pass = this.loginForm.value.password;
       const passString = String(pass);
+
       this.servicioAutenticacion.login(nombreString, passString);
-
     }
-    
-    else {
-
-      this.loginForm.markAllAsTouched();
-    };
-
+  
+    else { this.loginForm.markAllAsTouched(); };
   };
-
 }

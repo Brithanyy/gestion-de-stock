@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-barra-lateral',
-  imports: [CommonModule,RouterLink],
-  templateUrl: './barra-lateral.html',
-  styleUrl: './barra-lateral.css'
+  selector: 'app-sidebar',
+  imports: [CommonModule],
+  templateUrl: './sidebar.html',
+  styleUrl: './sidebar.css'
 })
-export class BarraLateral {
+export class Sidebar {
+
+  //*CONSTANTES Y VARIABLES GLOBALES
   private servicioAuth = inject(ServicioAutenticacion);
   usuario = this.servicioAuth.usuario;
   tipoUsuario = computed(() => this.usuario()?.profile);
@@ -17,12 +19,9 @@ export class BarraLateral {
   // Control de apertura/cierre (para pantallas chicas)
   abierta = signal<boolean>(false);
 
-   toggleSidebar() {
-    this.abierta.update(v => !v);
-  }
+  //*MÉTODOS
+  toggleSidebar() { this.abierta.update(v => !v); }
 
-   esAdmin() {
-    return this.tipoUsuario()?.toLowerCase() === 'admin';
-  }
+  esAdmin() { return this.tipoUsuario()?.toLowerCase() === 'admin'; }
 
 }

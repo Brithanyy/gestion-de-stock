@@ -1,0 +1,61 @@
+<header class="navbar">
+
+  <div class="navbar__left">
+
+    <img src="assets/img/logoModerno.png" alt="Logo Mirador" class="navbar__logo" />
+
+    <div class="navbar__titles">
+      <h1 class="navbar__title">Mirador Beach Club Barra</h1>
+      <span class="navbar__subtitle">Sistema de Stock</span>
+    </div>
+
+  </div>
+
+  <div class="navbar__right">
+
+    <span class="navbar__user">{{nombreUsuario()}}</span>
+
+    <button class="navbar__logout" title="Cerrar sesión" (click)="logOut()">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        width="24" height="24" viewBox="0 0 24 24" 
+        fill="none" stroke="#ffff" stroke-width="2" 
+        stroke-linecap="round" stroke-linejoin="round" 
+        class="logout-icon">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+    </button>
+
+  </div>
+
+  <!-- Botón hamburguesa para pantallas pequeñas -->
+  <button class="navbar__menu-btn" id="menu-btn">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+  <!-- Menú desplegable en versión móvil -->
+  <div class="navbar__mobile-menu" id="mobile-menu">
+
+    <span class="navbar__user">{{nombreUsuario()}} - {{tipoUsuario()}} </span>
+    
+    <button class="navbar__logout" title="Cerrar sesión" (click)="logOut()">
+        <svg xmlns="http://www.w3.org/2000/svg" 
+        width="24" height="24" viewBox="0 0 24 24" 
+        fill="none" stroke="#ffff" stroke-width="2" 
+        stroke-linecap="round" stroke-linejoin="round" 
+        class="logout-icon">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+    </button>
+  </div>
+
+</header>
+
+
