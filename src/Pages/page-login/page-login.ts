@@ -14,25 +14,27 @@ import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-aut
 export class PageLogin implements OnInit{
 
   ngOnInit(): void {
+
     this.listaUsuarios();
   }
 
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
 
-  readonly logoUrl = 'assets/img/logo.png';
+  readonly logoUrl = 'assets/img/logoModerno.png';
 
   readonly servicioUsuarios = inject(ServicioUsuarios);
 
   readonly servicioAutenticacion = inject(ServicioAutenticacion);
 
   loginForm = this.formBuilder.nonNullable.group({
+
     'username': ['',[Validators.required]],
     'password': ['',[Validators.required]]
   });
 
   readonly usuarios : Usuario[] = [];
 
-  //Metodos del componente
+  //*Metodos del componente
   
   get usernameControl() {
     return this.loginForm.get('username');
