@@ -1,0 +1,35 @@
+<app-nav-bar></app-nav-bar>
+<app-barra-lateral></app-barra-lateral>
+
+<main class="usuarios-container">
+  <section class="usuarios-header">
+    <h2>Gestión de Usuarios</h2>
+    <button class="btn-agregar">+ Agregar nuevo usuario</button>
+  </section>
+
+  <section class="tabla-usuarios">
+    <div class="tabla-header">
+      <div>Avatar</div>
+      <div>Usuario</div>
+      <div>Contraseña</div>
+      <div>Perfil</div>
+      <div>Acciones</div>
+    </div>
+
+    <!-- Filas generadas dinámicamente -->
+    <div class="tabla-fila" *ngFor="let usuario of usuarios(); let i = index">
+      <div>
+        <img [src]="usuario.avatarUrl || 'assets/img/usuario.png'" alt="Avatar" class="avatar" />
+      </div>
+      <div>{{ usuario.username }}</div>
+      <div>********</div>
+      <div>{{ usuario.profile }}</div>
+      <div class="acciones">
+        <i class="fa-solid fa-pen-to-square editar" (click)="editarUsuario(usuario)"></i>
+        <i class="fa-solid fa-trash eliminar" (click)="eliminarUsuario(usuario)"></i>
+      </div>
+    </div>
+  </section>
+</main>
+
+<app-footer></app-footer>

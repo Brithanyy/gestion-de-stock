@@ -7,7 +7,7 @@
       "password": "admin123",
       "profile": "admin", 
       "isLoggedIn": false,
-      "avatarUrl": "Img/avatar-profile.png"
+      "avatarUrl": "assets/img/usuario.png"
     },
     {
       "id": "2",
@@ -15,7 +15,7 @@
       "password": "empleado123",
       "profile": "usuario",
       "isLoggedIn": false,
-      "avatarUrl": "Img/avatar-profile.png"
+      "avatarUrl": "assets/img/usuario.png"
     }
   ],
 

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../../Models/Usuario';
 
@@ -8,13 +8,21 @@ import { Usuario } from '../../Models/Usuario';
 })
 export class ServicioUsuarios {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.getAllUsers();
+   }
 
   readonly peticionesHttp = inject(HttpClient);
   readonly urlBase = 'http://localhost:3000/Usuarios';
 
+  usuariosSignal = signal<Usuario[]>([]);
+
+
   getAllUsers() {
-    return this.peticionesHttp.get<Usuario[]>(this.urlBase);
+    return this.http.get<Usuario[]>(this.urlBase)
+    .subscribe(usuarios => {
+      this.usuariosSignal.set(usuarios);
+    });
   }
 
   getUser(id: string | null | undefined) {
@@ -33,6 +41,5 @@ export class ServicioUsuarios {
     return this.peticionesHttp.put<Usuario>(this.urlBase + '/' + editUser.id, editUser);
   }  
 
-  
 
 }

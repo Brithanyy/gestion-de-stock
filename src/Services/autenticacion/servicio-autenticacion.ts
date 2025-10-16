@@ -1,7 +1,9 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Usuario } from '../../Models/Usuario';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Alerta } from '../alerta/alerta';
+import { ServicioUsuarios } from '../usuarios/servicio-usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,14 @@ export class ServicioAutenticacion {
    //Sirve para saber si alguien esta logueado
   isLoggedIn = computed(() => this.usuarioActual() !== null);
 
+  //Servicio de alertas
+  readonly alerta : Alerta = inject(Alerta);
+
+  readonly usuariosServicio : ServicioUsuarios = inject(ServicioUsuarios);
+
   constructor(private http : HttpClient, private router : Router) {
   // Restauramos la sesión del localStorage
-  const usuarioGuardado = localStorage.getItem('usuario');
+  const usuarioGuardado = localStorage.getItem('usuario');  
 
   if(usuarioGuardado && usuarioGuardado !== 'undefined') {
     const usuario = JSON.parse(usuarioGuardado);
@@ -40,20 +47,33 @@ export class ServicioAutenticacion {
     return this.usuarioActual.asReadonly(); 
   }
 
-  login(nombre: string, password : string) {
-    this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`)
-    .subscribe((usuarios) => {
-        if (usuarios.length === 1) {
-          const usuario = usuarios[0];
-          this.usuarioActual.set(usuario);
-          localStorage.setItem('usuario', JSON.stringify(usuario));
-          alert("INICIO DE SESION EXITOSO") //HAY QUE INCLUIR UNA LINDA ALERTA
-          this.router.navigate(['/home']);
-        } else {
-          alert('Usuario no encontrado'); // HAY QUE INCLUIR UNA LINDA ALERTA
-        }
-      });
-  }
+  login(nombre: string, password: string) {
+  // Obtenemos el observable de usuarios que coinciden
+  const usuariosObservable = this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`);
+
+  usuariosObservable.subscribe({
+    next: (usuarios) => {
+      if (usuarios.length > 0) {  
+        const usuario = usuarios[0];
+
+        // Guardamos el usuario logueado en la señal
+        this.usuarioActual.set(usuario);
+
+        // Guardamos en localStorage
+        localStorage.setItem('usuario', JSON.stringify(usuario));
+        this.alerta.mostrar('Inicio de sesión exitoso', 'success');
+        // Redirigimos al home
+        this.router.navigate(['/home']);
+      } else {
+        // Si no se encontró ningún usuario, mostrar alerta
+        this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
+      }
+    },
+    error: (err) => {
+      this.alerta.mostrar('Error de conexión', 'danger');
+    }
+  });
+}
 
   logOut() {
     this.usuarioActual.set(null);

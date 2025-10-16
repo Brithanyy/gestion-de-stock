@@ -1,0 +1,4 @@
+<div *ngIf="alerta.visible()" class="alerta" [ngClass]="alerta.tipo()">
+  {{ alerta.mensaje() }}
+  <button class="cerrar" (click)="alerta.ocultar()">✖</button>
+</div>

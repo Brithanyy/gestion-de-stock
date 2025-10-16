@@ -1,0 +1,103 @@
+/* Estilo base */
+.alerta {
+  background-clip: padding-box;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 20px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: aparecer 0.4s ease, desaparecer 0.4s ease 2.6s forwards; 
+  opacity: 0.95;
+  transition: all 0.3s ease;
+  word-wrap: break-word;
+  line-height: 1.4;
+  isolation: isolate;
+}
+
+
+/* Tipos de alerta */
+.alerta.exito {
+  background-color: var(--color-exito) /* verde */
+}
+
+.alerta.error {
+  background-color: var(--color-error) /* rojo */
+}
+
+.cerrar {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cerrar:hover {
+  transform: scale(1.2);
+}
+
+/* Animaciones */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 0.95;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes desaparecer {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+/* Responsividad */
+
+/* Teléfonos pequeños */
+@media (max-width: 480px) {
+  .alerta {
+    top: 10px;
+    width: 90%;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+  }
+}
+
+/* Tablets (pantallas medianas) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .alerta {
+    width: 70%;
+    font-size: 15px;
+    padding: 14px 18px;
+  }
+}
+
+/* Escritorios grandes */
+@media (min-width: 769px) {
+  .alerta {
+    min-width: 320px;
+    max-width: 500px;
+    font-size: 16px;
+  }
+}
+
+/*  Hover opcional (efecto sutil cuando el usuario pasa el mouse) */
+.alerta:hover {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.02);
+}
