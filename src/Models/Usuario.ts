@@ -1,8 +1,8 @@
-type TipoPerfil = 'admin' | 'usuario';
+export type TipoPerfil = 'admin' | 'usuario';
 
 export interface Usuario {
 
-    id: string;
+    id?: string;
     username: string;
     password: string;
     profile: TipoPerfil;

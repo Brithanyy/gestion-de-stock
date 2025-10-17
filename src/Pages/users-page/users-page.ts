@@ -4,11 +4,11 @@ import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Alerta } from '../../Services/alerta/alerta';
 import { CommonModule } from '@angular/common';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-users-page',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterModule],
   templateUrl: './users-page.html',
   styleUrl: './users-page.css'
 })
@@ -31,10 +31,6 @@ export class UsersPage implements OnInit{
 
   ngOnInit(): void {
     this.listarUsuarios();
-  }
-  //*MÉTODOS
-  editarUsuario(usuario : Usuario) {
-
   }
 
   eliminarUsuario(usuario : Usuario) {
@@ -60,6 +56,10 @@ export class UsersPage implements OnInit{
         this.alerta.mostrar("Error al cargar los usuarios.", "danger");
       }
     })
+  }
+
+  crearUsuarioPage() {
+    this.router.navigate(['/newUser']);
   }
 
 }

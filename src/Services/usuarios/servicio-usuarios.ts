@@ -13,6 +13,7 @@ export class ServicioUsuarios {
   readonly peticionesHttp = inject(HttpClient);
   readonly urlBase = 'http://localhost:3000/Usuarios';
 
+
   getAllUsers() {
     return this.peticionesHttp.get<Usuario[]>(this.urlBase);
   }
@@ -22,6 +23,7 @@ export class ServicioUsuarios {
   }
 
   postUser(newUser : Usuario) {
+
     return this.peticionesHttp.post<Usuario>(this.urlBase, newUser);
   }
 

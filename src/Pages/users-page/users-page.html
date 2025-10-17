@@ -1,8 +1,7 @@
 <main class="usuarios-container">
-
   <section class="usuarios-header">
     <h2>Gestión de Usuarios</h2>
-    <button class="btn-agregar">+ Agregar nuevo usuario</button>
+    <button class="btn-agregar" (click)="crearUsuarioPage()">+ Agregar nuevo usuario</button>
   </section>
 
   <section class="tabla-usuarios">
@@ -29,7 +28,7 @@
       <div>{{ usuario.profile }}</div>
 
       <div class="acciones">
-        <i class="fa-solid fa-pen-to-square editar" (click)="editarUsuario(usuario)"></i>
+        <i class="fa-solid fa-pen-to-square editar" [routerLink]="['/editUser', usuario.id]"></i>
         <i class="fa-solid fa-trash eliminar" (click)="eliminarUsuario(usuario)"></i>
       </div>
 

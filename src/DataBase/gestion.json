@@ -2,7 +2,7 @@
   "Usuarios": [
     {
       "id": "1",
-      "username": "Dueño",
+      "username": "admin",
       "password": "admin123",
       "profile": "admin",
       "isLoggedIn": false,
@@ -20,6 +20,22 @@
       "id": "3",
       "username": "empleado2",
       "password": "empleado123",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "4",
+      "username": "empleado3",
+      "password": "empleado123",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "7efc",
+      "username": "brithany",
+      "password": "brisa2002",
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
