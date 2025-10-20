@@ -1,68 +1,21 @@
 <h1>FILTROS AQUÍ</h1>
 
-@if(bebidas.length === 0) {
-    <p>No hay bebidas disponibles</p>
+@if (bebidas.length === 0) {
+  <p>No hay bebidas disponibles</p>
 }
-
-@else { 
-
-    @for(bebida of bebidas; track $index) {
-
-        <h2>{{bebida.name}}</h2>
-        <h3>{{bebida.category}}</h3>
-        <h4>{{bebida.brand}}</h4>
-        <h5>Unidades en stock: {{bebida.stock}}</h5>
-
-        <div class="contenedorImagen">
-            <img [src]="bebida.imageUrl" alt="Imagen bebida">
-        </div>
-
-        @if(esAdmin()) {
-            <button (click)="editarBebida(bebida.id)">Editar</button>
-            <button (click)="eliminarBebida(bebida.id)">Eliminar</button>
-            <button (click)="verDetalle(bebida.id)">Ver detalle</button>
-        }
-        @else {
-            <button (click)="verDetalle(bebida.id)">Ver detalle</button>
-        }
-
-        <form [formGroup]="formIngresoStock" (ngSubmit)="aumentarStock(bebida)">
-
-            <button type="submit">+</button>
-
-            <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
-
-            @if(cantidadIngreso?.invalid && cantidadIngreso?.touched) {
-
-                @if(cantidadIngreso?.hasError('required')) {
-                    <p>Campo requerido</p>
-                }
-                @else if (cantidadIngreso?.hasError('min')) {
-                    <p>Debe ingresar un valor mayor o igual que uno</p>
-                }
-            }
-        </form>
-
-        <form [formGroup]="formEgresoStock" (ngSubmit)="decrementarStock(bebida)">
-
-            <button type="submit" [disabled]="cantidadEgreso!.value > bebida.stock">-</button>
-
-            <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
-
-            
-            @if(cantidadEgreso!.value > bebida.stock) {
-                    <p>La cantidad supera el stock disponible: {{bebida.stock}}</p>
-            }
-
-            @else if(cantidadEgreso?.invalid && cantidadEgreso?.touched) {
-
-                @if(cantidadEgreso?.hasError('required')) {
-                    <p>Campo requerido</p>
-                }
-                @else if(cantidadEgreso?.hasError('min')) {
-                    <p>Debe ingresar un valor mayor o igual que uno</p>
-                }
-            }
-        </form>
+@else {
+    
+  <div class="listaBebidas">
+    @for (bebida of bebidas; track $index) {
+      <app-drink-card
+        [bebida]="bebida"
+        [esAdmin]="esAdmin()"
+        (editar)="editarBebida($event)"
+        (eliminar)="eliminarBebida($event)"
+        (verDetalle)="verDetalle($event)"
+        (aumentarStock)="aumentarStock($event.bebida, $event.cantidad)"
+        (decrementarStock)="decrementarStock($event.bebida, $event.cantidad)">
+      </app-drink-card>
     }
+  </div>
 }

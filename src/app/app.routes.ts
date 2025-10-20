@@ -16,37 +16,36 @@ import { DetailDrinkPage } from '../Pages/detail-drink-page/detail-drink-page';
 
 export const routes: Routes = [
 
-    {
-        path: '',
-        component: MainLayout,
-        children: [
 
-            { path: '', redirectTo: 'homePage', pathMatch: 'full'  },
-            { path: 'homePage/:id', component: HomePage, canActivate: [autenticacionGuard] },
-            { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
-            { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
-            { path: 'alertsPage', component: AlertsPage, canActivate: [autenticacionGuard] },
-            { path: 'movementsPage', component: MovementsPage, canActivate: [autenticacionGuard] },
-            { path: 'reportsPage', component: ReportsPage, canActivate: [autenticacionGuard] },
-            { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
-            { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
-            { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
-            { path: 'detailDrinkPage/:id', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
-            // otras rutas que usan header/sidebar/footer
-        ]
-    },
-
+    
+    { path: '', redirectTo: 'auth/loginPage', pathMatch: 'full' },
+    
     {
         path: 'auth',
         component: AuthLayout,
         children: [
         { path: 'loginPage', component: LoginPage },
-        { path: '', redirectTo: '/loginPage', pathMatch: 'full' }
+        { path: '', redirectTo: 'loginPage', pathMatch: 'full' } 
         ]
     },
 
     {
-        path: '**',
-        redirectTo: '/loginPage'
-    }
+        path: '',
+        component: MainLayout,
+        children: [
+        { path: 'homePage/:id', component: HomePage/*, canActivate: [autenticacionGuard]*/ },
+        { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
+        { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'alertsPage', component: AlertsPage, canActivate: [autenticacionGuard] },
+        { path: 'movementsPage', component: MovementsPage, canActivate: [autenticacionGuard] },
+        { path: 'reportsPage', component: ReportsPage, canActivate: [autenticacionGuard] },
+        { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
+        { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
+        { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'detailDrinkPage/:id', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
+        ]
+    },
+
+    { path: '**', redirectTo: 'auth/loginPage' }
+
 ];

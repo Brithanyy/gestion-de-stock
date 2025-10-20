@@ -27,7 +27,7 @@
       "milliliters": 473,
       "alcoholContent": 4.5,
       "price": 950,
-      "stock": 10,
+      "stock": 20,
       "imageUrl": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -125,6 +125,16 @@
       "typeMotion": "Ingreso",
       "amount": 10,
       "movementDate": "2025-10-20T21:50:14.166Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "ecbe",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Ingreso",
+      "amount": 10,
+      "movementDate": "2025-10-20T23:31:15.501Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

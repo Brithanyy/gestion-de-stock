@@ -1,0 +1,34 @@
+<div class="cardBebida">
+  <h2>{{ bebida.name }}</h2>
+
+  <div class="contenedorImagen">
+    <img [src]="bebida.imageUrl" alt="Imagen bebida">
+  </div>
+
+  <h3>{{ bebida.category }}</h3>
+  <h4>{{ bebida.brand }}</h4>
+  <h5>Unidades en stock: {{ bebida.stock }}</h5>
+
+  @if (esAdmin) {
+    <button class="editar" (click)="onEditar()">Editar</button>
+    <button class="eliminar" (click)="onEliminar()">Eliminar</button>
+    <button class="detalle" (click)="onVerDetalle()">Ver detalle</button>
+  }
+  @else {
+    <button class="detalle" (click)="onVerDetalle()">Ver detalle</button>
+  }
+
+  <form [formGroup]="formIngreso" (ngSubmit)="onAumentar()">
+    <button type="submit">+</button>
+    <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
+  </form>
+
+  <form [formGroup]="formEgreso" (ngSubmit)="onDisminuir()">
+    <button type="submit" [disabled]="formEgreso.value.cantidadEgreso > bebida.stock">-</button>
+    <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
+
+    @if (formEgreso.value.cantidadEgreso > bebida.stock) {
+      <p>La cantidad supera el stock disponible: {{ bebida.stock }}</p>
+    }
+  </form>
+</div>

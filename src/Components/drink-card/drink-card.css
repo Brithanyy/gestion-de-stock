@@ -1,0 +1,123 @@
+/* ===== TARJETA INDIVIDUAL ===== */
+.cardBebida {
+  background-color: #ffffff;
+  border: 2px solid rgba(30, 30, 30, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(30, 30, 30, 0.15);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(30, 30, 30, 0.25);
+}
+
+/* ===== INFORMACIÓN DE LA BEBIDA ===== */
+.cardBebida h2 {
+  background-color: #f47227;
+  color: #ffffff;
+  padding: 0.7rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.cardBebida h3,
+.cardBebida h4,
+.cardBebida h5 {
+  background-color: #f47227;
+  color: #ffffff;
+  padding: 0.5rem;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+}
+
+/* ===== IMAGEN ===== */
+.contenedorImagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.contenedorImagen img {
+  width: 130px;
+  height: auto;
+}
+
+/* ===== FORMULARIOS ===== */
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+p {
+  background-color: red;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  padding: 5px;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+/* ===== BOTONES ===== */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin: 5px;
+}
+
+/* Botones de acción */
+button[type="submit"] {
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+/* Botones especiales */
+button.editar {
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+button.eliminar {
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+button.detalle {
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+button.editar:hover,
+button.eliminar:hover,
+button.detalle:hover {
+  background-color: #f38240;
+}
+

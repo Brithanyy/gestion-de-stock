@@ -54,34 +54,28 @@ export class ServicioAutenticacion {
     return this.usuarioActual.asReadonly(); 
   }
 
-  login(nombre: string, password: string) {
-  // Obtenemos el observable de usuarios que coinciden
-  const usuariosObservable = this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`);
+login(nombre: string, password: string) {
+  this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`)
+    .subscribe({
+      next: (usuarios) => {
+        if (usuarios.length > 0) {
+          const usuario = usuarios[0];
 
-  usuariosObservable.subscribe({
+          // Guardamos el usuario logueado en la señal
+          this.usuarioActual.set(usuario);
 
-    next: (usuarios) => {
-      if (usuarios.length > 0) {  
-        const usuario = usuarios[0];
+          // Guardamos en localStorage
+          localStorage.setItem('usuario', JSON.stringify(usuario));
 
-        // Guardamos el usuario logueado en la señal
-        this.usuarioActual.set(usuario);
-
-        // Guardamos en localStorage
-        localStorage.setItem('usuario', JSON.stringify(usuario));
-        this.alerta.mostrar('Inicio de sesión exitoso', 'success');
-        // Redirigimos al home
-        this.router.navigate(['homePage', usuario.id]);
-        localStorage.removeItem('usuario');
-      } else {
-        // Si no se encontró ningún usuario, mostrar alerta
-        this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
-      }
-    },
-    error: (err) => {
-      this.alerta.mostrar('Error de conexión', 'danger');
-    }
-  });
+          // Redirigimos al home DESPUÉS de mostrar alerta
+          this.alerta.mostrar('Inicio de sesión exitoso', 'success');
+          this.router.navigate(['/homePage', usuario.id]);
+        } else {
+          this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
+        }
+      },
+      error: () => this.alerta.mostrar('Error de conexión', 'danger')
+    });
 }
 
   logOut() {

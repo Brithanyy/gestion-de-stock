@@ -1,0 +1,27 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+:host {
+  display: block;
+  background-color: #fff;
+  color: #1e1e1e;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== TÍTULO PRINCIPAL ===== */
+h1 {
+  text-align: center;
+  color: #1e1e1e;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* ===== GRID DE TARJETAS ===== */
+:host ::ng-deep .listaBebidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+

@@ -7,12 +7,12 @@ export const autenticacionGuard: CanActivateFn = (route, state) => {
   const auth = inject(ServicioAutenticacion);
   const router = inject(Router);
 
-  if (auth.isLoggedIn()) {
+  if (auth.isLoggedIn() || localStorage.getItem('usuario')) {
 
     return true;
   } 
+  
   else {
-
     router.navigate(['/auth/loginPage']);
     return false;
   }

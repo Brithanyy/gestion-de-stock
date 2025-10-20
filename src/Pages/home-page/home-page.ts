@@ -11,10 +11,11 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Usuario } from '../../Models/Usuario';
 import { LetDeclaration } from '@angular/compiler';
+import { DrinkCard } from '../../Components/drink-card/drink-card';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule],
+  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, DrinkCard], 
   templateUrl: './home-page.html',
   styleUrl: './home-page.css'
 })
@@ -27,7 +28,6 @@ export class HomePage implements OnInit {
   readonly SERVICIO_MOVIMIENTOS : ServicioMovimientos = inject(ServicioMovimientos);
   readonly SERVICIO_USUARIOS : ServicioUsuarios = inject(ServicioUsuarios);
   readonly ALERTA : Alerta = inject(Alerta);
-  readonly FORM_BUILDER : FormBuilder = inject(FormBuilder);
   private servicioAuth = inject(ServicioAutenticacion);
 
   usuario = this.servicioAuth.usuario;
@@ -35,16 +35,6 @@ export class HomePage implements OnInit {
   tipoUsuario = computed(() => this.usuario()?.profile);
 
   idUsuarioLogueado : string = '';
-
-  formIngresoStock = this.FORM_BUILDER.nonNullable.group({
-
-    cantidadIngreso: [1, [Validators.required, Validators.min(1)]]
-  });
-
-  formEgresoStock = this.FORM_BUILDER.nonNullable.group({
-
-    cantidadEgreso: [1, [Validators.required, Validators.min(1)]]
-  });
 
   bebidas: Bebida[] = [];
 
@@ -68,9 +58,6 @@ export class HomePage implements OnInit {
   };
 
   esAdmin() { return this.tipoUsuario()?.toLowerCase() === 'admin'; };
-
-  get cantidadIngreso() { return this.formIngresoStock.get('cantidadIngreso'); };
-  get cantidadEgreso() { return this.formEgresoStock.get('cantidadEgreso'); };
 
   obtenerBebidas() {
 
@@ -119,18 +106,16 @@ export class HomePage implements OnInit {
     });
   };
 
-  aumentarStock(bebida : Bebida) {
+  aumentarStock(bebida : Bebida, cantidad : number) {
 
-    const cantidadModificada = this.formIngresoStock.value.cantidadIngreso!;
-
-    bebida.stock += cantidadModificada;
+    bebida.stock += cantidad;
 
     const ingresoMovimiento : Movimiento = {
 
       idDrink: bebida.id,              
       nameDrink: bebida.name,          
       typeMotion: 'Ingreso', 
-      amount: cantidadModificada,              
+      amount: cantidad,              
       movementDate: new Date(Date.now()),         
       idUser: this.usuarioLogueado.id,             
       nameUser: this.usuarioLogueado.username,         
@@ -150,33 +135,28 @@ export class HomePage implements OnInit {
         });
 
         this.obtenerBebidas();
-
-        this.formIngresoStock.patchValue({ cantidadIngreso: 1 });
       },
 
       error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
     });
   };
 
-  decrementarStock(bebida : Bebida) {
+  decrementarStock(bebida : Bebida, cantidad : number) {
 
-    const cantidadModificada = this.formEgresoStock.value.cantidadEgreso!;
-
-    if(cantidadModificada > bebida.stock) {
+    if(cantidad > bebida.stock) {
 
       this.ALERTA.mostrar("No puedes egresar más que el stock disponible", "danger");
-      this.formEgresoStock.patchValue({ cantidadEgreso: 1 });
       return
     }
 
-    bebida.stock -= cantidadModificada;
+    bebida.stock -= cantidad;
 
     const egresoMovimiento : Movimiento = {
 
       idDrink: bebida.id,              
       nameDrink: bebida.name,          
       typeMotion: 'Egreso', 
-      amount: cantidadModificada,              
+      amount: cantidad,              
       movementDate: new Date(Date.now()),         
       idUser: this.usuarioLogueado.id,             
       nameUser: this.usuarioLogueado.username,         
@@ -197,11 +177,11 @@ export class HomePage implements OnInit {
 
         this.obtenerBebidas();
 
-        this.formEgresoStock.patchValue({ cantidadEgreso: 1 });
       },
 
       error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
     });
   };
+
 
 }
