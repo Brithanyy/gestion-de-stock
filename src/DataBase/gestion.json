@@ -3,7 +3,7 @@
     {
       "id": "1",
       "username": "Rouse02",
-      "password": "$Rouse484848$",
+      "password": "Rouse02",
       "profile": "admin",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
@@ -21,21 +21,21 @@
     {
       "id": "1",
       "name": "Cerveza Patagonia Amber Lager",
-      "type": "alcoholica",
-      "category": "cerveza",
+      "type": "Con alcohol",
+      "category": "Cerveza",
       "brand": "Patagonia",
       "milliliters": 473,
       "alcoholContent": 4.5,
       "price": 950,
-      "stock": 24,
+      "stock": 10,
       "imageUrl": "https://cdn-icons-png.flaticon.com/512/2738/2738804.png",
       "createdAt": "2025-10-10T18:00:00Z"
     },
     {
       "id": "2",
       "name": "Agua Mineral sin gas",
-      "type": "no_alcoholica",
-      "category": "agua",
+      "type": "Sin alcohol",
+      "category": "Agua",
       "brand": "Villavicencio",
       "milliliters": 500,
       "price": 350,
@@ -46,8 +46,8 @@
     {
       "id": "3",
       "name": "Vodka Smirnoff",
-      "type": "alcoholica",
-      "category": "vodka",
+      "type": "Con alcohol",
+      "category": "Vodka",
       "brand": "Smirnoff",
       "milliliters": 700,
       "alcoholContent": 38,
@@ -59,34 +59,74 @@
   ],
   "Movimientos": [
     {
-      "id": "1",
+      "id": "6739",
       "idDrink": "1",
       "nameDrink": "Cerveza Patagonia Amber Lager",
-      "typeMotion": "ingreso",
-      "amount": 24,
-      "movementDate": "2025-10-10T18:15:00Z",
+      "typeMotion": "Egreso",
+      "amount": 200,
+      "movementDate": "2025-10-20T21:39:46.668Z",
       "idUser": "1",
-      "nameUser": "admin"
+      "nameUser": "Rouse02"
     },
     {
-      "id": "2",
-      "idDrink": "3",
-      "nameDrink": "Vodka Smirnoff",
-      "typeMotion": "egreso",
-      "amount": 2,
-      "movementDate": "2025-10-11T20:30:00Z",
-      "idUser": "2",
-      "nameUser": "empleado1"
+      "id": "b764",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Egreso",
+      "amount": 400,
+      "movementDate": "2025-10-20T21:40:56.164Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     },
     {
-      "id": "3",
-      "idDrink": "2",
-      "nameDrink": "Agua Mineral sin gas",
-      "typeMotion": "ingreso",
-      "amount": 30,
-      "movementDate": "2025-10-12T10:00:00Z",
+      "id": "82f3",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Ingreso",
+      "amount": 55,
+      "movementDate": "2025-10-20T21:41:42.065Z",
       "idUser": "1",
-      "nameUser": "admin"
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "d927",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Egreso",
+      "amount": 10,
+      "movementDate": "2025-10-20T21:41:47.108Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "89f1",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Ingreso",
+      "amount": 10,
+      "movementDate": "2025-10-20T21:49:51.947Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "d3eb",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Egreso",
+      "amount": 5,
+      "movementDate": "2025-10-20T21:50:07.925Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "5efa",
+      "idDrink": "1",
+      "nameDrink": "Cerveza Patagonia Amber Lager",
+      "typeMotion": "Ingreso",
+      "amount": 10,
+      "movementDate": "2025-10-20T21:50:14.166Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ]
 }

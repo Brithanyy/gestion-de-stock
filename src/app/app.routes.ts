@@ -21,17 +21,17 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
 
-            { path: '', redirectTo: 'homePag', pathMatch: 'full'  },
-            { path: 'homePage', component: HomePage, canActivate: [autenticacionGuard] },
+            { path: '', redirectTo: 'homePage', pathMatch: 'full'  },
+            { path: 'homePage/:id', component: HomePage, canActivate: [autenticacionGuard] },
             { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
             { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
-            { path: 'alertsPage', component: AlertsPage },
-            { path: 'movementsPage', component: MovementsPage },
-            { path: 'reportsPage', component: ReportsPage },
+            { path: 'alertsPage', component: AlertsPage, canActivate: [autenticacionGuard] },
+            { path: 'movementsPage', component: MovementsPage, canActivate: [autenticacionGuard] },
+            { path: 'reportsPage', component: ReportsPage, canActivate: [autenticacionGuard] },
             { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
             { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
             { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
-            { path: 'detailDrinkPage/:id', component: DetailDrinkPage },
+            { path: 'detailDrinkPage/:id', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
             // otras rutas que usan header/sidebar/footer
         ]
     },
@@ -41,12 +41,12 @@ export const routes: Routes = [
         component: AuthLayout,
         children: [
         { path: 'loginPage', component: LoginPage },
-        { path: '', redirectTo: 'loginPage', pathMatch: 'full' }
+        { path: '', redirectTo: '/loginPage', pathMatch: 'full' }
         ]
     },
 
     {
         path: '**',
-        redirectTo: 'auth/loginPage'
+        redirectTo: '/loginPage'
     }
 ];

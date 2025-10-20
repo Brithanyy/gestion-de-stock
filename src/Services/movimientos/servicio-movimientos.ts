@@ -19,15 +19,15 @@ export class ServicioMovimientos {
     return this.peticionesHttp.get<Movimiento>(this.urlBase + '/' + id);
   }
 
-  postMotion(newDrink : Movimiento) {
-    return this.peticionesHttp.post<Movimiento>(this.urlBase, newDrink);
+  postMotion(newMotion : Movimiento) {
+    return this.peticionesHttp.post<Movimiento>(this.urlBase, newMotion);
   }
 
-  deleteDrink(id: string | null | undefined) {
+  deleteMotion(id: string | null | undefined) {
     return this.peticionesHttp.delete<Movimiento>(this.urlBase + '/' + id);
   }
 
-  putDrink(editDrink : Movimiento) {
-    return this.peticionesHttp.put<Movimiento>(this.urlBase + '/' + editDrink.id, editDrink);
+  putMotion(editMotion : Movimiento) {
+    return this.peticionesHttp.put<Movimiento>(this.urlBase + '/' + editMotion.id, editMotion);
   }  
 }

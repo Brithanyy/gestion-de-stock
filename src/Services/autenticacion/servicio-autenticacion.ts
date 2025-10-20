@@ -71,7 +71,8 @@ export class ServicioAutenticacion {
         localStorage.setItem('usuario', JSON.stringify(usuario));
         this.alerta.mostrar('Inicio de sesión exitoso', 'success');
         // Redirigimos al home
-        this.router.navigate(['homePage']);
+        this.router.navigate(['homePage', usuario.id]);
+        localStorage.removeItem('usuario');
       } else {
         // Si no se encontró ningún usuario, mostrar alerta
         this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');

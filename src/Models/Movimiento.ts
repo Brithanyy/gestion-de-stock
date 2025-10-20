@@ -1,14 +1,13 @@
-type TipoMovimiento = 'ingreso' | 'egreso';
+type TipoMovimiento = 'Ingreso' | 'Egreso';
 
 export interface Movimiento {
 
   id?: string | undefined;
-  idDrink: string;              // referencia a la bebida - no se muestra
-  nameDrink: string;          // para mostrar el nombre de la  bebida
-  typeMotion: TipoMovimiento; // ingreso o egreso
-  amount: number;              // cuántas unidades se movieron
-  movementDate: Date;         // la fecha del movimiento.
-  idUser: string | undefined;             // referencia al usuario - no se muestra
-  nameUser: string;         // para mostrar el nombre del usuario
-
+  idDrink: string;              
+  nameDrink: string;          
+  typeMotion: TipoMovimiento; 
+  amount: number;              
+  movementDate: Date;         
+  idUser: string | undefined;             
+  nameUser: string;         
 }

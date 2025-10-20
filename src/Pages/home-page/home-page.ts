@@ -34,46 +34,43 @@ export class HomePage implements OnInit {
 
   tipoUsuario = computed(() => this.usuario()?.profile);
 
-  formMovimientos = this.FORM_BUILDER.nonNullable.group({
+  idUsuarioLogueado : string = '';
 
-    cantidad: [0, [Validators.required, Validators.min(0)]]
+  formIngresoStock = this.FORM_BUILDER.nonNullable.group({
+
+    cantidadIngreso: [1, [Validators.required, Validators.min(1)]]
+  });
+
+  formEgresoStock = this.FORM_BUILDER.nonNullable.group({
+
+    cantidadEgreso: [1, [Validators.required, Validators.min(1)]]
   });
 
   bebidas: Bebida[] = [];
 
-  editStockBebida : Bebida = {
+  usuarioLogueado : Usuario = {
 
-    id: '',
-    name: '',
-    type: 'ninguna',
-    category: 'ninguna',
-    brand: '',
-    milliliters: 0,
-    alcoholContent: 0, 
-    price: 0, 
-    stock: 0,
-    imageUrl: '', 
-    createdAt: new Date() 
-  };
-
-  usuarioActual : Usuario = {
       id: "",
       username: "",
       password: "",
       profile: "ninguno",
       isLoggedIn: false,
       avatarUrl: ""
-  }
+  };
 
   //*MÉTODOS
   ngOnInit(): void { 
-    
+
     this.obtenerBebidas();
+
+    this.obtenerUsuario();
+
   };
 
   esAdmin() { return this.tipoUsuario()?.toLowerCase() === 'admin'; };
 
-  get cantidad() { return this.formMovimientos.get('cantidad'); }
+  get cantidadIngreso() { return this.formIngresoStock.get('cantidadIngreso'); };
+  get cantidadEgreso() { return this.formEgresoStock.get('cantidadEgreso'); };
 
   obtenerBebidas() {
 
@@ -110,22 +107,101 @@ export class HomePage implements OnInit {
     });
   };
 
+  obtenerUsuario() {
 
-  aumentarStock(idBebida : string | undefined) {
+    this.idUsuarioLogueado = this.ACTIVATED_ROUTE.snapshot.params['id'];
 
-    //Tengo que traerme el usuario que está logueado (podemos tener una ruta parametrizada en HomePage, entonces, desde el login, le pasas el id del user)
-    //Tener en cuenta que si agrego esto, debo modificar ciertas cosas del programa
-    //Tengo que  hacer un get de la bebida que quiero modificar el stock
-    //Antes de hacer el put de la bebida, verificar si la cantidad de decremento en stock no me deja en stock negativo. 
-    //Si el stock queda en menor o igual a 5 debo lanzar una notificación y agregar esta bebida en "Ver alertas". Tiene que mostrar cuyas bebidas tenga un stock menor o igual que cinco
-    //Una vez validado todo lo anterior, puedo hacer el put de esa bebida con el stock modificado (la cantidad me la traigo del input del form)
-    //Tengo que hacer un post de movimiento con los datos del User y Bebida
-  
+    this.SERVICIO_USUARIOS.getUser(this.idUsuarioLogueado).subscribe({
 
+      next: (usuarioDevuelto : Usuario) => { this.usuarioLogueado = usuarioDevuelto; },
+
+      error: (errorDevuelto) => { this.ALERTA.mostrar("Error obtener el usuario.", "danger"); }
+    });
   };
 
-  decrementarStock(idBebida : string | undefined) {
+  aumentarStock(bebida : Bebida) {
 
+    const cantidadModificada = this.formIngresoStock.value.cantidadIngreso!;
+
+    bebida.stock += cantidadModificada;
+
+    const ingresoMovimiento : Movimiento = {
+
+      idDrink: bebida.id,              
+      nameDrink: bebida.name,          
+      typeMotion: 'Ingreso', 
+      amount: cantidadModificada,              
+      movementDate: new Date(Date.now()),         
+      idUser: this.usuarioLogueado.id,             
+      nameUser: this.usuarioLogueado.username,         
+    };
+
+    this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
+
+      next: (bebidaDevuelta : Bebida) => { 
+
+        this.ALERTA.mostrar("Ingreso registrado con éxito", "success");
+ 
+        this.SERVICIO_MOVIMIENTOS.postMotion(ingresoMovimiento).subscribe({
+
+          next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+
+          error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
+        });
+
+        this.obtenerBebidas();
+
+        this.formIngresoStock.patchValue({ cantidadIngreso: 1 });
+      },
+
+      error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
+    });
+  };
+
+  decrementarStock(bebida : Bebida) {
+
+    const cantidadModificada = this.formEgresoStock.value.cantidadEgreso!;
+
+    if(cantidadModificada > bebida.stock) {
+
+      this.ALERTA.mostrar("No puedes egresar más que el stock disponible", "danger");
+      this.formEgresoStock.patchValue({ cantidadEgreso: 1 });
+      return
+    }
+
+    bebida.stock -= cantidadModificada;
+
+    const egresoMovimiento : Movimiento = {
+
+      idDrink: bebida.id,              
+      nameDrink: bebida.name,          
+      typeMotion: 'Egreso', 
+      amount: cantidadModificada,              
+      movementDate: new Date(Date.now()),         
+      idUser: this.usuarioLogueado.id,             
+      nameUser: this.usuarioLogueado.username,         
+    };
+
+    this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
+
+      next: (bebidaDevuelta : Bebida) => { 
+
+        this.ALERTA.mostrar("Ingreso registrado con éxito", "success");
+ 
+        this.SERVICIO_MOVIMIENTOS.postMotion(egresoMovimiento).subscribe({
+
+          next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+
+          error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
+        });
+
+        this.obtenerBebidas();
+
+        this.formEgresoStock.patchValue({ cantidadEgreso: 1 });
+      },
+
+      error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
+    });
   };
 
 }

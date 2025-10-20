@@ -9,8 +9,9 @@
     @for(bebida of bebidas; track $index) {
 
         <h2>{{bebida.name}}</h2>
-        <h3>{{bebida.type}}</h3>
+        <h3>{{bebida.category}}</h3>
         <h4>{{bebida.brand}}</h4>
+        <h5>Unidades en stock: {{bebida.stock}}</h5>
 
         <div class="contenedorImagen">
             <img [src]="bebida.imageUrl" alt="Imagen bebida">
@@ -25,23 +26,43 @@
             <button (click)="verDetalle(bebida.id)">Ver detalle</button>
         }
 
-        <form [formGroup]="formMovimientos">
+        <form [formGroup]="formIngresoStock" (ngSubmit)="aumentarStock(bebida)">
 
-            <button (click)="aumentarStock(bebida.id)">+</button>
+            <button type="submit">+</button>
 
-            <input type="number" formControlName="cantidad" placeholder="Ingrese la cantidad">
+            <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
 
-            @if(cantidad?.invalid && cantidad?.touched) {
+            @if(cantidadIngreso?.invalid && cantidadIngreso?.touched) {
 
-                @if(cantidad?.hasError('required')) {
+                @if(cantidadIngreso?.hasError('required')) {
                     <p>Campo requerido</p>
                 }
-                @else if (cantidad?.hasError('min')) {
-                    <p>Debe ingresar un valor mayor o igual que cero</p>
+                @else if (cantidadIngreso?.hasError('min')) {
+                    <p>Debe ingresar un valor mayor o igual que uno</p>
                 }
             }
+        </form>
 
-            <button (click)="decrementarStock(bebida.id)">-</button>
+        <form [formGroup]="formEgresoStock" (ngSubmit)="decrementarStock(bebida)">
+
+            <button type="submit" [disabled]="cantidadEgreso!.value > bebida.stock">-</button>
+
+            <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
+
+            
+            @if(cantidadEgreso!.value > bebida.stock) {
+                    <p>La cantidad supera el stock disponible: {{bebida.stock}}</p>
+            }
+
+            @else if(cantidadEgreso?.invalid && cantidadEgreso?.touched) {
+
+                @if(cantidadEgreso?.hasError('required')) {
+                    <p>Campo requerido</p>
+                }
+                @else if(cantidadEgreso?.hasError('min')) {
+                    <p>Debe ingresar un valor mayor o igual que uno</p>
+                }
+            }
         </form>
     }
 }
