@@ -63,13 +63,13 @@ export class LoginPage implements OnInit {
   };
 
   listarUsuarios() {
+
      this.servicioUsuarios.getAllUsers().subscribe({
-      next : (usuariosTraidos) => {
-        this.usuarios.push(...usuariosTraidos);
-      },
-      error : (err) => {
-        this.alerta.mostrar("Error al cargar los usuarios.", "danger");
-      }
-    })
-  }
+
+      next : (usuariosDevueltos) => { this.usuarios.push(...usuariosDevueltos); },
+
+      error : (error) => { this.alerta.mostrar("Error al cargar los usuarios.", "danger"); }
+    });
+  };
+
 }

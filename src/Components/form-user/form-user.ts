@@ -12,7 +12,9 @@ import { TipoPerfil, Usuario } from '../../Models/Usuario';
   templateUrl: './form-user.html',
   styleUrl: './form-user.css'
 })
-export class FormUser implements OnInit{
+export class FormUser implements OnInit {
+
+  //*CONSTANTES Y VARIABLES GLOBALES
 
   readonly formBuilder : FormBuilder = inject(FormBuilder); 
   //* Servicio de usuarios
@@ -50,19 +52,21 @@ export class FormUser implements OnInit{
   get passwordControl() { return this.editUserForm.get('password'); };
   get profileControl() { return this.editUserForm.get('profile'); };
 
-  ngOnInit() {
-    this.setearFormulario();
-  }
+  //*MÉTODOS
+  ngOnInit() { this.setearFormulario(); }
   
    onSubmit() {
+
     this.userId = this.route.snapshot.paramMap.get('id');
 
   if (!this.userId || !this.usuarioTraido) {
+
     this.alerta.mostrar("ID de usuario inválido", "danger");
     return;
   }
 
   const datosActualizados: Usuario = {
+
     id: this.userId,
     username: this.editUserForm.value.username!, 
     password: this.editUserForm.value.password!,
@@ -72,25 +76,29 @@ export class FormUser implements OnInit{
   };
 
   this.servicioUsuarios.putUser(datosActualizados).subscribe({
+
     next: () => {
+      
       this.alerta.mostrar("Usuario actualizado con éxito.", "success");
       this.router.navigate(['/usersPage']);
     },
-    error: () => {
-      this.alerta.mostrar("Error al actualizar el usuario.", "danger");
-    }
-  });
-  }
 
-  back() {
-    this.router.navigate(['/usersPage']);
-  }
+    error: () => { this.alerta.mostrar("Error al actualizar el usuario.", "danger"); }
+    });
+  };
+
+  back() { this.router.navigate(['/usersPage']); };
 
   setearFormulario() {
+
     this.userId = this.route.snapshot.paramMap.get('id');
-    if(this.userId !== null){
+
+    if(this.userId !== null) {
+
       this.servicioUsuarios.getUser(this.userId).subscribe({
+
         next : (usuario) => {
+
           this.usuarioTraido = usuario;
           this.editUserForm.patchValue({
             username : usuario.username,
@@ -98,42 +106,44 @@ export class FormUser implements OnInit{
             profile : usuario.profile
           });
         },
-        error : (err) => {
-          this.alerta.mostrar("Error al cargar el usuario.", "danger");
-        }
-      })
-    }
-  }
+        error : (err) => { this.alerta.mostrar("Error al cargar el usuario.", "danger"); }
+      });
+    };
+  };
 
   estoyEnEditar() {
-    if(this.router.url.includes('editUser')){
-      return true;
-    }else return false;
-  }
+
+    if(this.router.url.includes('editUser'))return true;
+
+    else return false;
+  };
 
   estoyEnAgregar() {
-    if(this.router.url.includes('newUser')){
-      return true;
-    }else return false;
-  }
+
+    if(this.router.url.includes('newUser')) return true;
+      
+    else return false;
+  };
 
   agregarNuevoUsuario() {
+
     const nuevoUsuario: Usuario = {
+
       username: this.newUserForm.value.username!,
       password: this.newUserForm.value.password!,
       profile: this.newUserForm.value.profile! as TipoPerfil,
       isLoggedIn: false,
       avatarUrl: this.userUrl
     };
+
     this.servicioUsuarios.postUser(nuevoUsuario).subscribe({
+
       next: () => {
         this.alerta.mostrar("Usuario agregado con éxito.", "success");
         this.router.navigate(['/usersPage']);
       },
-      error: () => {
-        this.alerta.mostrar("Error al agregar el usuario.", "danger");
-      }
-    })
 
-  }
+      error: () => { this.alerta.mostrar("Error al agregar el usuario.", "danger"); }
+    });
+  };
 }

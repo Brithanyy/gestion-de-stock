@@ -1,1 +1,47 @@
-<p>home-page works!</p>
+<h1>FILTROS AQUÍ</h1>
+
+@if(bebidas.length === 0) {
+    <p>No hay bebidas disponibles</p>
+}
+
+@else { 
+
+    @for(bebida of bebidas; track $index) {
+
+        <h2>{{bebida.name}}</h2>
+        <h3>{{bebida.type}}</h3>
+        <h4>{{bebida.brand}}</h4>
+
+        <div class="contenedorImagen">
+            <img [src]="bebida.imageUrl" alt="Imagen bebida">
+        </div>
+
+        @if(esAdmin()) {
+            <button (click)="editarBebida(bebida.id)">Editar</button>
+            <button (click)="eliminarBebida(bebida.id)">Eliminar</button>
+            <button (click)="verDetalle(bebida.id)">Ver detalle</button>
+        }
+        @else {
+            <button (click)="verDetalle(bebida.id)">Ver detalle</button>
+        }
+
+        <form [formGroup]="formMovimientos">
+
+            <button (click)="aumentarStock(bebida.id)">+</button>
+
+            <input type="number" formControlName="cantidad" placeholder="Ingrese la cantidad">
+
+            @if(cantidad?.invalid && cantidad?.touched) {
+
+                @if(cantidad?.hasError('required')) {
+                    <p>Campo requerido</p>
+                }
+                @else if (cantidad?.hasError('min')) {
+                    <p>Debe ingresar un valor mayor o igual que cero</p>
+                }
+            }
+
+            <button (click)="decrementarStock(bebida.id)">-</button>
+        </form>
+    }
+}

@@ -1,5 +1,5 @@
-type TipoBebida = 'alcoholica' | 'no_alcoholica';
-type CategoriaBebida = 'agua'| 'agua con gas' | 'agua saborizada' | 'gaseosa' | 'energizante' | 'jugo' | 'cerveza' | 'vino' | 'licor' | 'whisky' | 'ron' | 'vodka' | 'tequila' | 'champagne' | 'cachaca' | 'granadina' | 'gin' | 'aperitivo' | 'otro';
+type TipoBebida = 'alcoholica' | 'no_alcoholica' | 'ninguna';
+type CategoriaBebida = 'agua'| 'agua con gas' | 'agua saborizada' | 'gaseosa' | 'energizante' | 'jugo' | 'cerveza' | 'vino' | 'licor' | 'whisky' | 'ron' | 'vodka' | 'tequila' | 'champagne' | 'cachaca' | 'granadina' | 'gin' | 'aperitivo' | 'otro' | 'ninguna';
 
 export interface Bebida {
 

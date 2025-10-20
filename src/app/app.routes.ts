@@ -11,6 +11,8 @@ import { MovementsPage } from '../Pages/movements-page/movements-page';
 import { ReportsPage } from '../Pages/reports-page/reports-page';
 import { EditUserPage } from '../Pages/edit-user-page/edit-user-page';
 import { NewUserPage } from '../Pages/new-user-page/new-user-page';
+import { EditDrinkPage } from '../Pages/edit-drink-page/edit-drink-page';
+import { DetailDrinkPage } from '../Pages/detail-drink-page/detail-drink-page';
 
 export const routes: Routes = [
 
@@ -19,7 +21,7 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
 
-            { path: '', redirectTo: 'homePage', pathMatch: 'full'  },
+            { path: '', redirectTo: 'homePag', pathMatch: 'full'  },
             { path: 'homePage', component: HomePage, canActivate: [autenticacionGuard] },
             { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
             { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
@@ -27,7 +29,9 @@ export const routes: Routes = [
             { path: 'movementsPage', component: MovementsPage },
             { path: 'reportsPage', component: ReportsPage },
             { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
-            { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] }
+            { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
+            { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
+            { path: 'detailDrinkPage/:id', component: DetailDrinkPage },
             // otras rutas que usan header/sidebar/footer
         ]
     },
@@ -43,6 +47,6 @@ export const routes: Routes = [
 
     {
         path: '**',
-        redirectTo: 'homePage'
+        redirectTo: 'auth/loginPage'
     }
 ];

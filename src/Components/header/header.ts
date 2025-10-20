@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Header implements OnInit {
 
-    //*CONSTANTES Y VARIABLES GLOBALES
+  //*CONSTANTES Y VARIABLES GLOBALES
   readonly servicioAutenticacion : ServicioAutenticacion = inject(ServicioAutenticacion);
 
   usuario = this.servicioAutenticacion.usuario;

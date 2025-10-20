@@ -2,39 +2,15 @@
   "Usuarios": [
     {
       "id": "1",
-      "username": "admin",
-      "password": "admin123",
+      "username": "Rouse02",
+      "password": "$Rouse484848$",
       "profile": "admin",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
     },
     {
       "id": "2",
-      "username": "empleado1",
-      "password": "empleado123",
-      "profile": "usuario",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
-    },
-    {
-      "id": "3",
-      "username": "empleado2",
-      "password": "empleado123",
-      "profile": "usuario",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
-    },
-    {
-      "id": "4",
-      "username": "empleado3",
-      "password": "empleado123",
-      "profile": "usuario",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
-    },
-    {
-      "id": "7efc",
-      "username": "brithany",
+      "username": "Brithany",
       "password": "brisa2002",
       "profile": "usuario",
       "isLoggedIn": false,

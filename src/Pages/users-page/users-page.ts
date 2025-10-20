@@ -12,7 +12,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
   templateUrl: './users-page.html',
   styleUrl: './users-page.css'
 })
-export class UsersPage implements OnInit{
+export class UsersPage implements OnInit {
 
   //*CONSTANTES Y VARIABLES GLOBALES
   readonly servicioUsuarios : ServicioUsuarios = inject(ServicioUsuarios);
@@ -29,37 +29,33 @@ export class UsersPage implements OnInit{
 
   readonly router : Router = inject(Router);
 
-  ngOnInit(): void {
-    this.listarUsuarios();
-  }
+  //*MÉTODOS
+
+  ngOnInit(): void { this.listarUsuarios(); }
 
   eliminarUsuario(usuario : Usuario) {
+
     this.servicioUsuarios.deleteUser(usuario.id).subscribe({
+
       next : (user) => {
+
         this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
         this.alerta.mostrar("Usuario eliminado con éxito.", "success");
-       
-
       },
-      error : (err) => {
-        this.alerta.mostrar("Error al eliminar el usuario.", "danger");
-      }
-    })
-  }
+      error : (err) => { this.alerta.mostrar("Error al eliminar el usuario.", "danger"); }
+    });
+  };
 
   listarUsuarios() {
-    this.servicioUsuarios.getAllUsers().subscribe({
-      next : (usuariosTraidos) => {
-        this.usuarios.push(...usuariosTraidos);
-      },
-      error : (err) => {
-        this.alerta.mostrar("Error al cargar los usuarios.", "danger");
-      }
-    })
-  }
 
-  crearUsuarioPage() {
-    this.router.navigate(['/newUser']);
-  }
+    this.servicioUsuarios.getAllUsers().subscribe({
+
+      next : (usuariosDevueltos) => { this.usuarios.push(...usuariosDevueltos); },
+
+      error : (err) => { this.alerta.mostrar("Error al cargar los usuarios.", "danger"); }
+    });
+  };
+
+  crearUsuarioPage() { this.router.navigate(['/newUser']); };
 
 }

@@ -1,4 +1,4 @@
-export type TipoPerfil = 'admin' | 'usuario';
+export type TipoPerfil = 'admin' | 'usuario' | 'ninguno';
 
 export interface Usuario {
 
