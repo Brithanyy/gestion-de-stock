@@ -44,8 +44,12 @@ export class GraficoTorta implements OnInit {
     }
     // Paleta de ejemplo (ajusta los hex a tu diseño)
     const palette = ['#e85d04', '#f48c06', '#faa307', '#ffba08', '#9d0208', '#6a040f','#d00000', '#dc2f02', ];
+     // calcular tamaño responsivo basado en el ancho real del contenedor
+    const width = container.clientWidth;
+    const height = Math.max(400, Math.round(width * 0.6)); // ajusta proporción (0.6) a tu gusto
+
     const data = google.visualization.arrayToDataTable(dataArray);
-    const options = { title: 'Bebidas por Categoría', is3D: true, colors: palette };
+    const options = { title: 'Bebidas por Categoría', is3D: true, colors: palette, width, height };
     const chart = new google.visualization.PieChart(container);
     chart.draw(data, options);
   }
