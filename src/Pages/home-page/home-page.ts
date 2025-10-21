@@ -3,7 +3,7 @@ import { Bebida } from '../../Models/Bebida';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
 import { Alerta } from '../../Services/alerta/alerta';
-import { FormBuilder, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ɵInternalFormsSharedModule, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
 import { ServicioMovimientos } from '../../Services/movimientos/servicio-movimientos';
 import { Movimiento } from '../../Models/Movimiento';
@@ -12,10 +12,11 @@ import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Usuario } from '../../Models/Usuario';
 import { LetDeclaration } from '@angular/compiler';
 import { DrinkCard } from '../../Components/drink-card/drink-card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, DrinkCard], 
+  imports: [ɵInternalFormsSharedModule, ReactiveFormsModule, DrinkCard, CommonModule, FormsModule], 
   templateUrl: './home-page.html',
   styleUrl: './home-page.css'
 })
@@ -37,6 +38,10 @@ export class HomePage implements OnInit {
   idUsuarioLogueado : string = '';
 
   bebidas: Bebida[] = [];
+
+  bebidasFiltradas: Bebida[] = [];
+
+  terminoBusqueda: string = '';
 
   usuarioLogueado : Usuario = {
 
@@ -66,6 +71,7 @@ export class HomePage implements OnInit {
       next: (bebidasDevueltas : Bebida[]) => {
 
         this.bebidas = bebidasDevueltas;
+        this.bebidasFiltradas = bebidasDevueltas;
         this.ALERTA.mostrar("Bebidas cargadas con éxito", "success");
       },
 
@@ -183,5 +189,23 @@ export class HomePage implements OnInit {
     });
   };
 
+  filtrarBebidas() {
+    const termino = this.terminoBusqueda.trim().toLowerCase();
+    
+    if(termino === '') {
+      this.bebidasFiltradas = this.bebidas;
+      return;
+    }
+
+    this.bebidasFiltradas = this.bebidas.filter(bebida =>
+    bebida.name.toLowerCase().includes(termino) ||
+    bebida.category.toLowerCase().includes(termino) ||
+    bebida.brand.toLowerCase().includes(termino)
+    );
+    
+    if(this.bebidasFiltradas.length === 0) {
+      this.ALERTA.mostrar("No se encontró ninguna bebida registrada con ese nombre.", "danger");
+    }
+  }
 
 }

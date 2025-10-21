@@ -11,6 +11,11 @@
   box-shadow: 0 8px 15px rgba(30, 30, 30, 0.25);
 }
 
+.cardBebida:hover {
+  transform: scale(1.03); /* pequeño zoom */
+  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); /* más elevación */
+}
+
 /* ===== INFORMACIÓN DE LA BEBIDA ===== */
 .cardBebida h2 {
   background-color: #f47227;
@@ -63,6 +68,7 @@ input[type="number"] {
   text-align: center;
   font-size: 0.9rem;
 }
+
 
 p {
   background-color: red;

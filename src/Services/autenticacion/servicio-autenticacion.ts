@@ -67,8 +67,6 @@ login(nombre: string, password: string) {
           // Guardamos en localStorage
           localStorage.setItem('usuario', JSON.stringify(usuario));
 
-          // Redirigimos al home DESPUÉS de mostrar alerta
-          this.alerta.mostrar('Inicio de sesión exitoso', 'success');
           this.router.navigate(['/homePage', usuario.id]);
         } else {
           this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');

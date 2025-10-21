@@ -21,9 +21,6 @@ export class Alerta {
     setTimeout(() => this.visible.set(false), 3000);
     }
 
-    ocultar() {
-    this.visible.set(false);
-  }
 
 
 }

@@ -26,7 +26,7 @@
       "brand": "Bacardí",
       "milliliters": 980,
       "alcoholContent": 40,
-      "price": 19.240,
+      "price": 19.24,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -39,7 +39,7 @@
       "brand": "Bacardí",
       "milliliters": 980,
       "alcoholContent": 40,
-      "price": 19.240,
+      "price": 19.24,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_609744-MLU74226383235_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -78,7 +78,7 @@
       "brand": "Havana Club",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 36.900,
+      "price": 36.9,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -91,7 +91,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 18.310,
+      "price": 18.31,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_603953-MLA95353776909_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -104,7 +104,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.390,
+      "price": 22.39,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_694410-MLA92804617362_092025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -117,7 +117,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.210,
+      "price": 22.21,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_667933-MLA95355426005_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -130,7 +130,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.900,
+      "price": 22.9,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_868098-MLU74110451910_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -143,7 +143,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 22.400,
+      "price": 22.4,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_786710-MLA51294348898_082022-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -156,7 +156,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 40.000,
+      "price": 40,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_752476-MLU74154717467_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -169,7 +169,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.790,
+      "price": 22.79,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_923262-MLU75127711797_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -195,7 +195,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 28.000,
+      "price": 28,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_905134-MLU78894980450_092024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -208,7 +208,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 40.000,
+      "price": 40,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_939837-MLA92888233413_092025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -221,7 +221,7 @@
       "brand": "Absolut ",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.000,
+      "price": 22,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_880092-MLA94382184043_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -237,6 +237,46 @@
       "movementDate": "2025-10-20T21:39:46.668Z",
       "idUser": "1",
       "nameUser": "Rouse02"
+    },
+    {
+      "id": "29e9",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T13:50:08.863Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "7cd9",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T13:50:11.968Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "873a",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T13:50:12.654Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "1b72",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T13:50:13.728Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
     }
   ]
 }

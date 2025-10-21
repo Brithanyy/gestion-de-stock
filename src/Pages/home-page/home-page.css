@@ -16,12 +16,51 @@ h1 {
   font-weight: 700;
 }
 
+/* ===== BARRA DE BÚSQUEDA ===== */
+.barraBusqueda {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.barraBusqueda input {
+  width: 60%;
+  max-width: 600px;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #f47227;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  color: #1e1e1e;
+  transition: all 0.3s ease;
+}
+
+.barraBusqueda input::placeholder {
+  color: #999;
+}
+
+.barraBusqueda input:focus {
+  border-color: #f38240;
+  box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+}
+
+
+
 /* ===== GRID DE TARJETAS ===== */
 :host ::ng-deep .listaBebidas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cards por fila */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
   gap: 2rem;
-  justify-items: center;  /* centra las cards en cada celda */
+  justify-items: center;
   align-items: stretch;
 }
 
+/* ===== MENSAJE DE LISTA VACÍA ===== */
+.mensaje-vacio {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #f47227;
+  margin-top: 1rem;
+}

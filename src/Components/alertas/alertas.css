@@ -1,12 +1,11 @@
 /* Estilo base */
 .alerta {
-  background-clip: padding-box;
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 14px 20px;
-  border-radius: 10px;
+  padding: 16px 24px; /* más padding para que el contenido y la X no se superpongan */
+  border-radius: 12px;
   color: #fff;
   font-weight: 500;
   text-align: center;
@@ -15,7 +14,8 @@
   animation: aparecer 0.4s ease, desaparecer 0.4s ease 2.6s forwards; 
   opacity: 0.95;
   transition: all 0.3s ease;
-  word-wrap: break-word;
+  min-width: 350px;  /* ancho mínimo para que la X no se superponga */
+  max-width: 600px;
   line-height: 1.4;
   isolation: isolate;
 }
@@ -30,41 +30,27 @@
   background-color: var(--color-error) /* rojo */
 }
 
-.cerrar {
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+
+/* Animaciones keyframes (opcional si querés animar entrada/salida) */
+@keyframes bajar {
+  from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+  to { transform: translateX(-50%) translateY(0); opacity: 1; }
 }
 
-.cerrar:hover {
-  transform: scale(1.2);
+@keyframes subir {
+  from { transform: translateX(-50%) translateY(0); opacity: 1; }
+  to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
 }
 
-/* Animaciones */
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-  to {
-    opacity: 0.95;
-    transform: translate(-50%, 0);
-  }
+/* Texto */
+.mensaje {
+  flex-grow: 1;
+  text-align: left; /* opcional */
 }
 
-@keyframes desaparecer {
-  to {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
+.alerta {
+  animation: aparecer 0.4s ease, desaparecer 0.4s ease 2.6s forwards;
 }
-
 /* Responsividad */
 
 /* Teléfonos pequeños */

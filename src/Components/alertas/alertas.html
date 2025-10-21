@@ -1,4 +1,3 @@
-<div *ngIf="alerta.visible()" class="alerta" [ngClass]="alerta.tipo()">
-  {{ alerta.mensaje() }}
-  <button class="cerrar" (click)="alerta.ocultar()">✖</button>
+<div *ngIf="alerta.visible()" class="alerta" [ngClass]="{'exito': alerta.tipo() === 'success', 'error': alerta.tipo() === 'danger'}">
+  <span class="mensaje">{{ alerta.mensaje() }}</span>
 </div>

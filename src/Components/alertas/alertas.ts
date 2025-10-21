@@ -6,7 +6,8 @@ import { CommonModule } from '@angular/common';
   selector: 'app-alertas',
   imports: [CommonModule],
   templateUrl: './alertas.html',
-  styleUrl: './alertas.css'
+  styleUrl: './alertas.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class Alertas {
 

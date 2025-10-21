@@ -1,4 +1,12 @@
-<h1>FILTROS AQUÍ</h1>
+<div class="barraBusqueda">
+  <input
+    type="text"
+    placeholder="Buscar por nombre, categoría o marca..."
+    [(ngModel)]="terminoBusqueda"
+    (input)="filtrarBebidas()"
+  />
+</div>
+
 
 @if (bebidas.length === 0) {
   <p>No hay bebidas disponibles</p>
@@ -6,7 +14,7 @@
 @else {
     
   <div class="listaBebidas">
-    @for (bebida of bebidas; track $index) {
+    @for (bebida of bebidasFiltradas; track $index) {
       <app-drink-card
         [bebida]="bebida"
         [esAdmin]="esAdmin()"
