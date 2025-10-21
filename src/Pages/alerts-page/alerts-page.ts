@@ -1,17 +1,31 @@
-import { Component, inject } from '@angular/core';
-import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
-import { Usuario } from '../../Models/Usuario';
+import { Component, inject, OnInit } from '@angular/core';
+import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alerts-page',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './alerts-page.html',
   styleUrl: './alerts-page.css'
 })
-export class AlertsPage {
-   readonly servicioUsuarios : ServicioUsuarios = inject(ServicioUsuarios);
+export class AlertsPage implements OnInit {
 
-  usuarios: Usuario[] = [];
 
-  
+  readonly servicioBebidas : ServicioBebidas = inject(ServicioBebidas);
+
+  bebidasConAlerta: any[] = [];
+
+  ngOnInit(): void {
+    this.obtenerBebidasConAlerta();
+  }
+
+
+  obtenerBebidasConAlerta() {
+    this.servicioBebidas.getLowStockDrink().subscribe({
+      next: (bebidasConStockBajo) => {
+        this.bebidasConAlerta = bebidasConStockBajo;
+      }
+    });
+  }
+
 }

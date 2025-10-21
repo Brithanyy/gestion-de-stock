@@ -87,7 +87,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 36.9,
-      "stock": 20,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -463,6 +463,26 @@
       "typeMotion": "Ingreso",
       "amount": 1,
       "movementDate": "2025-10-21T15:11:35.203Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "4edb",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Egreso",
+      "amount": 15,
+      "movementDate": "2025-10-21T15:27:33.580Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "a512",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:27:49.543Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

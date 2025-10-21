@@ -1,1 +1,31 @@
-<p>alerts-page works!</p>
+<main class="bebidas-container">
+  
+  <!-- Encabezado -->
+  <section class="bebidas-header">
+    <h2>⚠️ Bebidas Próximas a Agotarse ⚠️</h2>
+  </section>
+
+  <!-- Tabla -->
+  <section class="tabla-bebidas">
+
+    <!-- Encabezado de la tabla -->
+    <div class="tabla-header">
+      <div>Nombre</div>
+      <div>Categoría</div>
+      <div>Marca</div>
+      <div>Stock</div>
+    </div>
+
+    <!-- Filas dinámicas -->
+    <div class="tabla-fila" *ngFor="let bebida of bebidasConAlerta; let i = index">
+      <div>{{ bebida.name }}</div>
+      <div>{{ bebida.category }}</div>
+      <div>{{ bebida.brand }}</div>
+      <div [ngClass]="{ 'stock-bajo': bebida.stock <= 5, 'stock-ok': bebida.stock > 5 }">
+        {{ bebida.stock }}
+      </div>
+    </div>
+
+  </section>
+
+</main>
