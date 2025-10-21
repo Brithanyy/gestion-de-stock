@@ -40,8 +40,10 @@
 }
 
 .contenedorImagen img {
-  width: 130px;
-  height: auto;
+  width: 150px;      
+  height: 400px;     
+  object-fit: cover; /* Ajusta la imagen sin deformarla */
+  border-radius: 10px;
 }
 
 /* ===== FORMULARIOS ===== */

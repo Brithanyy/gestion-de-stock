@@ -19,9 +19,9 @@ h1 {
 /* ===== GRID DE TARJETAS ===== */
 :host ::ng-deep .listaBebidas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(3, 1fr); /* 3 cards por fila */
   gap: 2rem;
-  justify-content: center;
+  justify-items: center;  /* centra las cards en cada celda */
   align-items: stretch;
 }
 
