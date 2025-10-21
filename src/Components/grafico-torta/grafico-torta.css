@@ -1,0 +1,6 @@
+#chart_div_torta {
+  width: 100%;          /* Ocupa todo el ancho del contenedor padre */
+  max-width: 600px;     /* Máximo ancho */
+  height: 400px;        /* Alto fijo */
+  margin: 0 auto;       /* Centrar horizontalmente */
+}
