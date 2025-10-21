@@ -71,28 +71,8 @@
   color: #000;
 }
 
-/* === ESTADOS DE STOCK === */
-.stock-bajo {
-  color: #ff6b35;
-  font-weight: 600;
-  text-shadow: 0 0 5px rgba(255, 107, 53, 0.4);
-}
-
-.stock-ok {
-  color: #50fa7b;
-  font-weight: 500;
-}
-
-/* === ANIMACIÓN VISUAL PARA ALERTA === */
 .stock-bajo::before {
-  content: "⚠️ ";
+  content: "⚠️";
 }
 
-.stock-bajo {
-  animation: parpadeo 1.5s infinite alternate;
-}
 
-@keyframes parpadeo {
-  from { opacity: 1; }
-  to { opacity: 0.7; }
-}
