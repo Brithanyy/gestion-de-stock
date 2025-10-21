@@ -15,6 +15,14 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "9ac0",
+      "username": "Adri",
+      "password": "adri2002",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
     }
   ],
   "Bebidas": [
@@ -53,7 +61,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 15.799,
-      "stock": 20,
+      "stock": 5,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -277,6 +285,186 @@
       "movementDate": "2025-10-21T13:50:13.728Z",
       "idUser": "2",
       "nameUser": "Brithany"
+    },
+    {
+      "id": "bf40",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 5,
+      "movementDate": "2025-10-21T15:06:27.735Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "efb4",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 10,
+      "movementDate": "2025-10-21T15:08:11.719Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "2874",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:17.036Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "bf84",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:18.853Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "719d",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:20.340Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "7cee",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:22.256Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "7211",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:22.694Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "e134",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:23.271Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "8157",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:28.543Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "083b",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:34.125Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "8aaf",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:09:38.341Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "ab9d",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:24.698Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "7e3a",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:25.310Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "1e12",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:27.341Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "2afa",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:32.640Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "060b",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:34.123Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "2495",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:35.064Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "fe77",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-21T15:11:35.203Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ]
 }

@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnInit, inject } from '@angular
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, Form } from '@angular/forms';
 import { Bebida } from '../../Models/Bebida';
 import { CommonModule } from '@angular/common';
+import { Alerta } from '../../Services/alerta/alerta';
 
 @Component({
   selector: 'app-drink-card',
@@ -13,6 +14,7 @@ export class DrinkCard implements OnInit {
 
   //*CONSTANTES Y VARIABLES GLOBALES
   private readonly FORM_BUILDER : FormBuilder = inject(FormBuilder);
+  private readonly ALERTA = inject(Alerta);
 
   @Input() bebida !: Bebida;
   @Input() esAdmin : boolean = false;
@@ -58,9 +60,22 @@ export class DrinkCard implements OnInit {
 
     const cantidad = this.formEgreso.value.cantidadEgreso;
 
-    if(cantidad > this.bebida.stock) return;
+    if(cantidad > this.bebida.stock) {
+      this.ALERTA.mostrar("⚠️ No hay suficiente stock disponible.", "danger");
+      return;
+    } 
 
+     // Emitir evento para disminuir el stock
     this.decrementarStock.emit({ bebida: this.bebida, cantidad });
+
+  // Mostrar alerta si el stock restante será bajo (<= 5 pero >= 0)
+    if (this.bebida.stock <= 5 && this.bebida.stock >= 0) {
+    this.ALERTA.mostrar(
+      `⚠️ Quedan pocas unidades de ${this.bebida.name}. Stock actual: ${this.bebida.stock}`,
+      "danger"
+    );
+  }
+
     this.formEgreso.patchValue({ cantidadEgreso: 1 });
   };
 

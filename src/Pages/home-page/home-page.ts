@@ -72,7 +72,6 @@ export class HomePage implements OnInit {
 
         this.bebidas = bebidasDevueltas;
         this.bebidasFiltradas = bebidasDevueltas;
-        this.ALERTA.mostrar("Bebidas cargadas con éxito", "success");
       },
 
       error: (errorDevuelto) => { this.ALERTA.mostrar("Error al cargar las bebidas.", "danger"); }
@@ -130,12 +129,10 @@ export class HomePage implements OnInit {
     this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
 
       next: (bebidaDevuelta : Bebida) => { 
-
-        this.ALERTA.mostrar("Ingreso registrado con éxito", "success");
  
         this.SERVICIO_MOVIMIENTOS.postMotion(ingresoMovimiento).subscribe({
 
-          next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+          next: (movimientoDevuelto : Movimiento) => { },
 
           error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
         });
@@ -172,11 +169,10 @@ export class HomePage implements OnInit {
 
       next: (bebidaDevuelta : Bebida) => { 
 
-        this.ALERTA.mostrar("Ingreso registrado con éxito", "success");
  
         this.SERVICIO_MOVIMIENTOS.postMotion(egresoMovimiento).subscribe({
 
-          next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+          next: (movimientoDevuelto : Movimiento) => {  },
 
           error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
         });
