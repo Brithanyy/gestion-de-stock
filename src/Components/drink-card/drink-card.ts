@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, Form } from '@
 import { Bebida } from '../../Models/Bebida';
 import { CommonModule } from '@angular/common';
 import { Alerta } from '../../Services/alerta/alerta';
+import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
 
 @Component({
   selector: 'app-drink-card',
@@ -15,15 +16,18 @@ export class DrinkCard implements OnInit {
   //*CONSTANTES Y VARIABLES GLOBALES
   private readonly FORM_BUILDER : FormBuilder = inject(FormBuilder);
   private readonly ALERTA = inject(Alerta);
+  private readonly SERVICIO_BEBIDAS = inject(ServicioBebidas);
+
+  bebidasActualizadas: Bebida[] = [];
 
   @Input() bebida !: Bebida;
   @Input() esAdmin : boolean = false;
 
   @Output() editar = new EventEmitter<string | undefined>(); 
-  @Output() eliminar = new EventEmitter<string | undefined>();
   @Output() verDetalle = new EventEmitter<string | undefined>();
   @Output() aumentarStock = new EventEmitter<{ bebida: Bebida, cantidad: number }>();
   @Output() decrementarStock = new EventEmitter<{ bebida: Bebida, cantidad: number }>();
+  @Output() eliminar = new EventEmitter<string | undefined>();
 
   formIngreso !: FormGroup;
   formEgreso !: FormGroup;
@@ -38,11 +42,22 @@ export class DrinkCard implements OnInit {
     this.formEgreso = this.FORM_BUILDER.group({
       cantidadEgreso: [1, [Validators.required, Validators.min(1)]]
     });
+    
   };
 
   //*MÉTODOS -> Para emitir eventos
   onEditar() { this.editar.emit(this.bebida.id); };
-  onEliminar() { this.eliminar.emit(this.bebida.id); };
+  onEliminar() { 
+    this.SERVICIO_BEBIDAS.deleteDrink(this.bebida.id!).subscribe({
+      next: () => {
+        this.ALERTA.mostrar(`✅ La bebida ${this.bebida.name} ha sido eliminada con éxito.`, "success");
+        this.eliminar.emit(this.bebida.id);
+      },
+      error: () => {
+        this.ALERTA.mostrar(`❌ Error al eliminar la bebida ${this.bebida.name}. Por favor, inténtelo de nuevo más tarde.`, "danger");
+      }
+    });
+  };
   onVerDetalle() { this.verDetalle.emit(this.bebida.id); };
 
   onAumentar() {

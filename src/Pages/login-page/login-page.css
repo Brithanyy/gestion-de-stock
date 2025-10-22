@@ -117,6 +117,36 @@
   animation: fadeIn 0.3s ease; /* animación de aparición */
 }
 
+/* Contenedor del input de contraseña */
+.password-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Ícono del ojito (Font Awesome) */
+.password-group i {
+  position: absolute;
+  right: 12px;
+  top: 40%;
+  transform: translateY(-52%); /* ✅ Centrado vertical */
+  color: #f47227; /* Naranja por defecto */
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.password-group i:hover {
+  color: #f38240; /* tono más claro al pasar el mouse */
+  transform: translateY(-50%) scale(1.15); /* mantiene centrado mientras se agranda */
+  filter: brightness(1.2);
+}
+
+/* Espacio adicional para que el ícono no tape el texto */
+.password-group .form-control {
+  padding-right: 40px;
+}
+
 /* Animación sutil de aparición */
 @keyframes fadeIn {
 

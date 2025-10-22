@@ -82,21 +82,10 @@ export class HomePage implements OnInit {
 
   verDetalle(idBebida : string | undefined) { this.ROUTER.navigate(['/detailDrinkPage', idBebida, this.idUsuarioLogueado]); };
 
-  eliminarBebida(idBebida : string | undefined) {
-
-    this.SERVICIO_BEBIDAS.deleteDrink(idBebida).subscribe({
-
-      next: (bebidaDevuelta : Bebida) => { 
-        
-        this.ALERTA.mostrar("Bebida eliminada con éxito", "success"); 
-
-        setTimeout(() => {
-          this.obtenerBebidas();
-        }, 2000);
-      },
-
-      error: (errorDevuelto) => { this.ALERTA.mostrar("Error al eliminar la bebida.", "danger"); }
-    });
+  eliminarBebida(id?: string) {
+     if (!id) return;
+    this.bebidas = this.bebidas.filter(b => b.id !== id);
+    this.bebidasFiltradas = this.bebidasFiltradas.filter(b => b.id !== id);
   };
 
   obtenerUsuario() {

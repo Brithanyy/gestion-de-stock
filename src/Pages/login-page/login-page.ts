@@ -28,6 +28,8 @@ export class LoginPage implements OnInit {
 
   readonly alerta : Alerta = inject(Alerta);
 
+  verContrasena = false;
+
   usuarios : Usuario[] = [];
 
   loginForm = this.formBuilder.nonNullable.group({
@@ -71,5 +73,10 @@ export class LoginPage implements OnInit {
       error : (error) => { this.alerta.mostrar("Error al cargar los usuarios.", "danger"); }
     });
   };
+
+    visualizarContrasena() {
+    this.verContrasena = !this.verContrasena;
+  }
+
 
 }

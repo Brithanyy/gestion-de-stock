@@ -57,4 +57,5 @@ export class DetailDrinkPage implements OnInit {
   };
 
   volverAtras() { this.ROUTER.navigate(['homePage', this.idUsuario]); };
+
 }

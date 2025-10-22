@@ -212,19 +212,6 @@
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_939837-MLA92888233413_092025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
-    },
-    {
-      "id": "16",
-      "name": "Vodka Absolut Apeach",
-      "type": "Con alcohol",
-      "category": "Vodka",
-      "brand": "Absolut ",
-      "milliliters": 700,
-      "alcoholContent": 38,
-      "price": 22,
-      "stock": 20,
-      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_880092-MLA94382184043_102025-F.webp",
-      "createdAt": "2025-10-10T18:00:00Z"
     }
   ],
   "Movimientos": [

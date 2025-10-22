@@ -21,18 +21,26 @@
         </p>
       </div>
 
-      <!-- Password -->
-      <div class="input-group">
+       <!-- Password con ojito -->
+       <div class="input-group password-group">
         <input
-          type="password"
+          [type]="verContrasena ? 'text' : 'password'"
           formControlName="password"
           placeholder="Password"
           class="form-control"
         />
-        <p class="error-text" *ngIf="f.password.touched && f.password.invalid">
-          La contraseña es requerida
-        </p>
+        <i
+          class="fa-solid"
+          [ngClass]="verContrasena ? 'fa-eye-slash' : 'fa-eye'"
+          (click)="visualizarContrasena()"
+        ></i>
       </div>
+       <p class="error-text" *ngIf="f.password.touched && f.password.invalid">
+          La contraseña es requerida
+       </p>
+
+
+
 
       <button type="submit" class="btn-login" [disabled]="loginForm.invalid">
         Ingresar
