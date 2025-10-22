@@ -19,7 +19,8 @@ h1 {
 /* ===== BARRA DE BÚSQUEDA ===== */
 .barraBusqueda {
   display: flex;
-  justify-content: center;
+  flex-direction: column;  /* apila h2 y input en columna */
+  align-items: center;     /* centra horizontalmente */
   margin-bottom: 2rem;
 }
 

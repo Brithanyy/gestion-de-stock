@@ -1,0 +1,42 @@
+.lineal-total-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  color: #1e1e1e;
+}
+
+.lineal-total-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #eee;
+}
+
+.barra-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* espacio entre barra y número */
+}
+
+.progress-bar {
+  flex: 1; /* ocupa todo el ancho restante */
+  height: 25px;
+  background-color: #eee;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #f47227;
+  width: 0%;
+  border-radius: 12px 0 0 12px;
+  transition: width 0.5s ease-in-out;
+}
+
+.total-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #eee;
+  min-width: 50px;
+  text-align: right;
+}

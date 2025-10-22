@@ -4,17 +4,10 @@
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
   padding: 50px;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   box-sizing: border-box;
   background-color: var(--color-negro);
   color: white;
 }
 
-
-/* responsive: 1 columna en pantallas pequeñas */
-@media (max-width: 900px){
-  .reports-grid{
-    grid-template-columns: 1fr;
-  }
-}
