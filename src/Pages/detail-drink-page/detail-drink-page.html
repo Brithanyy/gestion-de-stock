@@ -1,1 +1,34 @@
-<p>detail-drink-page works!</p>
+<main class="drink-detail">
+  <header class="detail-header">
+    <h2 class="drink-title">{{ detailBebida.name }}</h2>
+  </header>
+
+  <section class="detail-card">
+    <div class="img-wrap">
+      <img [src]="detailBebida.imageUrl" alt="Imagen de {{ detailBebida.name }}" />
+    </div>
+
+    <div class="info">
+      <h3 class="brand">Marca:<span>{{detailBebida.brand }}</span></h3>
+
+      <p><strong>Tipo de bebida:</strong> {{ detailBebida.type }}</p>
+      <p><strong>Categoría:</strong> {{ detailBebida.category }}</p>
+      <p><strong>Mililitros:</strong> {{ detailBebida.milliliters }} ml</p>
+
+      @if(detailBebida.type === 'Con alcohol') {
+        <p><strong>Graduación alcohólica:</strong> {{ detailBebida.alcoholContent }}%</p>
+      }
+
+      <p><strong>Precio:</strong> {{ detailBebida.price}} ARS</p>
+      <p><strong>Unidades en stock:</strong> {{ detailBebida.stock }}</p>
+      <p><strong>Fecha de creación:</strong> {{ detailBebida.createdAt}}</p>
+
+      <div class="actions">
+        <button class="btn btn-secondary" (click)="volverAtras()">
+          ← Volver
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+

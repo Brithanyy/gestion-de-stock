@@ -16,8 +16,6 @@ import { DetailDrinkPage } from '../Pages/detail-drink-page/detail-drink-page';
 
 export const routes: Routes = [
 
-
-    
     { path: '', redirectTo: 'auth/loginPage', pathMatch: 'full' },
     
     {
@@ -42,7 +40,7 @@ export const routes: Routes = [
         { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
         { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
         { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
-        { path: 'detailDrinkPage/:id', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'detailDrinkPage/:id/:idUser', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
         ]
     },
 

@@ -1,9 +1,9 @@
-type TipoBebida = 'Con alcohol' | 'Sin alcohol' | 'ninguna';
+type TipoBebida = 'Con alcohol' | 'Sin alcohol' | 'Ninguna';
 type CategoriaBebida = 'Agua'| 'Agua con gas' | 'Agua saborizada' | 'Gaseosa' | 'Energizante' | 'Jugo' | 'Cerveza' | 'Vino' | 'Licor' | 'Whisky' | 'Ron' | 'Vodka' | 'Téquila' | 'Champagne' | 'Cachaca' | 'Granadina' | 'Gin' | 'Aperitivo' | 'Otro' | 'Ninguna';
 
 export interface Bebida {
 
-    id: string;
+    id?: string;
     name: string;
     type: TipoBebida;
     category: CategoriaBebida;

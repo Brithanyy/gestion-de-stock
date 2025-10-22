@@ -15,14 +15,6 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
-    },
-    {
-      "id": "9ac0",
-      "username": "Adri",
-      "password": "adri2002",
-      "profile": "usuario",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
     }
   ],
   "Bebidas": [
@@ -35,7 +27,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19.24,
-      "stock": 20,
+      "stock": 14,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -483,6 +475,56 @@
       "typeMotion": "Ingreso",
       "amount": 1,
       "movementDate": "2025-10-21T15:27:49.543Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "49c2",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 10,
+      "movementDate": "2025-10-22T11:38:56.965Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "b2fd",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 6,
+      "movementDate": "2025-10-22T11:39:12.357Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "a374",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 80,
+      "movementDate": "2025-10-22T11:41:14.667Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "4cee",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 80,
+      "movementDate": "2025-10-22T11:41:29.837Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "9534",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 10,
+      "movementDate": "2025-10-22T16:04:22.223Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

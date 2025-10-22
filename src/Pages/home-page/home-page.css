@@ -24,6 +24,7 @@ h1 {
 }
 
 .barraBusqueda input {
+  
   width: 60%;
   max-width: 600px;
   padding: 0.8rem 1.2rem;

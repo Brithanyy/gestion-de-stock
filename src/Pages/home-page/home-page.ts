@@ -80,7 +80,7 @@ export class HomePage implements OnInit {
 
   editarBebida(idBebida : string | undefined) { this.ROUTER.navigate(['/editDrinkPage', idBebida]); };
 
-  verDetalle(idBebida : string | undefined) { this.ROUTER.navigate(['/detailDrinkPage', idBebida]); };
+  verDetalle(idBebida : string | undefined) { this.ROUTER.navigate(['/detailDrinkPage', idBebida, this.idUsuarioLogueado]); };
 
   eliminarBebida(idBebida : string | undefined) {
 
@@ -117,7 +117,7 @@ export class HomePage implements OnInit {
 
     const ingresoMovimiento : Movimiento = {
 
-      idDrink: bebida.id,              
+      idDrink: bebida.id!,              
       nameDrink: bebida.name,          
       typeMotion: 'Ingreso', 
       amount: cantidad,              
@@ -156,7 +156,7 @@ export class HomePage implements OnInit {
 
     const egresoMovimiento : Movimiento = {
 
-      idDrink: bebida.id,              
+      idDrink: bebida.id!,              
       nameDrink: bebida.name,          
       typeMotion: 'Egreso', 
       amount: cantidad,              
