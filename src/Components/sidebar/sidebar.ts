@@ -24,4 +24,5 @@ export class Sidebar {
 
   esAdmin() { return this.tipoUsuario()?.toLowerCase() === 'admin'; }
 
+
 }

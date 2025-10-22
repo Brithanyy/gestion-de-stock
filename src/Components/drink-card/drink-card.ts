@@ -47,6 +47,7 @@ export class DrinkCard implements OnInit {
 
   //*MÉTODOS -> Para emitir eventos
   onEditar() { this.editar.emit(this.bebida.id); };
+  
   onEliminar() { 
     this.SERVICIO_BEBIDAS.deleteDrink(this.bebida.id!).subscribe({
       next: () => {

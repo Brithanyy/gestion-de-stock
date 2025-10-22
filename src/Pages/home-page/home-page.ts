@@ -83,6 +83,7 @@ export class HomePage implements OnInit {
   verDetalle(idBebida : string | undefined) { this.ROUTER.navigate(['/detailDrinkPage', idBebida, this.idUsuarioLogueado]); };
 
   eliminarBebida(id?: string) {
+    
      if (!id) return;
     this.bebidas = this.bebidas.filter(b => b.id !== id);
     this.bebidasFiltradas = this.bebidasFiltradas.filter(b => b.id !== id);

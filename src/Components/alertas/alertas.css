@@ -23,11 +23,11 @@
 
 /* Tipos de alerta */
 .alerta.exito {
-  background-color: var(--color-exito) /* verde */
+  background-color: green /* verde */
 }
 
 .alerta.error {
-  background-color: var(--color-error) /* rojo */
+  background-color: red /* rojo */
 }
 
 

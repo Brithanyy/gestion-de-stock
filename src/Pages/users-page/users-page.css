@@ -1,16 +1,16 @@
 /* === CONTENEDOR PRINCIPAL === */
 .usuarios-container {
+
   position: relative;
-  min-height: calc(100vh - 160px); /* espacio para navbar y footer */
-  margin-left: 130px; /* espacio para la sidebar */
-  margin-top: 100px; /* espacio para el navbar */
-  margin-bottom: 80px; /* espacio para el footer */
+  min-height: calc(100vh - 160px);
+  margin-top: 0;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra horizontalmente el contenido */
+  align-items: stretch; 
   justify-content: flex-start;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.02);   
   color: var(--color-texto);
 }
 
@@ -26,19 +26,21 @@
 
 .usuarios-header h2 {
   color: #1c1c1c;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0;
 }
 
 .btn-agregar {
+
   background-color: var(--color-naranja);
   color: #fff;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .btn-agregar:hover {
@@ -48,10 +50,10 @@
 /* === TABLA DE USUARIOS === */
 .tabla-usuarios {
   width: 100%;
-  max-width: 900px;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
 }
 
 /* CABECERA DE TABLA */
@@ -62,7 +64,7 @@
   color: #fff;
   font-weight: 600;
   text-align: center;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
 }
 
 /* FILAS DE TABLA */
@@ -73,7 +75,7 @@
   align-items: center;
   text-align: center;
   background-color: #1c1c1c;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   transition: background-color 0.2s ease;
 }

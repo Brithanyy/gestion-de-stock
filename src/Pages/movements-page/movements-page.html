@@ -1,1 +1,44 @@
-<p>movements-page works!</p>
+<main class="movimientos-container">
+  
+  <!-- Encabezado -->
+  <section class="movimientos-header">
+    <h2>Movimientos</h2>
+  </section>
+
+  <!-- Tabla -->
+  <section class="tabla-movimientos">
+
+    <!-- Encabezado de la tabla -->
+    <div class="tabla-header">
+      <div>Nombre</div>
+      <div>Movimiento</div>
+      <div>Cantidad</div>
+      <div>Fecha</div>
+      <div>Usuario</div>
+      <div>Acción</div>
+    </div>
+
+    <!-- Filas dinámicas -->
+    @for (movimiento of movimientos; track $index) {
+
+      <div class="tabla-fila">
+        <div>{{ movimiento.nameDrink }}</div>
+
+        @if(movimiento.typeMotion === 'Ingreso') {
+            <div class="ingreso">+ {{ movimiento.typeMotion }}</div>        }
+        @else {
+            <div class="egreso">- {{ movimiento.typeMotion }}</div>  
+        }
+        <div>{{ movimiento.amount }}</div>
+        <div>{{ movimiento.movementDate }}</div>
+        <div>{{ movimiento.nameUser }}</div>
+        <div class="accion">
+            <i class="fa-solid fa-trash eliminar" (click)="eliminarMovimiento(movimiento)"></i>
+        </div>
+
+    </div>
+    }
+
+  </section>
+
+</main>

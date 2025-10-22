@@ -8,18 +8,22 @@ import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
   templateUrl: './grafico-total-bebidas.html',
   styleUrl: './grafico-total-bebidas.css'
 })
-export class GraficoTotalBebidas implements OnInit{
+export class GraficoTotalBebidas implements OnInit {
+
   readonly servicioBebidas : ServicioBebidas = inject(ServicioBebidas);
 
   bebidas: any[] = [];
 
   ngOnInit(): void {
+
     google.charts.load('current', { packages: ['corechart'] });
     this.obtenerBebidas();
   }
 
   grafico() {
+
     const dataArray: any[][] = [['Bebida', 'Cantidad', { role: 'tooltip', type: 'string' }]];
+
     this.bebidas.forEach(b => {
     dataArray.push([b.name, b.stock, `${b.name}: ${b.stock} unidades`]);
   });
@@ -39,13 +43,16 @@ export class GraficoTotalBebidas implements OnInit{
   chart.draw(data, options);
 
   }
+
   obtenerBebidas() {
+
     this.servicioBebidas.getAllDrinks().subscribe({
+
       next: (bebidas) => {
         this.bebidas = bebidas;
         google.charts.setOnLoadCallback(() => this.grafico());
       }
-    })
+    });
   }
   
 }

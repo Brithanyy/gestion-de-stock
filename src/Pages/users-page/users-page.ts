@@ -4,7 +4,7 @@ import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Alerta } from '../../Services/alerta/alerta';
 import { CommonModule } from '@angular/common';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-users-page',
@@ -31,7 +31,11 @@ export class UsersPage implements OnInit {
 
   //*MÉTODOS
 
-  ngOnInit(): void { this.listarUsuarios(); }
+  ngOnInit(): void { 
+    
+    this.listarUsuarios(); 
+
+  }
 
   eliminarUsuario(usuario : Usuario) {
 
@@ -57,5 +61,10 @@ export class UsersPage implements OnInit {
   };
 
   crearUsuarioPage() { this.router.navigate(['/newUser']); };
+
+  volverAtras() {
+
+
+  }
 
 }

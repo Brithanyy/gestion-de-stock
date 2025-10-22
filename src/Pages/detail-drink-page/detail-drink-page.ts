@@ -52,7 +52,7 @@ export class DetailDrinkPage implements OnInit {
 
       next: (bebidaDevuelta : Bebida) => { this.detailBebida = bebidaDevuelta; },
 
-      error: (errorDevuelto) => { this.ALERTA.mostrar("Error al cargar las bebidas.", "danger"); }
+      error: (errorDevuelto) => { this.ALERTA.mostrar("Error al cargar la bebida.", "danger"); }
     });
   };
 

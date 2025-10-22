@@ -1,0 +1,123 @@
+.movimientos-container {
+  position: relative;
+  min-height: calc(100vh - 160px);
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  justify-content: flex-start;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.02);   
+  color: var(--color-texto);
+}
+
+/* ===== Título ===== */
+.movimientos-header h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.movimientos-header h2 {
+  color: #1c1c1c;
+  font-size: 2rem;
+}
+
+/* ===== Tabla ===== */
+.tabla-movimientos {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+}
+
+/* ===== Encabezado ===== */
+.tabla-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1.2fr 1.2fr 0.8fr;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ===== Filas ===== */
+.tabla-fila {
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1.2fr 1.2fr 0.8fr;
+  align-items: center;
+  text-align: center;
+  background-color: #1c1c1c;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+/* Hover fila */
+.tabla-fila:hover {
+color: black;
+  background-color: var(--color-primario);
+}
+
+/* ===== Acción (icono eliminar) ===== */
+.accion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eliminar {
+  color: var(--color-error);
+}
+
+.acciones i:hover {
+  transform: scale(1.2);
+}
+
+.ingreso {
+
+    width: 50%;
+    margin: 0 auto;
+    background-color: green; 
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    align-items: center;
+}
+
+.egreso {
+
+    width: 50%;
+    margin: 0 auto;
+    background-color: red; 
+    color: #fff;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    align-items: center;
+}
+
+.ingreso {
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  color: #27ae60; /* verde */
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.egreso {
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  color: #e74c3c; /* rojo */
+  font-weight: 600;
+  color: #ffffff;
+}

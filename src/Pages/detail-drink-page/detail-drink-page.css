@@ -49,7 +49,6 @@
   padding: 1.5rem;
 }
 
-/* imagen */
 .img-wrap {
   flex: 0 0 160px;
   display: flex;
@@ -58,13 +57,12 @@
 }
 
 .img-wrap img {
-  width: 130px; /* 🔹 achicamos la imagen */
+  width: 130px; 
   height: auto;
   object-fit: contain;
   border-radius: 10px;
 }
 
-/* info */
 .info {
   flex: 0 0 350px;
   display: flex;
@@ -74,7 +72,6 @@
   text-align: left;
 }
 
-/* textos */
 .info h3.brand {
   font-size: 1.05rem;
   color: #1e1e1e;

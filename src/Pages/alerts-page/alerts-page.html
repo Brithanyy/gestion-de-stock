@@ -2,7 +2,7 @@
   
   <!-- Encabezado -->
   <section class="bebidas-header">
-    <h2>⚠️ Bebidas próximas a agotarse ⚠️</h2>
+    <h2>Bebidas próximas a agotarse</h2>
   </section>
 
   <!-- Tabla -->
@@ -17,14 +17,17 @@
     </div>
 
     <!-- Filas dinámicas -->
-    <div class="tabla-fila" *ngFor="let bebida of bebidasConAlerta; let i = index">
-      <div>{{ bebida.name }}</div>
-      <div>{{ bebida.category }}</div>
-      <div>{{ bebida.brand }}</div>
-      <div [ngClass]="{ 'stock-bajo': bebida.stock <= 5, 'stock-ok': bebida.stock > 5 }">
-        {{ bebida.stock }}
-      </div>
+    @for (bebida of bebidasConAlerta; track $index) {
+
+      <div class="tabla-fila">
+        <div>{{ bebida.name }}</div>
+        <div>{{ bebida.category }}</div>
+        <div>{{ bebida.brand }}</div>
+        <div [ngClass]="{ 'stock-bajo': bebida.stock <= 5, 'stock-ok': bebida.stock > 5 }">
+            {{ bebida.stock }}
+        </div>
     </div>
+    }
 
   </section>
 
