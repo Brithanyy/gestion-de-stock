@@ -26,8 +26,8 @@
       "brand": "Bacardí",
       "milliliters": 980,
       "alcoholContent": 40,
-      "price": 19.000,
-      "stock": 24,
+      "price": 19,
+      "stock": 5,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -39,7 +39,7 @@
       "brand": "Bacardí",
       "milliliters": 980,
       "alcoholContent": 40,
-      "price": 19.000,
+      "price": 19,
       "stock": 24,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_989106-MLA95840052003_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -52,8 +52,8 @@
       "brand": "Havana Club",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 13.000,
-      "stock": 10,
+      "price": 13,
+      "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -65,8 +65,8 @@
       "brand": "Havana Club",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 13.000,
-      "stock": 10,
+      "price": 13,
+      "stock": 5,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -78,7 +78,7 @@
       "brand": "Havana Club",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 13.000,
+      "price": 13,
       "stock": 10,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_806569-MLA95380750219_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -91,7 +91,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 18.300,
+      "price": 18.3,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_603953-MLA95353776909_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -104,7 +104,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.400,
+      "price": 22.4,
       "stock": 120,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_694410-MLA92804617362_092025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -117,7 +117,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.200,
+      "price": 22.2,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_667933-MLA95355426005_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -130,7 +130,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.900,
+      "price": 22.9,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_868098-MLU74110451910_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -143,7 +143,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 22.400,
+      "price": 22.4,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_786710-MLA51294348898_082022-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -156,7 +156,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 40.000,
+      "price": 40,
       "stock": 21,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_752476-MLU74154717467_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -169,7 +169,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 22.790,
+      "price": 22.79,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_923262-MLU75127711797_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -195,7 +195,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 28.000,
+      "price": 28,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_905134-MLU78894980450_092024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -208,7 +208,7 @@
       "brand": "Absolut",
       "milliliters": 700,
       "alcoholContent": 38,
-      "price": 40.000,
+      "price": 40,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_939837-MLA92888233413_092025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -221,7 +221,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 7.000,
+      "price": 7,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912460-MLU74134643844_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -234,7 +234,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 13.900,
+      "price": 13.9,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_769569-MLA94469010533_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -247,7 +247,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 9.700,
+      "price": 9.7,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_868127-MLA95518473496_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -260,7 +260,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 10.500,
+      "price": 10.5,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_977939-MLA74110453968_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -273,7 +273,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 9.800,
+      "price": 9.8,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_652274-MLU74959507165_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -286,7 +286,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 9.800,
+      "price": 9.8,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_855024-MLA69942907892_062023-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -299,7 +299,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 9.800,
+      "price": 9.8,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_843963-MLU78686612031_082024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -312,7 +312,7 @@
       "brand": "Skyy",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 9.800,
+      "price": 9.8,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_913079-MLA95634764171_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -325,7 +325,7 @@
       "brand": "Malibu",
       "milliliters": 750,
       "alcoholContent": 20,
-      "price": 17.800,
+      "price": 17.8,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_689860-MLA95833122881_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -338,7 +338,7 @@
       "brand": "José Cuervo",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 47.000,
+      "price": 47,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_605949-MLA94044801132_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -351,7 +351,7 @@
       "brand": "José Cuervo",
       "milliliters": 750,
       "alcoholContent": 40,
-      "price": 40.000,
+      "price": 40,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_885408-MLA95241534317_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -364,7 +364,7 @@
       "brand": "Bombay Sapphire",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 38.500,
+      "price": 38.5,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_918232-MLA80222844728_112024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -377,7 +377,7 @@
       "brand": "Bombay Sapphire",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 38.500,
+      "price": 38.5,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_878946-MLA77678965804_072024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -390,7 +390,7 @@
       "brand": "Malaria",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 42.000,
+      "price": 42,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_903745-MLA84002056417_042025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -403,7 +403,7 @@
       "brand": "Malaria",
       "milliliters": 700,
       "alcoholContent": 47,
-      "price": 52.000,
+      "price": 52,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_769671-MLA89945672795_082025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -416,7 +416,7 @@
       "brand": "Restinga",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 19.000,
+      "price": 19,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_602317-MLA94468667537_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -429,7 +429,7 @@
       "brand": "Restinga",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 26.000,
+      "price": 26,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_683652-MLA86303810177_062025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -442,7 +442,7 @@
       "brand": "Beefeater ",
       "milliliters": 700,
       "alcoholContent": 45,
-      "price": 58.000,
+      "price": 58,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_801416-MLA95961079379_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -455,7 +455,7 @@
       "brand": "Beefeater ",
       "milliliters": 700,
       "alcoholContent": 40,
-      "price": 20.000,
+      "price": 20,
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_987359-MLA95495270890_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
@@ -463,44 +463,54 @@
   ],
   "Movimientos": [
     {
-      "id": "eb84",
-      "idDrink": "5",
-      "nameDrink": "Ron Havana Club Añejo 7 Años",
-      "typeMotion": "Egreso",
-      "amount": 6,
-      "movementDate": "2025-10-23T00:21:54.367Z"
+      "id": "6abe",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 10,
+      "movementDate": "2025-10-23T21:01:39.044Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     },
     {
-      "id": "fed8",
+      "id": "10c5",
+      "idDrink": "4",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Egreso",
+      "amount": 5,
+      "movementDate": "2025-10-23T21:01:43.863Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "fb26",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 10,
+      "movementDate": "2025-10-23T21:02:54.563Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "979c",
       "idDrink": "1",
       "nameDrink": "Ron Bacardí Carta Oro",
       "typeMotion": "Ingreso",
       "amount": 10,
-      "movementDate": "2025-10-23T00:22:27.924Z"
+      "movementDate": "2025-10-23T21:05:58.466Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     },
     {
-      "id": "34b1",
-      "idDrink": "5",
-      "nameDrink": "Ron Havana Club Añejo 7 Años",
-      "typeMotion": "Ingreso",
-      "amount": 10,
-      "movementDate": "2025-10-23T00:22:32.078Z"
-    },
-    {
-      "id": "99f4",
-      "idDrink": "5",
-      "nameDrink": "Ron Havana Club Añejo 7 Años",
-      "typeMotion": "Egreso",
-      "amount": 10,
-      "movementDate": "2025-10-23T00:23:47.911Z"
-    },
-    {
-      "id": "6faf",
+      "id": "8fd5",
       "idDrink": "1",
       "nameDrink": "Ron Bacardí Carta Oro",
       "typeMotion": "Egreso",
-      "amount": 20,
-      "movementDate": "2025-10-23T00:24:34.840Z"
+      "amount": 7,
+      "movementDate": "2025-10-23T21:06:09.411Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ]
 }

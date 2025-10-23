@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
 
   tipoUsuario = computed(() => this.usuario()?.profile);
 
-  idUsuarioLogueado : string = '';
+  idUsuarioLogueado : string = this.ACTIVATED_ROUTE.snapshot.params['id'];
 
   bebidas: Bebida[] = [];
 

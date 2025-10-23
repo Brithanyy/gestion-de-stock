@@ -114,7 +114,7 @@ export class DrinkCard implements OnInit {
 
           this.SERVICIO_MOVIMIENTOS.postMotion(ingresoMovimiento).subscribe({
   
-            next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+            next: (movimientoDevuelto : Movimiento) => {  },
   
             error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
           });
@@ -126,6 +126,8 @@ export class DrinkCard implements OnInit {
   
         error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
       });
+
+      console.log(this.usuarioLogueado.username);
     };
   
   decrementarStock(bebida : Bebida, cantidad : number) {
@@ -152,12 +154,14 @@ export class DrinkCard implements OnInit {
       this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
   
         next: (bebidaDevuelta : Bebida) => { 
+
+          if(bebida.stock <= 5) this.ALERTA.mostrar("Advertencia: Quedan pocas unidades de la bebida " + bebida.name, "danger");
   
           this.bebidaActualizada.emit(); 
 
           this.SERVICIO_MOVIMIENTOS.postMotion(egresoMovimiento).subscribe({
   
-            next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+            next: (movimientoDevuelto : Movimiento) => {  },
   
             error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
           });
