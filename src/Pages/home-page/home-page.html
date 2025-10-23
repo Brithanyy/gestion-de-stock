@@ -18,11 +18,8 @@
       <app-drink-card
         [bebida]="bebida"
         [esAdmin]="esAdmin()"
-        (editar)="editarBebida($event)"
-        (eliminar)="eliminarBebida($event)"
-        (verDetalle)="verDetalle($event)"
-        (aumentarStock)="aumentarStock($event.bebida, $event.cantidad)"
-        (decrementarStock)="decrementarStock($event.bebida, $event.cantidad)">
+        [idUser]="idUsuarioLogueado"
+        (bebidaActualizada)="obtenerBebidas()">
       </app-drink-card>
     }
   </div>

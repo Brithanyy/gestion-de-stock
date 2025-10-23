@@ -27,47 +27,8 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19.24,
-      "stock": 14,
+      "stock": 24,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
-      "createdAt": "2025-10-10T18:00:00Z"
-    },
-    {
-      "id": "2",
-      "name": "Ron Bacardí Carta Blanca",
-      "type": "Con alcohol",
-      "category": "Ron",
-      "brand": "Bacardí",
-      "milliliters": 980,
-      "alcoholContent": 40,
-      "price": 19.24,
-      "stock": 20,
-      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_609744-MLU74226383235_012024-F.webp",
-      "createdAt": "2025-10-10T18:00:00Z"
-    },
-    {
-      "id": "3",
-      "name": "Ron Havana Club Añejo Especial Dorado",
-      "type": "Con alcohol",
-      "category": "Ron",
-      "brand": "Havana Club",
-      "milliliters": 750,
-      "alcoholContent": 40,
-      "price": 15.799,
-      "stock": 5,
-      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
-      "createdAt": "2025-10-10T18:00:00Z"
-    },
-    {
-      "id": "4",
-      "name": "Ron Havana Club Original Añejo 3 Años",
-      "type": "Con alcohol",
-      "category": "Ron",
-      "brand": "Havana Club",
-      "milliliters": 750,
-      "alcoholContent": 40,
-      "price": 15.799,
-      "stock": 20,
-      "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_806569-MLA95380750219_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
     {
@@ -79,7 +40,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 36.9,
-      "stock": 6,
+      "stock": 10,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -157,7 +118,7 @@
       "milliliters": 700,
       "alcoholContent": 38,
       "price": 40,
-      "stock": 20,
+      "stock": 21,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_752476-MLU74154717467_012024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -216,34 +177,44 @@
   ],
   "Movimientos": [
     {
-      "id": "4cee",
-      "idDrink": "1",
-      "nameDrink": "Ron Bacardí Carta Oro",
+      "id": "eb84",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
       "typeMotion": "Egreso",
-      "amount": 80,
-      "movementDate": "2025-10-22T11:41:29.837Z",
-      "idUser": "1",
-      "nameUser": "Rouse02"
+      "amount": 6,
+      "movementDate": "2025-10-23T00:21:54.367Z"
     },
     {
-      "id": "9534",
+      "id": "fed8",
       "idDrink": "1",
       "nameDrink": "Ron Bacardí Carta Oro",
       "typeMotion": "Ingreso",
       "amount": 10,
-      "movementDate": "2025-10-22T16:04:22.223Z",
-      "idUser": "1",
-      "nameUser": "Rouse02"
+      "movementDate": "2025-10-23T00:22:27.924Z"
     },
     {
-      "id": "6b8e",
-      "idDrink": "7",
-      "nameDrink": "Vodka Absolut Vainilla",
+      "id": "34b1",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
       "typeMotion": "Ingreso",
-      "amount": 100,
-      "movementDate": "2025-10-22T23:22:37.527Z",
-      "idUser": "1",
-      "nameUser": "Rouse02"
+      "amount": 10,
+      "movementDate": "2025-10-23T00:22:32.078Z"
+    },
+    {
+      "id": "99f4",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Egreso",
+      "amount": 10,
+      "movementDate": "2025-10-23T00:23:47.911Z"
+    },
+    {
+      "id": "6faf",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 20,
+      "movementDate": "2025-10-23T00:24:34.840Z"
     }
   ]
 }

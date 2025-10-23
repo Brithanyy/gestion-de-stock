@@ -4,6 +4,11 @@ import { Bebida } from '../../Models/Bebida';
 import { CommonModule } from '@angular/common';
 import { Alerta } from '../../Services/alerta/alerta';
 import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServicioMovimientos } from '../../Services/movimientos/servicio-movimientos';
+import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
+import { Usuario } from '../../Models/Usuario';
+import { Movimiento } from '../../Models/Movimiento';
 
 @Component({
   selector: 'app-drink-card',
@@ -17,17 +22,28 @@ export class DrinkCard implements OnInit {
   private readonly FORM_BUILDER : FormBuilder = inject(FormBuilder);
   private readonly ALERTA = inject(Alerta);
   private readonly SERVICIO_BEBIDAS = inject(ServicioBebidas);
+  private readonly SERVICIO_USUARIOS = inject(ServicioUsuarios);
+  private readonly SERVICIO_MOVIMIENTOS = inject(ServicioMovimientos);
+  readonly ROUTER : Router = inject(Router);
+  readonly ACTIVATED_ROUTE : ActivatedRoute = inject(ActivatedRoute);
 
   bebidasActualizadas: Bebida[] = [];
 
+    usuarioLogueado : Usuario = {
+  
+        id: "",
+        username: "",
+        password: "",
+        profile: "ninguno",
+        isLoggedIn: false,
+        avatarUrl: ""
+    };
+
   @Input() bebida !: Bebida;
   @Input() esAdmin : boolean = false;
+  @Input() idUser : string = '';
 
-  @Output() editar = new EventEmitter<string | undefined>(); 
-  @Output() verDetalle = new EventEmitter<string | undefined>();
-  @Output() aumentarStock = new EventEmitter<{ bebida: Bebida, cantidad: number }>();
-  @Output() decrementarStock = new EventEmitter<{ bebida: Bebida, cantidad: number }>();
-  @Output() eliminar = new EventEmitter<string | undefined>();
+  @Output() bebidaActualizada = new EventEmitter<void>();
 
   formIngreso !: FormGroup;
   formEgreso !: FormGroup;
@@ -41,58 +57,118 @@ export class DrinkCard implements OnInit {
 
     this.formEgreso = this.FORM_BUILDER.group({
       cantidadEgreso: [1, [Validators.required, Validators.min(1)]]
-    });
-    
+    });    
+
+    this.obtenerUsuario();
   };
 
   //*MÉTODOS -> Para emitir eventos
-  onEditar() { this.editar.emit(this.bebida.id); };
+  editarBebida(idBebida : string | undefined) { this.ROUTER.navigate(['/editDrinkPage', idBebida]); };
   
-  onEliminar() { 
-    this.SERVICIO_BEBIDAS.deleteDrink(this.bebida.id!).subscribe({
-      next: () => {
-        this.ALERTA.mostrar(`✅ La bebida ${this.bebida.name} ha sido eliminada con éxito.`, "success");
-        this.eliminar.emit(this.bebida.id);
-      },
-      error: () => {
-        this.ALERTA.mostrar(`❌ Error al eliminar la bebida ${this.bebida.name}. Por favor, inténtelo de nuevo más tarde.`, "danger");
-      }
-    });
-  };
-  onVerDetalle() { this.verDetalle.emit(this.bebida.id); };
+  verDetalle(idBebida : string | undefined) { this.ROUTER.navigate(['/detailDrinkPage', idBebida, this.idUser]); };
+  
+  eliminarBebida(idBebida : string | undefined) {
+      
+      this.SERVICIO_BEBIDAS.deleteDrink(idBebida).subscribe({
 
-  onAumentar() {
+        next: (bebidaDevuelta : Bebida) => {
 
-    const cantidad = this.formIngreso.value.cantidadIngreso;
+          this.ALERTA.mostrar("Bebida eliminada con éxito", "success");
+          this.bebidaActualizada.emit(); 
+        },
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error eliminar la bebida.", "danger"); }
+      });
 
-    if (cantidad && cantidad > 0) {
-
-      this.aumentarStock.emit({ bebida: this.bebida, cantidad });
-      this.formIngreso.patchValue({ cantidadIngreso: 1 });
     };
-  };
+  
+  obtenerUsuario() {
+  
+      this.SERVICIO_USUARIOS.getUser(this.idUser).subscribe({
+  
+        next: (usuarioDevuelto : Usuario) => { this.usuarioLogueado = usuarioDevuelto; },
+  
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error obtener el usuario.", "danger"); }
+      });
+    };
+  
+  aumentarStock(bebida : Bebida, cantidad : number) {
+  
+      bebida.stock += cantidad;
+  
+      const ingresoMovimiento : Movimiento = {
+  
+        idDrink: bebida.id!,              
+        nameDrink: bebida.name,          
+        typeMotion: 'Ingreso', 
+        amount: cantidad,              
+        movementDate: new Date(Date.now()),         
+        idUser: this.usuarioLogueado.id,             
+        nameUser: this.usuarioLogueado.username,         
+      };
+  
+      this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
+  
+        next: (bebidaDevuelta : Bebida) => { 
+   
+          this.bebidaActualizada.emit(); 
 
-  onDisminuir() {
+          this.SERVICIO_MOVIMIENTOS.postMotion(ingresoMovimiento).subscribe({
+  
+            next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+  
+            error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
+          });
 
-    const cantidad = this.formEgreso.value.cantidadEgreso;
+          this.formIngreso.patchValue({
+            cantidadIngreso: 1
+          });
+        },
+  
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
+      });
+    };
+  
+  decrementarStock(bebida : Bebida, cantidad : number) {
+  
+      if(cantidad > bebida.stock) {
+  
+        this.ALERTA.mostrar("No puedes egresar más que el stock disponible", "danger");
+        return
+      }
+  
+      bebida.stock -= cantidad;
+  
+      const egresoMovimiento : Movimiento = {
+  
+        idDrink: bebida.id!,              
+        nameDrink: bebida.name,          
+        typeMotion: 'Egreso', 
+        amount: cantidad,              
+        movementDate: new Date(Date.now()),         
+        idUser: this.usuarioLogueado.id,             
+        nameUser: this.usuarioLogueado.username,         
+      };
+  
+      this.SERVICIO_BEBIDAS.putDrink(bebida).subscribe({
+  
+        next: (bebidaDevuelta : Bebida) => { 
+  
+          this.bebidaActualizada.emit(); 
 
-    if(cantidad > this.bebida.stock) {
-      this.ALERTA.mostrar("⚠️ No hay suficiente stock disponible.", "danger");
-      return;
-    } 
+          this.SERVICIO_MOVIMIENTOS.postMotion(egresoMovimiento).subscribe({
+  
+            next: (movimientoDevuelto : Movimiento) => { this.ALERTA.mostrar("Movimiento registrado con éxito", "success"); },
+  
+            error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el movimiento", "danger"); }
+          });
 
-     // Emitir evento para disminuir el stock
-    this.decrementarStock.emit({ bebida: this.bebida, cantidad });
-
-  // Mostrar alerta si el stock restante será bajo (<= 5 pero >= 0)
-    if (this.bebida.stock <= 5 && this.bebida.stock >= 0) {
-    this.ALERTA.mostrar(
-      `⚠️ Quedan pocas unidades de ${this.bebida.name}. Stock actual: ${this.bebida.stock}`,
-      "danger"
-    );
-  }
-
-    this.formEgreso.patchValue({ cantidadEgreso: 1 });
-  };
+          this.formEgreso.patchValue({
+            cantidadEgreso: 1
+          });
+        },
+  
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error al registrar el ingreso", "danger"); }
+      });
+    };
 
 }

@@ -10,20 +10,20 @@
   <h5>Unidades en stock: {{ bebida.stock }}</h5>
 
   @if (esAdmin) {
-    <button class="editar" (click)="onEditar()">Editar</button>
-    <button class="eliminar" (click)="onEliminar()">Eliminar</button>
-    <button class="detalle" (click)="onVerDetalle()">Ver detalle</button>
+    <button class="editar" (click)="editarBebida(bebida.id)">Editar</button>
+    <button class="eliminar" (click)="eliminarBebida(bebida.id)">Eliminar</button>
+    <button class="detalle" (click)="verDetalle(bebida.id)">Ver detalle</button>
   }
   @else {
-    <button class="detalle" (click)="onVerDetalle()">Ver detalle</button>
+    <button class="detalle" (click)="verDetalle(bebida.id)">Ver detalle</button>
   }
 
-  <form [formGroup]="formIngreso" (ngSubmit)="onAumentar()">
+  <form [formGroup]="formIngreso" (ngSubmit)="aumentarStock(bebida, formIngreso.value.cantidadIngreso)">
     <button type="submit">+</button>
     <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
   </form>
 
-  <form [formGroup]="formEgreso" (ngSubmit)="onDisminuir()">
+  <form [formGroup]="formEgreso" (ngSubmit)="decrementarStock(bebida, formEgreso.value.cantidadEgreso)">
     <button type="submit" [disabled]="formEgreso.value.cantidadEgreso > bebida.stock">-</button>
     <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
 
