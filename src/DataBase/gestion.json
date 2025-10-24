@@ -48,7 +48,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 24,
+      "stock": 23,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_989106-MLA95840052003_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -467,19 +467,6 @@
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_987359-MLA95495270890_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
-    },
-    {
-      "id": "d956",
-      "name": "Licor de frutilla",
-      "type": "Con alcohol",
-      "category": "Licor",
-      "brand": "Tres plumas",
-      "milliliters": 2,
-      "alcoholContent": 2,
-      "price": 5000,
-      "stock": 14,
-      "imageUrl": "https://quirinobebidas.com.ar/wp-content/uploads/2022/09/productos-2022-09-22T103842.831.png",
-      "createdAt": "2025-10-24T21:59:47.476Z"
     }
   ],
   "Movimientos": [
@@ -582,6 +569,16 @@
       "movementDate": "2025-10-24T22:07:43.839Z",
       "idUser": "c4f6",
       "nameUser": "Adri"
+    },
+    {
+      "id": "97a6",
+      "idDrink": "2",
+      "nameDrink": "Ron Bacardí Carta Blanca",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T22:28:36.550Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ]
 }
