@@ -70,7 +70,7 @@
 }
 
 .stock-bajo {
-  width: 50%;
+  width: 30%;
   margin: 0 auto;
   background-color: red; 
   color: #fff;
@@ -80,8 +80,5 @@
   align-items: center;
 }
 
-.stock-bajo::before {
-  content: "⚠️";
-}
 
 

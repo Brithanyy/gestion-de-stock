@@ -39,12 +39,13 @@
   border-radius: 20px;
   font-size: 1.2rem;
   font-weight: 500;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .btn-agregar:hover {
   background-color: #ff8c32;
+  transform: scale(1.05);
 }
 
 /* === TABLA DE USUARIOS === */
@@ -108,11 +109,11 @@
 }
 
 .editar {
-  color: var(--color-naranja);
+  color: #ff8c32;
 }
 
 .eliminar {
-  color: var(--color-error);
+  color: red;
 }
 
 .acciones i:hover {

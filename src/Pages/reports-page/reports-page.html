@@ -1,3 +1,7 @@
+<div class="contenedorBtn">
+  <button (click)="exportarPDF()">Exportar a PDF</button>
+</div>
+
 <div class="reports-grid">
   <section class="chart-card">
     <h2>Representa el total de bebidas por categoria</h2>
@@ -9,10 +13,10 @@
     <app-grafico-total-bebidas></app-grafico-total-bebidas>
   </section>
 
-  <section>
+  <section class="chart-card">
     <app-grafico-numero-bebidas></app-grafico-numero-bebidas>
   </section>
-  <section>
+  <section class="chart-card">
     <app-grafico-productos-bajos></app-grafico-productos-bajos>
   </section>
 </div>

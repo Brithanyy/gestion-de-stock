@@ -1,16 +1,59 @@
-.reports-grid{
-
+.reports-grid {
   display: grid;
-  gap: 10rem;
   grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  padding: 50px;
-  max-width: 1500px;
+  gap: 5rem;
+  padding: 4rem;
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  background-color: var(--color-negro);
-  color: white;
+  background-color: #1c1c1c;
+  color: #ffffff;
   border-radius: 20px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+}
+
+/*Cada tarjeta de gráfico */
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /*centra título y gráfico */
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+/*Títulos de los reportes */
+.chart-card h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  width: 100%;
+}
+
+/*Contenedor del botón */
+.contenedorBtn {
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*Botón */
+button {
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: #f47227;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8c32;
+  transform: scale(1.05);
 }
 
