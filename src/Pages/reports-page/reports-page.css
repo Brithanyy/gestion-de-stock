@@ -1,16 +1,44 @@
-.reports-grid{
+.reports-grid {
 
   display: grid;
   gap: 10rem;
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
   padding: 50px;
-  max-width: 1500px;
+  max-width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
   background-color: var(--color-negro);
   color: white;
   border-radius: 20px;
   font-size: 1.5rem;
+}
+
+.contenedorBtn {
+
+  width: 20%;
+  height: auto;
+  margin: 0 auto;
+}
+
+button {
+
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: #f47227;
+  border: 1px #f47227 solid;
+  color: #ffffff;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff8c32;
+    border: 1px #ff8c32 solid;
 }
 
