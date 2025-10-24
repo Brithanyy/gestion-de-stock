@@ -41,14 +41,13 @@
 /*Botón */
 button {
   margin-bottom: 1.25rem;
-  width: 100%;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
   background-color: #f47227;
   border: none;
   color: #fff;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
