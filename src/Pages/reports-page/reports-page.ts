@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { GraficoTorta } from "../../Components/grafico-torta/grafico-torta";
 import { GraficoTotalBebidas } from "../../Components/grafico-total-bebidas/grafico-total-bebidas";
 import { GraficoNumeroBebidas } from "../../Components/grafico-numero-bebidas/grafico-numero-bebidas";
 import { GraficoProductosBajos } from "../../Components/grafico-productos-bajos/grafico-productos-bajos";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { EmailJS } from '../../Services/emailJS/email-js';
 
 @Component({
   selector: 'app-reports-page',
@@ -13,6 +14,8 @@ import jsPDF from 'jspdf';
   styleUrl: './reports-page.css'
 })
 export class ReportsPage {
+  private pdfActual: jsPDF | null = null;
+  private fechaFormateada: string = '';
 
   exportarPDF() {
 
@@ -64,4 +67,54 @@ export class ReportsPage {
     });
   };
 
+
+  generarPDF(): Promise<void> {
+  return new Promise((resolve) => {
+    const contenedorDashboard = document.querySelector('.reports-grid') as HTMLElement;
+    if (!contenedorDashboard) return;
+
+    // html2canvas con calidad JPEG para reducir peso
+    html2canvas(contenedorDashboard, { scale: 1 }).then(canvas => {
+      // Convertir a JPEG en vez de PNG y comprimir al 70%
+      const imgData = canvas.toDataURL('image/jpeg', 0.7); // 🔹 compresión 70%
+
+      const pdf = new jsPDF('landscape', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = imgWidth / imgHeight;
+
+      const margin = 10;
+      let pdfWidth = pageWidth - margin * 2;
+      let pdfHeight = pdfWidth / ratio;
+
+      if (pdfHeight > pageHeight - margin * 2) {
+        pdfHeight = pageHeight - margin * 2;
+        pdfWidth = pdfHeight * ratio;
+      }
+
+      const posX = (pageWidth - pdfWidth) / 2;
+      const posY = (pageHeight - pdfHeight) / 2;
+
+      pdf.addImage(imgData, 'JPEG', posX, posY, pdfWidth, pdfHeight);
+
+      const now = new Date();
+      this.fechaFormateada = `${now.getDate().toString().padStart(2,'0')}/${
+        (now.getMonth()+1).toString().padStart(2,'0')}/${now.getFullYear()} ${
+        now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}hs`;
+
+      this.pdfActual = pdf;
+      resolve();
+    });
+  });
+}
+
+  async descargarPDF() {
+    if (!this.pdfActual) await this.generarPDF();
+    this.pdfActual?.save(`Reporte del día ${this.fechaFormateada}.pdf`);
+  }
+
+  
 }
