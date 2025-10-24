@@ -2,6 +2,13 @@
   
   <!-- Encabezado -->
   <section class="movimientos-header">
+    <div class="barraBusqueda">
+    <input
+    type="text"
+    placeholder="Buscar por fecha o nombre de usuario."
+    [(ngModel)]="terminoBusqueda"
+    (input)="filtrarConBarraDeBusqueda()"/>
+    </div>
     <h2>Movimientos</h2>
   </section>
 
@@ -14,6 +21,7 @@
       <div>Movimiento</div>
       <div>Cantidad</div>
       <div>Fecha</div>
+      <div>Hora</div>
       <div>Usuario</div>
       <div>Acción</div>
     </div>
@@ -25,12 +33,13 @@
         <div>{{ movimiento.nameDrink }}</div>
 
         @if(movimiento.typeMotion === 'Ingreso') {
-            <div class="ingreso">+ {{ movimiento.typeMotion }}</div>        }
+            <div class="ingreso"> {{ movimiento.typeMotion }}</div>        }
         @else {
-            <div class="egreso">- {{ movimiento.typeMotion }}</div>  
+            <div class="egreso"> {{ movimiento.typeMotion }}</div>  
         }
         <div>{{ movimiento.amount }}</div>
-        <div>{{ movimiento.movementDate }}</div>
+        <div>{{ movimiento.movementDate | date:'dd/MM/yyyy' }}</div>
+        <div>{{ movimiento.movementDate | date:'HH:mm' }}</div>
         <div>{{ movimiento.nameUser }}</div>
         <div class="accion">
             <i class="fa-solid fa-trash eliminar" (click)="eliminarMovimiento(movimiento)"></i>
