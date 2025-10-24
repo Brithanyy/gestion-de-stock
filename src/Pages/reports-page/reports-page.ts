@@ -5,7 +5,6 @@ import { GraficoNumeroBebidas } from "../../Components/grafico-numero-bebidas/gr
 import { GraficoProductosBajos } from "../../Components/grafico-productos-bajos/grafico-productos-bajos";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { EmailJS } from '../../Services/emailJS/email-js';
 
 @Component({
   selector: 'app-reports-page',
