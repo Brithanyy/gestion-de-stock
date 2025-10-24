@@ -1,9 +1,9 @@
 <div class="edit-user-form-container">
 
   <h2>Editar / Agregar Usuario</h2>
-  @if (estoyEnEditar()) {
-    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
 
+  <!-- Formulario Editar -->
+  <form *ngIf="estoyEnEditar()" [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
     <!-- Username -->
     <div class="form-group">
       <label for="username">Nombre de usuario</label>
@@ -15,14 +15,14 @@
 
     <!-- Password -->
     <div class="form-group password-group">
-        <label for="password">Contraseña</label>
-    <div class="password-wrapper">
+      <label for="password">Contraseña</label>
+      <div class="password-wrapper">
         <input [type]="mostrarPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="Ingrese contraseña" />
         <i class="fa" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="mostrarPassword = !mostrarPassword"></i>
-    </div>
-        <small *ngIf="editUserForm.get('password')?.invalid && editUserForm.get('password')?.touched" class="error">
-    La contraseña es requerida.
-        </small>
+      </div>
+      <small *ngIf="editUserForm.get('password')?.invalid && editUserForm.get('password')?.touched" class="error">
+        La contraseña es requerida.
+      </small>
     </div>
 
     <!-- Perfil -->
@@ -37,17 +37,16 @@
     <!-- Botones -->
     <div class="form-buttons">
       <button type="submit" [disabled]="editUserForm.invalid">Guardar Cambios</button>
-      <button type="button" class="cancel" (click)="back()">Volver Atrás  </button>
+      <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
-
   </form>
-  } @else if (estoyEnAgregar()) {
-    <form [formGroup]="newUserForm" (ngSubmit)="agregarNuevoUsuario()">
 
+  <!-- Formulario Agregar -->
+  <form *ngIf="estoyEnAgregar()" [formGroup]="newUserForm" (ngSubmit)="agregarNuevoUsuario()">
     <!-- Username -->
     <div class="form-group">
-      <label for="username">Nombre de usuario</label>
-      <input type="text" id="username" formControlName="username" placeholder="Ingrese nombre de usuario" />
+      <label for="usernameNew">Nombre de usuario</label>
+      <input type="text" id="usernameNew" formControlName="username" placeholder="Ingrese nombre de usuario" />
       <small *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched" class="error">
         El nombre de usuario es requerido.
       </small>
@@ -55,20 +54,20 @@
 
     <!-- Password -->
     <div class="form-group password-group">
-        <label for="password">Contraseña</label>
-    <div class="password-wrapper">
-        <input [type]="mostrarPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="Ingrese contraseña" />
+      <label for="passwordNew">Contraseña</label>
+      <div class="password-wrapper">
+        <input [type]="mostrarPassword ? 'text' : 'password'" id="passwordNew" formControlName="password" placeholder="Ingrese contraseña" />
         <i class="fa" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="mostrarPassword = !mostrarPassword"></i>
-    </div>
-        <small *ngIf="newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched" class="error">
-    La contraseña es requerida.
-        </small>
+      </div>
+      <small *ngIf="newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched" class="error">
+        La contraseña es requerida.
+      </small>
     </div>
 
     <!-- Perfil -->
     <div class="form-group">
-      <label for="profile">Perfil</label>
-      <select id="profile" formControlName="profile">
+      <label for="profileNew">Perfil</label>
+      <select id="profileNew" formControlName="profile">
         <option value="admin">Admin</option>
         <option value="usuario">Empleado</option>
       </select>
@@ -77,12 +76,8 @@
     <!-- Botones -->
     <div class="form-buttons">
       <button type="submit" [disabled]="newUserForm.invalid">Agregar Usuario</button>
-      <button type="button" class="cancel" (click)="back()">Volver Atrás  </button>
+      <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
-
   </form>
-  }
-  
 
 </div>
-

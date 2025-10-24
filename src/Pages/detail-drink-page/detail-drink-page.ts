@@ -3,10 +3,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
 import { Alerta } from '../../Services/alerta/alerta';
 import { Bebida } from '../../Models/Bebida';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-detail-drink-page',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './detail-drink-page.html',
   styleUrl: './detail-drink-page.css'
 })

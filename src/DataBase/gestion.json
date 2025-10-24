@@ -15,6 +15,14 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "c4f6",
+      "username": "Adri",
+      "password": "adri123",
+      "profile": "admin",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
     }
   ],
   "Bebidas": [
@@ -27,7 +35,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 5,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -459,6 +467,19 @@
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_987359-MLA95495270890_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
+    },
+    {
+      "id": "d956",
+      "name": "Licor de frutilla",
+      "type": "Con alcohol",
+      "category": "Licor",
+      "brand": "Tres plumas",
+      "milliliters": 2,
+      "alcoholContent": 2,
+      "price": 5000,
+      "stock": 14,
+      "imageUrl": "https://quirinobebidas.com.ar/wp-content/uploads/2022/09/productos-2022-09-22T103842.831.png",
+      "createdAt": "2025-10-24T21:59:47.476Z"
     }
   ],
   "Movimientos": [
@@ -531,6 +552,36 @@
       "movementDate": "2025-10-24T17:02:57.558Z",
       "idUser": "2",
       "nameUser": "Brithany"
+    },
+    {
+      "id": "b3cd",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T22:07:41.224Z",
+      "idUser": "c4f6",
+      "nameUser": "Adri"
+    },
+    {
+      "id": "dc66",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T22:07:43.448Z",
+      "idUser": "c4f6",
+      "nameUser": "Adri"
+    },
+    {
+      "id": "287b",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T22:07:43.839Z",
+      "idUser": "c4f6",
+      "nameUser": "Adri"
     }
   ]
 }

@@ -129,3 +129,17 @@ button.detalle:hover {
   background-color: #f38240;
 }
 
+.form-group {
+  margin-top: 10px;
+}
+
+.input-group {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+}

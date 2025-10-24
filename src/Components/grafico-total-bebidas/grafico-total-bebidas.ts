@@ -30,14 +30,25 @@ export class GraficoTotalBebidas implements OnInit {
 
     const data = google.visualization.arrayToDataTable(dataArray);
 
-    const options = {
-      title: 'Total de Bebidas',
-      hAxis: { title: 'Bebida', textPosition: 'none' },
-      vAxis: { title: 'Cantidad' },
-      legend: 'none',
-      tooltip: { trigger: 'focus' },
-      colors: ['#f47227']
-    };
+      const options = {
+    title: 'Total de Bebidas',
+    titleTextStyle: { fontSize: 22, bold: true },
+    hAxis: {
+      title: 'Bebida',
+      titleTextStyle: { fontSize: 18, bold: true },
+      textStyle: { fontSize: 14 },
+      ticks: this.bebidas.map((_, i) => ({ v: i, f: 'Stock' })) // <-- aquí
+    },
+    vAxis: {
+      title: 'Cantidad',
+      titleTextStyle: { fontSize: 18, bold: true },
+      textStyle: { fontSize: 14 }
+    },
+    legend: 'none',
+    tooltip: { trigger: 'focus', textStyle: { fontSize: 14 } },
+    colors: ['#f47227'],
+    chartArea: { width: '70%', height: '70%' }
+  };
 
   const chart = new google.visualization.ColumnChart(document.getElementById('chart_div_total'));
   chart.draw(data, options);

@@ -29,6 +29,8 @@ export class UsersPage implements OnInit {
 
   readonly router : Router = inject(Router);
 
+  readonly usuarioActual = this.usuarioLogueado();
+
   //*MÉTODOS
 
   ngOnInit(): void { 
@@ -63,8 +65,11 @@ export class UsersPage implements OnInit {
   crearUsuarioPage() { this.router.navigate(['/newUser']); };
 
   volverAtras() {
-
-
+    this.router.navigate(['/homePage', this.usuarioActual?.id]);
   }
+
+  isUsuarioActivo(usuario: Usuario) {
+    return this.usuarioLogueado()?.id === usuario.id;
+ }
 
 }

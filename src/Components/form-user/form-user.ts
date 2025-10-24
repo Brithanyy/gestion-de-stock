@@ -10,7 +10,7 @@ import { TipoPerfil, Usuario } from '../../Models/Usuario';
   selector: 'app-form-user',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './form-user.html',
-  styleUrl: './form-user.css'
+  styleUrls: ['./form-user.css'] 
 })
 export class FormUser implements OnInit {
 
@@ -35,6 +35,9 @@ export class FormUser implements OnInit {
 
   readonly userUrl : string = 'assets/img/usuario.png';
 
+  isEditMode = false;
+  isAddMode = false;
+  
   editUserForm = this.formBuilder.nonNullable.group({
     'username': ['',[Validators.required]],
     'password': ['',[Validators.required]],
@@ -53,7 +56,12 @@ export class FormUser implements OnInit {
   get profileControl() { return this.editUserForm.get('profile'); };
 
   //*MÉTODOS
-  ngOnInit() { this.setearFormulario(); }
+  ngOnInit() { 
+    this.setearFormulario(); 
+    const id = this.route.snapshot.paramMap.get('id');
+    this.isEditMode = !!id;
+    this.isAddMode = !id;
+  }
   
    onSubmit() {
 
@@ -111,19 +119,9 @@ export class FormUser implements OnInit {
     };
   };
 
-  estoyEnEditar() {
+  estoyEnEditar() { return this.isEditMode; };
 
-    if(this.router.url.includes('editUser'))return true;
-
-    else return false;
-  };
-
-  estoyEnAgregar() {
-
-    if(this.router.url.includes('newUser')) return true;
-      
-    else return false;
-  };
+  estoyEnAgregar() { return this.isAddMode; };
 
   agregarNuevoUsuario() {
 

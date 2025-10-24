@@ -119,3 +119,19 @@
 .acciones i:hover {
   transform: scale(1.2);
 }
+
+.usuario-activo {
+  color: #10b981; /* verde */
+  font-weight: 700;
+}
+
+.usuario-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  margin-left: 8px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 4px rgba(16,185,129,0.08);
+}

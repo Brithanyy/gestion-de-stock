@@ -5,6 +5,7 @@
     <button class="btn-agregar" (click)="crearUsuarioPage()">
       <i class="fa-solid fa-user-plus"></i> Agregar nuevo usuario
     </button>
+     <button class="btn-agregar" (click)="volverAtras()">Back</button>
   </section>
 
   <section class="tabla-usuarios">
@@ -26,7 +27,10 @@
         <img [src]="usuario.avatarUrl || 'assets/img/usuario.png'" alt="Avatar" class="avatar" />
       </div>
 
-      <div>{{ usuario.username }}</div>
+      <div>
+        <span [class.usuario-activo]="isUsuarioActivo(usuario)">{{ usuario.username }}</span>
+        <span *ngIf="isUsuarioActivo(usuario)" class="usuario-dot" title="Activo"></span>
+      </div>
       <div>********</div>
       <div>{{ usuario.profile }}</div>
 

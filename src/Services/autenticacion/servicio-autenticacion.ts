@@ -14,74 +14,84 @@ export class ServicioAutenticacion {
   //Api de nuestro json-server
   private API_URL = 'http://localhost:3000/Usuarios';
 
-  //Señal que guarda el usuario logueado o null
-  private usuarioActual = signal<Usuario | null>(null);  
+  // Señal que guarda el usuario logueado o null
+  private usuarioActual = signal<Usuario | null>(null);
 
-   //Sirve para saber si alguien esta logueado
-  isLoggedIn = computed(() => this.usuarioActual() !== null);
+  // Computed para saber si hay un usuario logueado
+  readonly isLoggedIn = computed(() => this.usuarioActual() !== null);
 
-  //Servicio de alertas
-  readonly alerta : Alerta = inject(Alerta);
+  // Servicio de alertas
+  readonly alerta: Alerta = inject(Alerta);
 
-  readonly usuariosServicio : ServicioUsuarios = inject(ServicioUsuarios);
+  // Servicio de usuarios
+  readonly usuariosServicio: ServicioUsuarios = inject(ServicioUsuarios);
+
 
   //*MÉTODOS
   constructor(private http : HttpClient, private router : Router) {
+    this.restaurarSesion();
+  }
+  get usuario() { 
+    return this.usuarioActual.asReadonly(); 
+  }
 
-  // Restauramos la sesión del localStorage
-  const usuarioGuardado = localStorage.getItem('usuario');  
+  private restaurarSesion() {
+    const usuarioGuardado = localStorage.getItem('usuario');
+    if (!usuarioGuardado || usuarioGuardado === 'undefined') return;
 
-  if(usuarioGuardado && usuarioGuardado !== 'undefined') {
+    const usuarioParsed: Usuario = JSON.parse(usuarioGuardado);
 
-    const usuario = JSON.parse(usuarioGuardado);
+    // Verificamos que exista id
+    if (!usuarioParsed.id) {
+      localStorage.removeItem('usuario');
+      return;
+    }
 
-    // Verificamos con el backend si el usuario existe
-
-    this.http.get<Usuario>(`${this.API_URL}/${usuario.id}`).subscribe({
+    // Validamos con backend
+    this.http.get<Usuario>(`${this.API_URL}/${usuarioParsed.id}`).subscribe({
       next: (usuarioBackend) => {
-        // Si el usuario existe, lo seteamos
-        this.usuarioActual.set(usuarioBackend);
+        if (usuarioBackend) {
+          // Forzamos id como string
+          const usuarioFinal = { ...usuarioBackend, id: String(usuarioBackend.id) };
+          this.usuarioActual.set(usuarioFinal);
+        } else {
+          this.usuarioActual.set(null);
+          localStorage.removeItem('usuario');
+        }
       },
       error: () => {
-        // Si no existe o hay error (por ejemplo, backend caído), deslogueamos
         this.usuarioActual.set(null);
         localStorage.removeItem('usuario');
       }
     });
   }
-}
-  get usuario() { 
-    return this.usuarioActual.asReadonly(); 
+
+
+   login(username: string, password: string) {
+    this.http.get<Usuario[]>(`${this.API_URL}?username=${username}&password=${password}`)
+      .subscribe({
+        next: (usuarios) => {
+          if (usuarios.length > 0) {
+            const usuario = { ...usuarios[0], id: String(usuarios[0].id) };
+
+            // Guardamos en señal y localStorage
+            this.usuarioActual.set(usuario);
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+
+            // Navegamos
+            this.router.navigate(['/homePage', usuario.id]);
+          } else {
+            this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
+          }
+        },
+        error: () => this.alerta.mostrar('Error de conexión', 'danger')
+      });
   }
 
-login(nombre: string, password: string) {
-  this.http.get<Usuario[]>(`${this.API_URL}?username=${nombre}&password=${password}`)
-    .subscribe({
-      next: (usuarios) => {
-        if (usuarios.length > 0) {
-          const usuario = usuarios[0];
-
-          // Guardamos el usuario logueado en la señal
-          this.usuarioActual.set(usuario);
-
-          // Guardamos en localStorage
-          localStorage.setItem('usuario', JSON.stringify(usuario));
-
-          this.router.navigate(['/homePage', usuario.id]);
-        } else {
-          this.alerta.mostrar('Usuario o contraseña incorrecta', 'danger');
-        }
-      },
-      error: () => this.alerta.mostrar('Error de conexión', 'danger')
-    });
-}
-
   logOut() {
-
     this.usuarioActual.set(null);
     localStorage.removeItem('usuario');
     this.router.navigate(['/auth/loginPage']);
   }
-
 
 }

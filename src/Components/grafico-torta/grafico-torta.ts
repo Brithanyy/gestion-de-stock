@@ -22,37 +22,45 @@ export class GraficoTorta implements OnInit {
   }
 
 
-   grafico() {
-    // Contar bebidas por categoría usando un objeto simple
-    const counts: Record<string, number> = {};
+  grafico() {
+  const counts: Record<string, number> = {};
 
-    this.bebidas.forEach(b => {
-      const categoria = (b.category ?? b.categoria ?? 'Sin categoría') as string;
-      counts[categoria] = (counts[categoria] || 0) + 1;
-    });
+  this.bebidas.forEach(b => {
+    const categoria = (b.category ?? b.categoria ?? 'Sin categoría') as string;
+    counts[categoria] = (counts[categoria] || 0) + 1;
+  });
 
-    // Convertir a formato para Google Charts
-    const dataArray: (string | number)[][] = [['Categoría', 'Cantidad'], 
-      ...Object.entries(counts).map(([cat, cnt]) => [cat, cnt])
-    ];
+  const dataArray: (string | number)[][] = [['Categoría', 'Cantidad'], 
+    ...Object.entries(counts).map(([cat, cnt]) => [cat, cnt])
+  ];
 
-    // Asegurarse que google y el elemento existen
-    const container = document.getElementById('chart_div_torta');
-    if (!container || typeof google === 'undefined' || !google.visualization) {
-      console.warn('No se puede dibujar el gráfico: falta google o el contenedor #chart_div');
-      return;
-    }
-    // Paleta de ejemplo (ajusta los hex a tu diseño)
-    const palette = ['#e85d04', '#f48c06', '#faa307', '#ffba08', '#9d0208', '#6a040f','#d00000', '#dc2f02', ];
-     // calcular tamaño responsivo basado en el ancho real del contenedor
-    const width = container.clientWidth;
-    const height = Math.max(400, Math.round(width * 0.6)); // ajusta proporción (0.6) a tu gusto
-
-    const data = google.visualization.arrayToDataTable(dataArray);
-    const options = { title: 'Bebidas por Categoría', is3D: true, colors: palette, width, height };
-    const chart = new google.visualization.PieChart(container);
-    chart.draw(data, options);
+  const container = document.getElementById('chart_div_torta');
+  if (!container || typeof google === 'undefined' || !google.visualization) {
+    console.warn('No se puede dibujar el gráfico: falta google o el contenedor #chart_div');
+    return;
   }
+
+  const palette = ['#e85d04', '#f48c06', '#faa307', '#ffba08', '#9d0208', '#6a040f','#d00000', '#dc2f02'];
+  const width = container.clientWidth;
+  const height = Math.max(400, Math.round(width * 0.6));
+
+  const data = google.visualization.arrayToDataTable(dataArray);
+
+  const options = {
+    title: 'Bebidas por Categoría',
+    is3D: true,
+    colors: palette,
+    width,
+    height,
+    titleTextStyle: { fontSize: 20, bold: true }, 
+    legend: { textStyle: { fontSize: 16, bold: true } },
+    pieSliceText: 'percentage',
+    pieSliceTextStyle: { fontSize: 12, bold: true }  
+  };
+
+  const chart = new google.visualization.PieChart(container);
+  chart.draw(data, options);
+}
 
   obtenerBebidas() {
     this.servicioBebidas.getAllDrinks().subscribe({

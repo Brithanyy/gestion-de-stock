@@ -18,17 +18,39 @@
     <button class="detalle" (click)="verDetalle(bebida.id)">Ver detalle</button>
   }
 
+  <!-- FORM INGRESO -->
   <form [formGroup]="formIngreso" (ngSubmit)="aumentarStock(bebida, formIngreso.value.cantidadIngreso)">
-    <button type="submit">+</button>
-    <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
+    <div class="form-group">
+      <label>Agregar stock</label>
+      <div class="input-group">
+        <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
+        <button type="submit" [disabled]="formIngreso.invalid">+</button>
+      </div>
+
+      <small *ngIf="formIngreso.get('cantidadIngreso')?.invalid && formIngreso.get('cantidadIngreso')?.touched" class="error">
+        Ingrese una cantidad válida mayor a 0.
+      </small>
+    </div>
   </form>
 
+  <!-- FORM EGRESO -->
   <form [formGroup]="formEgreso" (ngSubmit)="decrementarStock(bebida, formEgreso.value.cantidadEgreso)">
-    <button type="submit" [disabled]="formEgreso.value.cantidadEgreso > bebida.stock">-</button>
-    <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
+    <div class="form-group">
+      <label>Quitar stock</label>
+      <div class="input-group">
+        <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
+        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso > bebida.stock">-</button>
+      </div>
 
-    @if (formEgreso.value.cantidadEgreso > bebida.stock) {
-      <p>La cantidad supera el stock disponible: {{ bebida.stock }}</p>
-    }
+      <!-- Validación cantidad vacía o inválida -->
+      <small *ngIf="formEgreso.get('cantidadEgreso')?.invalid && formEgreso.get('cantidadEgreso')?.touched" class="error">
+        Ingrese una cantidad válida mayor a 0.
+      </small>
+
+      <!-- Validación cantidad mayor al stock -->
+      <small *ngIf="formEgreso.value.cantidadEgreso > bebida.stock" class="error">
+        La cantidad supera el stock disponible ({{ bebida.stock }} unidades).
+      </small>
+    </div>
   </form>
 </div>

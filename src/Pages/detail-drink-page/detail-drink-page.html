@@ -21,8 +21,9 @@
 
       <p><strong>Precio:</strong> {{ detailBebida.price}} ARS</p>
       <p><strong>Unidades en stock:</strong> {{ detailBebida.stock }}</p>
-      <p><strong>Fecha de creación:</strong> {{ detailBebida.createdAt}}</p>
-
+     
+      <p><strong>Fecha de creación:</strong> {{ detailBebida.createdAt | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Hora de creación:</strong> {{ detailBebida.createdAt | date:'HH:mm' }}</p>
       <div class="actions">
         <button class="btn btn-secondary" (click)="volverAtras()">
           ← Volver 
