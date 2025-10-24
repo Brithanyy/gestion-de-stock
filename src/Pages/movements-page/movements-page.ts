@@ -2,10 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ServicioMovimientos } from '../../Services/movimientos/servicio-movimientos';
 import { Alerta } from '../../Services/alerta/alerta';
 import { Movimiento } from '../../Models/Movimiento';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-movements-page',
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './movements-page.html',
   styleUrl: './movements-page.css'
 })
@@ -16,6 +18,7 @@ export class MovementsPage implements OnInit {
   readonly ALERTA : Alerta = inject(Alerta);
 
   movimientos : Movimiento[] = [];
+  terminoBusqueda: string = '';
 
   //*MÉTODOS
   ngOnInit(): void {
@@ -101,5 +104,29 @@ export class MovementsPage implements OnInit {
       error: (errorDevuelto) => { this.ALERTA.mostrar("Error al obtener movimientos antiguos", "danger"); }
     });
   };
+
+  filtrarConBarraDeBusqueda() {
+    const termino = this.terminoBusqueda.trim().toLowerCase();
+    
+    if(termino === '') {
+      this.obtenerMovimientos();
+      return;
+    };
+
+    let movimientosFiltrados = this.movimientos.filter(movimiento => {
+
+       const fechaMovimiento = new Date(movimiento.movementDate)
+      .toLocaleDateString('es-AR');  // ej: "25/10/2025"
+      return (
+      movimiento.nameUser.toLowerCase().includes(termino) ||
+      fechaMovimiento.toLowerCase().includes(termino)
+    );
+    });
+    
+    if(this.movimientos.length === 0) { this.ALERTA.mostrar("No se encontró ningun movimiento registrado con ese nombre o fecha.", "danger"); };
+
+    this.movimientos = movimientosFiltrados;
+  };
+
 }
 

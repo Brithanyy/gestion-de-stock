@@ -53,7 +53,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 20,
+      "stock": 19,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -66,7 +66,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 5,
+      "stock": 4,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -511,6 +511,26 @@
       "movementDate": "2025-10-23T21:06:09.411Z",
       "idUser": "1",
       "nameUser": "Rouse02"
+    },
+    {
+      "id": "bb4e",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T17:02:55.632Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
+    },
+    {
+      "id": "8cd7",
+      "idDrink": "4",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-24T17:02:57.558Z",
+      "idUser": "2",
+      "nameUser": "Brithany"
     }
   ]
 }

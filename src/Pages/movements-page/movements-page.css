@@ -37,12 +37,13 @@
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   font-size: 1.2rem;
+  overflow-x: auto;
 }
 
 /* ===== Encabezado ===== */
 .tabla-header {
   display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1fr 1.2fr 1.2fr 0.8fr;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1.1fr 1.1fr 1fr 0.8fr;
   background-color: #1c1c1c;
   color: #ffffff;
   font-weight: 600;
@@ -54,7 +55,7 @@
 .tabla-fila {
   color: #ffffff;
   display: grid;
-  grid-template-columns: 1.5fr 1.2fr 1fr 1.2fr 1.2fr 0.8fr;
+  grid-template-columns: 1.5fr 1.2fr 1fr 1.1fr 1.1fr 1fr 0.8fr;
   align-items: center;
   text-align: center;
   background-color: #1c1c1c;
@@ -120,4 +121,34 @@ color: black;
   color: #e74c3c; /* rojo */
   font-weight: 600;
   color: #ffffff;
+}
+
+.barraBusqueda {
+  display: flex;
+  flex-direction: column;  /* apila h2 y input en columna */
+  align-items: center;     /* centra horizontalmente */
+  margin-bottom: 2rem;
+}
+
+.barraBusqueda input {
+  
+  width: 60%;
+  max-width: 600px;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #f47227;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+  text-align: center;
+  color: #1e1e1e;
+  transition: all 0.3s ease;
+}
+
+.barraBusqueda input::placeholder {
+  color: #999;
+}
+
+.barraBusqueda input:focus {
+  border-color: #f38240;
+  box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
 }
