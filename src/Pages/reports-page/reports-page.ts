@@ -4,7 +4,7 @@ import { GraficoTotalBebidas } from "../../Components/grafico-total-bebidas/graf
 import { GraficoNumeroBebidas } from "../../Components/grafico-numero-bebidas/grafico-numero-bebidas";
 import { GraficoProductosBajos } from "../../Components/grafico-productos-bajos/grafico-productos-bajos";
 import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import jsPDF from 'jspdf'; 
 
 @Component({
   selector: 'app-reports-page',

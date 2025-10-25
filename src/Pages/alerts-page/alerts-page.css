@@ -80,5 +80,22 @@
   align-items: center;
 }
 
+.pdf {
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: #f47227;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pdf:hover {
+  background-color: #ff8c32;
+  transform: scale(1.05);
+}
 
 
