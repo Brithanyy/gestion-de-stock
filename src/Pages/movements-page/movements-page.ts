@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import jsPDF from 'jspdf'; //Para exportar el pdf 
 import html2canvas from 'html2canvas';
+import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movements-page',
@@ -18,6 +20,9 @@ export class MovementsPage implements OnInit {
   //*CONSTANTES Y VARIABLES GLOBALES
   readonly SERVICIO_MOVIMIENTOS : ServicioMovimientos = inject(ServicioMovimientos);
   readonly ALERTA : Alerta = inject(Alerta);
+  readonly servicioLogin : ServicioAutenticacion = inject(ServicioAutenticacion);
+  readonly ROUTER : Router = inject(Router);
+  usuarioLogueado = this.servicioLogin.usuario;
 
   movimientos : Movimiento[] = [];
   terminoBusqueda: string = '';
@@ -176,6 +181,12 @@ export class MovementsPage implements OnInit {
 
       pdf.save("Movimientos: " + fechaFormateada  + ".pdf");
     });
+  };
+
+  volverAtras() {
+    
+    const idUser = this.usuarioLogueado()?.id;
+    this.ROUTER.navigate(['/homePage', idUser]); 
   }
 }
 

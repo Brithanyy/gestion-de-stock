@@ -2,7 +2,7 @@
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #1c1c1c;
+  background-color: #1e1e1e;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   font-family: "Cooper-Star", system-ui, sans-serif;
@@ -12,6 +12,9 @@
   text-align: center;
   color: var(--color-blanco);
   margin-bottom: 1.5rem;
+  background-color: #f47227;
+  border-radius: 20px;
+  padding: 0.5rem;
 }
 
 .form-group {
@@ -68,8 +71,8 @@
   padding: 0.6rem 1.2rem;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -89,12 +92,51 @@
 }
 
 .form-buttons .cancel {
-  background-color: #ccc;
-  color: var(--color-negro);
+  color: #ffffff;
+  background-color: #f47227;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
 }
 
 .form-buttons .cancel:hover {
-  background-color: #b3b3b3;
+    background-color: #ff8c32;
+    transform: scale(1.05);
+}
+
+.form-buttons .addBtn {
+  color: #ffffff;
+  background-color: #f47227;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.form-buttons .addBtn:hover {
+    background-color: #ff8c32;
+    transform: scale(1.05);
+}
+
+.form-buttons .editBtn {
+  color: #ffffff;
+  background-color: #f47227;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.form-buttons .editBtn:hover {
+    background-color: #ff8c32;
+    transform: scale(1.05);
 }
 /* Estilos para el ojito de la contraseña */
 .password-wrapper {

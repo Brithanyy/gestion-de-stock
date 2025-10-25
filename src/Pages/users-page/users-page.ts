@@ -34,17 +34,19 @@ export class UsersPage implements OnInit {
   visiblePasswords = new Set<string>();
 
   //*MÉTODOS
-
   private clave(usuario: Usuario) {
+
     return (usuario.id ?? usuario.username)?.toString();
   }
 
   verContrasena(usuario: Usuario) {
+
     const k = this.clave(usuario);
     return !!k && this.visiblePasswords.has(k);
   }
 
   togglePasswordVisibility(usuario: Usuario) {
+
     const k = this.clave(usuario);
     if (!k) return;
     if (this.visiblePasswords.has(k)) this.visiblePasswords.delete(k);
@@ -82,12 +84,8 @@ export class UsersPage implements OnInit {
 
   crearUsuarioPage() { this.router.navigate(['/newUser']); };
 
-  volverAtras() {
-    this.router.navigate(['/homePage', this.usuarioActual?.id]);
-  }
+  volverAtras() { this.router.navigate(['/homePage', this.usuarioActual?.id]); }
 
-  isUsuarioActivo(usuario: Usuario) {
-    return this.usuarioLogueado()?.id === usuario.id;
- }
+  isUsuarioActivo(usuario: Usuario) { return this.usuarioLogueado()?.id === usuario.id; }
 
 }

@@ -1,9 +1,11 @@
 <div class="drink-form-container">
 
-  <h2>Editar / Agregar Bebida</h2>
+  
 
   <!-- Formulario Editar -->
   @if (estoyEnEditar()) {
+
+  <h2>Editar Bebida</h2>
   <form [formGroup]="editBebidaForm" (ngSubmit)="onSubmitEditar()">
 
     <!-- Nombre -->
@@ -107,7 +109,7 @@
 
     <!-- Botones -->
     <div class="form-buttons">
-    <button type="submit" [disabled]="editBebidaForm.invalid">Guardar Cambios</button>
+    <button type="submit" [disabled]="editBebidaForm.invalid" class="editBtn">Guardar Cambios</button>
     <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
 
@@ -116,6 +118,8 @@
 
   <!-- Formulario Agregar -->
   @else if (estoyEnAgregar()) {
+
+  <h2>Agregar Bebida</h2>
   <form [formGroup]="newBebidaForm" (ngSubmit)="onSubmitAgregar()">
 
     <!-- Nombre -->
@@ -219,7 +223,7 @@
 
     <!-- Botones -->
     <div class="form-buttons">
-    <button type="submit" [disabled]="newBebidaForm.invalid">Agregar Bebida</button>
+    <button type="submit" [disabled]="newBebidaForm.invalid" class="addBtn">Agregar Bebida</button>
     <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
 
