@@ -1,7 +1,4 @@
-/**Agregar que sea responsive en móviles**/
-
 :host { 
-
   display:block; 
   width:100%; 
   background:#f47227; 
@@ -11,56 +8,29 @@
 }
 
 .header-inner {
-
   display:flex;
+  flex-direction: row;
   align-items:center;
-  justify-content:space-between;
+  justify-content: center;
   padding:0.5rem;
-  gap:1rem;
+  gap:0.1rem;
   box-sizing:border-box;
 }
 
-.header-left {
-
-  display:flex;
-  align-items:center;
-  gap:0.9rem;
-}
-
 .logo {
-
-  height: calc(15vh - 2.2rem);
-  width: auto;
-  object-fit: contain;
-  border-radius: 70px;
-  cursor: pointer;
-  transition: 
-    transform 0.3s ease, 
-    box-shadow 0.3s ease; /* transiciones suaves */
-}
-
-/* Efecto al pasar el mouse */
-.logo:hover {
-  transform: scale(1.08); /* agranda un poco */
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* brillo suave */
-}
-
-/* Cuando se hace click (efecto de "presión") */
-.logo:active {
-  transform: scale(0.95);
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  display: none;
 }
 
 .titles .brand {
-
+  text-align: center;
   margin:0;
-  font-size:2rem;
+  font-size:1.8rem;
   line-height:1;
   color: #ffffff;
 }
 
-.titles .subtitle {
-
+.subtitle {
+  text-align: center;
   margin:0;
   font-size: 1.5rem;
   opacity:0.95;
@@ -68,25 +38,23 @@
 }
 
 .header-right {
-
   display:flex;
+  flex-direction: row;
   align-items:center;
+  justify-content: center;
   gap:0.75rem;
 }
 
 .user { 
-
-  font-weight:600; 
-  font-size: 1.5rem;
-  color: #ffffff;
+    font-weight:600; 
+    font-size: 1rem;
+    color: #ffffff;
 }
 
-/**Me gustaría agregarle algún efecto al logOut**/
 .btn-logout {
-
   background: transparent;
   border: 2px solid #ffffff;
-  padding: 0.35rem 0.5rem;
+  padding: 0.1rem 0.1rem;
   border-radius: 8px;
   color: #ffffff;
   cursor: pointer;
@@ -96,112 +64,290 @@
   transition: 
     transform 0.2s ease, 
     background-color 0.2s ease,
-    box-shadow 0.2s ease;  /* suaviza el brillo */
+    box-shadow 0.2s ease;  
 }
 
-/* Efecto al pasar el mouse */
 .btn-logout:hover {
-  background-color: rgba(255, 255, 255, 0.15); /* leve fondo translúcido */
-  transform: scale(1.1);                      /* agranda un poco */
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* brillo sutil */
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);                      
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
 }
 
-/* Cuando se hace click (efecto de "presión") */
 .btn-logout:active {
   transform: scale(0.95);
   box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
 }
 
 .btn-logout svg { 
-  
   display:block; fill:currentColor; 
 }
 
-/* ------------------ Responsive ------------------ */
-/* En pantallas pequeñas: apilar logo y títulos, centrar contenido, reducir tipografías */
-@media (max-width: 768px) {
-
+/*!RESPONVIDAD*/
+@media (max-width: 480px) {
+  
   .header-inner {
     display: flex;
     flex-direction: column;
-    padding:0.5rem;
-    gap: 0.5rem;
-    align-items: stretch;
-    text-align: center;
-  }
-
-  .header-left {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    gap:0.1rem;
   }
 
   .logo {
-
-    height: calc(15vh - 2.2rem); /* escala según header */
-    max-height: auto;
-    width: auto;
-    object-fit:contain;
-    border-radius: 70px;
-    transition: 
-    transform 0.3s ease, 
-    box-shadow 0.3s ease; /* transiciones suaves */
-  }
-
-  
-  /* Efecto al pasar el mouse */
-  .logo:hover {
-    transform: scale(1.08); /* agranda un poco */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* brillo suave */
-  }
-
-  /* Cuando se hace click (efecto de "presión") */
-  .logo:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-
-  .btn-logout {
-    transition: 
-    transform 0.2s ease, 
-    background-color 0.2s ease,
-    box-shadow 0.2s ease;  /* suaviza el brillo */
-  }
-
-    /* Efecto al pasar el mouse */
-  .btn-logout:hover {
-    background-color: rgba(255, 255, 255, 0.15); /* leve fondo translúcido */
-    transform: scale(1.1);                      /* agranda un poco */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* brillo sutil */
-  }
-
-  /* Cuando se hace click (efecto de "presión") */
-  .btn-logout:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+    display: none; 
   }
 
   .titles .brand {
-
-    font-size:1.2rem;
-  }
-  .titles .subtitle {
-
-    font-size:1rem;
+    margin:0;
+    font-size:1.8rem;
+    line-height:1;
+    color: #ffffff;
   }
 
-  .header-right {
-
-    justify-content:center;
-    gap:0.5rem;
-    width:100%;
+  .subtitle {
+    margin:0;
+    font-size: 1.5rem;
+    opacity:0.95;
+    color: #ffffff;
   }
 
   .user { 
     font-weight:600; 
     font-size: 0.8rem;
     color: #ffffff;
+  }
+}
+
+@media (min-width: 480px) {
+  
+  .header-inner {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    display: none; 
+  }
+
+  .titles .brand {
+    margin:0;
+    font-size:1.3rem;
+    line-height:1;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    margin:0;
+    font-size: 1rem;
+    opacity:0.95;
+    color: #ffffff;
+  }
+
+  .user { 
+    font-weight:600; 
+    font-size: 0.8rem;
+    color: #ffffff;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .logo {
+    display: none;
+  }
+
+  .titles .brand {
+    margin:0;
+    font-size:1.5rem;
+    line-height:1;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    margin:0;
+    font-size: 1.3rem;
+    opacity:0.95;
+    color: #ffffff;
+  }
+
+  .user { 
+    font-weight:600; 
+    font-size: 1rem;
+    color: #ffffff;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .header-inner {
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content:space-between;
+    padding:0.5rem;
+    gap:1rem;
+    box-sizing:border-box;
+  }
+
+  .header-left {
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+  }
+
+  .logo {
+    display: inline-block;
+    height: calc(16vh - 2rem);
+    width: auto;
+    object-fit: contain;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease; 
+  }
+
+  .logo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+
+  .logo:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .titles .brand {
+    margin:0;
+    font-size:1.8rem;
+    line-height:1;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    margin:0;
+    font-size: 1.5rem;
+    opacity:0.95;
+    color: #ffffff;
+  }
+
+  .user { 
+    font-weight:600; 
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  .btn-logout {
+    background: transparent;
+    border: 2px solid #ffffff;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: 
+      transform 0.2s ease, 
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;  
+  }
+
+  .btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);                      
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
+  }
+
+  .btn-logout:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .header-inner {
+    display:flex;
+    align-items:center;
+    flex-direction: row;
+    justify-content:space-between;
+    padding:0.5rem;
+    gap:1rem;
+    box-sizing:border-box;
+  }
+
+  .header-left {
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+  }
+
+  .logo {
+    display: inline-block;
+    height: calc(16vh - 2rem);
+    width: auto;
+    object-fit: contain;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 
+    transform 0.3s ease, 
+    box-shadow 0.3s ease; 
+  }
+
+  .logo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  }
+
+  .logo:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+
+  .titles .brand {
+    margin:0;
+    font-size:2rem;
+    line-height:1;
+    color: #ffffff;
+  }
+
+  .subtitle {
+    margin:0;
+    font-size: 1.5rem;
+    opacity:0.95;
+    color: #ffffff;
+  }
+
+
+  .user { 
+    font-weight:600; 
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+
+  .btn-logout {
+    background: transparent;
+    border: 2px solid #ffffff;
+    padding: 0.35rem 0.5rem;
+    border-radius: 8px;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: 
+      transform 0.2s ease, 
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;  
+  }
+
+  .btn-logout:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);                      
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); 
+  }
+
+  .btn-logout:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
   }
 }
 

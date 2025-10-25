@@ -589,6 +589,26 @@
       "movementDate": "2025-10-25T13:12:10.374Z",
       "idUser": "1",
       "nameUser": "Rouse02"
+    },
+    {
+      "id": "439f",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 5,
+      "movementDate": "2025-10-25T20:07:52.952Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "29a6",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 5,
+      "movementDate": "2025-10-25T20:08:04.536Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ]
 }
