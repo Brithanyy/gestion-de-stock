@@ -1,29 +1,33 @@
-/* ===== TARJETA INDIVIDUAL ===== */
 .cardBebida {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
   background-color: #ffffff;
-  border: 2px solid rgba(30, 30, 30, 0.15);
+  border: 2px solid rgba(30, 30, 30, 0.015);
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(30, 30, 30, 0.15);
-  padding: 1.5rem;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(30, 30, 30, 0.25);
+  transform: translateY(-3px);
+  max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
+  box-sizing: border-box;
 }
 
 .cardBebida:hover {
-  transform: scale(1.03); /* pequeño zoom */
-  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); /* más elevación */
+  transform: scale(1.03); 
+  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
 }
 
-/* ===== INFORMACIÓN DE LA BEBIDA ===== */
 .cardBebida h2 {
   background-color: #f47227;
   color: #ffffff;
-  padding: 0.7rem;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
+  padding: 0.55rem;
+  border-radius: 10px;
+  margin-bottom: 0.9rem;
+  font-size: 1rem;
 }
 
 .cardBebida h3,
@@ -31,64 +35,73 @@
 .cardBebida h5 {
   background-color: #f47227;
   color: #ffffff;
-  padding: 0.5rem;
-  border-radius: 10px;
-  margin: 0.5rem 0;
+  padding: 0.45rem;
+  border-radius: 8px;
+  margin: 0.45rem 0;
+  font-size: 1rem;
 }
 
-/* ===== IMAGEN ===== */
 .contenedorImagen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.9rem 0;
 }
 
 .contenedorImagen img {
-  width: 150px;      
-  height: 400px;     
-  object-fit: cover; /* Ajusta la imagen sin deformarla */
-  border-radius: 10px;
+    width: 90px;      /* base en móvil */
+    height: auto;      /* mantiene proporción */
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
 }
 
-/* ===== FORMULARIOS ===== */
-form {
+.form-group {
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.input-group {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.7rem;
+  justify-content: center;
 }
 
 input[type="number"] {
-  width: 100%;
+  width: 80px; /* en móviles no ocupa todo el ancho */
   padding: 0.4rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 0.9rem;
+  border-radius: 20px;
+  text-align: left;
+  font-size: 0.6rem;
+  width: 60%;
 }
 
+label {
+  font-size: 1rem;
+}
 
 p {
   background-color: red;
   border-radius: 10px;
-  font-size: 0.85rem;
   color: #ffffff;
   padding: 5px;
   margin-top: 0.3rem;
   font-weight: 600;
+  font-size: 0.8rem;
 }
 
-/* ===== BOTONES ===== */
 button {
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   font-weight: 600;
   transition: all 0.2s ease;
   margin: 5px;
+  font-size: 1rem;
 }
 
 /* Botones de acción */
@@ -129,17 +142,570 @@ button.detalle:hover {
   background-color: #f38240;
 }
 
-.form-group {
-  margin-top: 10px;
-}
-
-.input-group {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
 .error {
   color: red;
   font-size: 0.8rem;
+}
+
+/*!RESPONVIDAD*/
+@media (max-width: 480px) {
+
+  .cardBebida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #ffffff;
+    border: 2px solid rgba(30, 30, 30, 0.015);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(-3px);
+    max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
+    box-sizing: border-box;
+  }
+
+  .cardBebida:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
+  }
+
+  .cardBebida h2 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.55rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .cardBebida h3,
+  .cardBebida h4,
+  .cardBebida h5 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin: 0.45rem 0;
+    font-size: 1rem;
+  }
+
+  .contenedorImagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.9rem 0;
+  }
+
+  .contenedorImagen img {
+      width: 90px;      /* base en móvil */
+      height: auto;      /* mantiene proporción */
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+  }
+
+  .form-group {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="number"] {
+    width: 80px; /* en móviles no ocupa todo el ancho */
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 0.6rem;
+    width: 60%;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  p {
+    background-color: red;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 5px;
+    margin-top: 0.3rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin: 5px;
+    font-size: 1rem;
+  }
+
+  /* Botones de acción */
+  button[type="submit"] {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  /* Botones especiales */
+  button.editar {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.eliminar {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.detalle {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.editar:hover,
+  button.eliminar:hover,
+  button.detalle:hover {
+    background-color: #f38240;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 480px) {
+
+  .cardBebida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #ffffff;
+    border: 2px solid rgba(30, 30, 30, 0.015);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(-3px);
+    max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
+    box-sizing: border-box;
+  }
+
+  .cardBebida:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
+  }
+
+  .cardBebida h2 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.55rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .cardBebida h3,
+  .cardBebida h4,
+  .cardBebida h5 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin: 0.45rem 0;
+    font-size: 1rem;
+  }
+
+  .contenedorImagen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0.9rem 0;
+  }
+
+  .contenedorImagen img {
+      width: 90px;      /* base en móvil */
+      height: auto;      /* mantiene proporción */
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
+  }
+
+  .form-group {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="number"] {
+    width: 80px; /* en móviles no ocupa todo el ancho */
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 0.6rem;
+    width: 60%;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  p {
+    background-color: red;
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 5px;
+    margin-top: 0.3rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin: 5px;
+    font-size: 1rem;
+  }
+
+  /* Botones de acción */
+  button[type="submit"] {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  /* Botones especiales */
+  button.editar {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.eliminar {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.detalle {
+    background-color: #f47227;
+    color: #ffffff;
+  }
+
+  button.editar:hover,
+  button.eliminar:hover,
+  button.detalle:hover {
+    background-color: #f38240;
+  }
+
+  .error {
+    color: red;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .cardBebida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #ffffff;
+    border: 2px solid rgba(30, 30, 30, 0.015);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(-3px);
+    box-sizing: border-box;
+  }
+
+  .cardBebida h2 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.55rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    font-size: 1.3rem;
+  }
+
+  .cardBebida h3,
+  .cardBebida h4,
+  .cardBebida h5 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin: 0.45rem 0;
+    font-size: 1rem;
+  }
+
+  .contenedorImagen {
+    flex: 1;                 /* la imagen ocupa la parte central flexible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .contenedorImagen img {
+    max-height: 400px;       /* limita la altura */
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .form-group {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 1.2rem;
+  } 
+
+  input[type="number"] {
+    width: 80px; /* en móviles no ocupa todo el ancho */
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 0.8rem;
+    width: 60%;
+  }
+  
+  .error {
+    color: red;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .cardBebida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #ffffff;
+    border: 2px solid rgba(30, 30, 30, 0.015);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(-3px);
+    box-sizing: border-box;
+  }
+
+  .contenedorImagen {
+    flex: 1;                 /* la imagen ocupa la parte central flexible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .contenedorImagen img {
+    max-height: 400px;       /* limita la altura */
+    width: 300px;
+    object-fit: contain;
+  }
+
+  .cardBebida h2 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.55rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    font-size: 1.5rem;
+  }
+
+  .cardBebida h3,
+  .cardBebida h4,
+  .cardBebida h5 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin: 0.45rem 0;
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 1.2rem;
+  } 
+
+  input[type="number"] {
+    width: 80px; /* en móviles no ocupa todo el ancho */
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: left;
+    font-size: 0.8rem;
+    width: 60%;
+  }
+  
+  .error {
+    color: red;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+
+  .cardBebida {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #ffffff;
+    border: 2px solid rgba(30, 30, 30, 0.015);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transform: translateY(-3px);
+    box-sizing: border-box;
+  }
+
+  .contenedorImagen {
+    flex: 1;                 /* la imagen ocupa la parte central flexible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  .contenedorImagen img {
+    max-height: 400px;       /* limita la altura */
+    width: 600px;
+    object-fit: contain;
+  }
+
+  .cardBebida h2 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.55rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+    font-size: 1.5rem;
+  }
+
+  .cardBebida h3,
+  .cardBebida h4,
+  .cardBebida h5 {
+    background-color: #f47227;
+    color: #ffffff;
+    padding: 0.45rem;
+    border-radius: 8px;
+    margin: 0.45rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .form-group {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  label {
+    font-size: 1.2rem;
+  } 
+
+  input[type="number"] {
+    width: 80px; /* en móviles no ocupa todo el ancho */
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    width: 60%;
+  }
+  
+  .error {
+    color: red;
+    font-size: 1rem;
+  }
 }

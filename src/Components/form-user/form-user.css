@@ -67,6 +67,7 @@
 .form-buttons button {
   padding: 0.6rem 1.2rem;
   border: none;
+  border-radius: 20px;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
@@ -89,12 +90,26 @@
 }
 
 .form-buttons .cancel {
-  background-color: #ccc;
-  color: var(--color-negro);
+  border-radius: 20px;
+  background-color: #f47227;
+  color: #ffffff;
 }
 
 .form-buttons .cancel:hover {
-  background-color: #b3b3b3;
+    background-color: #ff8c32;
+    color: #ffffff;
+    border-radius: 20px;
+}
+
+.form-buttons .addBtn {
+  border-radius: 20px;
+  background-color: #f47227;
+  color: #ffffff;
+}
+
+.form-buttons .addBtn:hover {
+    background-color: #ff8c32;
+    color: #ffffff;
 }
 /* Estilos para el ojito de la contraseña */
 .password-wrapper {

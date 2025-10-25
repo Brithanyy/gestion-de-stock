@@ -35,7 +35,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 5,
+      "stock": 4,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -607,6 +607,16 @@
       "typeMotion": "Egreso",
       "amount": 5,
       "movementDate": "2025-10-25T20:08:04.536Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "d3d6",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-25T21:36:29.799Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

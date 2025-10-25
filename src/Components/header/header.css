@@ -24,7 +24,7 @@
 .titles .brand {
   text-align: center;
   margin:0;
-  font-size:1.8rem;
+  font-size:1.3rem;
   line-height:1;
   color: #ffffff;
 }
@@ -32,7 +32,7 @@
 .subtitle {
   text-align: center;
   margin:0;
-  font-size: 1.5rem;
+  font-size: 1rem;
   opacity:0.95;
   color: #ffffff;
 }
@@ -47,7 +47,7 @@
 
 .user { 
     font-weight:600; 
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #ffffff;
 }
 

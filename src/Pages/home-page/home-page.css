@@ -1,38 +1,27 @@
 /* ===== CONTENEDOR PRINCIPAL ===== */
-:host {
-  display: block;
-  background-color: #fff;
-  color: #1e1e1e;
-  padding: 2rem;
-  font-family: 'Poppins', sans-serif;
+:host ::ng-deep .listaBebidas {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móviles */
+  gap: 1.2rem;
+  justify-items: center;
+  align-items: stretch;
+  padding: 0 0.5rem;
 }
 
-/* ===== TÍTULO PRINCIPAL ===== */
-h1 {
-  text-align: center;
-  color: #1e1e1e;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-/* ===== BARRA DE BÚSQUEDA ===== */
 .barraBusqueda {
   display: flex;
-  flex-direction: column;  /* apila h2 y input en columna */
-  align-items: center;     /* centra horizontalmente */
+  flex-direction: column;  
+  align-items: center;    
   margin-bottom: 2rem;
 }
 
 .barraBusqueda input {
-  
-  width: 60%;
-  max-width: 600px;
-  padding: 0.8rem 1.2rem;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
   border: 2px solid #f47227;
-  border-radius: 25px;
+  border-radius: 20px;
   outline: none;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: center;
   color: #1e1e1e;
   transition: all 0.3s ease;
@@ -47,22 +36,245 @@ h1 {
   box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
 }
 
-
-
-/* ===== GRID DE TARJETAS ===== */
-:host ::ng-deep .listaBebidas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive */
-  gap: 2rem;
-  justify-items: center;
-  align-items: stretch;
-}
-
-/* ===== MENSAJE DE LISTA VACÍA ===== */
 .mensaje-vacio {
   text-align: center;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   color: #f47227;
   margin-top: 1rem;
 }
+
+/*!RESPONVIDAD*/
+@media (max-width: 480px) {
+
+  :host ::ng-deep .listaBebidas {
+    gap: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .barraBusqueda {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    margin-bottom: 2rem;
+  }
+
+  .barraBusqueda input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #f47227;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  .barraBusqueda input::placeholder {
+    color: #999;
+  }
+
+  .barraBusqueda input:focus {
+    border-color: #f38240;
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .mensaje-vacio {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #f47227;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 480px) {
+
+  :host ::ng-deep .listaBebidas {
+    gap: 1.4rem;
+    padding: 0 1rem;
+  }
+
+  .barraBusqueda {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    margin-bottom: 2rem;
+  }
+
+  .barraBusqueda input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #f47227;
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.8rem;
+    text-align: center;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  .barraBusqueda input::placeholder {
+    color: #999;
+  }
+
+  .barraBusqueda input:focus {
+    border-color: #f38240;
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .mensaje-vacio {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #f47227;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+
+  :host ::ng-deep .listaBebidas {
+    gap: 1.6rem;
+    grid-template-columns: 1fr; /* opcional: sigue una columna */
+    padding: 0 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .barraBusqueda {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    margin-bottom: 2rem;
+  }
+
+  .barraBusqueda input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #f47227;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  .barraBusqueda input::placeholder {
+    color: #999;
+  }
+
+  .barraBusqueda input:focus {
+    border-color: #f38240;
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .mensaje-vacio {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #f47227;
+    margin-top: 1rem;
+  }
+}
+
+/* Desktop pequeño / laptops (>=1024px) -> 2 cards por fila */
+@media (min-width: 1024px) {
+
+  :host ::ng-deep .listaBebidas {
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .barraBusqueda {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    margin-bottom: 2rem;
+  }
+
+  .barraBusqueda input {
+    width: 50%;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #f47227;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  .barraBusqueda input::placeholder {
+    color: #999;
+  }
+
+  .barraBusqueda input:focus {
+    border-color: #f38240;
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .mensaje-vacio {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #f47227;
+    margin-top: 1rem;
+  }
+}
+
+/* Desktop grande (>=1280px) -> hasta 3 cards por fila */
+@media (min-width: 1280px) {
+
+  :host ::ng-deep .listaBebidas {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 2.25rem;
+    padding: 0 2rem;
+    max-width: 1500px;
+    margin: 0 auto;
+  }  
+
+  .barraBusqueda {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;    
+    margin-bottom: 2rem;
+  }
+
+  .barraBusqueda input {
+    width: 50%;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #f47227;
+    border-radius: 20px;
+    outline: none;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #1e1e1e;
+    transition: all 0.3s ease;
+  }
+
+  .barraBusqueda input::placeholder {
+    color: #999;
+  }
+
+  .barraBusqueda input:focus {
+    border-color: #f38240;
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .mensaje-vacio {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #f47227;
+    margin-top: 1rem;
+  }
+}
+
+

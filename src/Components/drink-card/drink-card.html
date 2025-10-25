@@ -24,7 +24,7 @@
       <label>Agregar stock</label>
       <div class="input-group">
         <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formIngreso.invalid">+</button>
+        <button type="submit" [disabled]="formIngreso.invalid">Agregar</button>
       </div>
 
       <small *ngIf="formIngreso.get('cantidadIngreso')?.invalid && formIngreso.get('cantidadIngreso')?.touched" class="error">
@@ -39,7 +39,7 @@
       <label>Quitar stock</label>
       <div class="input-group">
         <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso > bebida.stock">-</button>
+        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso > bebida.stock">Quitar</button>
       </div>
 
       <!-- Validación cantidad vacía o inválida -->

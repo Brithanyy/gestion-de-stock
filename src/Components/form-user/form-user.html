@@ -1,9 +1,8 @@
 <div class="edit-user-form-container">
 
-  <h2>Editar / Agregar Usuario</h2>
-
   <!-- Formulario Editar -->
   <form *ngIf="estoyEnEditar()" [formGroup]="editUserForm" (ngSubmit)="agregarNuevoUsuario()">
+    <h2>Editar Usuario</h2>
     <!-- Username -->
     <div class="form-group">
       <label for="username">Nombre de usuario</label>
@@ -36,13 +35,14 @@
 
     <!-- Botones -->
     <div class="form-buttons">
-      <button type="submit" [disabled]="editUserForm.invalid">Guardar Cambios</button>
+      <button type="submit" [disabled]="editUserForm.invalid" class="addBtn">Guardar Cambios</button>
       <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
   </form>
 
   <!-- Formulario Agregar -->
   <form *ngIf="estoyEnAgregar()" [formGroup]="newUserForm" (ngSubmit)="agregarNuevoUsuario()">
+    <h2>Agregar Usuario</h2>
     <!-- Username -->
     <div class="form-group">
       <label for="usernameNew">Nombre de usuario</label>
@@ -75,7 +75,7 @@
 
     <!-- Botones -->
     <div class="form-buttons">
-      <button type="submit" [disabled]="newUserForm.invalid">Agregar Usuario</button>
+      <button type="submit" [disabled]="newUserForm.invalid" class="addBtn">Agregar Usuario</button>
       <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
     </div>
   </form>
