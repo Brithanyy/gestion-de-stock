@@ -8,6 +8,7 @@ import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
 import { Alertas } from '../alertas/alertas';
 import { ThisReceiver } from '@angular/compiler';
 import { ServicioAutenticacion } from '../../Services/autenticacion/servicio-autenticacion';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-form-drink',
@@ -40,8 +41,8 @@ isEdit = false;
 isNew = false;
 bebidaID : string | null = null;
 bebidaTraida : Bebida | null = null;
-
-
+bebidas : Bebida[] = [];
+submitting = false;
 
 editBebidaForm = this.formBuilder.group({
   name: ['', Validators.required],
@@ -129,25 +130,6 @@ onSubmitEditar() {
  
 }
 
-onSubmitAgregar() {
-  const nuevaBebida = {
-    name: this.newBebidaForm.value.name!,
-    type: this.newBebidaForm.value.type! as TipoBebida,
-    category: this.newBebidaForm.value.category! as CategoriaBebida,
-    brand: this.newBebidaForm.value.brand!,
-    milliliters: this.newBebidaForm.value.milliliters!,
-    alcoholContent: this.newBebidaForm.value.alcoholContent!,
-    price: this.newBebidaForm.value.price!,
-    stock: this.newBebidaForm.value.stock!,
-    imageUrl: this.newBebidaForm.value.imageUrl!,
-    createdAt: new Date()
-  }
-  this.SERVICIO_BEBIDAS.postDrink(nuevaBebida).subscribe({
-     next: () => { this.router.navigate(['/homePage', this.usuarioActual?.id]) },
-    error: () => { this.ALERTA.mostrar("Error al agregar la bebida", "danger"); }
-  });
-  }
-
 ngOnInit(): void {
   // Si la ruta tiene un param 'id' asumimos modo edición, si no -> nuevo
   const id = this.route.snapshot.paramMap.get('id');
@@ -181,4 +163,48 @@ ngOnInit(): void {
     }
   }
 
+  async onSubmitAgregar() {
+    if (this.newBebidaForm.invalid) {
+      this.ALERTA.mostrar('Completa el formulario correctamente.', 'danger');
+      return;
+    }
+    const nombre = (this.newBebidaForm.value.name || '').toString().trim();
+    const marca = (this.newBebidaForm.value.brand || '').toString().trim();
+    const nuevaBebida: Partial<Bebida> = {
+      name: nombre,
+      type: this.newBebidaForm.value.type! as TipoBebida,
+      category: this.newBebidaForm.value.category! as CategoriaBebida,
+      brand: marca,
+      milliliters: Number(this.newBebidaForm.value.milliliters ?? 0),
+      alcoholContent: Number(this.newBebidaForm.value.alcoholContent ?? 0),
+      price: Number(this.newBebidaForm.value.price ?? 0),
+      stock: Number(this.newBebidaForm.value.stock ?? 0),
+      imageUrl: this.newBebidaForm.value.imageUrl!,
+      createdAt: new Date()
+    };
+
+    this.submitting = true;
+    try {
+      const bebidas = await firstValueFrom(this.SERVICIO_BEBIDAS.getAllDrinks());
+
+      const existe = bebidas.some(b =>
+        (b.name ?? '').toString().trim().toLowerCase() === nombre.toLowerCase() &&
+        (b.brand ?? '').toString().trim().toLowerCase() === marca.toLowerCase()
+      );
+
+      if (existe) {
+        this.ALERTA.mostrar('La bebida ya existe en el inventario.', 'danger');
+        return;
+      }
+
+      await firstValueFrom(this.SERVICIO_BEBIDAS.postDrink(nuevaBebida as Bebida));
+      this.ALERTA.mostrar('Bebida agregada con éxito.', 'success');
+      this.router.navigate(['/homePage', this.usuarioActual?.id]);
+    } catch (err) {
+      console.error(err);
+      this.ALERTA.mostrar('Error al agregar la bebida.', 'danger');
+    } finally {
+      this.submitting = false;
+    }
+  }
 }
