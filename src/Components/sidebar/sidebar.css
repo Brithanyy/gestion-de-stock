@@ -1,6 +1,5 @@
 
 :host { 
-
   display:block; 
   height:100%; 
   background:#1e1e1e; 
@@ -10,18 +9,16 @@
 }
 
 .sidebar {
-
   width: auto;
   padding:1rem;
   box-sizing:border-box;
-  top: 15vh;  /* sigue quedando debajo del header */
+  top: 25vh;  /* sigue quedando debajo del header */
   height: calc(100vh - auto - auto); /* asegura el alto utilizable */
   overflow-y:auto;
   display:block;
 }
 
 .sidebar ul {
-
   list-style:none;
   padding: 0.5rem;
   margin: auto 0;   /* esto centra verticalmente el ul dentro del sidebar */
@@ -31,7 +28,6 @@
 }
 
 .sidebar a {
-
   display: inline-block;
   text-decoration: none;
   color: #ffffff;
@@ -55,25 +51,76 @@
   color: #ffffff;
 }
 
-/*!RESPONSIVE*/
-
-/*Phones grandes / small tablets*/
+/*!RESPONVIDAD*/
 @media (min-width: 480px) {
-  /*Ajustar los estilos*/
+    
+  .sidebar {
+    width: auto;
+    padding:1rem;
+    box-sizing:border-box;
+    top: 18vh;  /* sigue quedando debajo del header */
+    height: calc(100vh - auto - auto); /* asegura el alto utilizable */
+    overflow-y:auto;
+    display:block;
+  }
+
+  .sidebar a {
+    font-size: 0.8rem;
+  }
+
 }
 
-/*Tablets*/
 @media (min-width: 768px) {
-  /*Ajustar los estilos*/
+  
+  .sidebar {
+    width: auto;
+    padding:1rem;
+    box-sizing:border-box;
+    top: 18vh;  /* sigue quedando debajo del header */
+    height: calc(100vh - auto - auto); /* asegura el alto utilizable */
+    overflow-y:auto;
+    display:block;
+  }
+
+  .sidebar a {
+    font-size: 0.8rem;
+  }
+
 }
 
-/*Desktop pequeño / laptops*/
 @media (min-width: 1024px) {
-  /*Ajustar los estilos*/
+  
+  .sidebar {
+    width: auto;
+    padding:1rem;
+    box-sizing:border-box;
+    top: 20vh;  /* sigue quedando debajo del header */
+    height: calc(100vh - auto - auto); /* asegura el alto utilizable */
+    overflow-y:auto;
+    display:block;
+  }
+  
+  .sidebar a {
+    font-size: 1rem;
+  }
+
 }
 
-/*Desktop grande*/
 @media (min-width: 1280px) {
-  /*Ajustar los estilos*/
+  
+  .sidebar {
+    width: auto;
+    padding:1rem;
+    box-sizing:border-box;
+    top: 25vh;  /* sigue quedando debajo del header */
+    height: calc(100vh - auto - auto); /* asegura el alto utilizable */
+    overflow-y:auto;
+    display:block;
+  }
+    
+  .sidebar a {
+    font-size: 1.2rem;
+  }
+
 }
 
