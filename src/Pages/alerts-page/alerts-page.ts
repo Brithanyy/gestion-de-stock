@@ -74,7 +74,7 @@ export class AlertsPage implements OnInit {
 
       const fechaFormateada = dia + "/" + mes + "/" + año + "  " + horas + ":" + minutos + "hs";
 
-      pdf.save("Reporte del día: " + fechaFormateada  + ".pdf");
+      pdf.save("Alertas del dia: " + fechaFormateada  + ".pdf");
     });
   }
 }
