@@ -93,31 +93,26 @@
 .actions {
   margin-top: 1rem;
   display: flex;
-  justify-content: center;
-}
-
-.btn {
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: background .2s ease, transform .1s ease;
-  box-shadow: 0 4px 10px rgba(30,30,30,0.15);
-  width: 75%;
-  max-width: 320px;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
+  justify-content: left;
+  align-items: left;
 }
 
 .btn-secondary {
-  background: #f47227;
-  color: #ffffff;
+
+  margin-bottom: 1.25rem;
+  padding: 0.6rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 20px;
+  background-color: #f47227;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background: #f38240;
+
+  background-color: #ff8c32;
+  transform: scale(1.05);
 }

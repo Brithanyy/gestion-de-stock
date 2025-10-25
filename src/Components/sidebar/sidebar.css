@@ -55,59 +55,25 @@
   color: #ffffff;
 }
 
-/* En móviles el sidebar se mantiene visible pero ocupando más ancho relativo */
-@media (max-width: 768px) {
-  .sidebar {
+/*!RESPONSIVE*/
 
-    padding:0.9rem;
-    width: auto;
-  }
-  .sidebar a { 
-    padding:0.5rem 0.7rem; 
-    font-size:0.95rem; }
+/*Phones grandes / small tablets*/
+@media (min-width: 480px) {
+  /*Ajustar los estilos*/
 }
 
-@media (max-width: 1024px) {
-
-  .sidebar {
-
-    padding: 1rem;
-  }
-
-  .sidebar ul {
-
-    gap: 0.6rem;
-  }
-
-  .sidebar a {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.95rem;
-    border-radius: 14px;
-  }
+/*Tablets*/
+@media (min-width: 768px) {
+  /*Ajustar los estilos*/
 }
 
-/* ----- Responsive: MOBILE ----- */
-@media (max-width: 768px) {
-  .sidebar {
-    padding: 0.6rem;
-  }
-
-  .sidebar ul {
-    gap: 0.45rem;
-  }
-
-  .sidebar a {
-
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    border-radius: 10px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px; /* tamaño uniforme */
-  }
+/*Desktop pequeño / laptops*/
+@media (min-width: 1024px) {
+  /*Ajustar los estilos*/
 }
+
+/*Desktop grande*/
+@media (min-width: 1280px) {
+  /*Ajustar los estilos*/
+}
+
