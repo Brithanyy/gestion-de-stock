@@ -135,3 +135,21 @@
   vertical-align: middle;
   box-shadow: 0 0 0 4px rgba(16,185,129,0.08);
 }
+
+.password-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.password-eye {
+  cursor: pointer;
+  color: #f47227;
+  margin-left: 6px;
+  font-size: 0.95rem;
+}
+
+.password-eye:hover {
+  color: #f38240;
+}

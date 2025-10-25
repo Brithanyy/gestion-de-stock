@@ -5,6 +5,7 @@ import { ServicioUsuarios } from '../../Services/usuarios/servicio-usuarios';
 import { Alerta } from '../../Services/alerta/alerta';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TipoPerfil, Usuario } from '../../Models/Usuario';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-form-user',
@@ -37,6 +38,7 @@ export class FormUser implements OnInit {
 
   isEditMode = false;
   isAddMode = false;
+  submitting = false;
   
   editUserForm = this.formBuilder.nonNullable.group({
     'username': ['',[Validators.required]],
@@ -63,37 +65,49 @@ export class FormUser implements OnInit {
     this.isAddMode = !id;
   }
   
-   onSubmit() {
+  async agregarNuevoUsuario() {
+    if (this.newUserForm.invalid) {
+      this.alerta.mostrar('Completa el formulario correctamente.', 'danger');
+      return;
+    }
 
-    this.userId = this.route.snapshot.paramMap.get('id');
+    const username = (this.newUserForm.value.username || '').toString().trim();
+    const password = this.newUserForm.value.password || '';
+    const profile = this.newUserForm.value.profile! as TipoPerfil;
 
-  if (!this.userId || !this.usuarioTraido) {
+    if (!username) {
+      this.alerta.mostrar('El nombre de usuario es requerido.', 'danger');
+      return;
+    }
 
-    this.alerta.mostrar("ID de usuario inválido", "danger");
-    return;
-  }
+    this.submitting = true;
+    try {
+      const usuarios = await firstValueFrom(this.servicioUsuarios.getAllUsers());
+      const existe = usuarios.some(u => (u.username ?? '').toString().trim().toLowerCase() === username.toLowerCase());
 
-  const datosActualizados: Usuario = {
+      if (existe) {
+        this.alerta.mostrar('Ya existe un usuario con ese nombre.', 'danger');
+        return;
+      }
 
-    id: this.userId,
-    username: this.editUserForm.value.username!, 
-    password: this.editUserForm.value.password!,
-    profile: this.editUserForm.value.profile! as TipoPerfil,
-    isLoggedIn: this.usuarioTraido.isLoggedIn,
-    avatarUrl:  this.usuarioTraido.avatarUrl
-  };
+      const nuevoUsuario: Usuario = {
+        username,
+        password,
+        profile,
+        isLoggedIn: false,
+        avatarUrl: this.userUrl
+      };
 
-  this.servicioUsuarios.putUser(datosActualizados).subscribe({
-
-    next: () => {
-      
-      this.alerta.mostrar("Usuario actualizado con éxito.", "success");
+      await firstValueFrom(this.servicioUsuarios.postUser(nuevoUsuario));
+      this.alerta.mostrar('Usuario agregado con éxito.', 'success');
       this.router.navigate(['/usersPage']);
-    },
-
-    error: () => { this.alerta.mostrar("Error al actualizar el usuario.", "danger"); }
-    });
-  };
+    } catch (err) {
+      console.error(err);
+      this.alerta.mostrar('Error al agregar el usuario.', 'danger');
+    } finally {
+      this.submitting = false;
+    }
+  }
 
   back() { this.router.navigate(['/usersPage']); };
 
@@ -122,26 +136,5 @@ export class FormUser implements OnInit {
   estoyEnEditar() { return this.isEditMode; };
 
   estoyEnAgregar() { return this.isAddMode; };
-
-  agregarNuevoUsuario() {
-
-    const nuevoUsuario: Usuario = {
-
-      username: this.newUserForm.value.username!,
-      password: this.newUserForm.value.password!,
-      profile: this.newUserForm.value.profile! as TipoPerfil,
-      isLoggedIn: false,
-      avatarUrl: this.userUrl
-    };
-
-    this.servicioUsuarios.postUser(nuevoUsuario).subscribe({
-
-      next: () => {
-        this.alerta.mostrar("Usuario agregado con éxito.", "success");
-        this.router.navigate(['/usersPage']);
-      },
-
-      error: () => { this.alerta.mostrar("Error al agregar el usuario.", "danger"); }
-    });
-  };
+  
 }

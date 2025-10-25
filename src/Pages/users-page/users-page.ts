@@ -31,7 +31,25 @@ export class UsersPage implements OnInit {
 
   readonly usuarioActual = this.usuarioLogueado();
 
+  visiblePasswords = new Set<string>();
+
   //*MÉTODOS
+
+  private clave(usuario: Usuario) {
+    return (usuario.id ?? usuario.username)?.toString();
+  }
+
+  verContrasena(usuario: Usuario) {
+    const k = this.clave(usuario);
+    return !!k && this.visiblePasswords.has(k);
+  }
+
+  togglePasswordVisibility(usuario: Usuario) {
+    const k = this.clave(usuario);
+    if (!k) return;
+    if (this.visiblePasswords.has(k)) this.visiblePasswords.delete(k);
+    else this.visiblePasswords.add(k);
+  }
 
   ngOnInit(): void { 
     

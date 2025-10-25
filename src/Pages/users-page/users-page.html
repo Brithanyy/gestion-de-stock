@@ -31,7 +31,18 @@
         <span [class.usuario-activo]="isUsuarioActivo(usuario)">{{ usuario.username }}</span>
         <span *ngIf="isUsuarioActivo(usuario)" class="usuario-dot" title="Activo"></span>
       </div>
-      <div>********</div>
+      <div>
+        <span class="password-cell">
+          {{ verContrasena(usuario) ? (usuario.password || '') : ('*'.repeat(((usuario.password || '').length) || 8)) }}
+          <i
+            class="fa-solid password-eye"
+            [ngClass]="verContrasena(usuario) ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePasswordVisibility(usuario)"
+            title="Mostrar/Ocultar contraseña"
+            aria-label="Mostrar contraseña"
+          ></i>
+        </span>
+      </div>
       <div>{{ usuario.profile }}</div>
 
       <div class="acciones">
