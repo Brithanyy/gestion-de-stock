@@ -467,6 +467,19 @@
       "stock": 20,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_987359-MLA95495270890_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
+    },
+    {
+      "id": "4790",
+      "name": "Santa Julia Tinto Dulce",
+      "type": "Con alcohol",
+      "category": "Vino",
+      "brand": "Santa Julia",
+      "milliliters": 750,
+      "alcoholContent": 13,
+      "price": 15000,
+      "stock": 30,
+      "imageUrl": "https://casadevinosmendoza.com.ar/wp-content/uploads/2022/04/vino-santa-julia-varietal-tinto-dulce-x-1-unidad.jpg",
+      "createdAt": "2025-10-26T15:42:08.515Z"
     }
   ],
   "Movimientos": [
