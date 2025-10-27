@@ -13,6 +13,7 @@ import { EditUserPage } from '../Pages/edit-user-page/edit-user-page';
 import { NewUserPage } from '../Pages/new-user-page/new-user-page';
 import { EditDrinkPage } from '../Pages/edit-drink-page/edit-drink-page';
 import { DetailDrinkPage } from '../Pages/detail-drink-page/detail-drink-page';
+import { tipoUsuarioGuard } from '../guards/tipoUsuario/tipo-usuario-guard';
 
 export const routes: Routes = [
 
@@ -32,14 +33,14 @@ export const routes: Routes = [
         component: MainLayout,
         children: [
         { path: 'homePage/:id', component: HomePage, canActivate: [autenticacionGuard] },
-        { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
-        { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
+        { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
         { path: 'alertsPage', component: AlertsPage, canActivate: [autenticacionGuard] },
         { path: 'movementsPage', component: MovementsPage, canActivate: [autenticacionGuard] },
         { path: 'reportsPage', component: ReportsPage, canActivate: [autenticacionGuard] },
-        { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard] },
-        { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard] },
-        { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'editUser/:id', component: EditUserPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
+        { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
+        { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
         { path: 'detailDrinkPage/:id/:idUser', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
         ]
     },
