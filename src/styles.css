@@ -6,7 +6,7 @@
   --color-negro: #1e1e1e;
   --color-blanco: #ffffff;
  
-  --color-fondo: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  --color-fondo: #ffffff; /* Fondo oscuro con transparencia */
 
   --color-error: #ff4d4d;
   --color-exito: #4caf50;
@@ -195,4 +195,22 @@ app-root {
   :root {
     --sidebar-width: var(--sidebar-width-mobile);
   }
+}
+
+/* Asegurar que el body use Bootstrap como base */
+body {
+  font-family: "Cooper-Star", Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-blanco);
+}
+
+/* Ajuste para los contenedores principales */
+.container {
+  max-width: 1200px;
+}
+
+/* Compatibilidad con Bootstrap */
+img, svg {
+  max-width: 100%;
+  height: auto;
 }

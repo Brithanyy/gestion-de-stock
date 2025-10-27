@@ -29,6 +29,7 @@
     "@angular/router": "^20.3.0",
     "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-free": "^7.1.0",
+    "bootstrap": "^5.3.8",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.3",
     "rxjs": "~7.8.0",

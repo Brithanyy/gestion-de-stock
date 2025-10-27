@@ -1,53 +1,52 @@
-<div class="login-container">
+<div class="login-container d-flex justify-content-center align-items-center min-vh-100">
 
-  <div class="login-box">
+  <div class="login-box card shadow-lg border-0 p-4 text-center">
+    
+    <img [src]="logoUrl" alt="Logo Mirador" class="logo img-fluid mb-3 mx-auto d-block rounded-circle" />
 
-    <img [src]="logoUrl" alt="Logo Mirador" class="logo" />
+    <h2 class="titulo mb-4">Sistema de gestión de stock</h2>
 
-    <h2 class="titulo">Sistema de gestión de stock</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate class="w-100">
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-
-      <!-- Username -->
-      <div class="input-group">
+      <!-- USERNAME -->
+      <div class="mb-3 text-start">
         <input
           type="text"
           formControlName="username"
-          placeholder="Username"
-          class="form-control"
+          placeholder="Usuario"
+          class="form-control form-control-lg"
         />
-        <p class="error-text" *ngIf="f.username.touched && f.username.invalid">
+        <div *ngIf="f.username.touched && f.username.invalid" class="invalid-feedback d-block">
           El nombre de usuario es requerido
-        </p>
+        </div>
       </div>
 
-       <!-- Password con ojito -->
-       <div class="input-group password-group">
+      <!-- PASSWORD -->
+      <div class="mb-3 position-relative">
         <input
           [type]="verContrasena ? 'text' : 'password'"
           formControlName="password"
-          placeholder="Password"
-          class="form-control"
+          placeholder="Contraseña"
+          class="form-control form-control-lg pe-5"
         />
         <i
           class="fa-solid"
           [ngClass]="verContrasena ? 'fa-eye-slash' : 'fa-eye'"
           (click)="visualizarContrasena()"
+          title="Mostrar/Ocultar contraseña"
         ></i>
-      </div>
-       <p class="error-text" *ngIf="f.password.touched && f.password.invalid">
+        <div *ngIf="f.password.touched && f.password.invalid" class="invalid-feedback d-block text-start">
           La contraseña es requerida
-       </p>
+        </div>
+      </div>
 
+      <!-- BOTÓN -->
+      <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-lg btn-login" [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
+      </div>
 
-
-
-      <button type="submit" class="btn-login" [disabled]="loginForm.invalid">
-        Ingresar
-      </button>
-      
     </form>
-
   </div>
-
 </div>
