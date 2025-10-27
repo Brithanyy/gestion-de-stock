@@ -105,23 +105,24 @@ onSubmitEditar() {
     this.ALERTA.mostrar("ID de la bebida es invalido", "danger");
     return;
   }
+  const valores = this.editBebidaForm.value;
+
   const bebidaActualizada : Bebida = {
-    id: this.bebidaTraida?.id,
-    name: this.bebidaTraida?.name!,
-    type: this.bebidaTraida?.type!,
-    category: this.bebidaTraida?.category!,
-    brand: this.bebidaTraida?.brand!,
-    milliliters: this.bebidaTraida?.milliliters!,
-    alcoholContent: this.bebidaTraida?.alcoholContent,
-    price: this.bebidaTraida?.price!,
-    stock: this.bebidaTraida?.stock!,
-    imageUrl: this.bebidaTraida?.imageUrl,
-    createdAt: this.bebidaTraida?.createdAt!
+    id: this.bebidaID,
+    name: valores.name!,
+    type: valores.type! as TipoBebida,
+    category: valores.category! as CategoriaBebida,
+    brand: valores.brand!,
+    milliliters: Number(valores.milliliters),
+    alcoholContent: Number(valores.alcoholContent),
+    price: Number(valores.price),
+    stock: Number(valores.stock),
+    imageUrl: valores.imageUrl!,
+    createdAt: this.bebidaTraida?.createdAt ?? new Date()
   };
   this.SERVICIO_BEBIDAS.putDrink(bebidaActualizada).subscribe({
     next: () => {
       
-      this.alerta.mostrar("Bebida actualizada con éxito.", "success");
       this.router.navigate(['/homePage', this.usuarioActual?.id]);
     },
 

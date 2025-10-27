@@ -109,6 +109,56 @@ export class FormUser implements OnInit {
     }
   }
 
+  async editarUsuario() {
+    if (this.editUserForm.invalid) {
+      this.alerta.mostrar('Completa el formulario correctamente.', 'danger');
+      return;
+    }
+
+    const id = this.userId;
+    if (!id) {
+      this.alerta.mostrar('Usuario no identificado para editar.', 'danger');
+      return;
+
+    }
+    const username = (this.editUserForm.value.username || '').toString().trim();
+    const password = this.editUserForm.value.password || '';
+    const profile = this.editUserForm.value.profile! as TipoPerfil;
+
+    this.submitting = true;
+    try {
+      const usuarios = await firstValueFrom(this.servicioUsuarios.getAllUsers());
+      // comprobar duplicado excluyendo el propio id
+      const existe = usuarios.some(u =>
+        u.id !== id && (u.username ?? '').toString().trim().toLowerCase() === username.toLowerCase()
+      );
+
+      if (existe) {
+        this.alerta.mostrar('Ya existe otro usuario con ese nombre.', 'danger');
+        return;
+      }
+
+      const actualizado: Usuario = {
+        id,
+        username,
+        password,
+        profile,
+        avatarUrl: this.usuarioTraido?.avatarUrl ?? this.userUrl,
+        isLoggedIn: this.usuarioTraido?.isLoggedIn ?? false
+      };
+
+      await firstValueFrom(this.servicioUsuarios.putUser(actualizado));
+      this.alerta.mostrar('Usuario actualizado con éxito.', 'success');
+      this.router.navigate(['/usersPage']);
+    } catch (err) {
+      console.error(err);
+      this.alerta.mostrar('Error al actualizar el usuario.', 'danger');
+    } finally {
+      this.submitting = false;
+    }
+  }
+
+
   back() { this.router.navigate(['/usersPage']); };
 
   setearFormulario() {

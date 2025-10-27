@@ -5,22 +5,22 @@
       "username": "Rouse02",
       "password": "Rouse02",
       "profile": "admin",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
+      "avatarUrl": "assets/img/usuario.png",
+      "isLoggedIn": false
     },
     {
       "id": "2",
       "username": "Brithany",
       "password": "brisa2002",
       "profile": "usuario",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
+      "avatarUrl": "assets/img/usuario.png",
+      "isLoggedIn": false
     },
     {
-      "id": "c4f6",
-      "username": "Adri",
-      "password": "adri123",
-      "profile": "admin",
+      "id": "d190",
+      "username": "sofi",
+      "password": "sofi",
+      "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
     }
@@ -61,7 +61,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 19,
+      "stock": 2,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -480,19 +480,22 @@
       "stock": 30,
       "imageUrl": "https://casadevinosmendoza.com.ar/wp-content/uploads/2022/04/vino-santa-julia-varietal-tinto-dulce-x-1-unidad.jpg",
       "createdAt": "2025-10-26T15:42:08.515Z"
+    },
+    {
+      "id": "71a1",
+      "name": "Fernet Branca",
+      "type": "Con alcohol",
+      "category": "Aperitivo",
+      "brand": "Branca",
+      "milliliters": 1000,
+      "alcoholContent": 3,
+      "price": 10000,
+      "stock": 0,
+      "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/211/660/products/branca-litro1-b3a10a9c87474df86f16050360672216-480-0.webp",
+      "createdAt": "2025-10-27T12:31:03.805Z"
     }
   ],
   "Movimientos": [
-    {
-      "id": "6abe",
-      "idDrink": "3",
-      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
-      "typeMotion": "Ingreso",
-      "amount": 10,
-      "movementDate": "2025-10-23T21:01:39.044Z",
-      "idUser": "1",
-      "nameUser": "Rouse02"
-    },
     {
       "id": "10c5",
       "idDrink": "4",
@@ -630,6 +633,36 @@
       "typeMotion": "Egreso",
       "amount": 1,
       "movementDate": "2025-10-25T21:36:29.799Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "8d11",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Egreso",
+      "amount": 17,
+      "movementDate": "2025-10-27T11:51:23.764Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "0c61",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-27T12:31:31.026Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "24e2",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Egreso",
+      "amount": 29,
+      "movementDate": "2025-10-27T12:32:01.825Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }
