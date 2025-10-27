@@ -104,4 +104,7 @@ export class HomePage implements OnInit {
     if(this.bebidasFiltradas.length === 0) { this.ALERTA.mostrar("No se encontró ninguna bebida registrada con ese nombre.", "danger"); };
   };
 
+  agregarBebida() {
+    this.ROUTER.navigate(['addDrinkPage']);
+  }
 }

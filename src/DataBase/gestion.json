@@ -493,19 +493,6 @@
       "stock": 0,
       "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/211/660/products/branca-litro1-b3a10a9c87474df86f16050360672216-480-0.webp",
       "createdAt": "2025-10-27T12:31:03.805Z"
-    },
-    {
-      "id": "2713",
-      "name": "Aperol",
-      "type": "Con alcohol",
-      "category": "Aperitivo",
-      "brand": "Aperol",
-      "milliliters": 9,
-      "alcoholContent": 15,
-      "price": 5000,
-      "stock": 20,
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Aperol_Flasche.jpg/330px-Aperol_Flasche.jpg",
-      "createdAt": "2025-10-27T12:59:12.634Z"
     }
   ],
   "Movimientos": [

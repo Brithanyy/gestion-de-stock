@@ -5,6 +5,9 @@
     [(ngModel)]="terminoBusqueda"
     (input)="filtrarBebidas()"
   />
+    <button class="btn-agregar" (click)="agregarBebida()" *ngIf="tipoUsuario() === 'admin'">
+      <i class="fa-solid fa-wine-bottle"></i> Agregar nueva bebida
+    </button>
 </div>
 
 

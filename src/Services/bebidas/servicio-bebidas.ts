@@ -33,16 +33,7 @@ export class ServicioBebidas {
   };
   //Metodo que nos devuelve las bebidas con stock menor o igual a 5
   getLowStockDrink() {
-
     return this.getAllDrinks().pipe( map(bebidas => bebidas.filter(bebida => bebida.stock <= 5)) );
   };
-
-  /* EJEMPLO DE COMO USARLO EN NUESTRO COMPONENTE O PAGE
-this.servicioBebidas.getLowStockDrink().subscribe({
-  next: (bebidasConStockBajo) => {
-     Aquí tienes el array filtrado
-  }
-});
-  */
 
 }

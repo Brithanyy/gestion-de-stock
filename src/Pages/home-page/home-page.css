@@ -36,6 +36,25 @@
   box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
 }
 
+.btn-agregar {
+
+  background-color: var(--color-naranja);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin: 1rem 0;
+}
+
+.btn-agregar:hover {
+  background-color: #ff8c32;
+  transform: scale(1.05);
+}
+
 .mensaje-vacio {
   text-align: center;
   font-weight: 600;
@@ -80,6 +99,11 @@
     box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
   }
 
+  .btn-agregar {
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+  }
+
   .mensaje-vacio {
     text-align: center;
     font-weight: 600;
@@ -122,6 +146,11 @@
   .barraBusqueda input:focus {
     border-color: #f38240;
     box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+   .btn-agregar {
+    font-size: 1.1rem;
+    padding: 0.55rem 0.9rem;
   }
 
   .mensaje-vacio {
@@ -169,6 +198,11 @@
   .barraBusqueda input:focus {
     border-color: #f38240;
     box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+   .btn-agregar {
+    font-size: 1.1rem;
+    padding: 0.55rem 0.9rem;
   }
 
   .mensaje-vacio {
@@ -220,6 +254,11 @@
     box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
   }
 
+  .btn-agregar {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
   .mensaje-vacio {
     text-align: center;
     font-weight: 600;
@@ -266,6 +305,11 @@
   .barraBusqueda input:focus {
     border-color: #f38240;
     box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  .btn-agregar {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
   }
 
   .mensaje-vacio {
