@@ -81,7 +81,6 @@ export class UsersPage implements OnInit {
   this.servicioUsuarios.deleteUser(usuario.id).subscribe({
     next: () => {
       this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
-      this.alerta.mostrar("Usuario eliminado con éxito.", "success");
     },
     error: () => {
       this.alerta.mostrar("Error al eliminar el usuario.", "danger");
