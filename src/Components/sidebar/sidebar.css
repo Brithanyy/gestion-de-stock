@@ -1,86 +1,98 @@
-
 :host { 
-  display:block; 
-  height:100%; 
-  background:#1e1e1e; 
-  color: #ffffff; 
-  font-family: "Cooper-Star", system-ui, sans-serif; 
-  box-sizing:border-box; 
-}
-
-.sidebar {
-  width: auto;
-  padding:1rem;
+  display: block;
+  height:100%;
+  background:#1e1e1e;
+  color: #ffffff;
+  font-family: "Cooper-Star", system-ui, sans-serif;
   box-sizing:border-box;
-  top: 25vh;  /* sigue quedando debajo del header */
-  height: calc(100vh - auto - auto); /* asegura el alto utilizable */
-  overflow-y:auto;
-  display:block;
-}
-
-.sidebar ul {
-  list-style:none;
-  padding: 0.5rem;
-  margin: auto 0;   /* esto centra verticalmente el ul dentro del sidebar */
-  display:flex;
-  flex-direction:column;
-  gap:2rem;
-}
-
-.sidebar a {
-  display: inline-block;
-  text-decoration: none;
-  color: #ffffff;
-  background: transparent;      
-  padding: 0.6rem 0.9rem;
-  border-radius: 999px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.2rem;
-  transition: background .18s ease, color .18s ease;
-  width: 100%;
-  box-sizing: border-box;
-  cursor: pointer;             
-  outline: none;
-}
-
-.sidebar a:hover,
-.sidebar a:focus,
-.sidebar a:focus-visible {
-  background: #f47227;         
-  color: #ffffff;
 }
 
 /*!RESPONVIDAD*/
 @media (max-width: 480px) {
     
   .sidebar {
-    width: auto;
-    padding:1rem;
-    box-sizing:border-box;
-    top: 15vh;  
-    height: calc(100vh - auto - auto); 
-    overflow-y:auto;
-    display:block;
+    padding: 0.5rem;
   }
 
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+  } 
+
   .sidebar a {
-    font-size: 0.6rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background: transparent;  
+    padding: 0.2rem 0.4rem;    
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    transition: background .18s ease, color .18s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;             
+    outline: none;
+  }
+  
+  .sidebar a:hover,
+  .sidebar a:focus,
+  .sidebar a:focus-visible {
+    background: #f47227;         
+    color: #ffffff;
+  }
+  
+  .sidebar a {
+    font-size: 0.8rem;
   }
 }
 
 @media (min-width: 480px) {
     
   .sidebar {
-    width: auto;
-    padding:1rem;
-    box-sizing:border-box;
-    top: 18vh;  
-    height: calc(100vh - auto - auto); 
-    overflow-y:auto;
-    display:block;
+    padding: 1rem;
   }
 
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+  } 
+
+  .sidebar a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background: transparent;  
+    padding: 0.2rem 0.8rem;    
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    transition: background .18s ease, color .18s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;             
+    outline: none;
+  }
+  
+  .sidebar a:hover,
+  .sidebar a:focus,
+  .sidebar a:focus-visible {
+    background: #f47227;         
+    color: #ffffff;
+  }
+  
   .sidebar a {
     font-size: 0.8rem;
   }
@@ -89,15 +101,43 @@
 @media (min-width: 768px) {
   
   .sidebar {
-    width: auto;
-    padding:1rem;
-    box-sizing:border-box;
-    top: 18vh; 
-    height: calc(100vh - auto - auto); 
-    overflow-y:auto;
-    display:block;
+    padding: 1rem;
   }
 
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+  } 
+
+  .sidebar a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background: transparent;  
+    padding: 0.5rem 1rem;    
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 600;
+    transition: background .18s ease, color .18s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;             
+    outline: none;
+  }
+  
+  .sidebar a:hover,
+  .sidebar a:focus,
+  .sidebar a:focus-visible {
+    background: #f47227;         
+    color: #ffffff;
+  }
+  
   .sidebar a {
     font-size: 1rem;
   }
@@ -109,10 +149,41 @@
     width: auto;
     padding:1rem;
     box-sizing:border-box;
-    top: 20vh; 
+    top: 30vh;  
     height: calc(100vh - auto - auto); 
     overflow-y:auto;
     display:block;
+  }
+
+  .sidebar ul {
+    list-style:none;
+    margin: auto 0;   
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+  }
+
+  .sidebar a {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background: transparent;      
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 600;
+    transition: background .18s ease, color .18s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;             
+    outline: none;
+  }
+
+  .sidebar a:hover,
+  .sidebar a:focus,
+  .sidebar a:focus-visible {
+    background: #f47227;         
+    color: #ffffff;
   }
   
   .sidebar a {
@@ -126,14 +197,46 @@
     width: auto;
     padding:1rem;
     box-sizing:border-box;
-    top: 25vh;  /* sigue quedando debajo del header */
-    height: calc(100vh - auto - auto); /* asegura el alto utilizable */
+    top: 30vh;  
+    height: calc(100vh - auto - auto); 
     overflow-y:auto;
     display:block;
   }
-    
+
+  .sidebar ul {
+    list-style:none;
+    padding: 0.5rem;
+    margin: auto 0;   
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+  }
+
   .sidebar a {
-    font-size: 1.5rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background: transparent;      
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 600;
+    transition: background .18s ease, color .18s ease;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;             
+    outline: none;
+  }
+
+  .sidebar a:hover,
+  .sidebar a:focus,
+  .sidebar a:focus-visible {
+    background: #f47227;         
+    color: #ffffff;
+  }
+  
+  .sidebar a {
+    font-size: 1.4rem;
   }
 }
 
