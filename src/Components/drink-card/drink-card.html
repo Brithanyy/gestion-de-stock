@@ -10,12 +10,23 @@
   <h5>Unidades en stock: {{ bebida.stock }}</h5>
 
   @if (esAdmin) {
-    <button class="editar" (click)="editarBebida(bebida.id)">Editar</button>
-    <button class="eliminar" (click)="eliminarBebida(bebida.id)">Eliminar</button>
-    <button class="detalle" (click)="verDetalle(bebida.id)">Ver detalle</button>
+    <div class="acciones">
+      <button class="icono editar" (click)="editarBebida(bebida.id)">
+        <i class="fa-solid fa-pen-to-square"></i>
+      </button>
+      <button class="icono detalle" (click)="verDetalle(bebida.id)">
+        <i class="fa-solid fa-circle-info"></i>
+      </button>
+      <button class="icono eliminar" (click)="eliminarBebida(bebida.id)">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    </div>
+    
   }
   @else {
-    <button class="detalle" (click)="verDetalle(bebida.id)">Ver detalle</button>
+    <button class="icono detalle" (click)="verDetalle(bebida.id)">
+      <i class="fa-solid fa-file-magnifying-glass"></i>
+    </button>
   }
 
   <!-- FORM INGRESO -->
@@ -24,7 +35,7 @@
       <label>Agregar stock</label>
       <div class="input-group">
         <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formIngreso.invalid">Agregar</button>
+        <button type="submit" [disabled]="formIngreso.invalid" class="ingreso">Agregar</button>
       </div>
 
       <small *ngIf="formIngreso.get('cantidadIngreso')?.invalid && formIngreso.get('cantidadIngreso')?.touched" class="error">
@@ -39,7 +50,7 @@
       <label>Quitar stock</label>
       <div class="input-group">
         <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso > bebida.stock">Quitar</button>
+        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso> bebida.stock" class="egreso">Quitar</button>
       </div>
 
       <!-- Validación cantidad vacía o inválida -->

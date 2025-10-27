@@ -23,6 +23,7 @@ export class MovementsPage implements OnInit {
   readonly servicioLogin : ServicioAutenticacion = inject(ServicioAutenticacion);
   readonly ROUTER : Router = inject(Router);
   usuarioLogueado = this.servicioLogin.usuario;
+  tipoUsuario = this.servicioLogin.usuario()?.profile;
 
   movimientos : Movimiento[] = [];
   terminoBusqueda: string = '';

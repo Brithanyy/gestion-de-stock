@@ -92,6 +92,13 @@ p {
   font-weight: 600;
   font-size: 0.8rem;
 }
+.acciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem; /* espacio entre botones */
+  margin-top: 0.8rem;
+}
 
 button {
   cursor: pointer;
@@ -104,43 +111,63 @@ button {
   font-size: 1rem;
 }
 
+button.icono {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Botones de acción */
-button[type="submit"] {
+button[type="submit"]{
   background-color: #f47227;
   color: #ffffff;
 }
 
-button[type="submit"]:disabled {
+button[type="submit"]:disabled{
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
+button:hover:not(:disabled){
   background-color: #f47227;
   color: #ffffff;
 }
 
 /* Botones especiales */
+  /* Editar */
 button.editar {
-  background-color: #f47227;
-  color: #ffffff;
+  background-color: var(--color-exito);
+  color: #fff;
+}
+button.editar:hover {
+  background-color: #45a049;
+  transform: scale(1.15);
 }
 
-button.eliminar {
-  background-color: #f47227;
-  color: #ffffff;
-}
-
+/* Detalle */
 button.detalle {
-  background-color: #f47227;
-  color: #ffffff;
+  background-color: #ffc300;
+  color: #fff;
+}
+button.detalle:hover {
+  background-color: #f3b000;
+  transform: scale(1.15);
 }
 
-button.editar:hover,
-button.eliminar:hover,
-button.detalle:hover {
-  background-color: #f38240;
+/* Eliminar */
+button.eliminar {
+  background-color: var(--color-error);
+  color: #fff;
 }
+button.eliminar:hover {
+  background-color: #ff6666;
+  transform: scale(1.15);
+}
+
 
 .error {
   color: red;
@@ -256,6 +283,20 @@ button.detalle:hover {
     font-size: 1rem;
   }
 
+  .acciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  button.icono {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
   /* Botones de acción */
   button[type="submit"] {
     background-color: #f47227;
@@ -274,24 +315,30 @@ button.detalle:hover {
 
   /* Botones especiales */
   button.editar {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: var(--color-exito);
+  color: #ffffff;
   }
 
   button.eliminar {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: var(--color-error);
+  color: #ffffff;
   }
 
   button.detalle {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: #ffc300;
+  color: #ffffff;
   }
 
-  button.editar:hover,
-  button.eliminar:hover,
   button.detalle:hover {
-    background-color: #f38240;
+    background-color: #ffd60a;
+  } 
+
+  button.eliminar:hover {
+    background-color: #ff6666;
+  }
+
+  button.editar:hover {
+    background-color: #45a049;
   }
 
   .error {
@@ -426,26 +473,31 @@ button.detalle:hover {
 
   /* Botones especiales */
   button.editar {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: var(--color-exito);
+  color: #ffffff;
   }
 
   button.eliminar {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: var(--color-error);
+  color: #ffffff;
   }
 
   button.detalle {
-    background-color: #f47227;
-    color: #ffffff;
+  background-color: #ffc300;
+  color: #ffffff;
   }
 
-  button.editar:hover,
-  button.eliminar:hover,
   button.detalle:hover {
-    background-color: #f38240;
+    background-color: #ffd60a;
+  } 
+
+  button.eliminar:hover {
+    background-color: #ff6666;
   }
 
+  button.editar:hover {
+    background-color: #45a049;
+  }
   .error {
     color: red;
     font-size: 0.8rem;
@@ -516,6 +568,16 @@ button.detalle:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .acciones {
+    gap: 0.8rem;
+  }
+
+  button.icono {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
   }
 
   label {

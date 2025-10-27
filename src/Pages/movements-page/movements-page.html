@@ -27,7 +27,7 @@
       <div>Fecha</div>
       <div>Hora</div>
       <div>Usuario</div>
-      <div>Acción</div>
+      <div *ngIf="tipoUsuario === 'admin'">Acción</div>
     </div>
 
     <!-- Filas dinámicas -->
@@ -45,7 +45,7 @@
         <div>{{ movimiento.movementDate | date:'dd/MM/yyyy' }}</div>
         <div>{{ movimiento.movementDate | date:'HH:mm' }}</div>
         <div>{{ movimiento.nameUser }}</div>
-        <div class="accion">
+        <div class="accion" *ngIf="tipoUsuario === 'admin'">
             <i class="fa-solid fa-trash eliminar" (click)="eliminarMovimiento(movimiento)"></i>
         </div>
 
