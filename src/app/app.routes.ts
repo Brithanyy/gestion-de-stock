@@ -31,7 +31,7 @@ export const routes: Routes = [
         path: '',
         component: MainLayout,
         children: [
-        { path: 'homePage/:id', component: HomePage/*, canActivate: [autenticacionGuard]*/ },
+        { path: 'homePage/:id', component: HomePage, canActivate: [autenticacionGuard] },
         { path: 'usersPage', component: UsersPage, canActivate: [autenticacionGuard] },
         { path: 'addDrinkPage', component: AddDrinkPage, canActivate: [autenticacionGuard] },
         { path: 'alertsPage', component: AlertsPage, canActivate: [autenticacionGuard] },
