@@ -59,18 +59,35 @@ export class UsersPage implements OnInit {
 
   }
 
-  eliminarUsuario(usuario : Usuario) {
+  eliminarUsuario(usuario: Usuario) {
+  const usuarioActual = this.usuarioLogueado();
+  
+  if (!usuarioActual) return;
 
-    this.servicioUsuarios.deleteUser(usuario.id).subscribe({
+  //Chequeo: no se puede eliminar el usuario logueado
+  if (usuario.id === usuarioActual.id) {
+    this.alerta.mostrar("No puedes eliminarte a ti mismo.", "danger");
+    return;
+  }
 
-      next : (user) => {
+  //Chequeo: no eliminar al último admin
+  const admins = this.usuarios.filter(u => u.profile === 'admin');
+  if (usuario.profile === 'admin' && admins.length <= 1) {
+    this.alerta.mostrar("Debe quedar al menos un usuario administrador.", "danger");
+    return;
+  }
 
-        this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
-        this.alerta.mostrar("Usuario eliminado con éxito.", "success");
-      },
-      error : (err) => { this.alerta.mostrar("Error al eliminar el usuario.", "danger"); }
-    });
-  };
+  // Si pasa los chequeos, se puede eliminar
+  this.servicioUsuarios.deleteUser(usuario.id).subscribe({
+    next: () => {
+      this.usuarios = this.usuarios.filter(u => u.id !== usuario.id);
+      this.alerta.mostrar("Usuario eliminado con éxito.", "success");
+    },
+    error: () => {
+      this.alerta.mostrar("Error al eliminar el usuario.", "danger");
+    }
+  });
+}
 
   listarUsuarios() {
 

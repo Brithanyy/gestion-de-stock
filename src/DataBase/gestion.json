@@ -9,17 +9,9 @@
       "isLoggedIn": false
     },
     {
-      "id": "2",
+      "id": "79cb",
       "username": "Brithany",
       "password": "brisa2002",
-      "profile": "usuario",
-      "avatarUrl": "assets/img/usuario.png",
-      "isLoggedIn": false
-    },
-    {
-      "id": "d190",
-      "username": "sofi",
-      "password": "sofi",
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
