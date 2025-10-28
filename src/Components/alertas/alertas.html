@@ -1,3 +1,15 @@
-<div *ngIf="alerta.visible()" class="alerta" [ngClass]="{'exito': alerta.tipo() === 'success', 'error': alerta.tipo() === 'danger'}">
-  <span class="mensaje">{{ alerta.mensaje() }}</span>
+<div
+  *ngIf="alerta.visible()"
+  class="alert position-fixed top-0 start-50 translate-middle-x shadow-lg fade show"
+  [ngClass]="{
+    'alert-success': alerta.tipo() === 'success',
+    'alert-danger': alerta.tipo() === 'danger'
+  }"
+  role="alert"
+  style="z-index: 1080;"
+>
+  <div class="d-flex justify-content-between align-items-center">
+    <span class="mensaje fw-semibold">{{ alerta.mensaje() }}</span>
+    <button type="button" class="btn-close ms-3" aria-label="Cerrar" (click)="alerta.ocultar()"></button>
+  </div>
 </div>

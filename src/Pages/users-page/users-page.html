@@ -1,59 +1,87 @@
-<main class="usuarios-container">
-  
-  <section class="usuarios-header">
-    <h2>Gestión de Usuarios</h2>
-    <button class="btn-agregar" (click)="crearUsuarioPage()">
-      <i class="fa-solid fa-user-plus"></i> Agregar nuevo usuario
-    </button>
-     <button class="btn-agregar" (click)="volverAtras()">Volver atrás</button>
+<main class="container-fluid py-4 usuarios-container">
+
+  <!-- 🔹 Encabezado -->
+  <section class="mb-4 text-center">
+    <h2 class="mb-4 fw-bold text-dark">Gestión de Usuarios</h2>
+
+    <div class="row justify-content-center g-3 align-items-center">
+      <div class="col-12 col-md-8 col-lg-6 d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-warning text-white fw-semibold px-4" (click)="crearUsuarioPage()">
+          <i class="fa-solid fa-user-plus me-2"></i> Agregar nuevo usuario
+        </button>
+        <button class="btn btn-secondary fw-semibold px-4" (click)="volverAtras()">
+          <i class="fa-solid fa-arrow-left me-2"></i> Volver atrás
+        </button>
+      </div>
+    </div>
   </section>
 
-  <section class="tabla-usuarios">
+  <!-- 🔹 Tabla -->
+  <section class="tabla-usuarios table-responsive shadow-sm">
+    <table class="table table-bordered table-naranja align-middle text-center mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Avatar</th>
+          <th>Usuario</th>
+          <th>Contraseña</th>
+          <th>Perfil</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
 
-    <div class="tabla-header">
+      <tbody>
+        <tr *ngFor="let usuario of usuarios; let i = index" class="fila-usuario">
+          <!-- Avatar -->
+          <td>
+            <img
+              [src]="usuario.avatarUrl || 'assets/img/usuario.png'"
+              alt="Avatar"
+              class="avatar"
+            />
+          </td>
 
-      <div>Avatar</div>
-      <div>Usuario</div>
-      <div>Contraseña</div>
-      <div>Perfil</div>
-      <div>Acciones</div>
-      
-    </div>
+          <!-- Usuario + estado -->
+          <td>
+            <span [class.usuario-activo]="isUsuarioActivo(usuario)">
+              {{ usuario.username }}
+            </span>
+            <span *ngIf="isUsuarioActivo(usuario)" class="usuario-dot" title="Activo"></span>
+          </td>
 
-    <!-- Filas generadas dinámicamente -->
-    <div class="tabla-fila" *ngFor="let usuario of usuarios; let i = index">
+          <!-- Contraseña + ojito -->
+          <td>
+            <span class="password-cell">
+              {{ verContrasena(usuario) ? (usuario.password || '') : ('*'.repeat(((usuario.password || '').length) || 8)) }}
+              <i
+                class="fa-solid password-eye ms-2"
+                [ngClass]="verContrasena(usuario) ? 'fa-eye-slash' : 'fa-eye'"
+                (click)="togglePasswordVisibility(usuario)"
+                title="Mostrar/Ocultar contraseña"
+                aria-label="Mostrar contraseña"
+              ></i>
+            </span>
+          </td>
 
-      <div>
-        <img [src]="usuario.avatarUrl || 'assets/img/usuario.png'" alt="Avatar" class="avatar" />
-      </div>
+          <!-- Perfil -->
+          <td>
+            <span class="badge rounded-pill px-3 py-2"
+                  [ngClass]="{'bg-success': usuario.profile === 'admin', 'bg-secondary': usuario.profile !== 'admin'}">
+              {{ usuario.profile }}
+            </span>
+          </td>
 
-      <div>
-        <span [class.usuario-activo]="isUsuarioActivo(usuario)">{{ usuario.username }}</span>
-        <span *ngIf="isUsuarioActivo(usuario)" class="usuario-dot" title="Activo"></span>
-      </div>
-      <div>
-        <span class="password-cell">
-          {{ verContrasena(usuario) ? (usuario.password || '') : ('*'.repeat(((usuario.password || '').length) || 8)) }}
-          <i
-            class="fa-solid password-eye"
-            [ngClass]="verContrasena(usuario) ? 'fa-eye-slash' : 'fa-eye'"
-            (click)="togglePasswordVisibility(usuario)"
-            title="Mostrar/Ocultar contraseña"
-            aria-label="Mostrar contraseña"
-          ></i>
-        </span>
-      </div>
-      <div>{{ usuario.profile }}</div>
-
-      <div class="acciones">
-        <i class="fa-solid fa-pen-to-square editar" [routerLink]="['/editUser', usuario.id]"></i>
-        <i class="fa-solid fa-trash eliminar" (click)="eliminarUsuario(usuario)"></i>
-      </div>
-
-    </div>
-
+          <!-- Acciones -->
+          <td class="acciones">
+            <button class="btn btn-outline-warning btn-sm me-2" [routerLink]="['/editUser', usuario.id]" title="Editar">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm" (click)="eliminarUsuario(usuario)" title="Eliminar">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
 </main>
-
-

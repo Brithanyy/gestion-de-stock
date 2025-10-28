@@ -1,176 +1,111 @@
 .drink-form-container {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  min-height: calc(100vh - 160px);
+  background-color: rgba(255, 255, 255, 0.03);
   font-family: "Cooper-Star", system-ui, sans-serif;
+  animation: fadeIn 0.8s ease;
 }
 
-.drink-form-container h2 {
-  text-align: center;
-  color: var(--color-blanco);
-  margin-bottom: 1.5rem;
-  background-color: #f47227;
-  border-radius: 20px;
-  padding: 0.5rem;
+/* --- Fondo título --- */
+.bg-naranja {
+  background-color: var(--color-naranja) !important;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
+/* --- Inputs y selects --- */
+.form-control,
+.form-select {
+  background-color: #2a2a2a;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--color-blanco);
-}
-
-.form-group input,
-.form-group select {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border 0.2s;
- 
-}
-
-.form-group input:focus,
-.form-group select:focus {
+.form-control:focus,
+.form-select:focus {
   border-color: var(--color-naranja);
+  background-color: #1e1e1e;
+  box-shadow: 0 0 8px rgba(244, 114, 39, 0.3);
+  color: #fff;
 }
 
-.checkbox-group {
-  flex-direction: row;
-  align-items: center;
+/* --- Labels --- */
+.form-label {
+  color: #f8f9fa;
+  font-weight: 600;
 }
 
-.checkbox-group input {
-  margin-right: 0.5rem;
-  width: auto;
-}
-
-.error {
-  color: var(--color-error);
+/* --- Mensajes de error --- */
+.text-danger {
   font-size: 0.85rem;
-  margin-top: 0.25rem;
+  color: var(--color-error);
 }
 
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-.form-buttons button {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.form-buttons button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.form-buttons button:not(.cancel) {
+/* --- Botones --- */
+.btn-warning {
   background-color: var(--color-naranja);
-  color: var(--color-blanco);
+  border: none;
 }
-
-.form-buttons button:not(.cancel):hover:not(:disabled) {
+.btn-warning:hover {
   background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
 }
 
-.form-buttons .cancel {
-  color: #ffffff;
-  background-color: #f47227;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 20px;
+.btn-secondary {
+  background-color: var(--color-naranja);
+  border: none;
+}
+.btn-secondary:hover {
+  background-color: var(--color-naranja-hover);;
+  transform: scale(1.05);
 }
 
-.form-buttons .cancel:hover {
-    background-color: #ff8c32;
-    transform: scale(1.05);
+/* --- Fade-in --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.form-buttons .addBtn {
-  color: #ffffff;
-  background-color: #f47227;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 20px;
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .card {
+    padding: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.8rem !important;
+  }
 }
 
-.form-buttons .addBtn:hover {
-    background-color: #ff8c32;
-    transform: scale(1.05);
-}
-
-.form-buttons .editBtn {
-  color: #ffffff;
-  background-color: #f47227;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 20px;
-}
-
-.form-buttons .editBtn:hover {
-    background-color: #ff8c32;
-    transform: scale(1.05);
-}
-/* Estilos para el ojito de la contraseña */
-.password-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.password-wrapper input {
-  width: 100%;
-  padding-right: 2.5rem; /* espacio para que el ojo no tape el texto */
-}
-
-.password-wrapper i {
-  position: absolute;
-  right: 0.75rem;
-  top: 50%;
-  transform: translateY(-50%); /* centra verticalmente */
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: var(--color-naranja);
-  user-select: none;
-  transition: color 0.2s;
-}
-
-.password-wrapper i:hover {
-  color: var(--color-naranja-hover); /* opcional: cambio de color al hover */
-}
-
-
-/* Responsive */
 @media (max-width: 768px) {
-  .edit-user-form-container {
-    margin: 1rem;
-    padding: 1.5rem;
+  .card {
+    padding: 1.2rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .drink-form-container {
+    padding: 1rem;
+  }
+  h2 {
+    font-size: 1.3rem !important;
+  }
+  .form-control,
+  .form-select {
+    font-size: 0.9rem;
+  }
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
   }
 }

@@ -1,129 +1,196 @@
-/* === CONTENEDOR PRINCIPAL === */
 .bebidas-container {
-
-  position: relative;
   min-height: calc(100vh - 160px);
-  margin-top: 0;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; 
-  justify-content: flex-start;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--color-texto);
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  padding: 1.5rem;
+  animation: fadeIn 0.8s ease; /* ✨ Animación suave */
 }
 
-/* === ENCABEZADO === */
-.bebidas-header {
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 1.5rem;
-}
-
-.bebidas-header h2 {
-  color: #1c1c1c;
+/* --- Título --- */
+.bebidas-container h2 {
   font-size: 2rem;
-  margin: 0;
+  color: #1c1c1c;
 }
 
-/* === TABLA DE BEBIDAS === */
+/* --- Botones --- */
+.btn-warning {
+  background-color: var(--color-naranja);
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: var(--color-naranja);
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+/* --- Tabla contenedor responsive --- */
 .tabla-bebidas {
-  width: 100%;
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  font-size: 1.2rem;
+  margin-top: 2rem;
 }
 
-/* CABECERA DE TABLA */
-.tabla-header {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
-  background-color: #1c1c1c;
-  color: #fff;
+/* --- Forzar color naranja en encabezado --- */
+.table-naranja thead {
+  background-color: var(--color-naranja) !important;
+  color: #fff !important;
   font-weight: 600;
-  text-align: center;
-  padding: 1rem 0;
+  border-color: var(--color-naranja-hover) !important;
 }
 
-/* FILAS DE TABLA */
-.tabla-fila {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* mismo número de columnas */
-  align-items: center;
-  text-align: center;
-  background-color: #1c1c1c;
+/* --- Filas del cuerpo --- */
+.table-naranja tbody tr {
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease;
+  animation: fadeInRow 0.6s ease both;
 }
 
-.tabla-fila:hover {
-  background-color: var(--color-primario);
-  color: #000;
+/* --- Efecto hover --- */
+.table-naranja tbody tr:hover {
+  background-color: #fff !important;
+  color: #000 !important;
 }
 
-.stock-bajo {
-  width: 30%;
-  margin: 0 auto;
-  background-color: red; 
-  color: #fff;
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
+/* --- Bordes visibles y centrado --- */
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* --- Badges de stock --- */
+.badge {
+  font-size: 0.9rem;
   font-weight: 600;
-  align-items: center;
-}
-
-.pdf {
-  margin-bottom: 1.25rem;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
   border-radius: 20px;
-  background-color: #f47227;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 0.4rem 0.8rem;
 }
 
-.pdf:hover {
-  background-color: #ff8c32;
-  transform: scale(1.05);
+.bg-danger {
+  background-color: #e74c3c !important;
 }
 
-.contenedorBtn {
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+.bg-success {
+  background-color: #27ae60 !important;
 }
 
-button {
-
-  margin-bottom: 1.25rem;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 20px;
-  background-color: #f47227;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-button:hover {
-
-  background-color: #ff8c32;
-  transform: scale(1.05);
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* --- Responsive general --- */
+@media (max-width: 992px) {
+  .bebidas-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+}
+
+/* --- Tablets --- */
+@media (max-width: 768px) {
+  .bebidas-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .tabla-bebidas {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 600px;
+  }
+}
+
+/* --- Celulares pequeños (menores a 500px) --- */
+@media (max-width: 500px) {
+  .bebidas-container {
+    padding: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .table {
+    font-size: 0.85rem;
+    min-width: 450px; /* 🔹 obliga scroll horizontal suave */
+  }
+
+  .tabla-bebidas {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-naranja) transparent;
+  }
+
+  /* 🔹 Estilo del scroll */
+  .tabla-bebidas::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .tabla-bebidas::-webkit-scrollbar-thumb {
+    background-color: var(--color-naranja);
+    border-radius: 20px;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+  }
+}

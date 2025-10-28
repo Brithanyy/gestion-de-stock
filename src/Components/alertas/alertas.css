@@ -1,89 +1,70 @@
-/* Estilo base */
-.alerta {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 16px 24px; /* más padding para que el contenido y la X no se superpongan */
+/* Base general */
+.alert {
+  min-width: 320px;
+  max-width: 500px;
+  margin-top: 1.5rem;
   border-radius: 12px;
-  color: #fff;
-  font-weight: 500;
-  text-align: center;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  animation: aparecer 0.4s ease, desaparecer 0.4s ease 2.6s forwards; 
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  text-align: left;
+  animation: fadeInDown 0.4s ease, fadeOutUp 0.4s ease 2.6s forwards;
   opacity: 0.95;
-  transition: all 0.3s ease;
-  min-width: 350px;  /* ancho mínimo para que la X no se superponga */
-  max-width: 600px;
-  line-height: 1.4;
-  isolation: isolate;
 }
 
-
-/* Tipos de alerta */
-.alerta.exito {
-  background-color: green /* verde */
+/* Posicionamiento fijo centrado */
+.position-fixed {
+  z-index: 1080 !important;
 }
 
-.alerta.error {
-  background-color: red /* rojo */
+/* Tipos de alerta personalizados */
+.alert-success {
+  background-color: var(--color-exito) !important;
+  color: var(--color-blanco) !important;
+  border: none !important;
 }
 
-
-/* Animaciones keyframes (opcional si querés animar entrada/salida) */
-@keyframes bajar {
-  from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
-  to { transform: translateX(-50%) translateY(0); opacity: 1; }
+.alert-danger {
+  background-color: var(--color-error) !important;
+  color: var(--color-blanco) !important;
+  border: none !important;
 }
 
-@keyframes subir {
-  from { transform: translateX(-50%) translateY(0); opacity: 1; }
-  to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+/* Cierre (X) */
+.btn-close {
+  filter: brightness(0) invert(1); /* ícono blanco */
+  opacity: 0.9;
+}
+.btn-close:hover {
+  opacity: 1;
 }
 
-/* Texto */
-.mensaje {
-  flex-grow: 1;
-  text-align: left; /* opcional */
+/* Animaciones */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.alerta {
-  animation: aparecer 0.4s ease, desaparecer 0.4s ease 2.6s forwards;
+@keyframes fadeOutUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-30%);
+    opacity: 0;
+  }
 }
+
 /* Responsividad */
-
-/* Teléfonos pequeños */
-@media (max-width: 480px) {
-  .alerta {
-    top: 10px;
+@media (max-width: 576px) {
+  .alert {
     width: 90%;
-    font-size: 14px;
-    padding: 12px 16px;
+    font-size: 0.9rem;
     border-radius: 8px;
   }
-}
-
-/* Tablets (pantallas medianas) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .alerta {
-    width: 70%;
-    font-size: 15px;
-    padding: 14px 18px;
-  }
-}
-
-/* Escritorios grandes */
-@media (min-width: 769px) {
-  .alerta {
-    min-width: 320px;
-    max-width: 500px;
-    font-size: 16px;
-  }
-}
-
-/*  Hover opcional (efecto sutil cuando el usuario pasa el mouse) */
-.alerta:hover {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.02);
 }

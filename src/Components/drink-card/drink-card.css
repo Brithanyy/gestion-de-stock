@@ -1,773 +1,120 @@
-.cardBebida {
-  width: 100%;
+.drink-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; 
-  background-color: #ffffff;
-  border: 2px solid rgba(30, 30, 30, 0.015);
+  background-color: #fff;
   border-radius: 20px;
-  padding: 1rem;
-  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  transform: translateY(-3px);
-  max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
-  box-sizing: border-box;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-.cardBebida:hover {
-  transform: scale(1.03); 
-  box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
+.drink-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
-.cardBebida h2 {
-  background-color: #f47227;
-  color: #ffffff;
-  padding: 0.55rem;
-  border-radius: 10px;
-  margin-bottom: 0.9rem;
-  font-size: 1rem;
+.bg-naranja {
+  background-color: var(--color-naranja) !important;
 }
 
-.cardBebida h3,
-.cardBebida h4,
-.cardBebida h5 {
-  background-color: #f47227;
-  color: #ffffff;
-  padding: 0.45rem;
-  border-radius: 8px;
-  margin: 0.45rem 0;
-  font-size: 1rem;
+.text-naranja {
+  color: var(--color-naranja) !important;
 }
 
-.contenedorImagen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.9rem 0;
-}
-
-.contenedorImagen img {
-    width: 90px;      /* base en móvil */
-    height: auto;      /* mantiene proporción */
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
-}
-
-.form-group {
-  margin-top: 10px;
-  text-align: center;
+/* === Imagen uniforme === */
+.image-wrapper {
   width: 100%;
-}
-
-.input-group {
+  height: 250px;                /* 🔹 altura fija en desktop */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  overflow: hidden;
 }
 
-input[type="number"] {
-  width: 80px; /* en móviles no ocupa todo el ancho */
-  padding: 0.4rem;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  text-align: left;
-  font-size: 0.6rem;
-  width: 60%;
+.image-wrapper img {
+  width: auto;
+  height: 100%;                 /* 🔹 se ajusta al alto del contenedor */
+  object-fit: contain;          /* 🔹 mantiene proporciones */
+  border-radius: 12px;
+  transition: transform 0.3s ease;
 }
 
-label {
-  font-size: 1rem;
+.image-wrapper img:hover {
+  transform: scale(1.05);
+}
+/* --- Badges e información --- */
+.badge {
+  font-size: 0.95rem;
+  border-radius: 12px;
+  text-transform: capitalize;
 }
 
 p {
-  background-color: red;
-  border-radius: 10px;
-  color: #ffffff;
-  padding: 5px;
-  margin-top: 0.3rem;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-.acciones {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.6rem; /* espacio entre botones */
-  margin-top: 0.8rem;
+  margin: 0.5rem 0 1rem 0;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 20px;
-  padding: 0.4rem 0.8rem;
-  font-weight: 600;
+/* --- Botones --- */
+.btn-modern {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
-  margin: 5px;
-  font-size: 1rem;
 }
 
-button.icono {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  min-height: 42px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn-modern:hover {
+  transform: scale(1.1);
 }
 
-/* Botones de acción */
-button[type="submit"]{
-  background-color: #f47227;
-  color: #ffffff;
+.btn-naranja {
+  background-color: var(--color-naranja);
+  border-color: var(--color-naranja);
 }
 
-button[type="submit"]:disabled{
-  background-color: #ccc;
-  cursor: not-allowed;
+.btn-naranja:hover {
+  background-color: var(--color-naranja-hover);
+  border-color: var(--color-naranja-hover);
 }
 
-button:hover:not(:disabled){
-  background-color: #f47227;
-  color: #ffffff;
+/* --- Inputs --- */
+.border-naranja {
+  border: 1px solid var(--color-naranja) !important;
+  border-radius: 8px;
 }
 
-/* Botones especiales */
-  /* Editar */
-button.editar {
-  background-color: var(--color-exito);
-  color: #fff;
+.input-group input {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.6rem;
+  text-align: center;
 }
-button.editar:hover {
-  background-color: #45a049;
-  transform: scale(1.15);
-}
-
-/* Detalle */
-button.detalle {
-  background-color: #ffc300;
-  color: #fff;
-}
-button.detalle:hover {
-  background-color: #f3b000;
-  transform: scale(1.15);
+/* --- Botón amarillo (info / detalle) --- */
+.btn-warning.btn-modern {
+  color: #fff !important; /* 🔹 texto/ícono oscuro sobre fondo amarillo */
+  background-color: #ffc107 !important; /* color base Bootstrap */
+  border: none;
 }
 
-/* Eliminar */
-button.eliminar {
-  background-color: var(--color-error);
-  color: #fff;
+.btn-warning.btn-modern:hover {
+  background-color: #ffb300 !important; /* tono más fuerte */
+  color: #fff !important; /* el ícono pasa a blanco al hacer hover */
+  transform: scale(1.1);
 }
-button.eliminar:hover {
-  background-color: #ff6666;
-  transform: scale(1.15);
-}
-
-
-.error {
-  color: red;
-  font-size: 0.8rem;
-}
-
-/*!RESPONVIDAD*/
-@media (max-width: 480px) {
-
-  .cardBebida {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    background-color: #ffffff;
-    border: 2px solid rgba(30, 30, 30, 0.015);
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(-3px);
-    max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
-    box-sizing: border-box;
-  }
-
-  .cardBebida:hover {
-    transform: scale(1.03); 
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
-  }
-
-  .cardBebida h2 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.55rem;
-    border-radius: 10px;
-    margin-bottom: 0.9rem;
-    font-size: 1rem;
-  }
-
-  .cardBebida h3,
-  .cardBebida h4,
-  .cardBebida h5 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.45rem;
-    border-radius: 8px;
-    margin: 0.45rem 0;
-    font-size: 1rem;
-  }
-
-  .contenedorImagen {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.9rem 0;
-  }
-
-  .contenedorImagen img {
-      width: 90px;      /* base en móvil */
-      height: auto;      /* mantiene proporción */
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-  }
-
-  .form-group {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  input[type="number"] {
-    width: 80px; /* en móviles no ocupa todo el ancho */
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: left;
-    font-size: 0.6rem;
-    width: 60%;
-  }
-
-  label {
-    font-size: 1rem;
-  }
-
-  p {
-    background-color: red;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 5px;
-    margin-top: 0.3rem;
-    font-weight: 600;
-    font-size: 0.8rem;
-  }
-
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 20px;
-    padding: 0.4rem 0.8rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    margin: 5px;
-    font-size: 1rem;
-  }
-
-  .acciones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.6rem;
-  }
-
-  button.icono {
-    width: 38px;
-    height: 38px;
-    font-size: 1rem;
-  }
-
-  /* Botones de acción */
-  button[type="submit"] {
-    background-color: #f47227;
-    color: #ffffff;
-  }
-
-  button[type="submit"]:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  button:hover:not(:disabled) {
-    background-color: #f47227;
-    color: #ffffff;
-  }
-
-  /* Botones especiales */
-  button.editar {
-  background-color: var(--color-exito);
-  color: #ffffff;
-  }
-
-  button.eliminar {
-  background-color: var(--color-error);
-  color: #ffffff;
-  }
-
-  button.detalle {
-  background-color: #ffc300;
-  color: #ffffff;
-  }
-
-  button.detalle:hover {
-    background-color: #ffd60a;
-  } 
-
-  button.eliminar:hover {
-    background-color: #ff6666;
-  }
-
-  button.editar:hover {
-    background-color: #45a049;
-  }
-
-  .error {
-    color: red;
-    font-size: 0.8rem;
+/* === Responsividad === */
+@media (max-width: 992px) {
+  .image-wrapper {
+    height: 200px; /* 🔹 un poco más chica en tablets */
   }
 }
 
-@media (min-width: 480px) {
-
-  .cardBebida {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    background-color: #ffffff;
-    border: 2px solid rgba(30, 30, 30, 0.015);
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(-3px);
-    max-width: 420px; /* evita que cada card se haga demasiado ancha en móviles grandes */
-    box-sizing: border-box;
-  }
-
-  .cardBebida:hover {
-    transform: scale(1.03); 
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35); 
-  }
-
-  .cardBebida h2 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.55rem;
-    border-radius: 10px;
-    margin-bottom: 0.9rem;
-    font-size: 1rem;
-  }
-
-  .cardBebida h3,
-  .cardBebida h4,
-  .cardBebida h5 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.45rem;
-    border-radius: 8px;
-    margin: 0.45rem 0;
-    font-size: 1rem;
-  }
-
-  .contenedorImagen {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0.9rem 0;
-  }
-
-  .contenedorImagen img {
-      width: 90px;      /* base en móvil */
-      height: auto;      /* mantiene proporción */
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-  }
-
-  .form-group {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  input[type="number"] {
-    width: 80px; /* en móviles no ocupa todo el ancho */
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: left;
-    font-size: 0.6rem;
-    width: 60%;
-  }
-
-  label {
-    font-size: 1rem;
-  }
-
-  p {
-    background-color: red;
-    border-radius: 10px;
-    color: #ffffff;
-    padding: 5px;
-    margin-top: 0.3rem;
-    font-weight: 600;
-    font-size: 0.8rem;
-  }
-
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 20px;
-    padding: 0.4rem 0.8rem;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    margin: 5px;
-    font-size: 1rem;
-  }
-
-  /* Botones de acción */
-  button[type="submit"] {
-    background-color: #f47227;
-    color: #ffffff;
-  }
-
-  button[type="submit"]:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  button:hover:not(:disabled) {
-    background-color: #f47227;
-    color: #ffffff;
-  }
-
-  /* Botones especiales */
-  button.editar {
-  background-color: var(--color-exito);
-  color: #ffffff;
-  }
-
-  button.eliminar {
-  background-color: var(--color-error);
-  color: #ffffff;
-  }
-
-  button.detalle {
-  background-color: #ffc300;
-  color: #ffffff;
-  }
-
-  button.detalle:hover {
-    background-color: #ffd60a;
-  } 
-
-  button.eliminar:hover {
-    background-color: #ff6666;
-  }
-
-  button.editar:hover {
-    background-color: #45a049;
-  }
-  .error {
-    color: red;
-    font-size: 0.8rem;
-  }
-}
-
-@media (min-width: 768px) {
-
-  .cardBebida {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    background-color: #ffffff;
-    border: 2px solid rgba(30, 30, 30, 0.015);
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(-3px);
-    box-sizing: border-box;
-  }
-
-  .cardBebida h2 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.55rem;
-    border-radius: 10px;
-    margin-bottom: 0.9rem;
-    font-size: 1.3rem;
-  }
-
-  .cardBebida h3,
-  .cardBebida h4,
-  .cardBebida h5 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.45rem;
-    border-radius: 8px;
-    margin: 0.45rem 0;
-    font-size: 1rem;
-  }
-
-  .contenedorImagen {
-    flex: 1;                 /* la imagen ocupa la parte central flexible */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-  }
-
-  .contenedorImagen img {
-    max-height: 400px;       /* limita la altura */
-    width: 300px;
-    object-fit: contain;
-  }
-
-  .form-group {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .acciones {
-    gap: 0.8rem;
-  }
-
-  button.icono {
-    width: 50px;
-    height: 50px;
-    font-size: 1.4rem;
-  }
-
-  label {
-    font-size: 1.2rem;
-  } 
-
-  input[type="number"] {
-    width: 80px; /* en móviles no ocupa todo el ancho */
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: left;
-    font-size: 0.8rem;
-    width: 60%;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-
-  .cardBebida {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    background-color: #ffffff;
-    border: 2px solid rgba(30, 30, 30, 0.015);
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(-3px);
-    box-sizing: border-box;
-  }
-
-  .contenedorImagen {
-    flex: 1;                 /* la imagen ocupa la parte central flexible */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-  }
-
-  .contenedorImagen img {
-    max-height: 400px;       /* limita la altura */
-    width: 300px;
-    object-fit: contain;
-  }
-
-  .cardBebida h2 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.55rem;
-    border-radius: 10px;
-    margin-bottom: 0.9rem;
-    font-size: 1.5rem;
-  }
-
-  .cardBebida h3,
-  .cardBebida h4,
-  .cardBebida h5 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.45rem;
-    border-radius: 8px;
-    margin: 0.45rem 0;
-    font-size: 1.2rem;
-  }
-
-  .form-group {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  label {
-    font-size: 1.2rem;
-  } 
-
-  input[type="number"] {
-    width: 80px; /* en móviles no ocupa todo el ancho */
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: left;
-    font-size: 0.8rem;
-    width: 60%;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1280px) {
-
-  .cardBebida {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    background-color: #ffffff;
-    border: 2px solid rgba(30, 30, 30, 0.015);
-    border-radius: 20px;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    transform: translateY(-3px);
-    box-sizing: border-box;
-  }
-
-  .contenedorImagen {
-    flex: 1;                 /* la imagen ocupa la parte central flexible */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1rem 0;
-  }
-
-  .contenedorImagen img {
-    max-height: 400px;       /* limita la altura */
-    width: 600px;
-    object-fit: contain;
-  }
-
-  .cardBebida h2 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.55rem;
-    border-radius: 10px;
-    margin-bottom: 0.9rem;
-    font-size: 1.5rem;
-  }
-
-  .cardBebida h3,
-  .cardBebida h4,
-  .cardBebida h5 {
-    background-color: #f47227;
-    color: #ffffff;
-    padding: 0.45rem;
-    border-radius: 8px;
-    margin: 0.45rem 0;
-    font-size: 1.2rem;
-  }
-  
-  .form-group {
-    margin-top: 10px;
-    text-align: center;
-    width: 100%;
-  }
-
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  label {
-    font-size: 1.2rem;
-  } 
-
-  input[type="number"] {
-    width: 80px; /* en móviles no ocupa todo el ancho */
-    padding: 0.4rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 0.8rem;
-    width: 60%;
-  }
-  
-  .error {
-    color: red;
-    font-size: 1rem;
+@media (max-width: 576px) {
+  .image-wrapper {
+    height: 160px; /* 🔹 aún más compacta en móviles */
   }
 }

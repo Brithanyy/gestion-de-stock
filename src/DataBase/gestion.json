@@ -15,6 +15,22 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "ca2f",
+      "username": "Adrian",
+      "password": "adri123",
+      "profile": "usuario",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
+    },
+    {
+      "id": "5209",
+      "username": "Paola",
+      "password": "paola2002",
+      "profile": "admin",
+      "isLoggedIn": false,
+      "avatarUrl": "assets/img/usuario.png"
     }
   ],
   "Bebidas": [
@@ -482,7 +498,7 @@
       "milliliters": 1000,
       "alcoholContent": 3,
       "price": 10000,
-      "stock": 0,
+      "stock": 5,
       "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/211/660/products/branca-litro1-b3a10a9c87474df86f16050360672216-480-0.webp",
       "createdAt": "2025-10-27T12:31:03.805Z"
     }
@@ -655,6 +671,46 @@
       "typeMotion": "Egreso",
       "amount": 29,
       "movementDate": "2025-10-27T12:32:01.825Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "3852",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Ingreso",
+      "amount": 6,
+      "movementDate": "2025-10-28T00:15:01.975Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "6592",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-28T01:14:54.013Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "b106",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-10-28T01:14:58.631Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "600a",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-10-28T01:14:59.712Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

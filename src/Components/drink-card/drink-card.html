@@ -1,67 +1,69 @@
-<div class="cardBebida">
-  <h2>{{ bebida.name }}</h2>
+<div class="card drink-card ">
 
-  <div class="contenedorImagen">
-    <img [src]="bebida.imageUrl" alt="Imagen bebida">
+  <!-- Header -->
+  <div class="card-header text-white fw-bold text-center bg-naranja border-0 py-2 fs-5">
+    {{ bebida.name }}
   </div>
 
-  <h3>{{ bebida.category }}</h3>
-  <h4>{{ bebida.brand }}</h4>
-  <h5>Unidades en stock: {{ bebida.stock }}</h5>
+  <!-- Imagen -->
+  <div class="card-body d-flex flex-column align-items-center justify-content-center">
+    <div class="image-wrapper mb-3">
+      <img [src]="bebida.imageUrl" alt="Imagen bebida" class="img-fluid rounded-3 shadow-sm">
+    </div>
 
-  @if (esAdmin) {
-    <div class="acciones">
-      <button class="icono editar" (click)="editarBebida(bebida.id)">
+    <!-- Info -->
+    <div class="w-100 mb-3">
+      <div class="badge bg-naranja text-white fs-6 w-100 py-2 mb-2">{{ bebida.category }}</div>
+      <div class="badge bg-naranja text-white fs-6 w-100 py-2 mb-2">{{ bebida.brand }}</div>
+      <p class="text-dark fw-semibold mt-2 mb-3">
+        <span class="text-secondary">Unidades en stock: </span>
+        <span class="text-naranja fw-bold">{{ bebida.stock }}</span>
+      </p>
+    </div>
+
+    <!-- Botones -->
+    <div *ngIf="esAdmin; else soloDetalle" class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+      <button class="btn btn-success btn-modern" (click)="editarBebida(bebida.id)">
         <i class="fa-solid fa-pen-to-square"></i>
       </button>
-      <button class="icono detalle" (click)="verDetalle(bebida.id)">
+      <button class="btn btn-warning btn-modern text-white" (click)="verDetalle(bebida.id)">
         <i class="fa-solid fa-circle-info"></i>
       </button>
-      <button class="icono eliminar" (click)="eliminarBebida(bebida.id)">
+      <button class="btn btn-danger btn-modern" (click)="eliminarBebida(bebida.id)">
         <i class="fa-solid fa-trash-can"></i>
       </button>
     </div>
-    
-  }
-  @else {
-    <button class="icono detalle" (click)="verDetalle(bebida.id)">
-      <i class="fa-solid fa-file-magnifying-glass"></i>
-    </button>
-  }
 
-  <!-- FORM INGRESO -->
-  <form [formGroup]="formIngreso" (ngSubmit)="aumentarStock(bebida, formIngreso.value.cantidadIngreso)">
-    <div class="form-group">
-      <label>Agregar stock</label>
-      <div class="input-group">
-        <input type="number" formControlName="cantidadIngreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formIngreso.invalid" class="ingreso">Agregar</button>
+    <ng-template #soloDetalle>
+      <button class="btn btn-warning btn-modern text-white" (click)="verDetalle(bebida.id)">
+        <i class="fa-solid fa-circle-info"></i>
+      </button>
+    </ng-template>
+
+    <!-- Formularios -->
+    <form [formGroup]="formIngreso" (ngSubmit)="aumentarStock(bebida, formIngreso.value.cantidadIngreso)" class="w-100 mb-3">
+      <label class="fw-semibold text-dark small">Agregar stock</label>
+      <div class="input-group input-group-sm">
+        <input type="number" formControlName="cantidadIngreso" class="form-control text-center border-naranja" placeholder="Cantidad">
+        <button class="btn btn-naranja text-white fw-semibold" type="submit" [disabled]="formIngreso.invalid">+</button>
       </div>
-
-      <small *ngIf="formIngreso.get('cantidadIngreso')?.invalid && formIngreso.get('cantidadIngreso')?.touched" class="error">
+      <small *ngIf="formIngreso.get('cantidadIngreso')?.invalid && formIngreso.get('cantidadIngreso')?.touched" class="text-danger">
         Ingrese una cantidad válida mayor a 0.
       </small>
-    </div>
-  </form>
+    </form>
 
-  <!-- FORM EGRESO -->
-  <form [formGroup]="formEgreso" (ngSubmit)="decrementarStock(bebida, formEgreso.value.cantidadEgreso)">
-    <div class="form-group">
-      <label>Quitar stock</label>
-      <div class="input-group">
-        <input type="number" formControlName="cantidadEgreso" placeholder="Ingrese la cantidad">
-        <button type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso> bebida.stock" class="egreso">Quitar</button>
+    <form [formGroup]="formEgreso" (ngSubmit)="decrementarStock(bebida, formEgreso.value.cantidadEgreso)" class="w-100">
+      <label class="fw-semibold text-dark small">Quitar stock</label>
+      <div class="input-group input-group-sm">
+        <input type="number" formControlName="cantidadEgreso" class="form-control text-center border-naranja" placeholder="Cantidad">
+        <button class="btn btn-naranja text-white fw-semibold" type="submit" [disabled]="formEgreso.invalid || formEgreso.value.cantidadEgreso > bebida.stock">−</button>
       </div>
-
-      <!-- Validación cantidad vacía o inválida -->
-      <small *ngIf="formEgreso.get('cantidadEgreso')?.invalid && formEgreso.get('cantidadEgreso')?.touched" class="error">
+      <small *ngIf="formEgreso.get('cantidadEgreso')?.invalid && formEgreso.get('cantidadEgreso')?.touched" class="text-danger">
         Ingrese una cantidad válida mayor a 0.
       </small>
-
-      <!-- Validación cantidad mayor al stock -->
-      <small *ngIf="formEgreso.value.cantidadEgreso > bebida.stock" class="error">
+      <small *ngIf="formEgreso.value.cantidadEgreso > bebida.stock" class="text-danger">
         La cantidad supera el stock disponible ({{ bebida.stock }} unidades).
       </small>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

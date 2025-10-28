@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { ServicioMovimientos } from '../../Services/movimientos/servicio-movimientos';
 import { Alerta } from '../../Services/alerta/alerta';
 import { Movimiento } from '../../Models/Movimiento';
@@ -23,11 +23,10 @@ export class MovementsPage implements OnInit {
   readonly servicioLogin : ServicioAutenticacion = inject(ServicioAutenticacion);
   readonly ROUTER : Router = inject(Router);
   usuarioLogueado = this.servicioLogin.usuario;
-  tipoUsuario = this.servicioLogin.usuario()?.profile;
 
   movimientos : Movimiento[] = [];
-  terminoBusqueda: string = '';
-
+  tipoUsuario = computed(() => this.servicioLogin.usuario()?.profile);
+  terminoBusqueda : string = '';
   //*MÉTODOS
   ngOnInit(): void {
     

@@ -1,139 +1,107 @@
-/**Colores que utilizaremos en el sitio */
+/** =========================================================
+ *  VARIABLES DE COLOR Y DIMENSIONES
+ *  ========================================================= */
 :root {
 
-  --color-naranja: #f47227; 
+  --color-naranja: #f47227;
   --color-naranja-hover: #f38240;
   --color-negro: #1e1e1e;
   --color-blanco: #ffffff;
- 
-  --color-fondo: #ffffff; /* Fondo oscuro con transparencia */
+
+  --color-fondo: #ffffff;
 
   --color-error: #ff4d4d;
   --color-exito: #4caf50;
 
-  --header-height: 15vh;    
-  --footer-height: 20vh;   
-  --sidebar-width: 25vh; 
+  --header-height: 15vh;
+  --footer-height: 20vh;
 
-  --sidebar-width: 18vw;   /* desktop */
-  --sidebar-width-tablet: 14vw;
-  --sidebar-width-mobile: 90px; /* ancho fijo en móviles (más pequeño) */
+  --sidebar-w: 250px;          /* desktop por defecto */
+  --sidebar-w-tablet: 200px;
+  --sidebar-w-mobile: 0px;/* móviles */
 }
 
-/**Cooper* Font Family (OFL)*/
-/* Regular */
+/** =========================================================
+ *  TIPOGRAFÍA COOPER-STAR (todas las variantes)
+ *  ========================================================= */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
-
-/* Italic */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
-
-/* Medium */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
-
-/* Medium Italic */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-MediumItalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
-
-/* SemiBold */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
-
-/* SemiBold Italic */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-SemiBoldItalic.woff2") format("woff2");
   font-weight: 600;
   font-style: italic;
   font-display: swap;
 }
-
-/* Bold */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
-
-/* Bold Italic */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-BoldItalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
-
-/* ExtraBold */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
-
-/* ExtraBold Italic */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-ExtraBoldItalic.woff2") format("woff2");
   font-weight: 800;
   font-style: italic;
   font-display: swap;
 }
-
-/* Black */
 @font-face {
-
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
-
-/* Black Italic */
 @font-face {
-  
   font-family: "Cooper-Star";
   src: url("/assets/fonts/Cooper-BlackItalic.woff2") format("woff2");
   font-weight: 900;
@@ -141,76 +109,137 @@
   font-display: swap;
 }
 
-/**Estilos globales*/
+/** =========================================================
+ *  RESETEO GLOBAL Y BASE TIPOGRÁFICA
+ *  ========================================================= */
 *,
 *::before,
 *::after {
-
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html, body, app-root {
-
+html,
+body,
+app-root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
-body {
-
-  min-height: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.4;
-}
-
-app-root {
-
-  display: block;
+html, body {
   height: 100%;
   width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;   /* 🔸 mantenemos horizontal oculto */
+  overflow-y: hidden;   /* 🔸 desactivamos scroll global */  /* 👈 clave: el body no scrollea */
 }
 
-/**Estilos para el scroll global*/
-::-webkit-scrollbar {
-
-  width: 8px;
-}
-::-webkit-scrollbar-thumb {
-
-  background-color: var(--color-primario);
-  border-radius: 4px;
-}
-
-
-/* Tablet: menos ancho, texto ligeramente más pequeño */
-@media (max-width: 1024px) {
-  :root {
-    --sidebar-width: var(--sidebar-width-tablet);
-  }
-}
-
-/* Mobile: sidebar más compacto y fijo en px para evitar tamaños raros */
-@media (max-width: 768px) {
-  :root {
-    --sidebar-width: var(--sidebar-width-mobile);
-  }
-}
-
-/* Asegurar que el body use Bootstrap como base */
 body {
+  min-height: 100%;
   font-family: "Cooper-Star", Arial, sans-serif;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: var(--color-fondo);
   color: var(--color-blanco);
 }
+body * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+/* Previene saltos al abrir offcanvas/modales de Bootstrap */
+body.offcanvas-open {
+  overflow-x: hidden !important;
+  padding-right: 0 !important;
+}
 
-/* Ajuste para los contenedores principales */
+/* Personalización opcional del botón hamburguesa (si usás btn-outline-light) */
+.btn-outline-light {
+  border-color: var(--color-naranja) !important;
+  color: var(--color-naranja) !important;
+}
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+  background-color: var(--color-naranja) !important;
+  color: var(--color-blanco) !important;
+}
+
+/** =========================================================
+ *  NORMALIZACIÓN DE CONTENEDORES Y MEDIA
+ *  ========================================================= */
 .container {
   max-width: 1200px;
 }
 
-/* Compatibilidad con Bootstrap */
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
+  display: block;
+}
+
+/** =========================================================
+ *  SCROLL PERSONALIZADO
+ *  ========================================================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 4px;
+}
+
+/** =========================================================
+ *  RESPONSIVIDAD BASE PARA SIDEBAR WIDTH
+ *  ========================================================= */
+@media (max-width: 1024px) {
+  :root { --sidebar-w: var(--sidebar-w-tablet); }
+}
+@media (max-width: 992px) {
+  :root { --sidebar-w: var(--sidebar-w-mobile); } /* coincide con media del layout */
+}
+
+/** =========================================================
+ *  FIX — EVITAR SCROLL INVISIBLE / DESBORDE HORIZONTAL
+ *  ========================================================= */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Evita desbordes de elementos fijos o con box-shadow */
+body * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Previene “salto” por scrollbars al abrir modales/offcanvas */
+body.offcanvas-open {
+  overflow-x: hidden !important;
+  padding-right: 0 !important;
+}
+
+/* Asegura que header/footer fijos ocupen ancho total */
+[style*="position: fixed"] {
+  max-width: 100vw;
+}
+
+/** =========================================================
+ *  COHERENCIA DE BOTONES CON COLOR NARANJA
+ *  ========================================================= */
+.btn-outline-light {
+  border-color: var(--color-naranja) !important;
+  color: var(--color-naranja) !important;
+}
+
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+  background-color: var(--color-naranja) !important;
+  color: var(--color-blanco) !important;
 }

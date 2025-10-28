@@ -1,29 +1,46 @@
-<div class="barraBusqueda">
-  <input
-    type="text"
-    placeholder="Buscar por nombre, categoría o marca..."
-    [(ngModel)]="terminoBusqueda"
-    (input)="filtrarBebidas()"
-  />
-    <button class="btn-agregar" (click)="agregarBebida()" *ngIf="tipoUsuario() === 'admin'">
-      <i class="fa-solid fa-wine-bottle"></i> Agregar nueva bebida
+<div class="container py-4 home-container">
+
+  <!-- 🔍 Barra de búsqueda -->
+ <div class="container my-4">
+  <div class="input-group rounded-pill shadow-sm overflow-hidden buscador-container">
+    <input
+      type="text"
+      class="form-control border-0 text-center"
+      placeholder="Buscar por nombre, categoría o marca..."
+      [(ngModel)]="terminoBusqueda"
+      (input)="filtrarBebidas()"
+    />
+    <button
+      class="btn btn-outline-warning fw-bold d-flex align-items-center gap-2 px-4"
+      type="button"
+      (click)="agregarBebida()"
+      *ngIf="tipoUsuario() === 'admin'"
+    >
+      <i class="fa-solid fa-wine-bottle"></i>
+      Agregar
     </button>
+  </div>
 </div>
 
-
-@if (bebidas.length === 0) {
-  <p>No hay bebidas disponibles</p>
-}
-@else {
-    
-  <div class="listaBebidas">
-    @for (bebida of bebidasFiltradas; track $index) {
+  <!-- 🧴 Cards de bebidas -->
+<div *ngIf="bebidasFiltradas.length > 0; else sinBebidas">
+  <div class="row g-4 justify-content-center">
+    <div
+      class="col-12 col-sm-6 col-md-4 col-lg-3"
+      *ngFor="let bebida of bebidasFiltradas">
       <app-drink-card
         [bebida]="bebida"
         [esAdmin]="esAdmin()"
         [idUser]="idUsuarioLogueado"
         (bebidaActualizada)="obtenerBebidas()">
       </app-drink-card>
-    }
+    </div>
   </div>
-}
+</div>
+
+<!-- Template si no hay bebidas -->
+<ng-template #sinBebidas>
+  <p class="text-center text-muted fw-bold mt-4">No hay bebidas disponibles</p>
+</ng-template>
+
+</div>

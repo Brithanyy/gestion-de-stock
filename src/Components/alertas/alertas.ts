@@ -12,4 +12,5 @@ import { CommonModule } from '@angular/common';
 export class Alertas {
 
   readonly alerta : Alerta = inject(Alerta);
+  
 }

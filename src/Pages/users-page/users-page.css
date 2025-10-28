@@ -1,130 +1,86 @@
-/* === CONTENEDOR PRINCIPAL === */
 .usuarios-container {
-
-  position: relative;
   min-height: calc(100vh - 160px);
-  margin-top: 0;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; 
-  justify-content: flex-start;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.02);   
+  background-color: rgba(255, 255, 255, 0.03);
   color: var(--color-texto);
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  padding: 1.5rem;
+  animation: fadeIn 0.8s ease; /* ✨ Animación suave */
 }
 
-/* === ENCABEZADO === */
-.usuarios-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
-  margin-bottom: 1.5rem;
-}
-
-.usuarios-header h2 {
-  color: #1c1c1c;
+/* --- Título --- */
+.usuarios-container h2 {
   font-size: 2rem;
-  margin: 0;
+  color: #1c1c1c;
 }
 
-.btn-agregar {
-
+/* --- Botones --- */
+.btn-warning {
   background-color: var(--color-naranja);
-  color: #fff;
   border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 20px;
-  font-size: 1.2rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  cursor: pointer;
 }
-
-.btn-agregar:hover {
-  background-color: #ff8c32;
+.btn-warning:hover {
+  background-color: var(--color-naranja-hover);
   transform: scale(1.05);
 }
 
-/* === TABLA DE USUARIOS === */
+.btn-secondary {
+  background-color: var(--color-naranja);
+  border: none;
+}
+.btn-secondary:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+/* --- Tabla contenedor responsive --- */
 .tabla-usuarios {
-  width: 100%;
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  font-size: 1.2rem;
+  margin-top: 2rem;
 }
 
-/* CABECERA DE TABLA */
-.tabla-header {
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 1.5fr;
-  background-color: #1c1c1c;
-  color: #fff;
+/* --- Encabezado naranja (igual a bebidas) --- */
+.table-naranja thead {
+  color: #fff !important;
   font-weight: 600;
-  text-align: center;
-  padding: 1rem 0;
 }
 
-/* FILAS DE TABLA */
-.tabla-fila {
+/* --- Filas del cuerpo --- */
+.table-naranja tbody tr {
+  background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 2fr 2fr 2fr 1.5fr;
-  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  animation: fadeInRow 0.6s ease both; /* entrada de fila */
+}
+
+/* Hover fila → blanco */
+.table-naranja tbody tr:hover {
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
+/* --- Bordes visibles y centrado --- */
+.table th,
+.table td {
+  vertical-align: middle;
   text-align: center;
-  background-color: #1c1c1c;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: background-color 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
-.tabla-fila:hover {
-  color: black;
-  background-color: var(--color-primario);
-}
-
-/* AVATAR */
+/* --- Avatar --- */
 .avatar {
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* === ACCIONES === */
-.acciones {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  font-size: 1.2rem;
-}
-
-.acciones i {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.editar {
-  color: #ff8c32;
-}
-
-.eliminar {
-  color: red;
-}
-
-.acciones i:hover {
-  transform: scale(1.2);
-}
-
+/* --- Estado de usuario --- */
 .usuario-activo {
-  color: #10b981; /* verde */
+  color: #10b981;
   font-weight: 700;
 }
-
 .usuario-dot {
   display: inline-block;
   width: 10px;
@@ -136,20 +92,106 @@
   box-shadow: 0 0 0 4px rgba(16,185,129,0.08);
 }
 
+/* --- Contraseña con ojito --- */
 .password-cell {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   justify-content: center;
+  gap: 0.35rem;
 }
-
 .password-eye {
   cursor: pointer;
-  color: #f47227;
-  margin-left: 6px;
+  color: var(--color-naranja);
   font-size: 0.95rem;
 }
-
 .password-eye:hover {
-  color: #f38240;
+  color: var(--color-naranja-hover);
+}
+
+/* --- Badges (perfil) --- */
+.badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+}
+.bg-success { background-color: #27ae60 !important; }
+.bg-secondary { background-color: #6c757d !important; }
+
+/* --- Centrado del avatar en la columna --- */
+.table td:first-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+/* --- Animaciones --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRow {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive general --- */
+@media (max-width: 992px) {
+  .usuarios-container h2 { font-size: 1.8rem; }
+  .btn { font-size: 1rem; padding: 0.5rem 1rem; }
+  .table th, .table td { font-size: 1rem; }
+}
+
+/* --- Tablets --- */
+@media (max-width: 768px) {
+  .usuarios-container h2 { font-size: 1.5rem; }
+  .table { font-size: 0.9rem; }
+  .tabla-usuarios {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table { min-width: 700px; } /* fuerza scroll horizontal si hace falta */
+}
+
+/* --- Celulares pequeños (< 500px) --- */
+@media (max-width: 500px) {
+  .usuarios-container { padding: 0.8rem; }
+
+  h2 { font-size: 1.3rem !important; }
+
+  .table {
+    font-size: 0.85rem;
+    min-width: 480px; /* 🔹 obliga scroll horizontal suave */
+  }
+
+  .tabla-usuarios {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-naranja) transparent;
+  }
+
+  /* 🔹 Estilo del scroll */
+  .tabla-usuarios::-webkit-scrollbar { height: 6px; }
+  .tabla-usuarios::-webkit-scrollbar-thumb {
+    background-color: var(--color-naranja);
+    border-radius: 20px;
+  }
+
+  .btn { font-size: 0.85rem; padding: 0.45rem 0.8rem; }
 }

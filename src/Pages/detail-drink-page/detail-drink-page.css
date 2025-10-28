@@ -6,14 +6,16 @@
   background: #ffffff;
 }
 
-/* contenedor general */
+/* Contenedor principal */
 .drink-detail {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.5rem;
   border-radius: 20px;
   border: 2px solid rgba(30, 30, 30, 0.15);
-  box-shadow: 0 8px 15px rgba(30, 30, 30, 0.25);
+  box-shadow: 0 6px 15px rgba(30, 30, 30, 0.25);
+  background-color: #fff;
+  animation: fadeIn 0.6s ease;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -22,97 +24,169 @@
   box-shadow: 0 10px 25px rgba(30, 30, 30, 0.35);
 }
 
-/* header */
+/* Título principal */
 .detail-header {
-  margin-bottom: 1.2rem;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .drink-title {
   background-color: #f47227;
-  width: 60%;
   border-radius: 20px;
-  padding: 8px;
-  font-size: 1.7rem;
-  color: #ffffff;
-  margin: 0 auto;
-  text-align: center;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.6rem;
+  color: #fff;
+  display: inline-block;
+  font-weight: 700;
 }
 
-/* tarjeta principal */
+/* Tarjeta de detalle */
 .detail-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  background: #ffffff;
-  padding: 1.5rem;
+  gap: 2.5rem;
+  flex-wrap: wrap;
 }
 
+/* Imagen a la izquierda */
 .img-wrap {
-  flex: 0 0 160px;
+  flex: 0 0 180px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .img-wrap img {
-  width: 130px; 
+  width: 110px; /* 🔹 más chica */
   height: auto;
   object-fit: contain;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
 }
 
+.img-wrap img:hover {
+  transform: scale(1.05);
+}
+
+/* Información a la derecha */
 .info {
-  flex: 0 0 350px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.4rem;
+  align-items: flex-start; /* 🔹 alineado a la izquierda */
   text-align: left;
+  gap: 0.4rem;
+  font-size: 1rem;
+  padding-left: 1rem;
 }
 
+/* 🔸 Centrado vertical y sensación equilibrada */
+.detail-card {
+  align-items: center;
+}
+
+/* Marca */
 .info h3.brand {
-  font-size: 1.05rem;
-  color: #1e1e1e;
-  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1c1c1c;
+  margin-bottom: 0.5rem;
 }
 
-.info h3.brand span {
-  font-weight: 600;
-  margin-left: 0.4rem;
-}
-
+/* Texto de los detalles */
 .info p {
-  margin: 0.2rem 0;
+  margin: 0.25rem 0;
   font-size: 0.95rem;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
-/* acciones */
+/* Botón */
 .actions {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   display: flex;
-  justify-content: left;
-  align-items: left;
+  justify-content: flex-start;
 }
 
-.btn-secondary {
-
-  margin-bottom: 1.25rem;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
+.btn-warning {
+  background-color: #f47227;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
   font-weight: 500;
   border-radius: 20px;
-  background-color: #f47227;
-  border: none;
-  color: #fff;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.btn-secondary:hover {
-
+.btn-warning:hover {
   background-color: #ff8c32;
   transform: scale(1.05);
+}
+
+/* ✨ Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .drink-detail {
+    padding: 1rem;
+  }
+
+  .drink-title {
+    font-size: 1.4rem;
+  }
+
+  .detail-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .img-wrap img {
+    width: 90px;
+  }
+
+  .info {
+    padding-left: 0.5rem;
+  }
+}
+
+/* 📱 Móviles (menor a 500px) */
+@media (max-width: 500px) {
+  .detail-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .img-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .img-wrap img {
+    width: 85px;
+  }
+
+  .info {
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-secondary {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
 }

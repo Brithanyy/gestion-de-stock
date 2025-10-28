@@ -1,35 +1,53 @@
-<main class="drink-detail">
-  <header class="detail-header">
-    <h2 class="drink-title">{{ detailBebida.name }}</h2>
+<main class="container-fluid py-4 drink-detail fade-in">
+
+  <!-- 🔹 Título -->
+  <header class="text-center mb-4">
+    <h2 class="drink-title text-white fw-bold py-2 px-4 rounded-pill mx-auto">
+      {{ detailBebida.name }}
+    </h2>
   </header>
 
-  <section class="detail-card">
-    <div class="img-wrap">
-      <img [src]="detailBebida.imageUrl" alt="Imagen de {{ detailBebida.name }}" />
-    </div>
+  <!-- 🔹 Tarjeta principal -->
+  <section class="card bg-dark text-white shadow-lg border-0 p-4 mx-auto detail-card">
+    <div class="row g-4 align-items-center justify-content-center">
 
-    <div class="info">
-      <h3 class="brand">Marca: {{detailBebida.brand }}</h3>
-
-      <p><strong>Tipo de bebida:</strong> {{ detailBebida.type }}</p>
-      <p><strong>Categoría:</strong> {{ detailBebida.category }}</p>
-      <p><strong>Mililitros:</strong> {{ detailBebida.milliliters }} ml</p>
-
-      @if(detailBebida.type === 'Con alcohol') {
-        <p><strong>Graduación alcohólica:</strong> {{ detailBebida.alcoholContent }}%</p>
-      }
-
-      <p><strong>Precio:</strong> {{ detailBebida.price}} ARS</p>
-      <p><strong>Unidades en stock:</strong> {{ detailBebida.stock }}</p>
-     
-      <p><strong>Fecha de creación:</strong> {{ detailBebida.createdAt | date:'dd/MM/yyyy' }}</p>
-      <p><strong>Hora de creación:</strong> {{ detailBebida.createdAt | date:'HH:mm' }}</p>
-      <div class="actions">
-        <button class="btn btn-secondary" (click)="volverAtras()">
-          Volver atrás 
-        </button>
+      <!-- Imagen -->
+      <div class="col-12 col-md-5 text-center">
+        <img
+          [src]="detailBebida.imageUrl"
+          alt="Imagen de {{ detailBebida.name }}"
+          class="img-fluid rounded-3 shadow-sm drink-image"
+        />
       </div>
+
+      <!-- Información -->
+      <div class="col-12 col-md-7">
+        <h3 class="brand text-white fw-bold mb-3">
+          Marca: <span class="text-white">{{ detailBebida.brand }}</span>
+        </h3>
+
+        <ul class="list-unstyled mb-3">
+          <li><strong>Tipo de bebida:</strong> {{ detailBebida.type }}</li>
+          <li><strong>Categoría:</strong> {{ detailBebida.category }}</li>
+          <li><strong>Mililitros:</strong> {{ detailBebida.milliliters }} ml</li>
+
+          <li *ngIf="detailBebida.type === 'Con alcohol'">
+            <strong>Graduación alcohólica:</strong> {{ detailBebida.alcoholContent }}%
+          </li>
+
+          <li><strong>Precio:</strong> {{ detailBebida.price | currency:'ARS' }}</li>
+          <li><strong>Unidades en stock:</strong> {{ detailBebida.stock }}</li>
+          <li><strong>Fecha de creación:</strong> {{ detailBebida.createdAt | date:'dd/MM/yyyy' }}</li>
+          <li><strong>Hora de creación:</strong> {{ detailBebida.createdAt | date:'HH:mm' }}</li>
+        </ul>
+
+        <div class="actions mt-4">
+          <button class="btn btn-warning text-white fw-semibold px-4" (click)="volverAtras()">
+            <i class="fa-solid fa-arrow-left me-2"></i> Volver atrás
+          </button>
+        </div>
+      </div>
+
     </div>
   </section>
 </main>
-

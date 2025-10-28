@@ -1,33 +1,28 @@
 <div class="header-inner">
 
   <div class="header-left">
-
     <img src="assets/img/logoModerno.png" 
-         alt="Mirador logo" 
-         class="logo"
-         [routerLink]="['/homePage', servicioAutenticacion.usuario()?.id]"
-         style="cursor: pointer;"/>
+        alt="Mirador logo" 
+        class="logo"
+        [routerLink]="['/homePage', servicioAutenticacion.usuario()?.id]"
+        style="cursor: pointer;"/>
     
     <div class="titles">
       <h1 class="brand">Mirador Beach Club Barra</h1>
       <p class="subtitle">Sistema de gestión de stock</p>
     </div>
-
   </div>
 
   <div class="header-right">
-
     <div class="user">{{nombreUsuario()}} - {{tipoUsuario()}}</div>
-
     <button class="btn-logout" aria-label="Cerrar sesión" (click)="logOut()">
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M10 12h10"/>
-      <path d="M15 17l5-5-5-5"/>
-      <path d="M4 21V3a1 1 0 0 1 1-1h7"/>
-    </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" 
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 12h10"/>
+        <path d="M15 17l5-5-5-5"/>
+        <path d="M4 21V3a1 1 0 0 1 1-1h7"/>
+      </svg>
     </button>
-
   </div>
 
 </div>
-

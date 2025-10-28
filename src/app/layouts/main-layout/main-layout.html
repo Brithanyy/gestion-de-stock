@@ -1,19 +1,51 @@
-<div class="bodyContainer">
+<div class="layout-wrapper d-flex flex-column">
+  <!-- HEADER -->
+  <header class="headerContainer flex-shrink-0 d-flex align-items-center justify-content-between px-3">
+    
+    <!-- Botón hamburguesa móvil -->
+    <button
+      class="btn btn-light d-lg-none me-3"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#sidebarOffcanvas"
+      aria-controls="sidebarOffcanvas"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-  <header class="headerContainer">
-    <app-header></app-header>
+    <!-- Tu header ocupa el resto -->
+    <app-header class="flex-grow-1"></app-header>
   </header>
 
-  <aside class="sidebarContainer">
-    <app-sidebar></app-sidebar>
-  </aside>
+  <!-- CONTENIDO CENTRAL -->
+  <div class="flex-grow-1 d-flex overflow-hidden">
+    <aside class="sidebarContainer d-none d-lg-block">
+      <app-sidebar></app-sidebar>
+    </aside>
 
-  <main class="mainContainer">
-    <router-outlet></router-outlet>  <!-- aquí se renderizan las páginas -->
-  </main>
+    <main class="mainContainer flex-grow-1 overflow-auto">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 
-  <footer class="footerContainer">
+  <!-- FOOTER -->
+  <footer class="footerContainer flex-shrink-0">
     <app-footer></app-footer>
   </footer>
 
+  <!-- OFFCANVAS móvil -->
+  <div
+    class="offcanvas offcanvas-start bg-dark text-white"
+    tabindex="-1"
+    id="sidebarOffcanvas"
+    aria-labelledby="sidebarOffcanvasLabel"
+  >
+    <div class="offcanvas-header">
+      <h5 id="sidebarOffcanvasLabel">Menú</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <app-sidebar></app-sidebar>
+    </div>
+  </div>
 </div>

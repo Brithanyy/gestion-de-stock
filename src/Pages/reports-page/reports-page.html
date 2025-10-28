@@ -1,23 +1,50 @@
-<div class="contenedorBtn">
-  <button (click)="descargarPDF()">Exportar a PDF</button>
-  <button class="btn-agregar" (click)="volverAtras()">Volver atrás</button>
-</div>
+<main class="container-fluid py-4 reports-container">
 
-<div class="reports-grid">
-  <section class="chart-card">
-    <h2>Representa el total de bebidas por categoria</h2>
-    <app-grafico-torta></app-grafico-torta>
-  </section>
-
-  <section class="chart-card">
-    <h2>Representa la cantidad de bebidas que hay registradas</h2>
-    <app-grafico-total-bebidas></app-grafico-total-bebidas>
+  <!-- 🔹 Encabezado -->
+  <section class="text-center mb-4 fade-in">
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+      <button class="btn btn-warning text-white fw-semibold px-4" (click)="descargarPDF()">
+        <i class="fa-solid fa-file-pdf me-2"></i> Exportar a PDF
+      </button>
+      <button class="btn btn-secondary fw-semibold px-4" (click)="volverAtras()">
+        <i class="fa-solid fa-arrow-left me-2"></i> Volver atrás
+      </button>
+    </div>
   </section>
 
-  <section class="chart-card">
-    <app-grafico-numero-bebidas></app-grafico-numero-bebidas>
+  <!-- 🔹 Grid de reportes -->
+  <section class="row g-4 reports-grid fade-in">
+
+    <div class="col-12 col-md-6">
+      <div class="chart-card shadow-sm p-4 rounded">
+        <h2 class="fw-bold mb-3 text-white text-center">
+          Representa el total de bebidas por categoría
+        </h2>
+        <app-grafico-torta></app-grafico-torta>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="chart-card shadow-sm p-4 rounded">
+        <h2 class="fw-bold mb-3 text-white text-center">
+          Representa la cantidad de bebidas registradas
+        </h2>
+        <app-grafico-total-bebidas></app-grafico-total-bebidas>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="chart-card shadow-sm p-4 rounded">
+        <app-grafico-numero-bebidas></app-grafico-numero-bebidas>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <div class="chart-card shadow-sm p-4 rounded">
+        <app-grafico-productos-bajos></app-grafico-productos-bajos>
+      </div>
+    </div>
+
   </section>
-  <section class="chart-card">
-    <app-grafico-productos-bajos></app-grafico-productos-bajos>
-  </section>
-</div>
+
+</main>

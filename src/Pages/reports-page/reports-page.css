@@ -1,67 +1,109 @@
-.reports-grid {
-  
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5rem;
-  padding: 4rem;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
+.reports-container {
+  min-height: calc(100vh - 160px);
   background-color: #1e1e1e;
   color: #ffffff;
-  border-radius: 20px;
-  font-size: 1.4rem;
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  animation: fadeIn 0.8s ease;
 }
 
-/*Cada tarjeta de gráfico */
+/* --- Tarjetas de gráficos --- */
 .chart-card {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center; /*centra título y gráfico */
-  border-radius: 20px;
-  padding: 2rem;
-}
-
-/*Títulos de los reportes */
-.chart-card h2 {
-
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
   text-align: center;
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: #ffffff;
-  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*Contenedor del botón */
-.contenedorBtn {
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
+.chart-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(244, 114, 39, 0.3);
 }
 
-/*Botón */
-button {
-
-  margin-bottom: 1.25rem;
-  padding: 0.6rem 1rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border-radius: 20px;
-  background-color: #f47227;
-  border: none;
+/* --- Títulos --- */
+.chart-card h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
 }
 
-button:hover {
+/* --- Botones --- */
+.btn-warning {
+  background-color: var(--color-naranja);
+  border: none;
+}
 
-  background-color: #ff8c32;
+.btn-warning:hover {
+  background-color: var(--color-naranja-hover);
   transform: scale(1.05);
 }
 
+.btn-secondary {
+  background-color: var(--color-naranja);;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+/* --- Animaciones --- */
+.fade-in {
+  animation: fadeIn 0.8s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsividad --- */
+@media (max-width: 992px) {
+  .chart-card h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reports-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .chart-card {
+    padding: 1.5rem;
+  }
+
+  .chart-card h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* --- Celulares pequeños (<500px) --- */
+@media (max-width: 500px) {
+  .reports-container {
+    padding: 0.8rem;
+  }
+
+  .chart-card {
+    padding: 1rem;
+  }
+
+  .chart-card h2 {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.8rem;
+  }
+}

@@ -1,233 +1,151 @@
-<div class="drink-form-container">
+<main class="container-fluid py-4 drink-form-container fade-in">
 
-  
+  <!-- 🔹 Título -->
+  <h2 class="text-center fw-bold text-white bg-naranja py-2 rounded mb-4">
+    {{ estoyEnEditar() ? 'Editar Bebida' : 'Agregar Bebida' }}
+  </h2>
 
-  <!-- Formulario Editar -->
-  @if (estoyEnEditar()) {
+  <!-- 🔹 Formulario dinámico -->
+  <form
+    [formGroup]="estoyEnEditar() ? editBebidaForm : newBebidaForm"
+    (ngSubmit)="estoyEnEditar() ? onSubmitEditar() : onSubmitAgregar()"
+    class="mx-auto card shadow-lg bg-dark text-white p-4"
+  >
+    <div class="row g-3">
 
-  <h2>Editar Bebida</h2>
-  <form [formGroup]="editBebidaForm" (ngSubmit)="onSubmitEditar()">
+      <!-- Nombre -->
+      <div class="col-12">
+        <label for="name" class="form-label">Nombre de la bebida</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          formControlName="name"
+          placeholder="Ingrese nombre de la bebida"
+        />
+        <small class="text-danger" *ngIf="name?.invalid && name?.touched">El nombre es requerido.</small>
+      </div>
 
-    <!-- Nombre -->
-    <div class="form-group">
-      <label for="name">Nombre de la bebida</label>
-      <input type="text" id="name" formControlName="name" placeholder="Ingrese nombre de la bebida" />
-      <small *ngIf="name?.invalid && name?.touched" class="error">
-        El nombre es requerido.
-      </small>
+      <!-- Tipo -->
+      <div class="col-md-6">
+        <label for="type" class="form-label">Tipo de bebida</label>
+        <select id="type" class="form-select" formControlName="type">
+          <option value="Con alcohol">Con alcohol</option>
+          <option value="Sin alcohol">Sin alcohol</option>
+          <option value="Ninguna">Ninguna</option>
+        </select>
+      </div>
+
+      <!-- Categoría -->
+      <div class="col-md-6">
+        <label for="category" class="form-label">Categoría</label>
+        <select id="category" class="form-select" formControlName="category">
+          <option *ngFor="let c of [
+            'Agua','Agua con gas','Agua saborizada','Gaseosa','Energizante','Jugo','Cerveza','Vino',
+            'Licor','Whisky','Ron','Vodka','Téquila','Champagne','Cachaca','Granadina','Gin',
+            'Aperitivo','Otro','Ninguna'
+          ]" [value]="c">{{ c }}</option>
+        </select>
+      </div>
+
+      <!-- Marca -->
+      <div class="col-md-6">
+        <label for="brand" class="form-label">Marca</label>
+        <input
+          type="text"
+          id="brand"
+          class="form-control"
+          formControlName="brand"
+          placeholder="Ingrese marca"
+        />
+        <small class="text-danger" *ngIf="brand?.invalid && brand?.touched">La marca es requerida.</small>
+      </div>
+
+      <!-- Mililitros -->
+      <div class="col-md-6">
+        <label for="milliliters" class="form-label">Mililitros</label>
+        <input
+          type="number"
+          id="milliliters"
+          class="form-control"
+          formControlName="milliliters"
+          placeholder="Ingrese cantidad en ml"
+        />
+        <small class="text-danger" *ngIf="milliliters?.invalid && milliliters?.touched">
+          La cantidad es requerida y debe ser mayor a 0.
+        </small>
+      </div>
+
+      <!-- Contenido alcohol -->
+      <div class="col-md-6">
+        <label for="alcoholContent" class="form-label">Contenido de alcohol (%)</label>
+        <input
+          type="number"
+          id="alcoholContent"
+          class="form-control"
+          formControlName="alcoholContent"
+          placeholder="Opcional"
+        />
+      </div>
+
+      <!-- Precio -->
+      <div class="col-md-6">
+        <label for="price" class="form-label">Precio</label>
+        <input
+          type="number"
+          id="price"
+          class="form-control"
+          formControlName="price"
+          placeholder="Ingrese precio"
+        />
+        <small class="text-danger" *ngIf="price?.invalid && price?.touched">
+          El precio es requerido y debe ser mayor a 0.
+        </small>
+      </div>
+
+      <!-- Stock -->
+      <div class="col-md-6">
+        <label for="stock" class="form-label">Stock</label>
+        <input
+          type="number"
+          id="stock"
+          class="form-control"
+          formControlName="stock"
+          placeholder="Ingrese cantidad disponible"
+        />
+        <small class="text-danger" *ngIf="stock?.invalid && stock?.touched">
+          El stock es requerido y debe ser mayor o igual a 0.
+        </small>
+      </div>
+
+      <!-- Imagen -->
+      <div class="col-md-6">
+        <label for="imageUrl" class="form-label">Imagen (URL)</label>
+        <input
+          type="url"
+          id="imageUrl"
+          class="form-control"
+          formControlName="imageUrl"
+          placeholder="Ingrese URL de la imagen"
+        />
+      </div>
+
+      <!-- Botones -->
+      <div class="col-12 d-flex justify-content-between mt-4 flex-wrap gap-3">
+        <button
+          type="submit"
+          class="btn btn-warning fw-semibold px-4 text-white"
+          [disabled]="
+            (estoyEnEditar() ? editBebidaForm.invalid : newBebidaForm.invalid)
+          "
+        >
+          {{ estoyEnEditar() ? 'Guardar Cambios' : 'Agregar Bebida' }}
+        </button>
+
+        <button type="button" class="btn btn-secondary fw-semibold px-4" (click)="back()">
+          <i class="fa-solid fa-arrow-left me-2"></i> Volver Atrás
+        </button>
+      </div>
     </div>
-
-    <!-- Tipo -->
-    <div class="form-group">
-      <label for="type">Tipo de bebida</label>
-      <select id="type" formControlName="type">
-        <option value="Con alcohol">Con alcohol</option>
-        <option value="Sin alcohol">Sin alcohol</option>
-        <option value="Ninguna">Ninguna</option>
-      </select>
-    </div>
-
-    <!-- Categoría -->
-    <div class="form-group">
-      <label for="category">Categoría</label>
-      <select id="category" formControlName="category">
-        <option value="Agua">Agua</option>
-        <option value="Agua con gas">Agua con gas</option>
-        <option value="Agua saborizada">Agua saborizada</option>
-        <option value="Gaseosa">Gaseosa</option>
-        <option value="Energizante">Energizante</option>
-        <option value="Jugo">Jugo</option>
-        <option value="Cerveza">Cerveza</option>
-        <option value="Vino">Vino</option>
-        <option value="Licor">Licor</option>
-        <option value="Whisky">Whisky</option>
-        <option value="Ron">Ron</option>
-        <option value="Vodka">Vodka</option>
-        <option value="Téquila">Téquila</option>
-        <option value="Champagne">Champagne</option>
-        <option value="Cachaca">Cachaca</option>
-        <option value="Granadina">Granadina</option>
-        <option value="Gin">Gin</option>
-        <option value="Aperitivo">Aperitivo</option>
-        <option value="Otro">Otro</option>
-        <option value="Ninguna">Ninguna</option>
-      </select>
-    </div>
-
-    <!-- Marca -->
-    <div class="form-group">
-      <label for="brand">Marca</label>
-      <input type="text" id="brand" formControlName="brand" placeholder="Ingrese marca" />
-      <small *ngIf="brand?.invalid && brand?.touched" class="error">
-        La marca es requerida.
-      </small>
-    </div>
-
-    <!-- Mililitros -->
-    <div class="form-group">
-      <label for="milliliters">Mililitros</label>
-      <input type="number" id="milliliters" formControlName="milliliters" placeholder="Ingrese cantidad en ml" />
-      <small *ngIf="milliliters?.invalid && milliliters?.touched" class="error">
-        La cantidad es requerida y debe ser mayor a 0.
-      </small>
-    </div>
-
-    <!-- Contenido de alcohol -->
-    <div class="form-group">
-    <label for="alcoholContent">Contenido de alcohol (%)</label>
-    <input type="number" id="alcoholContent" formControlName="alcoholContent" placeholder="Opcional" />
-    <small *ngIf="alcoholContent?.invalid && alcoholContent?.touched" class="error">
-        El contenido de alcohol es requerido y debe ser mayor a 0.
-    </small>
-    </div>
-
-    <!-- Precio -->
-    <div class="form-group">
-    <label for="price">Precio</label>
-    <input type="number" id="price" formControlName="price" placeholder="Ingrese precio" />
-    <small *ngIf="price?.invalid && price?.touched" class="error">
-        El precio es requerido y debe ser mayor a 0.
-    </small>
-    </div>
-
-    <!-- Stock -->
-    <div class="form-group">
-    <label for="stock">Stock</label>
-    <input type="number" id="stock" formControlName="stock" placeholder="Ingrese cantidad disponible" />
-    <small *ngIf="stock?.invalid && stock?.touched" class="error">
-        El stock es requerido y debe ser mayor o igual a 0.
-    </small>
-    </div>
-
-    <div class="form-group">
-    <label for="imageUrl">Imagen (URL)</label>
-    <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="Ingrese URL de la imagen" />
-    <small *ngIf="imageUrl?.invalid && imageUrl?.touched" class="error">
-        Debe ingresar una URL válida que termine en .jpg, .jpeg, .png o .gif.
-    </small>
-    </div>
-
-    <!-- Botones -->
-    <div class="form-buttons">
-    <button type="submit" [disabled]="editBebidaForm.invalid" class="editBtn">Guardar Cambios</button>
-    <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
-    </div>
-
   </form>
-  }
-
-  <!-- Formulario Agregar -->
-  @else if (estoyEnAgregar()) {
-
-  <h2>Agregar Bebida</h2>
-  <form [formGroup]="newBebidaForm" (ngSubmit)="onSubmitAgregar()">
-
-    <!-- Nombre -->
-    <div class="form-group">
-    <label for="name">Nombre de la bebida</label>
-    <input type="text" id="name" formControlName="name" placeholder="Ingrese nombre de la bebida" />
-    <small *ngIf="newName?.invalid && newName?.touched" class="error">
-        El nombre es requerido.
-    </small>
-    </div>
-
-    <!-- Tipo -->
-    <div class="form-group">
-    <label for="type">Tipo de bebida</label>
-    <select id="type" formControlName="type">
-        <option value="Con alcohol">Con alcohol</option>
-        <option value="Sin alcohol">Sin alcohol</option>
-        <option value="Ninguna">Ninguna</option>
-    </select>
-    </div>
-
-    <!-- Categoría -->
-    <div class="form-group">
-    <label for="category">Categoría</label>
-    <select id="category" formControlName="category">
-        <option value="Agua">Agua</option>
-        <option value="Agua con gas">Agua con gas</option>
-        <option value="Agua saborizada">Agua saborizada</option>
-        <option value="Gaseosa">Gaseosa</option>
-        <option value="Energizante">Energizante</option>
-        <option value="Jugo">Jugo</option>
-        <option value="Cerveza">Cerveza</option>
-        <option value="Vino">Vino</option>
-        <option value="Licor">Licor</option>
-        <option value="Whisky">Whisky</option>
-        <option value="Ron">Ron</option>
-        <option value="Vodka">Vodka</option>
-        <option value="Téquila">Téquila</option>
-        <option value="Champagne">Champagne</option>
-        <option value="Cachaca">Cachaca</option>
-        <option value="Granadina">Granadina</option>
-        <option value="Gin">Gin</option>
-        <option value="Aperitivo">Aperitivo</option>
-        <option value="Otro">Otro</option>
-        <option value="Ninguna">Ninguna</option>
-    </select>
-    </div>
-
-    <!-- Marca -->
-    <div class="form-group">
-    <label for="brand">Marca</label>
-    <input type="text" id="brand" formControlName="brand" placeholder="Ingrese marca" />
-    <small *ngIf="newBrand?.invalid && newBrand?.touched" class="error">
-        La marca es requerida.
-    </small>
-    </div>
-
-    <!-- Mililitros -->
-    <div class="form-group">
-    <label for="milliliters">Mililitros</label>
-    <input type="number" id="milliliters" formControlName="milliliters" placeholder="Ingrese cantidad en ml" />
-      <small *ngIf="newMilliliters?.invalid && newMilliliters?.touched" class="error">
-        La cantidad es requerida y debe ser mayor a 0.
-    </small>
-    </div>
-
-    <!-- Contenido de alcohol -->
-    <div class="form-group">
-    <label for="alcoholContent">Contenido de alcohol (%)</label>
-    <input type="number" id="alcoholContent" formControlName="alcoholContent" placeholder="Opcional" />
-      <small *ngIf="newAlcoholContent?.invalid && newAlcoholContent?.touched" class="error">
-        El contenido de alcohol es requerido y debe ser mayor a 0.
-    </small>
-    </div>
-
-    <!-- Precio -->
-    <div class="form-group">
-    <label for="price">Precio</label>
-    <input type="number" id="price" formControlName="price" placeholder="Ingrese precio" />
-    <small *ngIf="newPrice?.invalid && newPrice?.touched" class="error">
-        El precio es requerido y debe ser mayor a 0.
-    </small>
-    </div>
-
-    <!-- Stock -->
-    <div class="form-group">
-    <label for="stock">Stock</label>
-    <input type="number" id="stock" formControlName="stock" placeholder="Ingrese cantidad disponible" />
-    <small *ngIf="newStock?.invalid && newStock?.touched" class="error">
-        El stock es requerido y debe ser mayor o igual a 0.
-    </small>
-    </div>
-
-    <div class="form-group">
-    <label for="imageUrl">Imagen (URL)</label>
-    <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="Ingrese URL de la imagen" />
-    <small *ngIf="newImageUrl?.invalid && newImageUrl?.touched" class="error">
-        Debe ingresar una URL válida que termine en .jpg, .jpeg, .png o .gif.
-    </small>
-    </div>
-
-    <!-- Botones -->
-    <div class="form-buttons">
-    <button type="submit" [disabled]="newBebidaForm.invalid" class="addBtn">Agregar Bebida</button>
-    <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
-    </div>
-
-  </form>
-  }
-
-</div>
+</main>

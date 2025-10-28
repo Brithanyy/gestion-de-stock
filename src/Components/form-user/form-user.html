@@ -1,83 +1,166 @@
-<div class="edit-user-form-container">
+<main class="container-fluid py-4 form-user-container fade-in">
 
-  <!-- Formulario Editar -->
-  <form *ngIf="estoyEnEditar()" [formGroup]="editUserForm" (ngSubmit)="editarUsuario()">
-    <h2>Editar Usuario</h2>
-    <!-- Username -->
-    <div class="form-group">
-      <label for="username">Nombre de usuario</label>
-      <input type="text" id="username" formControlName="username" placeholder="Ingrese nombre de usuario" />
-      <small *ngIf="editUserForm.get('username')?.invalid && editUserForm.get('username')?.touched" class="error">
-        El nombre de usuario es requerido.
-      </small>
-    </div>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card bg-dark text-white p-4 shadow rounded-4">
 
-    <!-- Password -->
-    <div class="form-group password-group">
-      <label for="password">Contraseña</label>
-      <div class="password-wrapper">
-        <input [type]="mostrarPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="Ingrese contraseña" />
-        <i class="fa" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="mostrarPassword = !mostrarPassword"></i>
+        <!-- 🔹 Formulario Editar -->
+        <form *ngIf="estoyEnEditar()" [formGroup]="editUserForm" (ngSubmit)="editarUsuario()">
+          <h2 class="text-center fw-bold mb-4 text-white">Editar Usuario</h2>
+
+          <!-- Nombre de usuario -->
+          <div class="mb-3">
+            <label for="username" class="form-label">Nombre de usuario</label>
+            <input
+              type="text"
+              id="username"
+              class="form-control"
+              placeholder="Ingrese nombre de usuario"
+              formControlName="username"
+            />
+            <div
+              *ngIf="editUserForm.get('username')?.invalid && editUserForm.get('username')?.touched"
+              class="text-danger small mt-1"
+            >
+              El nombre de usuario es requerido.
+            </div>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="mb-3 position-relative">
+            <label for="password" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input
+                [type]="mostrarPassword ? 'text' : 'password'"
+                id="password"
+                formControlName="password"
+                placeholder="Ingrese contraseña"
+                class="form-control"
+              />
+              <span class="input-group-text bg-transparent border-0">
+                <i
+                  class="fa"
+                  [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"
+                  (click)="mostrarPassword = !mostrarPassword"
+                  style="cursor:pointer;color:var(--color-naranja)"
+                ></i>
+              </span>
+            </div>
+            <div
+              *ngIf="editUserForm.get('password')?.invalid && editUserForm.get('password')?.touched"
+              class="text-danger small mt-1"
+            >
+              La contraseña es requerida.
+            </div>
+          </div>
+
+          <!-- Perfil -->
+          <div class="mb-4">
+            <label for="profile" class="form-label">Perfil</label>
+            <select id="profile" class="form-select" formControlName="profile">
+              <option value="admin">Admin</option>
+              <option value="usuario">Empleado</option>
+            </select>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between flex-wrap gap-3">
+            <button
+              type="submit"
+              class="btn btn-warning text-white fw-semibold px-4"
+              [disabled]="editUserForm.invalid"
+            >
+              Guardar Cambios
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary fw-semibold px-4"
+              (click)="back()"
+            >
+              Volver Atrás
+            </button>
+          </div>
+        </form>
+
+        <!-- 🔹 Formulario Agregar -->
+        <form *ngIf="estoyEnAgregar()" [formGroup]="newUserForm" (ngSubmit)="agregarNuevoUsuario()">
+          <h2 class="text-center fw-bold mb-4 text-white">Agregar Usuario</h2>
+
+          <!-- Nombre de usuario -->
+          <div class="mb-3">
+            <label for="usernameNew" class="form-label">Nombre de usuario</label>
+            <input
+              type="text"
+              id="usernameNew"
+              class="form-control"
+              placeholder="Ingrese nombre de usuario"
+              formControlName="username"
+            />
+            <div
+              *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched"
+              class="text-danger small mt-1"
+            >
+              El nombre de usuario es requerido.
+            </div>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="mb-3 position-relative">
+            <label for="passwordNew" class="form-label">Contraseña</label>
+            <div class="input-group">
+              <input
+                [type]="mostrarPassword ? 'text' : 'password'"
+                id="passwordNew"
+                formControlName="password"
+                placeholder="Ingrese contraseña"
+                class="form-control"
+              />
+              <span class="input-group-text bg-transparent border-0">
+                <i
+                  class="fa"
+                  [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'"
+                  (click)="mostrarPassword = !mostrarPassword"
+                  style="cursor:pointer;color:var(--color-naranja)"
+                ></i>
+              </span>
+            </div>
+            <div
+              *ngIf="newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched"
+              class="text-danger small mt-1"
+            >
+              La contraseña es requerida.
+            </div>
+          </div>
+
+          <!-- Perfil -->
+          <div class="mb-4">
+            <label for="profileNew" class="form-label">Perfil</label>
+            <select id="profileNew" class="form-select" formControlName="profile">
+              <option value="admin">Admin</option>
+              <option value="usuario">Empleado</option>
+            </select>
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex justify-content-between flex-wrap gap-3">
+            <button
+              type="submit"
+              class="btn btn-warning text-white fw-semibold px-4"
+              [disabled]="newUserForm.invalid"
+            >
+              Agregar Usuario
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary fw-semibold px-4"
+              (click)="back()"
+            >
+              Volver Atrás
+            </button>
+          </div>
+        </form>
+
       </div>
-      <small *ngIf="editUserForm.get('password')?.invalid && editUserForm.get('password')?.touched" class="error">
-        La contraseña es requerida.
-      </small>
     </div>
-
-    <!-- Perfil -->
-    <div class="form-group">
-      <label for="profile">Perfil</label>
-      <select id="profile" formControlName="profile">
-        <option value="admin">Admin</option>
-        <option value="usuario">Empleado</option>
-      </select>
-    </div>
-
-    <!-- Botones -->
-    <div class="form-buttons">
-      <button type="submit" [disabled]="editUserForm.invalid" class="addBtn">Guardar Cambios</button>
-      <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
-    </div>
-  </form>
-
-  <!-- Formulario Agregar -->
-  <form *ngIf="estoyEnAgregar()" [formGroup]="newUserForm" (ngSubmit)="agregarNuevoUsuario()">
-    <h2>Agregar Usuario</h2>
-    <!-- Username -->
-    <div class="form-group">
-      <label for="usernameNew">Nombre de usuario</label>
-      <input type="text" id="usernameNew" formControlName="username" placeholder="Ingrese nombre de usuario" />
-      <small *ngIf="newUserForm.get('username')?.invalid && newUserForm.get('username')?.touched" class="error">
-        El nombre de usuario es requerido.
-      </small>
-    </div>
-
-    <!-- Password -->
-    <div class="form-group password-group">
-      <label for="passwordNew">Contraseña</label>
-      <div class="password-wrapper">
-        <input [type]="mostrarPassword ? 'text' : 'password'" id="passwordNew" formControlName="password" placeholder="Ingrese contraseña" />
-        <i class="fa" [ngClass]="mostrarPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="mostrarPassword = !mostrarPassword"></i>
-      </div>
-      <small *ngIf="newUserForm.get('password')?.invalid && newUserForm.get('password')?.touched" class="error">
-        La contraseña es requerida.
-      </small>
-    </div>
-
-    <!-- Perfil -->
-    <div class="form-group">
-      <label for="profileNew">Perfil</label>
-      <select id="profileNew" formControlName="profile">
-        <option value="admin">Admin</option>
-        <option value="usuario">Empleado</option>
-      </select>
-    </div>
-
-    <!-- Botones -->
-    <div class="form-buttons">
-      <button type="submit" [disabled]="newUserForm.invalid" class="addBtn">Agregar Usuario</button>
-      <button type="button" class="cancel" (click)="back()">Volver Atrás</button>
-    </div>
-  </form>
-
-</div>
+  </div>
+</main>
