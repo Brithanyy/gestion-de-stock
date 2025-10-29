@@ -37,52 +37,52 @@ export class AlertsPage implements OnInit {
   }
   
   descargarPDF() {
-    const contenedorLista = document.querySelector('.tabla-bebidas') as HTMLElement;
-    html2canvas(contenedorLista).then(canvas => {
+  const contenedorLista = document.querySelector('.tabla-bebidas') as HTMLElement;
 
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('landscape', 'mm', 'a4'); //Modo apaisado
+  html2canvas(contenedorLista, {
+    backgroundColor: '#ffffff',
+    scale: 2,                   
+    useCORS: true               
+  }).then(canvas => {
 
-      const pageWidth = pdf.internal.pageSize.getWidth();  // 297 mm
-      const pageHeight = pdf.internal.pageSize.getHeight(); // 210 mm
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('landscape', 'mm', 'a4');
 
-      //Proporciones para mantener escala real
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = imgWidth / imgHeight;
+    const pageWidth = pdf.internal.pageSize.getWidth();  // 297 mm
+    const pageHeight = pdf.internal.pageSize.getHeight(); // 210 mm
 
-      //Márgenes laterales de 10 mm
-      const margin = 10;
-      let pdfWidth = pageWidth - margin * 2;
-      let pdfHeight = pdfWidth / ratio;
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+    const ratio = imgWidth / imgHeight;
 
-      //Si la imagen sobrepasa el alto, ajustamos al alto
-      if(pdfHeight > pageHeight - margin * 2) {
+    const margin = 10;
+    let pdfWidth = pageWidth - margin * 2;
+    let pdfHeight = pdfWidth / ratio;
 
-        pdfHeight = pageHeight - margin * 2;
-        pdfWidth = pdfHeight * ratio;
-      }
+    if (pdfHeight > pageHeight - margin * 2) {
+      pdfHeight = pageHeight - margin * 2;
+      pdfWidth = pdfHeight * ratio;
+    }
 
-      //Centramos la imagen
-      const posX = (pageWidth - pdfWidth) / 2;
-      const posY = (pageHeight - pdfHeight) / 2;
-      
-      pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
+    const posX = (pageWidth - pdfWidth) / 2;
+    const posY = (pageHeight - pdfHeight) / 2;
 
-      const now = new Date();
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
 
-      const dia = now.getDate().toString().padStart(2, '0');
-      const mes = (now.getMonth() + 1).toString().padStart(2, '0'); // los meses van de 0-11
-      const año = now.getFullYear();
+    pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
 
-      const horas = now.getHours().toString().padStart(2, '0');
-      const minutos = now.getMinutes().toString().padStart(2, '0');
+    const now = new Date();
+    const dia = now.getDate().toString().padStart(2, '0');
+    const mes = (now.getMonth() + 1).toString().padStart(2, '0');
+    const año = now.getFullYear();
+    const horas = now.getHours().toString().padStart(2, '0');
+    const minutos = now.getMinutes().toString().padStart(2, '0');
+    const fechaFormateada = `${dia}/${mes}/${año} ${horas}:${minutos}hs`;
 
-      const fechaFormateada = dia + "/" + mes + "/" + año + "  " + horas + ":" + minutos + "hs";
-
-      pdf.save("Alertas del dia: " + fechaFormateada  + ".pdf");
-    });
-  };
+    pdf.save(`Alertas del día ${fechaFormateada}.pdf`);
+  });
+}
 
   volverAtras() {
     

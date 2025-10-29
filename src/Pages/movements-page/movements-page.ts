@@ -122,7 +122,7 @@ export class MovementsPage implements OnInit {
 
     let movimientosFiltrados = this.movimientos.filter(movimiento => {
 
-       const fechaMovimiento = new Date(movimiento.movementDate)
+      const fechaMovimiento = new Date(movimiento.movementDate)
       .toLocaleDateString('es-AR');  // ej: "25/10/2025"
       return (
       movimiento.nameUser.toLowerCase().includes(termino) ||
@@ -136,52 +136,61 @@ export class MovementsPage implements OnInit {
   };
 
   descargarPDF() {
-    const contenedorLista = document.querySelector('.tabla-movimientos') as HTMLElement;
-    html2canvas(contenedorLista).then(canvas => {
+  const contenedorLista = document.querySelector('.tabla-movimientos') as HTMLElement;
+  if (!contenedorLista) return;
 
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('landscape', 'mm', 'a4'); //Modo apaisado
+  // 🔹 Aplicamos un fondo blanco temporal (solo mientras se captura)
+  const fondoOriginal = contenedorLista.style.backgroundColor;
+  contenedorLista.style.backgroundColor = '#ffffff';
+  contenedorLista.style.color = '#000000';
+  contenedorLista.style.opacity = '1';
+  contenedorLista.style.filter = 'none';
 
-      const pageWidth = pdf.internal.pageSize.getWidth();  // 297 mm
-      const pageHeight = pdf.internal.pageSize.getHeight(); // 210 mm
+  html2canvas(contenedorLista, {
+    backgroundColor: '#ffffff',
+    scale: 2,
+    useCORS: true
+  }).then(canvas => {
+    // 🔹 Restauramos estilos originales
+    contenedorLista.style.backgroundColor = fondoOriginal;
 
-      //Proporciones para mantener escala real
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = imgWidth / imgHeight;
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('landscape', 'mm', 'a4');
 
-      //Márgenes laterales de 10 mm
-      const margin = 10;
-      let pdfWidth = pageWidth - margin * 2;
-      let pdfHeight = pdfWidth / ratio;
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-      //Si la imagen sobrepasa el alto, ajustamos al alto
-      if(pdfHeight > pageHeight - margin * 2) {
+    const imgWidth = canvas.width;
+    const imgHeight = canvas.height;
+    const ratio = imgWidth / imgHeight;
 
-        pdfHeight = pageHeight - margin * 2;
-        pdfWidth = pdfHeight * ratio;
-      }
+    const margin = 10;
+    let pdfWidth = pageWidth - margin * 2;
+    let pdfHeight = pdfWidth / ratio;
 
-      //Centramos la imagen
-      const posX = (pageWidth - pdfWidth) / 2;
-      const posY = (pageHeight - pdfHeight) / 2;
-      
-      pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
+    if (pdfHeight > pageHeight - margin * 2) {
+      pdfHeight = pageHeight - margin * 2;
+      pdfWidth = pdfHeight * ratio;
+    }
 
-      const now = new Date();
+    const posX = (pageWidth - pdfWidth) / 2;
+    const posY = (pageHeight - pdfHeight) / 2;
 
-      const dia = now.getDate().toString().padStart(2, '0');
-      const mes = (now.getMonth() + 1).toString().padStart(2, '0'); // los meses van de 0-11
-      const año = now.getFullYear();
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+    pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
 
-      const horas = now.getHours().toString().padStart(2, '0');
-      const minutos = now.getMinutes().toString().padStart(2, '0');
+    const now = new Date();
+    const dia = now.getDate().toString().padStart(2, '0');
+    const mes = (now.getMonth() + 1).toString().padStart(2, '0');
+    const año = now.getFullYear();
+    const horas = now.getHours().toString().padStart(2, '0');
+    const minutos = now.getMinutes().toString().padStart(2, '0');
+    const fechaFormateada = `${dia}/${mes}/${año} ${horas}:${minutos}hs`;
 
-      const fechaFormateada = dia + "/" + mes + "/" + año + "  " + horas + ":" + minutos + "hs";
-
-      pdf.save("Movimientos: " + fechaFormateada  + ".pdf");
-    });
-  };
+    pdf.save(`Movimientos ${fechaFormateada}.pdf`);
+  });
+}
 
   volverAtras() {
     

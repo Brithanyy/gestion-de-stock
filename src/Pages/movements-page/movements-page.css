@@ -1,183 +1,185 @@
-.movimientos-container {
-  min-height: calc(100vh - 160px);
-  background-color: rgba(255, 255, 255, 0.03);
-  color: var(--color-texto);
-  font-family: "Cooper-Star", system-ui, sans-serif;
-  padding: 1.5rem;
-  animation: fadeIn 0.8s ease; /* ✨ animación general de entrada */
-}
-
-/* --- Título --- */
-.movimientos-container h2 {
-  font-size: 2rem;
-  color: #1c1c1c;
-}
-
-/* --- Input de búsqueda --- */
-.form-control {
-  border: 2px solid var(--color-naranja);
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-
-.form-control:focus {
-  border-color: var(--color-naranja-hover);
-  box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
-}
-
-/* --- Botones --- */
-.btn-warning {
-  background-color: var(--color-naranja);
-  border: none;
-}
-
-.btn-warning:hover {
-  background-color: var(--color-naranja-hover);
-  transform: scale(1.05);
-}
-
-.btn-secondary {
-  background-color: var(--color-naranja);
-  border: none;
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-naranja-hover);
-  transform: scale(1.05);
-}
-
-/* --- Tabla --- */
-.tabla-movimientos {
-  border-radius: 15px;
-  overflow: hidden;
-  margin-top: 2rem;
-  animation: fadeIn 1s ease; /* ✨ animación de tabla */
-}
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
-  animation: fadeInRows 0.8s ease both; /* animación para las filas */
-}
-
-.table th,
-.table td {
-  vertical-align: middle;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.15); /* bordes visibles */
-}
-
-.table thead {
-  background-color: #1e1e1e;
-  color: #fff;
-  font-weight: 600;
-}
-
-.table tbody tr {
-  background-color: rgba(255, 255, 255, 0.9);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.table tbody tr:hover {
-  background-color: rgba(244, 114, 39, 0.1);
-}
-
-/* --- Badges de tipo movimiento --- */
-.badge {
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 20px;
-  padding: 0.4rem 0.8rem;
-}
-
-/* --- Animaciones --- */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  .movimientos-container {
+    min-height: calc(100vh - 160px);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--color-texto);
+    font-family: "Cooper-Star", system-ui, sans-serif;
+    padding: 1.5rem;
+    animation: fadeIn 0.8s ease; /* ✨ animación general de entrada */
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes fadeInRows {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
+  /* --- Título --- */
   .movimientos-container h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: #1c1c1c;
   }
 
-  .btn {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.8rem;
+  /* --- Input de búsqueda --- */
+  .form-control {
+    border: 2px solid var(--color-naranja);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: var(--color-naranja-hover);
+    box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
+  }
+
+  /* --- Botones --- */
+  .btn-warning {
+    background-color: var(--color-naranja);
+    border: none;
+  }
+
+  .btn-warning:hover {
+    background-color: var(--color-naranja-hover);
+    transform: scale(1.05);
+  }
+
+  .btn-secondary {
+    background-color: var(--color-naranja);
+    border: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-naranja-hover);
+    transform: scale(1.05);
+  }
+
+  /* --- Tabla --- */
+  .tabla-movimientos {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 2rem;
+    animation: fadeIn 1s ease; /* ✨ animación de tabla */
+  }
+
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    animation: fadeInRows 0.8s ease both; /* animación para las filas */
   }
 
   .table th,
   .table td {
-    font-size: 0.9rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.15); /* bordes visibles */
   }
 
-  .tabla-movimientos {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .table thead {
+    background-color: #1e1e1e;
+    color: #fff;
+    font-weight: 600;
   }
 
-  .table {
-    min-width: 700px;
-  }
-}
-
-/* --- Pantallas menores a 500px --- */
-@media (max-width: 500px) {
-  .movimientos-container {
-    padding: 1rem;
+  .table tbody tr {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #000000;
   }
 
-  h2 {
-    font-size: 1.3rem !important;
+  .table tbody tr:hover {
+    background-color: rgba(244, 114, 39, 0.1);
   }
 
-  .table {
-    font-size: 0.85rem;
-    min-width: 450px; /* 🔹 scroll horizontal suave */
-  }
-
-  .tabla-movimientos {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-naranja) transparent;
-  }
-
-  /* 🔹 Personalización del scroll */
-  .tabla-movimientos::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .tabla-movimientos::-webkit-scrollbar-thumb {
-    background-color: var(--color-naranja);
-    border-radius: 20px;
-  }
-
-  .btn {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.7rem;
-  }
-
+  /* --- Badges de tipo movimiento --- */
   .badge {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
   }
-}
+
+
+
+  /* --- Animaciones --- */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInRows {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    .movimientos-container h2 {
+      font-size: 1.5rem;
+    }
+
+    .btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.8rem;
+    }
+
+    .table th,
+    .table td {
+      font-size: 0.9rem;
+    }
+
+    .tabla-movimientos {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .table {
+      min-width: 700px;
+    }
+  }
+
+  /* --- Pantallas menores a 500px --- */
+  @media (max-width: 500px) {
+    .movimientos-container {
+      padding: 1rem;
+    }
+
+    h2 {
+      font-size: 1.3rem !important;
+    }
+
+    .table {
+      font-size: 0.85rem;
+      min-width: 450px; /* 🔹 scroll horizontal suave */
+    }
+
+    .tabla-movimientos {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-naranja) transparent;
+    }
+
+    /* 🔹 Personalización del scroll */
+    .tabla-movimientos::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .tabla-movimientos::-webkit-scrollbar-thumb {
+      background-color: var(--color-naranja);
+      border-radius: 20px;
+    }
+
+    .btn {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.7rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }

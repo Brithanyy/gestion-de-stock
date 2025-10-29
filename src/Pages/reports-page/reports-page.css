@@ -1,29 +1,43 @@
 .reports-container {
   min-height: calc(100vh - 160px);
-  background-color: #1e1e1e;
-  color: #ffffff;
   font-family: "Cooper-Star", system-ui, sans-serif;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
   animation: fadeIn 0.8s ease;
 }
 
-/* --- Tarjetas de gráficos --- */
+/* --- Grid general --- */
+.reports-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* --- Tarjetas uniformes --- */
 .chart-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
+  background-color: #1e1e1e; /* 🔹 Fondo oscuro uniforme */
+  border: none; /* 🔹 Sin borde translúcido */
+  border-radius: 20px;
+  padding: 2rem;
   text-align: center;
+  color: #fff;
+  flex: 1 1 45%; /* 🔹 Dos por fila */
+  min-width: 300px;
+  max-width: 600px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 .chart-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(244, 114, 39, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(244, 114, 39, 0.3);
 }
 
 /* --- Títulos --- */
 .chart-card h2 {
   font-size: 1.4rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   margin-bottom: 1.5rem;
 }
@@ -40,8 +54,9 @@
 }
 
 .btn-secondary {
-  background-color: var(--color-naranja);;
+  background-color: var(--color-naranja);
   border: none;
+  color: #fff;
 }
 
 .btn-secondary:hover {
@@ -65,43 +80,40 @@
   }
 }
 
-/* --- Responsividad --- */
+/* --- Responsivo --- */
 @media (max-width: 992px) {
   .chart-card h2 {
     font-size: 1.2rem;
   }
+  .chart-card {
+    flex: 1 1 100%;
+  }
 }
 
 @media (max-width: 768px) {
-  .reports-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .chart-card {
+  .reports-container {
     padding: 1.5rem;
   }
-
+  .chart-card {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
   .chart-card h2 {
     font-size: 1.1rem;
   }
 }
 
-/* --- Celulares pequeños (<500px) --- */
 @media (max-width: 500px) {
   .reports-container {
-    padding: 0.8rem;
-  }
-
-  .chart-card {
     padding: 1rem;
   }
-
+  .chart-card {
+    padding: 1rem;
+    border-radius: 15px;
+  }
   .chart-card h2 {
     font-size: 1rem;
   }
-
   .btn {
     font-size: 0.85rem;
     padding: 0.45rem 0.8rem;

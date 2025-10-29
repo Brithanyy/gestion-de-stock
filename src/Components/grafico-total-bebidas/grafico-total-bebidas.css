@@ -1,7 +1,68 @@
-#chart_div_total {
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease;
+}
 
+/* 🧱 Contenedor con scroll controlado */
+.chart-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+/* 🎯 Gráfico principal */
+#chart_div_total {
   width: 100%;
   max-width: 700px;
+  min-width: 400px;
   height: 400px;
   margin: 0 auto;
+}
+
+/* ✨ Scrollbar custom */
+.chart-responsive-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.chart-responsive-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 20px;
+}
+.chart-responsive-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 📱 Tablets */
+@media (max-width: 768px) {
+  #chart_div_total {
+    height: 320px;
+    min-width: 480px;
+  }
+}
+
+/* 📱 Móviles pequeños */
+@media (max-width: 500px) {
+  #chart_div_total {
+    height: 280px;
+    min-width: 420px; /* 🔹 crea scroll si no entra */
+  }
+}
+
+/* ✨ Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

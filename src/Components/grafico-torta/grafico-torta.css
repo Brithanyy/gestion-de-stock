@@ -1,6 +1,64 @@
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* 🧱 Wrapper con scroll controlado */
+.chart-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  text-align: center;
+  border-radius: 12px;
+  padding-bottom: 0.5rem;
+}
+
+/* 🎯 El gráfico */
 #chart_div_torta {
-  width: 100%;          /* Ocupa todo el ancho del contenedor padre */
-  max-width: 600px;     /* Máximo ancho */
-  height: 400px;        /* Alto fijo */
-  margin: 0 auto;       /* Centrar horizontalmente */
+  width: 100%;
+  max-width: 580px;
+  min-width: 360px;
+  height: 380px;
+  margin: 0 auto;
+}
+
+/* ✨ Scrollbar */
+.chart-responsive-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+.chart-responsive-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 20px;
+}
+.chart-responsive-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 📱 Móviles */
+@media (max-width: 600px) {
+  .chart-card {
+    padding: 1rem;
+  }
+
+  #chart_div_torta {
+    height: 300px;
+    min-width: 420px; /* 🔹 crea scroll si no entra */
+  }
+}
+
+@media (max-width: 400px) {
+  #chart_div_torta {
+    height: 260px;
+    min-width: 380px;
+  }
 }

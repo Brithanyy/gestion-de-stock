@@ -1,46 +1,118 @@
 .lineal-total-container {
+  background-color: #1e1e1e; /* mismo fondo que las chart-cards */
+  border-radius: 20px;
+  padding: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   margin: 20px auto;
-  color: #1e1e1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.8s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.lineal-total-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(244, 114, 39, 0.3);
+}
+
+/* --- Título --- */
 .lineal-total-container h2 {
-  text-align: center;
-  margin-bottom: 10px;
-  color: #eee;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
 }
 
+/* --- Wrapper con número y barra --- */
 .barra-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px; /* espacio entre barra y número */
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap; /* 🔹 permite adaptarse sin cortar */
+}
+
+/* --- Número --- */
+.total-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  min-width: 70px;
+  text-align: center;
+}
+
+/* --- Barra de progreso personalizada --- */
+.progress {
+  height: 25px;
+  background-color: #fff !important;
+  border-radius: 50px;
+  overflow: hidden;
+  flex: 1;
+  max-width: 420px;
+  min-width: 200px; /* 🔹 asegura que no desaparezca */
 }
 
 .progress-bar {
-  flex: 1; /* ocupa todo el ancho restante */
-  height: 25px;
-  background-color: #eee;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background-color: #f47227;
-  width: 0%;
-  border-radius: 12px 0 0 12px;
+  background-color: var(--color-naranja) !important;
+  border-radius: 50px 0 0 50px;
   transition: width 0.5s ease-in-out;
 }
 
-.total-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #eee;
-  min-width: 50px;
-  text-align: right;
+/* --- Animación suave --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-h2 {
-  font-size: 1.6rem;
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .lineal-total-container {
+    padding: 1.5rem;
+    max-width: 90%;
+  }
+
+  .lineal-total-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .total-number {
+    font-size: 1.8rem;
+  }
+
+  .progress {
+    height: 22px;
+  }
+}
+
+/* --- Móviles pequeños (<500px) --- */
+@media (max-width: 500px) {
+  .lineal-total-container {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .barra-wrapper {
+    flex-direction: column; /* 🔹 número arriba, barra abajo */
+    gap: 0.8rem;
+  }
+
+  .progress {
+    width: 100%;
+    min-width: unset;
+    height: 20px;
+  }
+
+  .total-number {
+    font-size: 1.6rem;
+  }
+
+  .lineal-total-container h2 {
+    font-size: 1.1rem;
+  }
 }

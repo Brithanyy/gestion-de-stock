@@ -2,7 +2,17 @@
 .home-container {
   max-width: 1400px;
   margin: 0 auto;
-  animation: fadeIn 0.7s ease; /* ✨ animación general */
+  padding-left: 50px; /* 🟠 Compensa el sidebar */
+  padding-right: 20px; /* 🟠 equilibrio visual */
+  transition: padding-left 0.3s ease, padding-right 0.3s ease;
+  animation: fadeIn 0.7s ease;
+}
+
+/* --- Centrado de cards --- */
+.row.g-4 {
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 10px;
 }
 
 /* === Input de búsqueda === */
@@ -20,27 +30,22 @@
   box-shadow: 0 0 10px rgba(244, 114, 39, 0.3);
 }
 
-.btn-outline-success {
-  border-color: var(--color-naranja);
+/* --- Botón Agregar --- */
+.buscador-container .btn-outline-warning {
+  border: none;
+  border-left: 2px solid var(--color-naranja);
+  border-radius: 0;
   color: var(--color-naranja);
-  font-weight: 600;
+  background-color: transparent;
   transition: all 0.3s ease;
-  animation: fadeIn 0.9s ease;
 }
 
-.btn-outline-success:hover {
+.buscador-container .btn-outline-warning:hover {
   background-color: var(--color-naranja);
-  color: #fff;
+  color: var(--color-blanco);
 }
 
-/* === Espaciado entre cards === */
-.row.g-4 > [class*="col-"] {
-  display: flex;
-  justify-content: center;
-  animation: fadeIn 0.8s ease;
-}
-
-/* === Buscador === */
+/* --- Buscador --- */
 .buscador-container {
   border: 2px solid var(--color-naranja);
   border-radius: 50px !important;
@@ -64,21 +69,7 @@
   font-weight: 400;
 }
 
-.buscador-container .btn-outline-warning {
-  border: none;
-  border-left: 2px solid var(--color-naranja);
-  border-radius: 0;
-  color: var(--color-naranja);
-  background-color: transparent;
-  transition: all 0.3s ease;
-}
-
-.buscador-container .btn-outline-warning:hover {
-  background-color: var(--color-naranja);
-  color: var(--color-blanco);
-}
-
-/* === Adaptación visual general === */
+/* --- Cards --- */
 app-drink-card {
   width: 100%;
   height: 100%;
@@ -97,7 +88,6 @@ app-drink-card {
   }
 }
 
-/* Opcional: animación escalonada para cards */
 @keyframes fadeInCard {
   from {
     opacity: 0;
@@ -110,6 +100,12 @@ app-drink-card {
 }
 
 /* === Responsive refinado === */
+@media (max-width: 992px) {
+  .home-container {
+    padding-left: 0;
+  }
+}
+
 @media (max-width: 576px) {
   .input-group input.form-control {
     font-size: 0.9rem;
@@ -124,10 +120,20 @@ app-drink-card {
     font-size: 1.3rem;
   }
 
-  /* Suaviza animaciones en pantallas chicas */
   .home-container,
   .buscador-container,
   app-drink-card {
     animation-duration: 0.8s;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-container {
+    padding-left: 0;           /* sin offset, centrado total */
+    padding-right: 0;
+  }
+
+  .row.g-4 {
+    justify-content: center !important;
   }
 }

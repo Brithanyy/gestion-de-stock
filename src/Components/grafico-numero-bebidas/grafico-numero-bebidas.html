@@ -1,9 +1,27 @@
-<div class="lineal-total-container">
-  <h2>Total de bebidas</h2>
-  <div class="barra-wrapper">
-    <span class="total-number">{{ totalBebidas }}</span>
-    <div class="progress-bar">
-      <div class="progress-fill" [style.width.%]="porcentaje"></div>
+<div class="lineal-total-container text-center py-4 shadow-sm fade-in">
+  
+  <!-- 🔸 Título -->
+  <h2 class="fw-bold text-white mb-4">Total de bebidas</h2>
+
+  <!-- 🔸 Contenedor flexible -->
+  <div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 barra-wrapper">
+
+    <!-- Número -->
+    <span class="total-number display-5 fw-bold text-white">
+      {{ totalBebidas }}
+    </span>
+
+    <!-- Barra de progreso -->
+    <div class="progress bg-white rounded-pill flex-grow-1" style="max-width: 420px; height: 25px;">
+      <div
+        class="progress-bar bg-naranja"
+        role="progressbar"
+        [style.width.%]="porcentaje"
+        [attr.aria-valuenow]="porcentaje"
+        aria-valuemin="0"
+        aria-valuemax="100">
+      </div>
     </div>
+
   </div>
 </div>

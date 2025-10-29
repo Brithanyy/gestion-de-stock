@@ -1,46 +1,116 @@
 .lineal-total-container {
+  background-color: #1e1e1e;
+  border-radius: 20px;
+  padding: 2rem;
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   margin: 20px auto;
-  color: #1e1e1e;
-}
-
-.lineal-total-container h2 {
   text-align: center;
-  margin-bottom: 10px;
-  color: #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  animation: fadeIn 0.8s ease;
 }
 
+/* --- Título --- */
+.lineal-total-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Contenedor de barra y número --- */
 .barra-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px; /* espacio entre barra y número */
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap; /* 🔹 permite que se reordene en pantallas chicas */
 }
 
+/* --- Barra de progreso --- */
 .progress-bar {
-  flex: 1; /* ocupa todo el ancho restante */
+  flex: 1;
   height: 25px;
-  background-color: #eee;
-  border-radius: 12px;
+  background-color: #fff;
+  border-radius: 50px;
   overflow: hidden;
+  min-width: 200px; /* 🔹 asegura que nunca se desaparezca */
+  transition: all 0.3s ease;
 }
 
 .progress-fill {
   height: 100%;
   background-color: #f47227;
   width: 0%;
-  border-radius: 12px 0 0 12px;
+  border-radius: 50px 0 0 50px;
   transition: width 0.5s ease-in-out;
 }
 
+/* --- Número total --- */
 .total-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #eee;
-  min-width: 50px;
-  text-align: right;
+  font-size: 2.2rem;
+  font-weight: 800;
+  min-width: 60px;
+  color: #fff;
 }
 
-h2 {
-  font-size: 1.6rem;
+/* --- Animación --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .lineal-total-container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .lineal-total-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .total-number {
+    font-size: 1.8rem;
+  }
+
+  .progress-bar {
+    height: 22px;
+  }
+}
+
+/* --- Celulares pequeños (<500px) --- */
+@media (max-width: 500px) {
+  .lineal-total-container {
+    padding: 1rem;
+    border-radius: 15px;
+  }
+
+  .barra-wrapper {
+    flex-direction: column; /* 🔹 número arriba, barra abajo */
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .progress-bar {
+    width: 100%;
+    min-width: unset; /* 🔹 ahora se adapta al ancho del móvil */
+    height: 18px;
+  }
+
+  .total-number {
+    font-size: 1.6rem;
+  }
+
+  .lineal-total-container h2 {
+    font-size: 1.1rem;
+  }
 }
