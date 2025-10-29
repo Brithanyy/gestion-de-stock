@@ -136,40 +136,46 @@ export class MovementsPage implements OnInit {
   };
 
   descargarPDF() {
-  const contenedorLista = document.querySelector('.tabla-movimientos') as HTMLElement;
-  if (!contenedorLista) return;
+  const contenedorOriginal = document.querySelector('.tabla-movimientos') as HTMLElement;
+  if (!contenedorOriginal) return;
 
-  // 🔹 Aplicamos un fondo blanco temporal (solo mientras se captura)
-  const fondoOriginal = contenedorLista.style.backgroundColor;
-  contenedorLista.style.backgroundColor = '#ffffff';
-  contenedorLista.style.color = '#000000';
-  contenedorLista.style.opacity = '1';
-  contenedorLista.style.filter = 'none';
+  // 🔹 Clonamos la tabla para manipular sin afectar la vista
+  const clon = contenedorOriginal.cloneNode(true) as HTMLElement;
+  clon.classList.add('pdf-capture');
 
-  html2canvas(contenedorLista, {
+  // 🔹 Eliminamos la columna "Acción" (el tacho)
+  const filas = clon.querySelectorAll('tr');
+  filas.forEach(fila => {
+    const celdas = fila.querySelectorAll('th, td');
+    if (celdas.length > 0) celdas[celdas.length - 1].remove();
+  });
+
+  // 🔹 Insertamos el clon temporalmente fuera de la vista
+  clon.style.position = 'fixed';
+  clon.style.top = '-9999px';
+  clon.style.left = '0';
+  clon.style.opacity = '0';
+  clon.style.zIndex = '-1';
+  document.body.appendChild(clon);
+
+  html2canvas(clon, {
     backgroundColor: '#ffffff',
-    scale: 2,
+    scale: 3,
     useCORS: true
   }).then(canvas => {
-    // 🔹 Restauramos estilos originales
-    contenedorLista.style.backgroundColor = fondoOriginal;
+    document.body.removeChild(clon); // 🔹 Eliminamos el clon
 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('landscape', 'mm', 'a4');
-
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
 
-    const imgWidth = canvas.width;
-    const imgHeight = canvas.height;
-    const ratio = imgWidth / imgHeight;
-
-    const margin = 10;
-    let pdfWidth = pageWidth - margin * 2;
+    const ratio = canvas.width / canvas.height;
+    let pdfWidth = pageWidth - 20;
     let pdfHeight = pdfWidth / ratio;
 
-    if (pdfHeight > pageHeight - margin * 2) {
-      pdfHeight = pageHeight - margin * 2;
+    if (pdfHeight > pageHeight - 20) {
+      pdfHeight = pageHeight - 20;
       pdfWidth = pdfHeight * ratio;
     }
 
@@ -178,7 +184,7 @@ export class MovementsPage implements OnInit {
 
     pdf.setFillColor(255, 255, 255);
     pdf.rect(0, 0, pageWidth, pageHeight, 'F');
-    pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
+    pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight, undefined, 'FAST');
 
     const now = new Date();
     const dia = now.getDate().toString().padStart(2, '0');
@@ -186,11 +192,15 @@ export class MovementsPage implements OnInit {
     const año = now.getFullYear();
     const horas = now.getHours().toString().padStart(2, '0');
     const minutos = now.getMinutes().toString().padStart(2, '0');
-    const fechaFormateada = `${dia}/${mes}/${año} ${horas}:${minutos}hs`;
+    const fechaFormateada = `${dia}_${mes}_${año}_${horas}_${minutos}`;
 
-    pdf.save(`Movimientos ${fechaFormateada}.pdf`);
+    pdf.save(`Movimientos_${fechaFormateada}.pdf`);
   });
 }
+
+
+
+
 
   volverAtras() {
     

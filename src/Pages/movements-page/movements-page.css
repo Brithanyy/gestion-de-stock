@@ -183,3 +183,24 @@
       padding: 0.3rem 0.6rem;
     }
   }
+
+  .pdf-capture,
+  .pdf-capture * {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+/* 🔧 Fix visual exclusivo para html2canvas */
+.tabla-movimientos.pdf-capture,
+.tabla-movimientos.pdf-capture *,
+.tabla-movimientos.pdf-capture tr,
+.tabla-movimientos.pdf-capture td,
+.tabla-movimientos.pdf-capture th {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  box-shadow: none !important;
+}

@@ -119,3 +119,30 @@
     padding: 0.45rem 0.8rem;
   }
 }
+/* ===== Exportación PDF: fuerza fondo sólido ===== */
+@media print, screen and (max-resolution: 1dpi) {
+  app-grafico-torta,
+  app-grafico-total-bebidas,
+  app-grafico-numero-bebidas,
+  app-grafico-productos-bajos {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  svg, canvas {
+    background-color: #ffffff !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .progress {
+    background-color: #e5e5e5 !important;
+  }
+
+  .progress-bar {
+    background-color: #f47227 !important;
+  }
+}

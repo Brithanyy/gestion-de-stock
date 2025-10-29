@@ -22,107 +22,72 @@ export class ReportsPage {
   readonly ROUTER : Router = inject(Router);
   usuarioLogueado = this.servicioLogin.usuario;
 
-  exportarPDF() {
+async descargarPDF() {
+  const pdf = new jsPDF('landscape', 'mm', 'a4');
+  const secciones = Array.from(document.querySelectorAll(
+    'app-grafico-torta, app-grafico-total-bebidas, app-grafico-numero-bebidas, app-grafico-productos-bajos'
+  )) as HTMLElement[];
 
-    const contenedorDashboard = document.querySelector('.reports-grid') as HTMLElement;
-
-    html2canvas(contenedorDashboard).then(canvas => {
-
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('landscape', 'mm', 'a4'); //Modo apaisado
-
-      const pageWidth = pdf.internal.pageSize.getWidth();  // 297 mm
-      const pageHeight = pdf.internal.pageSize.getHeight(); // 210 mm
-
-      //Proporciones para mantener escala real
-      const imgWidth = canvas.width;
-      const imgHeight = canvas.height;
-      const ratio = imgWidth / imgHeight;
-
-      //Márgenes laterales de 10 mm
-      const margin = 10;
-      let pdfWidth = pageWidth - margin * 2;
-      let pdfHeight = pdfWidth / ratio;
-
-      //Si la imagen sobrepasa el alto, ajustamos al alto
-      if(pdfHeight > pageHeight - margin * 2) {
-
-        pdfHeight = pageHeight - margin * 2;
-        pdfWidth = pdfHeight * ratio;
-      }
-
-      //Centramos la imagen
-      const posX = (pageWidth - pdfWidth) / 2;
-      const posY = (pageHeight - pdfHeight) / 2;
-      
-      pdf.addImage(imgData, 'PNG', posX, posY, pdfWidth, pdfHeight);
-
-      const now = new Date();
-
-      const dia = now.getDate().toString().padStart(2, '0');
-      const mes = (now.getMonth() + 1).toString().padStart(2, '0'); // los meses van de 0-11
-      const año = now.getFullYear();
-
-      const horas = now.getHours().toString().padStart(2, '0');
-      const minutos = now.getMinutes().toString().padStart(2, '0');
-
-      const fechaFormateada = dia + "/" + mes + "/" + año + "  " + horas + ":" + minutos + "hs";
-
-      pdf.save("Reporte del día: " + fechaFormateada  + ".pdf");
-    });
-  };
-
-  generarPDF(): Promise<void> {
-
-  return new Promise((resolve) => {
-
-      const contenedorDashboard = document.querySelector('.reports-grid') as HTMLElement;
-
-      if (!contenedorDashboard) return;
-
-      // html2canvas con calidad JPEG para reducir peso
-      html2canvas(contenedorDashboard, { scale: 1 }).then(canvas => {
-        // Convertir a JPEG en vez de PNG y comprimir al 70%
-        const imgData = canvas.toDataURL('image/jpeg', 0.7); // 🔹 compresión 70%
-
-        const pdf = new jsPDF('landscape', 'mm', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
-
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = imgWidth / imgHeight;
-
-        const margin = 10;
-        let pdfWidth = pageWidth - margin * 2;
-        let pdfHeight = pdfWidth / ratio;
-
-        if (pdfHeight > pageHeight - margin * 2) {
-          pdfHeight = pageHeight - margin * 2;
-          pdfWidth = pdfHeight * ratio;
-        }
-
-        const posX = (pageWidth - pdfWidth) / 2;
-        const posY = (pageHeight - pdfHeight) / 2;
-
-        pdf.addImage(imgData, 'JPEG', posX, posY, pdfWidth, pdfHeight);
-
-        const now = new Date();
-        this.fechaFormateada = `${now.getDate().toString().padStart(2,'0')}/${
-          (now.getMonth()+1).toString().padStart(2,'0')}/${now.getFullYear()} ${
-          now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}hs`;
-
-        this.pdfActual = pdf;
-        resolve();
-      });
-    });
-  }; 
-
-  async descargarPDF() {
-
-    if (!this.pdfActual) await this.generarPDF();
-    this.pdfActual?.save(`Reporte del día ${this.fechaFormateada}.pdf`);
+  if (!secciones.length) {
+    console.warn('⚠️ No se encontraron gráficos para exportar');
+    return;
   }
+
+  for (let i = 0; i < secciones.length; i++) {
+    const seccion = secciones[i];
+
+    // 🔹 Forzar render completo antes de capturar
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const originalBg = seccion.style.backgroundColor;
+    seccion.style.backgroundColor = '#ffffff';
+
+    const canvas = await html2canvas(seccion, {
+      backgroundColor: '#ffffff',
+      scale: 3,
+      useCORS: true,
+      logging: false,
+      onclone: (clonedDoc) => {
+        // Forzar visibilidad y colores
+        const clonedSection = clonedDoc.querySelector('body');
+        if (clonedSection) {
+          clonedSection.style.backgroundColor = '#ffffff';
+          clonedSection.style.color = '#000';
+          clonedSection.style.opacity = '1';
+          clonedSection.style.filter = 'none';
+        }
+      },
+    });
+
+    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+
+    const ratio = canvas.width / canvas.height;
+    let pdfWidth = pageWidth - 20;
+    let pdfHeight = pdfWidth / ratio;
+
+    if (pdfHeight > pageHeight - 20) {
+      pdfHeight = pageHeight - 20;
+      pdfWidth = pdfHeight * ratio;
+    }
+
+    const x = (pageWidth - pdfWidth) / 2;
+    const y = (pageHeight - pdfHeight) / 2;
+
+    pdf.addImage(imgData, 'JPEG', x, y, pdfWidth, pdfHeight);
+
+    if (i < secciones.length - 1) pdf.addPage();
+    seccion.style.backgroundColor = originalBg;
+  }
+
+  const now = new Date();
+  const fecha = `${now.getDate().toString().padStart(2,'0')}_${(now.getMonth()+1)
+    .toString().padStart(2,'0')}_${now.getFullYear()}-${now.getHours().toString().padStart(2,'0')}hs`;
+
+  pdf.save(`Reporte_${fecha}.pdf`);
+}
+
 
   volverAtras() { 
 
