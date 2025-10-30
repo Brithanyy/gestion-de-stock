@@ -199,9 +199,6 @@ export class MovementsPage implements OnInit {
 }
 
 
-
-
-
   volverAtras() {
     
     const idUser = this.usuarioLogueado()?.id;
