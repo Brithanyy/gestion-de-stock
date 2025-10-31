@@ -101,7 +101,7 @@ export class HomePage implements OnInit {
       bebida.brand.toLowerCase().includes(termino)
     );
     
-    if(this.bebidasFiltradas.length === 0) { this.ALERTA.mostrar("No se encontró ninguna bebida registrada con ese nombre.", "danger"); };
+    if(this.bebidasFiltradas.length === 0) { };
   };
 
   agregarBebida() {

@@ -35,7 +35,6 @@ readonly router : Router = inject(Router);
 readonly route : ActivatedRoute = inject(ActivatedRoute);
 
 readonly usuarioSignal = this.SERVICIO_AUTENTICACION.usuario
-readonly usuarioActual = this.usuarioSignal();
 
 isEdit = false;
 isNew = false;
@@ -50,6 +49,8 @@ editBebidaForm = this.formBuilder.group({
   category: ['Ninguna', Validators.required],
   brand: ['', Validators.required],
   milliliters: [0, [Validators.required, Validators.min(0)]],
+
+  //Si el tipo de bebida es sin alcohol, no te debe de aparecer
   alcoholContent: [0, [Validators.min(0), Validators.max(100)]],
   price: [0, [Validators.required, Validators.min(0)]],
   stock: [0, [Validators.required, Validators.min(0)]],
@@ -91,7 +92,7 @@ get newStock() { return this.newBebidaForm.get('stock'); }
 get newImageUrl() { return this.newBebidaForm.get('imageUrl'); }
 
 back () {
-  this.router.navigate(['/homePage', this.usuarioActual?.id]);
+  this.router.navigate(['/homePage', this.usuarioSignal()?.id]);
 }
 
 estoyEnEditar() {return this.isEdit; };
@@ -100,7 +101,6 @@ estoyEnAgregar() { return this.isNew; };
 
 onSubmitEditar() {
   this.bebidaID = this.route.snapshot.paramMap.get('id');
-
   if (!this.bebidaID) {
     this.ALERTA.mostrar("ID de la bebida es invalido", "danger");
     return;
@@ -123,7 +123,7 @@ onSubmitEditar() {
   this.SERVICIO_BEBIDAS.putDrink(bebidaActualizada).subscribe({
     next: () => {
       
-      this.router.navigate(['/homePage', this.usuarioActual?.id]);
+      this.router.navigate(['/homePage', this.usuarioSignal()?.id]);
     },
 
     error: () => { this.alerta.mostrar("Error al actualizar la bebida.", "danger"); }
@@ -200,7 +200,7 @@ ngOnInit(): void {
 
       await firstValueFrom(this.SERVICIO_BEBIDAS.postDrink(nuevaBebida as Bebida));
       this.ALERTA.mostrar('Bebida agregada con éxito.', 'success');
-      this.router.navigate(['/homePage', this.usuarioActual?.id]);
+      this.router.navigate(['/homePage', this.usuarioSignal()?.id]);
     } catch (err) {
       console.error(err);
       this.ALERTA.mostrar('Error al agregar la bebida.', 'danger');

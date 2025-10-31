@@ -23,7 +23,13 @@
           formControlName="name"
           placeholder="Ingrese nombre de la bebida"
         />
-        <small class="text-danger" *ngIf="name?.invalid && name?.touched">El nombre es requerido.</small>
+        @if(isEdit) {
+          <small class="text-danger" *ngIf="name?.invalid && name?.touched">El nombre es requerido.</small>
+        }
+        @else {
+          <small class="text-danger" *ngIf="newName?.invalid && newName?.touched">El nombre es requerido.</small>
+        }
+        
       </div>
 
       <!-- Tipo -->
@@ -58,7 +64,12 @@
           formControlName="brand"
           placeholder="Ingrese marca"
         />
-        <small class="text-danger" *ngIf="brand?.invalid && brand?.touched">La marca es requerida.</small>
+        @if(isEdit) {
+          <small class="text-danger" *ngIf="brand?.invalid && brand?.touched">La marca es requerida.</small>
+        }
+        @else {
+          <small class="text-danger" *ngIf="newBrand?.invalid && newBrand?.touched">La marca es requerida.</small>
+        }
       </div>
 
       <!-- Mililitros -->
@@ -71,9 +82,16 @@
           formControlName="milliliters"
           placeholder="Ingrese cantidad en ml"
         />
-        <small class="text-danger" *ngIf="milliliters?.invalid && milliliters?.touched">
-          La cantidad es requerida y debe ser mayor a 0.
-        </small>
+        @if(isEdit) {
+            <small class="text-danger" *ngIf="milliliters?.invalid && milliliters?.touched">
+              Los mililitros son requeridos y debe ser mayor a 0.
+            </small>
+        }
+        @else {
+            <small class="text-danger" *ngIf="newMilliliters?.invalid && newMilliliters?.touched">
+              Los mililitros son requeridos y debe ser mayor a 0.
+            </small>
+        }
       </div>
 
       <!-- Contenido alcohol -->
@@ -86,6 +104,16 @@
           formControlName="alcoholContent"
           placeholder="Opcional"
         />
+         @if(isEdit) {
+          <small class="text-danger" *ngIf="alcoholContent?.invalid && alcoholContent?.touched">
+            El contenido de alcohol es requerido y debe ser mayor o igual a 0.
+          </small>
+        }
+        @else {
+          <small class="text-danger" *ngIf="newAlcoholContent?.invalid && newAlcoholContent?.touched">
+            El contenido de alcohol es requerido y debe ser mayor o igual a 0.
+          </small>
+        }
       </div>
 
       <!-- Precio -->
@@ -98,9 +126,17 @@
           formControlName="price"
           placeholder="Ingrese precio"
         />
+
+        @if(isEdit) {
         <small class="text-danger" *ngIf="price?.invalid && price?.touched">
           El precio es requerido y debe ser mayor a 0.
         </small>
+        }
+        @else {
+        <small class="text-danger" *ngIf="newPrice?.invalid && newPrice?.touched">
+          El precio es requerido y debe ser mayor a 0.
+        </small>
+        }
       </div>
 
       <!-- Stock -->
@@ -113,9 +149,16 @@
           formControlName="stock"
           placeholder="Ingrese cantidad disponible"
         />
+        @if(isEdit) {
         <small class="text-danger" *ngIf="stock?.invalid && stock?.touched">
           El stock es requerido y debe ser mayor o igual a 0.
         </small>
+        }
+        @else {
+        <small class="text-danger" *ngIf="newStock?.invalid && newStock?.touched">
+          El stock es requerido y debe ser mayor o igual a 0.
+        </small>
+        }
       </div>
 
       <!-- Imagen -->
@@ -128,6 +171,17 @@
           formControlName="imageUrl"
           placeholder="Ingrese URL de la imagen"
         />
+
+        @if(isEdit) {
+        <small class="text-danger" *ngIf="imageUrl?.invalid && imageUrl?.touched">
+          La imagen es requerida.
+        </small>
+        }
+        @else {
+        <small class="text-danger" *ngIf="newImageUrl?.invalid && newImageUrl?.touched">
+          La imagen es requerida.
+        </small>
+        }
       </div>
 
       <!-- Botones -->
