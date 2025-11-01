@@ -14,6 +14,12 @@ import { NewUserPage } from '../Pages/new-user-page/new-user-page';
 import { EditDrinkPage } from '../Pages/edit-drink-page/edit-drink-page';
 import { DetailDrinkPage } from '../Pages/detail-drink-page/detail-drink-page';
 import { tipoUsuarioGuard } from '../guards/tipoUsuario/tipo-usuario-guard';
+import { ProviderPage } from '../Pages/provider-page/provider-page';
+import { EditProviderPage } from '../Pages/edit-provider-page/edit-provider-page';
+import { ReminderPage } from '../Pages/reminder-page/reminder-page';
+import { EditReminderPage } from '../Pages/edit-reminder-page/edit-reminder-page';
+import { NewProviderPage } from '../Pages/new-provider-page/new-provider-page';
+import { NewReminderPage } from '../Pages/new-reminder-page/new-reminder-page';
 
 export const routes: Routes = [
 
@@ -42,6 +48,12 @@ export const routes: Routes = [
         { path: 'newUser', component: NewUserPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
         { path: 'editDrinkPage/:id', component: EditDrinkPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
         { path: 'detailDrinkPage/:id/:idUser', component: DetailDrinkPage, canActivate: [autenticacionGuard] },
+        { path: 'providerPage', component: ProviderPage, canActivate: [autenticacionGuard] },
+        { path: 'newProviderPage', component: NewProviderPage, canActivate: [autenticacionGuard] },
+        { path: 'editProviderPage/:id', component: EditProviderPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
+        { path: 'reminderPage', component: ReminderPage, canActivate: [autenticacionGuard] },
+        { path: 'newReminderPage', component: NewReminderPage, canActivate: [autenticacionGuard] },
+        { path: 'editReminderPage/:id', component: EditReminderPage, canActivate: [autenticacionGuard, tipoUsuarioGuard] },
         ]
     },
 

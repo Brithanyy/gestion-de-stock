@@ -76,7 +76,7 @@ export class DrinkCard implements OnInit {
           this.ALERTA.mostrar("Bebida eliminada con éxito", "success");
           this.bebidaActualizada.emit(); 
         },
-        error: (errorDevuelto) => { this.ALERTA.mostrar("Error eliminar la bebida.", "danger"); }
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error al eliminar la bebida.", "danger"); }
       });
 
     };
@@ -87,7 +87,7 @@ export class DrinkCard implements OnInit {
   
         next: (usuarioDevuelto : Usuario) => { this.usuarioLogueado = usuarioDevuelto; },
   
-        error: (errorDevuelto) => { this.ALERTA.mostrar("Error obtener el usuario.", "danger"); }
+        error: (errorDevuelto) => { this.ALERTA.mostrar("Error al obtener el usuario.", "danger"); }
       });
     };
   

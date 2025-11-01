@@ -714,5 +714,74 @@
       "idUser": "1",
       "nameUser": "Rouse02"
     }
+  ],
+  "Proveedores": [
+    {
+      "id": "1",
+      "nombre": "Boucheé",
+      "telefono": "+54 9 223 567-8900",
+      "descripcion": "Proveedor especializado en bebidas importadas.",
+      "bebidas": [
+        "1",
+        "2",
+        "4"
+      ]
+    },
+    {
+      "id": "2",
+      "nombre": "Comercial del Mar",
+      "telefono": "+54 9 223 567-8900",
+      "bebidas": [
+        "1",
+        "2",
+        "4"
+      ],
+      "descripcion": "Proveedor especializado en gaseosas."
+    },
+    {
+      "id": "3",
+      "nombre": "Quilmes",
+      "telefono": "+54 9 223 567-8900",
+      "bebidas": [
+        "1",
+        "2",
+        "4"
+      ],
+      "descripcion": "Proveedor especializado en cervezas."
+    },
+    {
+      "id": "4",
+      "nombre": "Lodiser",
+      "telefono": "+54 9 223 567-8900",
+      "bebidas": [
+        "1",
+        "2",
+        "4"
+      ],
+      "descripcion": "Proveedor especializado en vinos."
+    },
+    {
+      "id": "a758",
+      "nombre": "Loydis",
+      "telefono": "+ 54 9 223 594-2827",
+      "descripcion": "Proveedor de espumantes.",
+      "bebidas": []
+    }
+  ],
+  "Recordatorios": [
+    {
+      "id": "1",
+      "titulo": "Control de stock general",
+      "descripcion": "Revisar el nivel de stock de todas las bebidas antes del fin de semana.",
+      "fechaRecordatorio": "2025-11-03T09:00:00Z",
+      "id_usuario": "1"
+    },
+    {
+      "id": "2",
+      "titulo": "Pedido al proveedor Bacardí",
+      "descripcion": "Contactar a Distribuidora Atlántida para reponer Ron Bacardí Carta Oro.",
+      "fechaRecordatorio": "2025-11-05T10:00:00Z",
+      "id_usuario": "79cb"
+    }
   ]
 }

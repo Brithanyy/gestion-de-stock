@@ -18,9 +18,9 @@ import { firstValueFrom } from 'rxjs';
 })
 export class FormDrink implements OnInit{
 
-  readonly SERVICIO_BEBIDAS : ServicioBebidas = inject(ServicioBebidas);
-  readonly ALERTA : Alerta = inject(Alerta);
-  readonly SERVICIO_AUTENTICACION : ServicioAutenticacion = inject(ServicioAutenticacion);
+    readonly SERVICIO_BEBIDAS : ServicioBebidas = inject(ServicioBebidas);
+    readonly ALERTA : Alerta = inject(Alerta);
+    readonly SERVICIO_AUTENTICACION : ServicioAutenticacion = inject(ServicioAutenticacion);
 
 
   categorias: CategoriaBebida[] = [
@@ -128,7 +128,6 @@ onSubmitEditar() {
 
     error: () => { this.alerta.mostrar("Error al actualizar la bebida.", "danger"); }
     });
- 
 }
 
 ngOnInit(): void {

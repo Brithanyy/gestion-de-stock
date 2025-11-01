@@ -33,8 +33,7 @@
 /* --- Botón Agregar --- */
 .buscador-container .btn-outline-warning {
   border: none;
-  border-left: 2px solid var(--color-naranja);
-  border-radius: 0;
+  border-radius: 0 50rem 50rem 0;
   color: var(--color-naranja);
   background-color: transparent;
   transition: all 0.3s ease;

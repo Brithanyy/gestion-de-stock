@@ -1,0 +1,74 @@
+<main class="container py-4 provider-container">
+
+  <!-- 🔍 Barra de búsqueda -->
+  <section class="container my-4">
+    <div class="input-group rounded-pill shadow-sm overflow-hidden buscador-container">
+      <input
+        type="text"
+        class="form-control border-0 text-center"
+        placeholder="Buscar proveedor por nombre..."
+        [(ngModel)]="terminoBusqueda"
+        (input)="filtrarProveedores()"
+      />
+      <button
+        class="btn btn-outline-warning fw-bold d-flex align-items-center gap-2 px-4"
+        type="button"
+        (click)="agregarProveedor()"
+        *ngIf="esAdmin()"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+        Agregar
+      </button>
+    </div>
+  </section>
+
+  <!-- 📦 Cards de proveedores -->
+  <section *ngIf="proveedoresFiltrados.length > 0; else sinProveedores">
+    <div class="row g-4 justify-content-center">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3"
+        *ngFor="let proveedor of proveedoresFiltrados"
+      >
+        <div class="card shadow-sm proveedor-card h-100 text-center p-3 border-0 rounded-4">
+          <h5 class="fw-bold mb-2">{{ proveedor.nombre }}</h5>
+          <p class="text-dark mb-2 fw-semibold">
+            <i class="fa-solid fa-phone me-1 icono-naranja"></i>{{ proveedor.telefono }}
+          </p>
+          <p class="small text-dark">{{ proveedor.descripcion }}</p>
+
+          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+          <button
+          class="btn btn-success rounded-circle p-3 d-flex align-items-center justify-content-center"
+          (click)="contactarProveedor(proveedor.telefono)"
+          title="Contactar por WhatsApp">
+          <i class="fa-brands fa-whatsapp fs-5 text-white"></i>
+          </button>
+
+          <button
+          *ngIf="esAdmin()"
+          class="btn btn-warning rounded-circle p-3 d-flex align-items-center justify-content-center"
+          (click)="editarProveedor(proveedor.id!)"
+          title="Editar proveedor">
+          <i class="fa-solid fa-pen fs-5 text-white"></i>
+          </button>
+
+          <button
+          *ngIf="esAdmin()"
+          class="btn btn-danger rounded-circle p-3 d-flex align-items-center justify-content-center"
+          (click)="eliminarProveedor(proveedor.id!)"
+          title="Eliminar proveedor">
+          <i class="fa-solid fa-trash fs-5 text-white"></i>
+          </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Template si no hay proveedores -->
+  <ng-template #sinProveedores>
+    <p class="text-center text-muted fw-bold mt-4">No hay proveedores disponibles</p>
+  </ng-template>
+
+</main>
+

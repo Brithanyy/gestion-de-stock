@@ -59,6 +59,18 @@
   transform: scale(1.05);
 }
 
+/* --- Placeholders visibles en fondos oscuros --- */
+::placeholder {
+  color: #f1f1f1 !important;
+  opacity: 0.8 !important;
+}
+
+.form-control::placeholder,
+textarea::placeholder {
+  color: #f1f1f1 !important;
+  opacity: 0.8 !important;
+}
+
 /* --- Fade-in --- */
 @keyframes fadeIn {
   from {

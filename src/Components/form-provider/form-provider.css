@@ -1,15 +1,13 @@
-.form-user-container {
+.provider-form-container {
   min-height: calc(100vh - 160px);
   background-color: rgba(255, 255, 255, 0.03);
   font-family: "Cooper-Star", system-ui, sans-serif;
   animation: fadeIn 0.8s ease;
 }
 
-/* --- Labels (más claros) --- */
-.form-label {
-  color: #f8f9fa; /* blanco suave */
-  font-weight: 600;
-  letter-spacing: 0.3px;
+/* --- Fondo título --- */
+.bg-naranja {
+  background-color: var(--color-naranja) !important;
 }
 
 /* --- Inputs y selects --- */
@@ -17,7 +15,7 @@
 .form-select {
   background-color: #2a2a2a;
   border: 1px solid #555;
-  color: #ffffff;
+  color: #fff;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
@@ -30,9 +28,37 @@
   color: #fff;
 }
 
-/* --- Mensajes de error --- */
-.text-danger {
-  color: var(--color-error);
+/* --- Labels --- */
+.form-label {
+  color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* --- Checkbox --- */
+.form-check-input {
+  background-color: #fff;
+  border: 1px solid #aaa;
+  cursor: pointer;
+}
+.form-check-input:checked {
+  background-color: var(--color-naranja);
+  border-color: var(--color-naranja);
+}
+
+/* --- Scroll de bebidas --- */
+.bebidas-list {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+}
+.bebidas-list::-webkit-scrollbar {
+  width: 6px;
+}
+.bebidas-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 3px;
 }
 
 /* --- Botones --- */
@@ -40,7 +66,6 @@
   background-color: var(--color-naranja);
   border: none;
 }
-
 .btn-warning:hover {
   background-color: var(--color-naranja-hover);
   transform: scale(1.05);
@@ -50,21 +75,9 @@
   background-color: var(--color-naranja);
   border: none;
 }
-
 .btn-secondary:hover {
   background-color: var(--color-naranja-hover);
   transform: scale(1.05);
-}
-
-/* --- Icono del ojo --- */
-.input-group-text i {
-  color: var(--color-naranja);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.input-group-text i:hover {
-  color: var(--color-naranja-hover);
 }
 
 /* --- Placeholders visibles en fondos oscuros --- */
@@ -79,47 +92,36 @@ textarea::placeholder {
   opacity: 0.8 !important;
 }
 
-/* --- Animación fade-in --- */
-.fade-in {
-  animation: fadeIn 0.8s ease both;
-}
-
+/* --- Fade-in --- */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .form-user-container {
-    padding: 1rem;
+  .card {
+    padding: 1.2rem !important;
   }
-
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
-
   .btn {
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
   }
 }
 
 @media (max-width: 500px) {
-  .card {
-    padding: 1.2rem !important;
+  .provider-form-container {
+    padding: 1rem;
   }
-
   h2 {
     font-size: 1.3rem !important;
   }
-
+  .form-control,
+  .form-select {
+    font-size: 0.9rem;
+  }
   .btn {
     font-size: 0.85rem;
     padding: 0.45rem 0.9rem;

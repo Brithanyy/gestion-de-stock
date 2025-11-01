@@ -1,0 +1,65 @@
+<main class="container-fluid py-4 provider-form-container fade-in">
+
+  <!-- 🔹 Título -->
+  <h2 class="text-center fw-bold text-white bg-naranja py-2 rounded mb-4">
+    {{ isEdit ? 'Editar Proveedor' : 'Agregar Proveedor' }}
+  </h2>
+
+  <!-- 🔹 Formulario -->
+  <form
+    [formGroup]="proveedorForm"
+    (ngSubmit)="onSubmit()"
+    class="mx-auto card shadow-lg bg-dark text-white p-4"
+  >
+    <div class="row g-3">
+      
+      <!-- Nombre -->
+      <div class="col-md-6">
+        <label class="form-label">Nombre del proveedor</label>
+        <input type="text" formControlName="nombre" class="form-control" placeholder="Ej: Distribuidora Atlántida" />
+      </div>
+
+      <!-- Teléfono -->
+      <div class="col-md-6">
+        <label class="form-label">Teléfono / WhatsApp</label>
+        <input type="text" formControlName="telefono" class="form-control" placeholder="+54 9 223 ..." />
+      </div>
+
+      <!-- Descripción -->
+      <div class="col-12">
+        <label class="form-label">Descripción</label>
+        <textarea formControlName="descripcion" class="form-control" rows="3" placeholder="Ej: Proveedor de bebidas energéticas"></textarea>
+      </div>
+
+      <!-- Bebidas -->
+      <div class="col-12">
+        <label class="form-label">Bebidas asociadas</label>
+        <div class="bebidas-list rounded p-3 bg-dark">
+          <div class="form-check" *ngFor="let bebida of bebidasDisponibles">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [id]="'bebida-' + bebida.id"
+              [checked]="proveedorForm.value.bebidas?.includes(bebida.id!)"
+              (change)="toggleBebidaSeleccionada(bebida.id!, $event)"
+            />
+            <label class="form-check-label" [for]="'bebida-' + bebida.id">
+              {{ bebida.name }}
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="col-12 d-flex justify-content-between mt-4 flex-wrap gap-3">
+      <button type="submit" class="btn btn-warning fw-semibold px-4 text-white" [disabled]="proveedorForm.invalid || submitting">
+        {{ isEdit ? 'Guardar Cambios' : 'Agregar Proveedor' }}
+      </button>
+
+      <button type="button" class="btn btn-secondary fw-semibold px-4" (click)="volver()">
+        <i class="fa-solid fa-arrow-left me-2"></i> Volver Atrás
+      </button>
+    </div>
+  </form>
+</main>
