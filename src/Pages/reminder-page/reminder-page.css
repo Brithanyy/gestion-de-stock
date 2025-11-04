@@ -1,0 +1,126 @@
+.recordatorio-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 20px;
+  margin-top: 20px;
+  animation: fadeIn 0.7s ease;
+  transition: padding-left 0.3s ease, padding-right 0.3s ease;
+}
+
+/* 🔍 Buscador igual al de proveedores */
+.buscador-container {
+  border: 2px solid var(--color-naranja);
+  border-radius: 50px !important;
+  transition: all 0.3s ease;
+}
+
+.buscador-container:focus-within {
+  box-shadow: 0 0 10px rgba(244, 114, 39, 0.4);
+}
+
+.input-group input.form-control {
+  border: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.input-group input.form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.buscador-container .btn-outline-warning {
+  border: none;
+  color: var(--color-naranja);
+  transition: all 0.3s ease;
+}
+
+.buscador-container .btn-outline-warning:hover {
+  background-color: var(--color-naranja);
+  color: #fff;
+}
+
+/* 🗒️ Cards de recordatorios */
+.recordatorio-card {
+  background-color: #fff;
+  border-radius: 18px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.recordatorio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.recordatorio-header {
+  background-color: var(--color-naranja);
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.recordatorio-body {
+  background-color: #fafafa;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recordatorio-body .descripcion {
+  font-family: "Cooper-Star", sans-serif;
+  font-size: 0.95rem;
+}
+
+/* --- Botones circulares --- */
+.recordatorio-card .btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recordatorio-card .btn i {
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.recordatorio-card .btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.color-naranja {
+  color: var(--color-naranja) !important;
+}
+
+/* ✨ Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 992px) {
+  .recordatorio-container { padding-left: 0; }
+}
+
+@media (max-width: 576px) {
+  .input-group input.form-control {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+  .btn-outline-warning span { display: none; }
+  .btn-outline-warning i { font-size: 1.3rem; }
+}

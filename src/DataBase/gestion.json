@@ -23,14 +23,6 @@
       "profile": "usuario",
       "isLoggedIn": false,
       "avatarUrl": "assets/img/usuario.png"
-    },
-    {
-      "id": "5209",
-      "username": "Paola",
-      "password": "paola2002",
-      "profile": "admin",
-      "isLoggedIn": false,
-      "avatarUrl": "assets/img/usuario.png"
     }
   ],
   "Bebidas": [
@@ -56,7 +48,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 23,
+      "stock": 3,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_989106-MLA95840052003_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -711,6 +703,16 @@
       "typeMotion": "Egreso",
       "amount": 1,
       "movementDate": "2025-10-28T01:14:59.712Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "92a9",
+      "idDrink": "2",
+      "nameDrink": "Ron Bacardí Carta Blanca",
+      "typeMotion": "Egreso",
+      "amount": 20,
+      "movementDate": "2025-11-01T23:25:04.327Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }

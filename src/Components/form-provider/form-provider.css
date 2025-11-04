@@ -92,6 +92,8 @@ textarea::placeholder {
   opacity: 0.8 !important;
 }
 
+
+
 /* --- Fade-in --- */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }

@@ -1,1 +1,69 @@
-<p>form-reminder works!</p>
+<main class="container-fluid py-4 reminder-form-container fade-in">
+
+  <!-- 🔹 Título -->
+  <h2 class="text-center fw-bold text-white bg-naranja py-2 rounded mb-4">
+    {{ isEdit ? 'Editar Recordatorio' : 'Agregar Recordatorio' }}
+  </h2>
+
+  <!-- 🔹 Formulario -->
+  <form
+    [formGroup]="recordatorioForm"
+    (ngSubmit)="onSubmit()"
+    class="mx-auto card shadow-lg bg-dark text-white p-4"
+  >
+    <div class="row g-3">
+
+      <!-- Título -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Título del recordatorio</label>
+        <input
+          type="text"
+          formControlName="titulo"
+          class="form-control"
+          placeholder="Ej: Control de stock semanal"
+        />
+      </div>
+
+      <!-- Fecha -->
+      <div class="col-12 col-md-6">
+        <label class="form-label">Fecha del recordatorio</label>
+        <input
+          type="date"
+          formControlName="fechaRecordatorio"
+          class="form-control"
+        />
+      </div>
+
+      <!-- Descripción -->
+      <div class="col-12">
+        <label class="form-label">Descripción</label>
+        <textarea
+          formControlName="descripcion"
+          class="form-control"
+          rows="4"
+          placeholder="Ej: Revisar niveles de bebidas energéticas en el depósito"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="col-12 d-flex justify-content-between mt-4 flex-wrap gap-3">
+      <button
+        type="submit"
+        class="btn btn-warning fw-semibold px-4 text-white"
+        [disabled]="recordatorioForm.invalid || submitting"
+      >
+        {{ isEdit ? 'Guardar Cambios' : 'Agregar Recordatorio' }}
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary fw-semibold px-4"
+        (click)="volver()"
+      >
+        <i class="fa-solid fa-arrow-left me-2"></i> Volver Atrás
+      </button>
+    </div>
+  </form>
+</main>
+

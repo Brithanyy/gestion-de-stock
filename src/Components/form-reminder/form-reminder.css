@@ -1,0 +1,102 @@
+.reminder-form-container {
+  min-height: calc(100vh - 160px);
+  background-color: rgba(255, 255, 255, 0.03);
+  font-family: "Cooper-Star", system-ui, sans-serif;
+  animation: fadeIn 0.8s ease;
+}
+
+/* --- Fondo título --- */
+.bg-naranja {
+  background-color: var(--color-naranja) !important;
+}
+
+/* --- Inputs y selects --- */
+.form-control,
+.form-select {
+  background-color: #2a2a2a;
+  border: 1px solid #555;
+  color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-naranja);
+  background-color: #1e1e1e;
+  box-shadow: 0 0 8px rgba(244, 114, 39, 0.3);
+  color: #fff;
+}
+
+/* --- Labels --- */
+.form-label {
+  color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* --- Placeholders visibles en fondos oscuros --- */
+::placeholder {
+  color: #f1f1f1 !important;
+  opacity: 0.8 !important;
+}
+
+.form-control::placeholder,
+textarea::placeholder {
+  color: #f1f1f1 !important;
+  opacity: 0.8 !important;
+}
+
+/* --- Botones --- */
+.btn-warning {
+  background-color: var(--color-naranja);
+  border: none;
+}
+.btn-warning:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: var(--color-naranja);
+  border: none;
+}
+.btn-secondary:hover {
+  background-color: var(--color-naranja-hover);
+  transform: scale(1.05);
+}
+
+/* --- Fade-in --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .card {
+    padding: 1.2rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .reminder-form-container {
+    padding: 1rem;
+  }
+  h2 {
+    font-size: 1.3rem !important;
+  }
+  .form-control,
+  .form-select {
+    font-size: 0.9rem;
+  }
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.45rem 0.9rem;
+  }
+}

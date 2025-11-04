@@ -1,1 +1,78 @@
-<p>reminder-page works!</p>
+<main class="container py-4 recordatorio-container">
+
+  <!-- 🔍 Barra de búsqueda -->
+  <section class="container my-4">
+    <div class="input-group rounded-pill shadow-sm overflow-hidden buscador-container">
+      <input
+        type="text"
+        class="form-control border-0 text-center"
+        placeholder="Buscar recordatorio por título..."
+        [(ngModel)]="terminoBusqueda"
+        (input)="filtrarRecordatorios()"
+      />
+      <button
+        class="btn btn-outline-warning fw-bold d-flex align-items-center gap-2 px-4"
+        type="button"
+        (click)="agregarRecordatorio()"
+        *ngIf="esAdmin()"
+      >
+        <i class="fa-solid fa-note-sticky"></i>
+        Agregar
+      </button>
+    </div>
+  </section>
+
+  <!-- 🗒️ Cards de recordatorios -->
+  <section *ngIf="recordatoriosFiltrados.length > 0; else sinRecordatorios">
+    <div class="row g-4 justify-content-center">
+      <div
+        class="col-12 col-sm-6 col-md-4 col-lg-3"
+        *ngFor="let nota of recordatoriosFiltrados"
+      >
+        <div class="card shadow-sm recordatorio-card h-100 border-0 rounded-4">
+          <div class="recordatorio-header">
+            <h5 class="fw-bold mb-0">{{ nota.titulo }}</h5>
+          </div>
+
+          <div class="recordatorio-body text-dark p-3">
+            <p class="descripcion mb-2">{{ nota.descripcion }}</p>
+            <p class="small text-muted mb-1">
+              <i class="fa-solid fa-calendar-day me-1 text-warning color-naranja"></i>
+              {{ nota.fechaRecordatorio | date:'dd/MM/yyyy' }}
+            </p>
+            <p class="small text-muted mb-0">
+              <i class="fa-solid fa-user me-1 text-warning color-naranja"></i>
+              {{ obtenerNombreUsuario(nota.id_usuario) }}
+            </p>
+          </div>
+
+          <!-- 🔘 Botones -->
+          <div class="d-flex justify-content-center gap-2 mb-3">
+            <button
+              *ngIf="esAdmin() || obtenerNombreUsuario(nota.id_usuario)"
+              class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center"
+              (click)="editarRecordatorio(nota.id!)"
+              title="Editar recordatorio">
+              <i class="fa-solid fa-pen text-white"></i>
+            </button>
+
+            <button
+              *ngIf="esAdmin() || obtenerNombreUsuario(nota.id_usuario)"
+              class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center"
+              (click)="eliminarRecordatorio(nota.id!)"
+              title="Eliminar recordatorio">
+              <i class="fa-solid fa-trash text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🪶 Template si no hay recordatorios -->
+  <ng-template #sinRecordatorios>
+    <p class="text-center text-muted fw-bold mt-4">No hay recordatorios disponibles</p>
+  </ng-template>
+
+</main>
+

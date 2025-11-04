@@ -18,7 +18,7 @@ export class ProviderPage implements OnInit {
   readonly SERVICIO_PROVEEDORES = inject(ServicioProveedor);
   readonly SERVICIO_AUTENTICACION = inject(ServicioAutenticacion);
   readonly ROUTER = inject(Router);
-  readonly ALERTA = inject(Alerta)
+  readonly ALERTA = inject(Alerta);
 
   proveedores: Proveedor[] = [];
   proveedoresFiltrados: Proveedor[] = [];
@@ -34,7 +34,7 @@ export class ProviderPage implements OnInit {
         this.proveedores = data;
         this.proveedoresFiltrados = [...data];
       },
-      error: () => console.error('Error al cargar proveedores')
+      error: () => this.ALERTA.mostrar('Error al cargar proveedores', 'danger')
     });
   }
 
