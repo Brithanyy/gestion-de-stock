@@ -35,7 +35,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 4,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -87,7 +87,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 10,
+      "stock": 5,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_806569-MLA95380750219_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -715,6 +715,136 @@
       "movementDate": "2025-11-01T23:25:04.327Z",
       "idUser": "1",
       "nameUser": "Rouse02"
+    },
+    {
+      "id": "cb07",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 3 Años",
+      "typeMotion": "Egreso",
+      "amount": 5,
+      "movementDate": "2025-11-04T23:54:14.348Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "97dd",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:05:17.858Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "5a5b",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:05:19.881Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "57c7",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:05:24.424Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "e842",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:05:28.826Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "d062",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:05:30.695Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "5fa9",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:29:28.903Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "69d9",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:29:40.880Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "6618",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 3 Años",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:29:59.342Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "656f",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 3 Años",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:30:06.155Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "2129",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:30:54.477Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "94d2",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:30:57.113Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "ae4f",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T00:33:56.996Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
     }
   ],
   "Proveedores": [
@@ -784,6 +914,20 @@
       "descripcion": "Contactar a Distribuidora Atlántida para reponer Ron Bacardí Carta Oro.",
       "fechaRecordatorio": "2025-11-05T10:00:00Z",
       "id_usuario": "79cb"
+    },
+    {
+      "id": "7344",
+      "titulo": "Hacer las frutillas",
+      "descripcion": "Hacer todos los canastos de frutillas",
+      "fechaRecordatorio": "2025-11-04T00:00:00.000Z",
+      "id_usuario": "1"
+    },
+    {
+      "id": "d51a",
+      "titulo": "Reunion de personal",
+      "descripcion": "Asistir a las 10 AM",
+      "fechaRecordatorio": "2025-11-06T00:00:00.000Z",
+      "id_usuario": "1"
     }
   ]
 }

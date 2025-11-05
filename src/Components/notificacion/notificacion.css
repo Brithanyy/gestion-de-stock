@@ -1,0 +1,126 @@
+/* ======= 🔔 Contenedor general ======= */
+.notificacion-container {
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  z-index: 99999;
+}
+
+/* ======= 🔔 Icono de campanita ======= */
+.notificacion-icon {
+  position: relative;
+  background-color: var(--color-naranja);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notificacion-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* 🔴 Badge (contador de notificaciones) */
+.notificacion-icon .badge {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-size: 0.75rem;
+  padding: 4px 6px;
+  border-radius: 50%;
+}
+
+/* ======= 🧾 Sidebar ======= */
+.notificacion-sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Oculto inicialmente */
+  width: 350px;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: #fff;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.4);
+  transition: right 0.4s ease;
+  z-index: 1200;
+  padding: 1rem 1.2rem;
+  overflow-y: auto;
+}
+
+/* 🔸 Cuando el sidebar está abierto */
+.notificacion-sidebar.open {
+  right: 0;
+}
+
+/* ======= 🧠 Encabezado ======= */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-header h5 {
+  color: var(--color-naranja);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.sidebar-header .btn-close {
+  filter: invert(1);
+}
+
+/* ======= 📦 Lista de notificaciones ======= */
+.notificacion-lista {
+  margin-top: 15px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* Cada item (bebida) */
+.notificacion-item {
+  background-color: #2a2a2a;
+  border-left: 4px solid var(--color-naranja);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notificacion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Imagen de la bebida */
+.notificacion-item img {
+  object-fit: cover;
+}
+
+/* Scroll personalizado */
+.notificacion-lista::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notificacion-lista::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 10px;
+}
+
+
+/* ======= Responsive ======= */
+@media (max-width: 600px) {
+  .notificacion-sidebar {
+    width: 80%;
+  }
+
+  .notificacion-icon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .notificacion-icon .badge {
+    font-size: 0.7rem;
+  }
+}

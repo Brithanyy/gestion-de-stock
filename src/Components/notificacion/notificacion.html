@@ -1,0 +1,43 @@
+<!-- 🔔 Campanita visible solo si hay bebidas con stock bajo -->
+<div class="notificacion-container" *ngIf="bebidas.length > 0">
+
+  <!-- Ícono de campanita -->
+  <div class="notificacion-icon" (click)="sidebarAbierto = !sidebarAbierto">
+    <i class="fa-solid fa-bell text-white "></i>
+    <span class="badge bg-danger">{{ bebidas.length }}</span>
+  </div>
+
+  <!-- Sidebar de notificaciones -->
+  <div class="notificacion-sidebar" [class.open]="sidebarAbierto">
+
+    <!-- Encabezado -->
+    <div class="sidebar-header d-flex justify-content-between align-items-center">
+      <h5 class="fw-bold text-white mb-0">
+        <i class="fa-solid fa-triangle-exclamation text-warning me-2"></i>
+        Bebidas con bajo stock
+      </h5>
+      <button class="btn btn-sm btn-close btn-close-white" (click)="sidebarAbierto = false"></button>
+    </div>
+
+    <hr class="text-white opacity-50"/>
+
+    <!-- Lista de bebidas -->
+    <div class="notificacion-lista">
+      <div
+        *ngFor="let bebida of bebidas"
+        class="notificacion-item d-flex align-items-center justify-content-between p-2 rounded mb-2"
+      >
+        <div>
+          <strong class="text-white">{{ bebida.name }}</strong>
+          <p class="mb-0 text-white-50 small">
+            Stock actual: <span class="fw-bold text-danger">{{ bebida.stock }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Mensaje si no hay -->
+    <div *ngIf="bebidas.length === 0" class="text-center text-white-50 mt-3">
+      No hay bebidas con stock bajo 🎉
+    </div>
+  </div>
+</div>

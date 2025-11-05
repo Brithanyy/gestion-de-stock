@@ -70,6 +70,15 @@ export class ReminderPage implements OnInit{
     })
   }
 
+  esElUsuario(recordatorio: Recordatorio): boolean {
+  const usuarioActual = this.SERVICIO_AUTENTICACION.usuario();
+
+  // Verifica que exista un usuario logueado y compara el id
+  if (!usuarioActual) return false;
+
+  return recordatorio.id_usuario === usuarioActual.id;
+}
+
   obtenerNombreUsuario(idUsuario : string) {
     const usuarioEncontrado = this.usuarios.find(u => u.id === idUsuario);
     return usuarioEncontrado?.username;

@@ -14,7 +14,6 @@
         class="btn btn-outline-warning fw-bold d-flex align-items-center gap-2 px-4"
         type="button"
         (click)="agregarRecordatorio()"
-        *ngIf="esAdmin()"
       >
         <i class="fa-solid fa-note-sticky"></i>
         Agregar
@@ -46,10 +45,10 @@
             </p>
           </div>
 
-          <!-- 🔘 Botones -->
+          <!--Botones -->
           <div class="d-flex justify-content-center gap-2 mb-3">
             <button
-              *ngIf="esAdmin() || obtenerNombreUsuario(nota.id_usuario)"
+              *ngIf="esAdmin() || esElUsuario(nota)"
               class="btn btn-warning rounded-circle d-flex align-items-center justify-content-center"
               (click)="editarRecordatorio(nota.id!)"
               title="Editar recordatorio">
@@ -57,7 +56,7 @@
             </button>
 
             <button
-              *ngIf="esAdmin() || obtenerNombreUsuario(nota.id_usuario)"
+              *ngIf="esAdmin() || esElUsuario(nota)"
               class="btn btn-danger rounded-circle d-flex align-items-center justify-content-center"
               (click)="eliminarRecordatorio(nota.id!)"
               title="Eliminar recordatorio">
