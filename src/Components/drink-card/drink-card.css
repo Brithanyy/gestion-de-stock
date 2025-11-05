@@ -76,6 +76,7 @@ p {
 .btn-naranja {
   background-color: var(--color-naranja);
   border-color: var(--color-naranja);
+  z-index: 0;
 }
 
 .btn-naranja:hover {

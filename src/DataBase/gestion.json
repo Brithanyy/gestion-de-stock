@@ -35,7 +35,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 6,
+      "stock": 5,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_912639-MLU74968757217_032024-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -48,7 +48,7 @@
       "milliliters": 980,
       "alcoholContent": 40,
       "price": 19,
-      "stock": 3,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_989106-MLA95840052003_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -61,7 +61,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 2,
+      "stock": 7,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_938637-MLA94921547372_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -74,7 +74,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 4,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_742622-MLA95180428521_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -87,7 +87,7 @@
       "milliliters": 750,
       "alcoholContent": 40,
       "price": 13,
-      "stock": 5,
+      "stock": 6,
       "imageUrl": "https://http2.mlstatic.com/D_NQ_NP_2X_806569-MLA95380750219_102025-F.webp",
       "createdAt": "2025-10-10T18:00:00Z"
     },
@@ -490,7 +490,7 @@
       "milliliters": 1000,
       "alcoholContent": 3,
       "price": 10000,
-      "stock": 5,
+      "stock": 6,
       "imageUrl": "https://acdn-us.mitiendanube.com/stores/001/211/660/products/branca-litro1-b3a10a9c87474df86f16050360672216-480-0.webp",
       "createdAt": "2025-10-27T12:31:03.805Z"
     }
@@ -843,6 +843,156 @@
       "typeMotion": "Ingreso",
       "amount": 1,
       "movementDate": "2025-11-05T00:33:56.996Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "1f45",
+      "idDrink": "2",
+      "nameDrink": "Ron Bacardí Carta Blanca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:08.929Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "f072",
+      "idDrink": "2",
+      "nameDrink": "Ron Bacardí Carta Blanca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:09.424Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "13b9",
+      "idDrink": "2",
+      "nameDrink": "Ron Bacardí Carta Blanca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:10.256Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "457a",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:12.812Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "7aea",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:12.989Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "f85b",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:13.245Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "8cc6",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:13.590Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "f7a7",
+      "idDrink": "3",
+      "nameDrink": "Ron Havana Club Añejo Especial Dorado",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:14.086Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "4e5f",
+      "idDrink": "4",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:17.580Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "70e5",
+      "idDrink": "4",
+      "nameDrink": "Ron Havana Club Añejo 7 Años",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:17.765Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "d91f",
+      "idDrink": "5",
+      "nameDrink": "Ron Havana Club Añejo 3 Años",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:22.640Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "7109",
+      "idDrink": "71a1",
+      "nameDrink": "Fernet Branca",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:32.366Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "db71",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T21:37:37.304Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "6ece",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Ingreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T23:45:53.597Z",
+      "idUser": "1",
+      "nameUser": "Rouse02"
+    },
+    {
+      "id": "b733",
+      "idDrink": "1",
+      "nameDrink": "Ron Bacardí Carta Oro",
+      "typeMotion": "Egreso",
+      "amount": 1,
+      "movementDate": "2025-11-05T23:46:00.339Z",
       "idUser": "1",
       "nameUser": "Rouse02"
     }
