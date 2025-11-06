@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Alertas } from '../../Components/alertas/alertas';
 import { Alerta } from '../../Services/alerta/alerta';
+import { ServicioBebidas } from '../../Services/bebidas/servicio-bebidas';
+import { Bebida } from '../../Models/Bebida';
 
 @Component({
   selector: 'app-provider-page',
@@ -17,15 +19,18 @@ import { Alerta } from '../../Services/alerta/alerta';
 export class ProviderPage implements OnInit {
   readonly SERVICIO_PROVEEDORES = inject(ServicioProveedor);
   readonly SERVICIO_AUTENTICACION = inject(ServicioAutenticacion);
+  readonly SERVICIO_BEBIDAS = inject(ServicioBebidas);
   readonly ROUTER = inject(Router);
   readonly ALERTA = inject(Alerta);
 
   proveedores: Proveedor[] = [];
   proveedoresFiltrados: Proveedor[] = [];
   terminoBusqueda: string = '';
+  bebidas: Bebida[] = [];
 
   ngOnInit() {
     this.obtenerProveedores();
+    this.obtenerBebidas();
   }
 
   obtenerProveedores() {
@@ -65,5 +70,20 @@ export class ProviderPage implements OnInit {
         this.ALERTA.mostrar("Error al eliminar el proveedor.", "danger");
       }
     })
+  }
+
+  obtenerNombreBebida(id: string): string {
+    const bebida = this.bebidas.find(b => b.id === id);
+    return bebida ? bebida.name : 'Bebida desconocida';
+  }
+
+  obtenerBebidas() {
+    this.SERVICIO_BEBIDAS.getAllDrinks().subscribe({
+      next: (data) => (this.bebidas = data),
+      error: (err) => console.error('Error cargando bebidas', err)
+    });
+  }
+  verBebida(id : string) {
+    this.ROUTER.navigate(['/detailDrinkPage', id, this.SERVICIO_AUTENTICACION.usuario()?.id]);
   }
 }

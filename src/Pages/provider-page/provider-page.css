@@ -86,7 +86,6 @@
   color: var(--color-naranja) !important;
 }
 
-/* 🔸 Corrección total de centrado de íconos */
 .proveedor-card .btn i {
   position: absolute;
   top: 50%;
@@ -110,22 +109,67 @@
   gap: 12px;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-  .proveedor-card .btn {
-    width: 38px;
-    height: 38px;
-  }
-
-  .proveedor-card .btn i {
-    font-size: 1rem;
-  }
-
-  .mt-auto.d-flex {
-    gap: 8px;
-  }
+/* Sección de bebidas asociadas */
+.bebidas-asociadas {
+  text-align: center;
 }
 
+.lista-bebidas .btn {
+  border: 1.5px solid var(--color-naranja);
+  background-color: transparent;
+  color: #1e1e1e;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: "Cooper-Star", sans-serif;
+}
+
+.lista-bebidas .btn:hover {
+  background-color: var(--color-naranja);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.lista-bebidas-scroll {
+  max-height: 110px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-naranja) transparent;
+  display: flex;                  
+  flex-direction: column;
+  gap: 6px;     
+}
+
+/* Chrome, Edge, Safari */
+.lista-bebidas-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.lista-bebidas-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--color-naranja);
+  border-radius: 4px;
+}
+.lista-bebidas-scroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* --- Botones más finos --- */
+.lista-bebidas-scroll .btn {
+  border: 1.5px solid var(--color-naranja);
+  background-color: transparent;
+  color: #1e1e1e;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: "Cooper-Star", sans-serif;
+  padding: 0.25rem 0.6rem;         /* 🔹 botones más delgados */
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+.lista-bebidas-scroll .btn:hover {
+  background-color: var(--color-naranja);
+  color: #fff;
+  transform: translateY(-2px);
+}
 
 /* ✨ Animación */
 @keyframes fadeIn {
@@ -159,4 +203,20 @@
   .btn-outline-warning i {
     font-size: 1.3rem;
   }
+
+  /* Responsive */
+@media (max-width: 500px) {
+  .proveedor-card .btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .proveedor-card .btn i {
+    font-size: 1rem;
+  }
+
+  .mt-auto.d-flex {
+    gap: 8px;
+  }
+}
 }

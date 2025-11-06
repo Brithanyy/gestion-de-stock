@@ -1,5 +1,4 @@
 <main class="container py-4 provider-container">
-
   <!-- 🔍 Barra de búsqueda -->
   <section class="container my-4">
     <div class="input-group rounded-pill shadow-sm overflow-hidden buscador-container">
@@ -36,29 +35,52 @@
           </p>
           <p class="small text-dark">{{ proveedor.descripcion }}</p>
 
-          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
-          <button
-          class="btn btn-success rounded-circle p-3 d-flex align-items-center justify-content-center"
-          (click)="contactarProveedor(proveedor.telefono)"
-          title="Contactar por WhatsApp">
-          <i class="fa-brands fa-whatsapp fs-5 text-white"></i>
-          </button>
+  <!-- 🧃 Bebidas asociadas -->
+  <div class="bebidas-asociadas mt-1">
+  <p class="fw-bold text-dark mb-1">Bebidas asociadas</p>
 
-          <button
-          *ngIf="esAdmin()"
-          class="btn btn-warning rounded-circle p-3 d-flex align-items-center justify-content-center"
-          (click)="editarProveedor(proveedor.id!)"
-          title="Editar proveedor">
-          <i class="fa-solid fa-pen fs-5 text-white"></i>
-          </button>
+  <ng-container *ngIf="(proveedor.bebidas?.length || 0) > 0; else sinBebidas">
+    <!--contenedor con scroll interno -->
+    <div class="lista-bebidas-scroll mt-2">
+      <button
+        *ngFor="let bebidaId of (proveedor.bebidas || [])"
+        class="btn btn-outline-warning text-dark w-100"
+        (click)="verBebida(bebidaId)"
+      >
+        {{ obtenerNombreBebida(bebidaId) }}
+      </button>
+    </div>
+  </ng-container>
 
-          <button
-          *ngIf="esAdmin()"
-          class="btn btn-danger rounded-circle p-3 d-flex align-items-center justify-content-center"
-          (click)="eliminarProveedor(proveedor.id!)"
-          title="Eliminar proveedor">
-          <i class="fa-solid fa-trash fs-5 text-white"></i>
-          </button>
+  <ng-template #sinBebidas>
+    <small class="text-muted fst-italic">Sin bebidas asociadas</small>
+  </ng-template>
+</div>
+
+          <!-- 🎯 Botones -->
+          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3 mt-2">
+            <button
+              class="btn btn-success rounded-circle p-3 d-flex align-items-center justify-content-center"
+              (click)="contactarProveedor(proveedor.telefono)"
+              title="Contactar por WhatsApp">
+              <i class="fa-brands fa-whatsapp fs-5 text-white"></i>
+            </button>
+
+            <button
+              *ngIf="esAdmin()"
+              class="btn btn-warning rounded-circle p-3 d-flex align-items-center justify-content-center"
+              (click)="editarProveedor(proveedor.id!)"
+              title="Editar proveedor">
+              <i class="fa-solid fa-pen fs-5 text-white"></i>
+            </button>
+
+            <button
+              *ngIf="esAdmin()"
+              class="btn btn-danger rounded-circle p-3 d-flex align-items-center justify-content-center"
+              (click)="eliminarProveedor(proveedor.id!)"
+              title="Eliminar proveedor">
+              <i class="fa-solid fa-trash fs-5 text-white"></i>
+            </button>
           </div>
         </div>
       </div>
@@ -69,6 +91,4 @@
   <ng-template #sinProveedores>
     <p class="text-center text-muted fw-bold mt-4">No hay proveedores disponibles</p>
   </ng-template>
-
 </main>
-

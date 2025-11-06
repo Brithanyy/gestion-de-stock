@@ -18,6 +18,7 @@
 
     <!-- Las notificaciones dinamicas si tenemos stock bajo -->
     <app-notificacion></app-notificacion>
+
   </header>
 
   <!-- CONTENIDO CENTRAL -->
@@ -30,6 +31,9 @@
       <router-outlet></router-outlet>
     </main>
   </div>
+
+  <!-- Logo de whatsapp solo si sos admin -->
+  <app-whatsapp *ngIf="esAdmin()"></app-whatsapp>
 
   <!-- FOOTER -->
   <footer class="footerContainer flex-shrink-0">

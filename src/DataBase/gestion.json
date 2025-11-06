@@ -1024,12 +1024,14 @@
       "id": "3",
       "nombre": "Quilmes",
       "telefono": "+54 9 223 567-8900",
+      "descripcion": "Proveedor especializado en cervezas.",
       "bebidas": [
         "1",
         "2",
-        "4"
-      ],
-      "descripcion": "Proveedor especializado en cervezas."
+        "4",
+        "6",
+        "3"
+      ]
     },
     {
       "id": "4",
@@ -1047,7 +1049,9 @@
       "nombre": "Loydis",
       "telefono": "+ 54 9 223 594-2827",
       "descripcion": "Proveedor de espumantes.",
-      "bebidas": []
+      "bebidas": [
+        "71a1"
+      ]
     }
   ],
   "Recordatorios": [
