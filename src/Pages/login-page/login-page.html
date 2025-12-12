@@ -22,23 +22,26 @@
       </div>
 
       <!-- PASSWORD -->
-      <div class="mb-3 position-relative">
-        <input
-          [type]="verContrasena ? 'text' : 'password'"
-          formControlName="password"
-          placeholder="Contraseña"
-          class="form-control form-control-lg pe-5"
-        />
-        <i
-          class="fa-solid"
-          [ngClass]="verContrasena ? 'fa-eye-slash' : 'fa-eye'"
-          (click)="visualizarContrasena()"
-          title="Mostrar/Ocultar contraseña"
-        ></i>
-        <div *ngIf="f.password.touched && f.password.invalid" class="invalid-feedback d-block text-start">
-          La contraseña es requerida
-        </div>
-      </div>
+<div class="mb-3">
+  <div class="password-wrap position-relative">
+    <input
+      [type]="verContrasena ? 'text' : 'password'"
+      formControlName="password"
+      placeholder="Contraseña"
+      class="form-control form-control-lg pe-5"
+    />
+    <i
+      class="fa-solid"
+      [ngClass]="verContrasena ? 'fa-eye-slash' : 'fa-eye'"
+      (click)="visualizarContrasena()"
+      title="Mostrar/Ocultar contraseña"
+    ></i>
+  </div>
+
+  <div *ngIf="f.password.touched && f.password.invalid" class="invalid-feedback d-block text-start">
+    La contraseña es requerida
+  </div>
+</div>
 
       <!-- BOTÓN -->
       <div class="d-grid mt-4">
